@@ -1,4 +1,5 @@
 # AmaRadio.eu
 
-
-<img src="image/logo-web.png" alt="Logo web" width="600">
+<div style="text-align: center;">
+  <img src="image/logo-web.png" alt="Logo web" width="500">
+</div>
