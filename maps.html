@@ -108,6 +108,7 @@
     let locatorLayers = L.layerGroup();
     let drawnLayers = []; // Hold drawn layers for removal
     let currentDrawnLayers = null; // Track currently drawn layers
+    let currentLayer = 'none'; // Track current layer selection
 
     function latLonToLocator(lat, lon) {
         let fieldLon = Math.floor((lon + 180) / 20);
@@ -186,6 +187,8 @@
     }
 
     function drawLocatorGrid() {
+        if (currentLayer !== 'locator') return; // Skip if not the locator layer
+
         if (currentDrawnLayers) {
             currentDrawnLayers.clearLayers(); // Remove the previously drawn layers
         }
@@ -334,7 +337,8 @@
         // Attach event listener to the select element
         let layerSelect = document.getElementById('layer-select');
         layerSelect.addEventListener('change', function () {
-            if (this.value === 'locator') {
+            currentLayer = this.value; // Update the current layer selection
+            if (currentLayer === 'locator') {
                 drawLocatorGrid();
             } else {
                 if (currentDrawnLayers) {
@@ -344,8 +348,17 @@
             }
         });
 
-        map.on('moveend', drawLocatorGrid);
-        map.on('zoomend', drawLocatorGrid);
+        map.on('moveend', function () {
+            if (currentLayer === 'locator') {
+                drawLocatorGrid();
+            }
+        });
+
+        map.on('zoomend', function () {
+            if (currentLayer === 'locator') {
+                drawLocatorGrid();
+            }
+        });
 
         map.on('mousemove', function (e) {
             let lat = e.latlng.lat;
