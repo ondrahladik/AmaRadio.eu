@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmaRadio.eu</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        background-color: #bfbfbf;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        width: 100%;
+    }
+    #map {
+        flex: 1; 
+        width: 100%;
+        position: relative;
+    }
+    .mouse-locator-info {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: white;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 14px;
+        z-index: 1000;
+        width: 70px; 
+        height: 20px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+    #mouse-locator {
+        display: none; 
+    }
+    .show-location-button img {
+        width: 25px;
+        height: 25px; 
+    }
+    .show-location-button {
+        background: white;
+        border: 2px solid rgba(0, 0, 0, 0.2); 
+        border-radius: 3px; 
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
+        width: 30px; 
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        z-index: 1000;
+    }
+    .text-labels {
+        font-size: 20px; /* Zvětšená velikost textu */
+        font-weight: bold;
+        color: red;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div id="map">
+            <div id="mouse-locator" class="mouse-locator-info"></div>
+        </div>
+    </div>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+let map;
+let currentMarker;
+let locatorLayers = L.layerGroup();
+
+function latLonToLocator(lat, lon) {
+    let fieldLon = Math.floor((lon + 180) / 20);
+    let fieldLat = Math.floor((lat + 90) / 10);
+    let squareLon = Math.floor(((lon + 180) % 20) / 2);
+    let squareLat = Math.floor(((lat + 90) % 10));
+    let subSquareLon = Math.floor(((lon + 180) % 2) * 12);
+    let subSquareLat = Math.floor(((lat + 90) % 1) * 24);
+
+    let locator = String.fromCharCode(fieldLon + 65) +
+                  String.fromCharCode(fieldLat + 65) +
+                  squareLon +
+                  squareLat +
+                  String.fromCharCode(subSquareLon + 65) +
+                  String.fromCharCode(subSquareLat + 65);
+
+    return locator;
+}
+
+function showMyLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                let latitude = position.coords.latitude;
+                let longitude = position.coords.longitude;
+                let locator = latLonToLocator(latitude, longitude);
+
+                if (!map) {
+                    map = L.map('map').setView([latitude, longitude], 13);
+                } else {
+                    map.setView([latitude, longitude], 13);
+                }
+
+                if (currentMarker) {
+                    map.removeLayer(currentMarker);
+                }
+
+                currentMarker = L.marker([latitude, longitude])
+                    .addTo(map)
+                    .bindPopup('<b>You are here!</b><br>Lat: ' + latitude + '<br>Lon: ' + longitude + '<br>Loc: ' + locator)
+                    .openPopup();
+            },
+            function (error) {
+                alert('Error: ' + error.message);
+            }
+        );
+    } else {
+        alert('Geolocation is not supported by this browser.');
+    }
+}
+
+function addLocationButton() {
+    let locationButton = L.control({ position: 'topleft' });
+
+    locationButton.onAdd = function () {
+        let div = L.DomUtil.create('div', 'show-location-button');
+        div.innerHTML = '<img src="https://img.icons8.com/material-outlined/24/000000/marker.png" alt="My Location" />';
+        div.onclick = function () {
+            showMyLocation();
+        };
+        return div;
+    };
+
+    locationButton.addTo(map);
+}
+
+function drawLocatorGrid() {
+    locatorLayers.clearLayers();
+    let zoomLevel = map.getZoom();
+
+    if (zoomLevel >= 9) {
+        // Remove all grid lines when zoom level is 9 or higher
+        locatorLayers.clearLayers();
+    } else if (zoomLevel >= 6) {
+        // Draw sub squares
+        let bounds = map.getBounds();
+        let southWest = bounds.getSouthWest();
+        let northEast = bounds.getNorthEast();
+
+        for (let fieldLon = Math.floor(southWest.lng / 2) * 2; fieldLon < Math.ceil(northEast.lng / 2) * 2; fieldLon += 2) {
+            for (let fieldLat = Math.floor(southWest.lat); fieldLat < Math.ceil(northEast.lat); fieldLat += 1) {
+                let lonCenter = fieldLon + 1;
+                let latCenter = fieldLat + 0.5;
+                let fieldName = latLonToLocator(latCenter, lonCenter).substring(0, 4);
+                L.marker([latCenter, lonCenter], {
+                    icon: L.divIcon({
+                        className: 'text-labels',
+                        html: '<div>' + fieldName + '</div>',
+                        iconSize: [100, 40], // adjust size to keep the text centered
+                        iconAnchor: [50, 20] // adjust anchor to center the text
+                    })
+                }).addTo(locatorLayers);
+
+                L.polyline([
+                    [fieldLat, fieldLon],
+                    [fieldLat, fieldLon + 2]
+                ], {color: 'red'}).addTo(locatorLayers);
+                L.polyline([
+                    [fieldLat, fieldLon + 2],
+                    [fieldLat + 1, fieldLon + 2]
+                ], {color: 'red'}).addTo(locatorLayers);
+                L.polyline([
+                    [fieldLat + 1, fieldLon + 2],
+                    [fieldLat + 1, fieldLon]
+                ], {color: 'red'}).addTo(locatorLayers);
+                L.polyline([
+                    [fieldLat + 1, fieldLon],
+                    [fieldLat, fieldLon]
+                ], {color: 'red'}).addTo(locatorLayers);
+            }
+        }
+    } else {
+        // Draw main squares
+        for (let lon = -180; lon <= 180; lon += 20) {
+            L.polyline([
+                [90, lon],
+                [-90, lon]
+            ], {color: 'red'}).addTo(locatorLayers);
+        }
+
+        for (let lat = -90; lat <= 90; lat += 10) {
+            L.polyline([
+                [lat, -180],
+                [lat, 180]
+            ], {color: 'red'}).addTo(locatorLayers);
+        }
+
+        for (let fieldLon = -180; fieldLon < 180; fieldLon += 20) {
+            for (let fieldLat = -90; fieldLat < 90; fieldLat += 10) {
+                let lonCenter = fieldLon + 10;
+                let latCenter = fieldLat + 5;
+                let fieldName = String.fromCharCode((fieldLon + 180) / 20 + 65) +
+                                String.fromCharCode((fieldLat + 90) / 10 + 65);
+                L.marker([latCenter, lonCenter], {
+                    icon: L.divIcon({
+                        className: 'text-labels',
+                        html: '<div>' + fieldName + '</div>',
+                        iconSize: [100, 40], // adjust size to keep the text centered
+                        iconAnchor: [50, 20] // adjust anchor to center the text
+                    })
+                }).addTo(locatorLayers);
+            }
+        }
+    }
+
+    locatorLayers.addTo(map);
+}
+
+window.onload = function () {
+    if (!map) {
+        map = L.map('map', {
+            minZoom: 3
+        }).setView([40, 0], 3);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+    }
+
+    addLocationButton();
+    drawLocatorGrid();
+
+    map.on('moveend', function () {
+        drawLocatorGrid();
+    });
+
+    map.on('zoomend', function () {
+        drawLocatorGrid();
+    });
+
+    map.on('mousemove', function (e) {
+        let lat = e.latlng.lat;
+        let lon = e.latlng.lng;
+        let locator = latLonToLocator(lat, lon);
+        let mouseLocatorElement = document.getElementById('mouse-locator');
+        if (locator) {
+            mouseLocatorElement.innerText = locator;
+            mouseLocatorElement.style.display = 'flex';
+        } else {
+            mouseLocatorElement.style.display = 'none';
+        }
+    });
+
+    map.on('mouseout', function () {
+        let mouseLocatorElement = document.getElementById('mouse-locator');
+        mouseLocatorElement.style.display = 'none';
+    });
+};
+</script>
+</body>
+</html>

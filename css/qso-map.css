@@ -1,0 +1,187 @@
+           html, body {
+                height: 100%;
+                margin: 0;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+                background-color: #bfbfbf;
+                font-family: Arial, sans-serif;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                width: 100%;
+            }
+
+            .form-container {
+                width: 270px;
+                height: 124px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: absolute;
+                top: 10px;
+                left: 240px;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.8);
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            .form-container table {
+                margin-left: 30px;
+                margin-top: 15px;
+            }
+
+            .form-group {
+                margin-bottom: 10px;
+            }
+
+            input[type="text"] {
+                text-align: center;
+                text-transform: uppercase;
+                width: 90px;
+            }
+
+            textarea {
+                text-align: center;
+                text-transform: uppercase;
+                width: 200px;
+                resize: none; 
+            }
+
+            input[type="text"]::placeholder {
+                text-transform: none;
+            }
+
+            textarea::placeholder {
+                text-transform: none;
+            }
+
+            input[type="text"]:focus {
+                outline: none; 
+            }
+
+            textarea:focus {
+                outline: none; 
+            }
+
+            button.show-loc {
+                width: 100px;
+            }
+
+            button.map-toggle-button {
+                color: #000;
+            }
+
+            button.map-toggle-button:hover {
+                color: #000;
+            }
+
+            .map-toggle-button {
+                width: 34px;
+                height: 34px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 14px;
+                position: absolute;
+                top: 120px;
+                left: 240px;
+                z-index: 1000;
+                color: #6c757d; 
+            }
+
+            .map-toggle-button.active {
+                color: #007bff; 
+            }
+
+            #location-btn {
+                top: 80px;
+                left: 240px;
+                z-index: 1001; 
+            }
+
+            #map {
+                flex: 1; 
+                width: 100%;
+                position: relative;
+            }
+
+            .leaflet-container .leaflet-control-attribution {
+                display: none;
+            }
+
+            .leaflet-control {
+                background: white;
+                border: 2px solid #ccc;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+
+            .leaflet-control:hover {
+                background: #f0f0f0;
+            }
+
+            .distance-info {
+                position: absolute;
+                bottom: 10px;
+                left: 240px;
+                background: rgba(255, 255, 255, 0.8);
+                padding: 5px;
+                text-align: left;
+                border-radius: 5px;
+                font-size: 18px;
+                color: #333;
+                z-index: 1000;
+                max-width: 220px;
+                word-wrap: break-word;
+                display: none; 
+            }
+
+            .distance-info.show {
+                display: block; 
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            @media (max-width: 768px) {
+                .form-container {
+                    left: 10px;
+                    width: 230px;
+                }
+
+                .map-toggle-button {
+                    left: 10px;
+                    padding: 0;
+                }
+
+                #location-btn {
+                    left: 10px; 
+                }
+
+                .distance-info {
+                    left: 10px;
+                }
+
+                input[type="text"] {
+                    width: 70px;
+                    font-size: 10px;
+                }
+
+                button.show-loc {
+                    width: 90px;
+                    font-size: 10px;
+                }
+
+                textarea {
+                    width: 170px;
+                }
+
+            }

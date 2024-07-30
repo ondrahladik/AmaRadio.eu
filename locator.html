@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Tools for radio amateurs">
+    <meta name="keywords" content="ham radio, ama radio, prefix, locator, map, OK1KKY">
+    <meta name="author" content="OK1KKY">
+    <meta property="og:title" content="Locator search">
+    <meta property="og:description" content="Tools for radio amateurs">
+    <meta property="og:image" content="https://prefix.ok1kky.cz/image/logo-title.png">
+    <title>Locator search</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="image/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="image/fav/favicon-16x16.png">
+    <link rel="manifest" href="image/fav/site.webmanifest">
+    <link rel="mask-icon" href="image/fav/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/locator.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YV2XHJKTNW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-YV2XHJKTNW');
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar" id="sidebar">
+            <a href="index.html">
+                <img class="logo" src="image/logo-web.png" alt="Logo">
+            </a>
+            <div class="menu">
+                <h2>PREFIX</h2>
+                <ul>
+                    <li><a href="prefix.html">SEARCH</a></li>
+                    <li><a href="table.html">TABLE</a></li>
+                    <li><a href="prefix-help.html">HELP</a></li>
+                </ul>
+            </div>
+            <div class="menu">
+                <h2>LOCATOR</h2>
+                <ul>
+                    <li><a class="active" href="locator.html">SEARCH</a></li>
+                    <li><a href="qso-map.html">QSO MAP</a></li>
+                    <li><a href="#">MAPS</a></li>
+                    <li><a href="locator-help.html">HELP</a></li>
+                </ul>
+            </div>
+            <div class="menu">
+                <h2>WEB</h2>
+                <ul>
+                    <li><a href="contact.php">CONTACT</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                </ul>
+            </div>
+            <footer>
+                <div class="social-icons">
+                    <a href="https://fb.me/ok1kky" target="_blank" class="fab fa-facebook-f"></a>
+                    <a href="https://x.com/ok1kky" target="_blank" class="fab fa-twitter"></a>
+                    <a href="https://www.youtube.com/@ok1kky" target="_blank" class="fab fa-youtube"></a>
+                    <a href="https://github.com/ondrahladik/AmaRadio.eu" target="_blank" class="fab fa-github"></a>
+                </div>
+                <br>
+                <div>&copy; 2024 OK1KKY</div>
+            </footer>
+            </nav>
+            <main class="content-locator">
+                <button class="burger" id="burger">&#9776;</button>
+                    <div class="container">
+                    <form>
+                        <table class="form-table">
+                            <tr>
+                                <th><label for="locator">Search</label></th>
+                                <th><label for="locator1" class="locator-label">
+                                    Locator<div class="icon A">A</div>
+                                    </label></th>
+                                <th><label for="locator2" class="locator-label">
+                                    Locator<div class="icon B">B</div>
+                                    </label></th>
+                            </tr>
+                            <tr class="input" >
+                                <td>
+                                    <input type="text" id="locator" name="locator" placeholder="Enter locator" required>
+                                </td>
+                                <td>
+                                    <input type="text" id="locator1" name="locator1" placeholder="Enter locator A" required>
+                                </td>
+                                <td>
+                                    <input type="text" id="locator2" name="locator2" placeholder="Enter locator B" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn1" type="button" onclick="calculateSingleLocatorCoordinates()">Get locator</button>
+                                </td>
+                                <td id="distance" class="distance">
+                                </td>
+                                <td>
+                                    <button type="button" onclick="calculateTwoLocatorsCoordinates()">Get distance</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="map">
+                    <div id="mouse-locator" class="mouse-locator-info"></div>
+                </div>
+                </div>     
+        </main>
+    </div>
+<script type="text/javascript" src="js/menu.js" ></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script type="text/javascript" src="js/locator.js" ></script>
+</body>
+</html>
