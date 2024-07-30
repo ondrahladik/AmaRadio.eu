@@ -69,26 +69,34 @@
             padding: 2px;
             text-align: center;
         }
+
+        @media (max-width: 768px) {
+            .mobile {
+                display: none;
+            }
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <table>
             <tr>
-                <td width="20%">
-                    <select name="layer">
-                        <option value="none" selected="selected" disabled="disabled">Map layer:</option>
+                <td width="10%">
+                    <select name="layer" id="layer-select">
+                        <option value="" selected disabled hidden>Map layer:</option>
+                        <option value="none">none layer </option>
                         <option value="locator">Grid square</option>
                         <option value="itu">ITU zone</option>
                         <option value="cq">CQ zone</option>
                     </select>
                 </td>
-                <td width="10%">Latitude:</td>
-                <th width="15%" id="lati"></th>
-                <td width="10%">Longitude:</td>
-                <th width="15%" id="long"></th>
-                <td width="10%">Grid square:</td>
-                <th width="10%" id="mouse-locator"></th>
+                <td width="15%" class="mobile">Latitude:</td>
+                <th width="15%" class="mobile" id="lati"></th>
+                <td width="15%" class="mobile"> Longitude:</td>
+                <th width="15%" class="mobile" id="long"></th>
+                <td width="15%" class="mobile">Grid square:</td>
+                <th width="15%" class="mobile" id="mouse-locator"></th>
             </tr>
         </table>
         <div id="map"></div>
@@ -99,6 +107,7 @@
     let currentMarker;
     let locatorLayers = L.layerGroup();
     let drawnLayers = []; // Hold drawn layers for removal
+    let currentDrawnLayers = null; // Track currently drawn layers
 
     function latLonToLocator(lat, lon) {
         let fieldLon = Math.floor((lon + 180) / 20);
@@ -177,9 +186,13 @@
     }
 
     function drawLocatorGrid() {
-        locatorLayers.clearLayers();
+        if (currentDrawnLayers) {
+            currentDrawnLayers.clearLayers(); // Remove the previously drawn layers
+        }
         drawnLayers.forEach(layer => layer.remove()); // Remove previous drawn layers
         drawnLayers = []; // Reset drawn layers
+
+        currentDrawnLayers = L.layerGroup(); // Create new layer group for current draw
 
         let zoomLevel = map.getZoom();
         let bounds = map.getBounds();
@@ -205,27 +218,27 @@
                             iconSize: [100, 40], 
                             iconAnchor: [50, 20]
                         })
-                    }).addTo(locatorLayers));
+                    }).addTo(currentDrawnLayers));
 
                     drawnLayers.push(L.polyline([
                         [fieldLat, fieldLon],
                         [fieldLat, fieldLon + 0.083333]
-                    ], {color: 'red'}).addTo(locatorLayers));
+                    ], {color: 'red'}).addTo(currentDrawnLayers));
 
                     drawnLayers.push(L.polyline([
                         [fieldLat, fieldLon + 0.083333],
                         [fieldLat + 0.041666, fieldLon + 0.083333]
-                    ], {color: 'red'}).addTo(locatorLayers));
+                    ], {color: 'red'}).addTo(currentDrawnLayers));
 
                     drawnLayers.push(L.polyline([
                         [fieldLat + 0.041666, fieldLon + 0.083333],
                         [fieldLat + 0.041666, fieldLon]
-                    ], {color: 'red'}).addTo(locatorLayers));
+                    ], {color: 'red'}).addTo(currentDrawnLayers));
 
                     drawnLayers.push(L.polyline([
                         [fieldLat + 0.041666, fieldLon],
                         [fieldLat, fieldLon]
-                    ], {color: 'red'}).addTo(locatorLayers));
+                    ], {color: 'red'}).addTo(currentDrawnLayers));
                 }
             }
         } else if (zoomLevel >= 6) {
@@ -247,27 +260,27 @@
                             iconSize: [100, 40], 
                             iconAnchor: [50, 20]
                         })
-                    }).addTo(locatorLayers));
+                    }).addTo(currentDrawnLayers));
 
                     drawnLayers.push(L.polyline([
                         [fieldLat, fieldLon],
                         [fieldLat, fieldLon + 2]
-                    ], {color: 'red'}).addTo(locatorLayers));
+                    ], {color: 'red'}).addTo(currentDrawnLayers));
 
                     drawnLayers.push(L.polyline([
                         [fieldLat, fieldLon + 2],
                         [fieldLat + 1, fieldLon + 2]
-                    ], {color: 'red'}).addTo(locatorLayers));
+                    ], {color: 'red'}).addTo(currentDrawnLayers));
 
                     drawnLayers.push(L.polyline([
                         [fieldLat + 1, fieldLon + 2],
                         [fieldLat + 1, fieldLon]
-                    ], {color: 'red'}).addTo(locatorLayers));
+                    ], {color: 'red'}).addTo(currentDrawnLayers));
 
                     drawnLayers.push(L.polyline([
                         [fieldLat + 1, fieldLon],
                         [fieldLat, fieldLon]
-                    ], {color: 'red'}).addTo(locatorLayers));
+                    ], {color: 'red'}).addTo(currentDrawnLayers));
                 }
             }
         } else {
@@ -276,14 +289,14 @@
                 drawnLayers.push(L.polyline([
                     [90, lon],
                     [-90, lon]
-                ], {color: 'red'}).addTo(locatorLayers));
+                ], {color: 'red'}).addTo(currentDrawnLayers));
             }
 
             for (let lat = -90; lat <= 90; lat += 10) {
                 drawnLayers.push(L.polyline([
                     [lat, -180],
                     [lat, 180]
-                ], {color: 'red'}).addTo(locatorLayers));
+                ], {color: 'red'}).addTo(currentDrawnLayers));
             }
 
             for (let fieldLon = -180; fieldLon < 180; fieldLon += 20) {
@@ -299,12 +312,12 @@
                             iconSize: [100, 40], 
                             iconAnchor: [50, 20]
                         })
-                    }).addTo(locatorLayers));
+                    }).addTo(currentDrawnLayers));
                 }
             }
         }
 
-        locatorLayers.addTo(map);
+        currentDrawnLayers.addTo(map);
     }
 
     window.onload = function () {
@@ -317,7 +330,19 @@
         }).addTo(map);
 
         addLocationButton();
-        drawLocatorGrid();
+
+        // Attach event listener to the select element
+        let layerSelect = document.getElementById('layer-select');
+        layerSelect.addEventListener('change', function () {
+            if (this.value === 'locator') {
+                drawLocatorGrid();
+            } else {
+                if (currentDrawnLayers) {
+                    currentDrawnLayers.clearLayers(); // Remove drawn layers for non-locator choices
+                    currentDrawnLayers.remove(); // Remove the layer group from map
+                }
+            }
+        });
 
         map.on('moveend', drawLocatorGrid);
         map.on('zoomend', drawLocatorGrid);
