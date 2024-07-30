@@ -78,15 +78,15 @@
 </head>
 <body>
     <div class="container">
-        <div id="map">
-            <div id="mouse-locator" class="mouse-locator-info"></div>
-        </div>
+        <div id="map"></div>
+        <div id="mouse-locator" class="mouse-locator-info"></div>
     </div>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
 let map;
 let currentMarker;
 let locatorLayers = L.layerGroup();
+let drawnLayers = []; // Hold drawn layers for removal
 
 function latLonToLocator(lat, lon) {
     let fieldLon = Math.floor((lon + 180) / 20);
@@ -116,6 +116,9 @@ function showMyLocation() {
 
                 if (!map) {
                     map = L.map('map').setView([latitude, longitude], 13);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    }).addTo(map);
                 } else {
                     map.setView([latitude, longitude], 13);
                 }
@@ -155,63 +158,112 @@ function addLocationButton() {
 
 function drawLocatorGrid() {
     locatorLayers.clearLayers();
+    drawnLayers.forEach(layer => layer.remove()); // Remove previous drawn layers
+    drawnLayers = []; // Reset drawn layers
+
     let zoomLevel = map.getZoom();
+    let bounds = map.getBounds();
+    let southWest = bounds.getSouthWest();
+    let northEast = bounds.getNorthEast();
 
-    if (zoomLevel >= 9) {
-        // Remove all grid lines when zoom level is 9 or higher
-        locatorLayers.clearLayers();
-    } else if (zoomLevel >= 6) {
-        // Draw sub squares
-        let bounds = map.getBounds();
-        let southWest = bounds.getSouthWest();
-        let northEast = bounds.getNorthEast();
+    if (zoomLevel >= 11) {
+        // Draw smallest squares (locators)
+        let startLon = Math.floor(southWest.lng / 0.083333) * 0.083333;
+        let endLon = Math.ceil(northEast.lng / 0.083333) * 0.083333;
+        let startLat = Math.floor(southWest.lat / 0.041666) * 0.041666;
+        let endLat = Math.ceil(northEast.lat / 0.041666) * 0.041666;
 
-        for (let fieldLon = Math.floor(southWest.lng / 2) * 2; fieldLon < Math.ceil(northEast.lng / 2) * 2; fieldLon += 2) {
-            for (let fieldLat = Math.floor(southWest.lat); fieldLat < Math.ceil(northEast.lat); fieldLat += 1) {
-                let lonCenter = fieldLon + 1;
-                let latCenter = fieldLat + 0.5;
-                let fieldName = latLonToLocator(latCenter, lonCenter).substring(0, 4);
-                L.marker([latCenter, lonCenter], {
+        for (let fieldLon = startLon; fieldLon < endLon; fieldLon += 0.083333) {
+            for (let fieldLat = startLat; fieldLat < endLat; fieldLat += 0.041666) {
+                let lonCenter = fieldLon + 0.041666;
+                let latCenter = fieldLat + 0.020833;
+                let fieldName = latLonToLocator(latCenter, lonCenter).substring(0, 6);
+                drawnLayers.push(L.marker([latCenter, lonCenter], {
                     icon: L.divIcon({
                         className: 'text-labels',
                         html: '<div>' + fieldName + '</div>',
-                        iconSize: [100, 40], // adjust size to keep the text centered
-                        iconAnchor: [50, 20] // adjust anchor to center the text
+                        iconSize: [100, 40], 
+                        iconAnchor: [50, 20]
                     })
-                }).addTo(locatorLayers);
+                }).addTo(locatorLayers));
 
-                L.polyline([
+                drawnLayers.push(L.polyline([
+                    [fieldLat, fieldLon],
+                    [fieldLat, fieldLon + 0.083333]
+                ], {color: 'red'}).addTo(locatorLayers));
+
+                drawnLayers.push(L.polyline([
+                    [fieldLat, fieldLon + 0.083333],
+                    [fieldLat + 0.041666, fieldLon + 0.083333]
+                ], {color: 'red'}).addTo(locatorLayers));
+
+                drawnLayers.push(L.polyline([
+                    [fieldLat + 0.041666, fieldLon + 0.083333],
+                    [fieldLat + 0.041666, fieldLon]
+                ], {color: 'red'}).addTo(locatorLayers));
+
+                drawnLayers.push(L.polyline([
+                    [fieldLat + 0.041666, fieldLon],
+                    [fieldLat, fieldLon]
+                ], {color: 'red'}).addTo(locatorLayers));
+            }
+        }
+    } else if (zoomLevel >= 6) {
+        // Draw sub squares
+        let startLon = Math.floor(southWest.lng / 2) * 2;
+        let endLon = Math.ceil(northEast.lng / 2) * 2;
+        let startLat = Math.floor(southWest.lat);
+        let endLat = Math.ceil(northEast.lat);
+
+        for (let fieldLon = startLon; fieldLon < endLon; fieldLon += 2) {
+            for (let fieldLat = startLat; fieldLat < endLat; fieldLat += 1) {
+                let lonCenter = fieldLon + 1;
+                let latCenter = fieldLat + 0.5;
+                let fieldName = latLonToLocator(latCenter, lonCenter).substring(0, 4);
+                drawnLayers.push(L.marker([latCenter, lonCenter], {
+                    icon: L.divIcon({
+                        className: 'text-labels',
+                        html: '<div>' + fieldName + '</div>',
+                        iconSize: [100, 40], 
+                        iconAnchor: [50, 20]
+                    })
+                }).addTo(locatorLayers));
+
+                drawnLayers.push(L.polyline([
                     [fieldLat, fieldLon],
                     [fieldLat, fieldLon + 2]
-                ], {color: 'red'}).addTo(locatorLayers);
-                L.polyline([
+                ], {color: 'red'}).addTo(locatorLayers));
+
+                drawnLayers.push(L.polyline([
                     [fieldLat, fieldLon + 2],
                     [fieldLat + 1, fieldLon + 2]
-                ], {color: 'red'}).addTo(locatorLayers);
-                L.polyline([
+                ], {color: 'red'}).addTo(locatorLayers));
+
+                drawnLayers.push(L.polyline([
                     [fieldLat + 1, fieldLon + 2],
                     [fieldLat + 1, fieldLon]
-                ], {color: 'red'}).addTo(locatorLayers);
-                L.polyline([
+                ], {color: 'red'}).addTo(locatorLayers));
+
+                drawnLayers.push(L.polyline([
                     [fieldLat + 1, fieldLon],
                     [fieldLat, fieldLon]
-                ], {color: 'red'}).addTo(locatorLayers);
+                ], {color: 'red'}).addTo(locatorLayers));
             }
         }
     } else {
         // Draw main squares
         for (let lon = -180; lon <= 180; lon += 20) {
-            L.polyline([
+            drawnLayers.push(L.polyline([
                 [90, lon],
                 [-90, lon]
-            ], {color: 'red'}).addTo(locatorLayers);
+            ], {color: 'red'}).addTo(locatorLayers));
         }
 
         for (let lat = -90; lat <= 90; lat += 10) {
-            L.polyline([
+            drawnLayers.push(L.polyline([
                 [lat, -180],
                 [lat, 180]
-            ], {color: 'red'}).addTo(locatorLayers);
+            ], {color: 'red'}).addTo(locatorLayers));
         }
 
         for (let fieldLon = -180; fieldLon < 180; fieldLon += 20) {
@@ -220,14 +272,14 @@ function drawLocatorGrid() {
                 let latCenter = fieldLat + 5;
                 let fieldName = String.fromCharCode((fieldLon + 180) / 20 + 65) +
                                 String.fromCharCode((fieldLat + 90) / 10 + 65);
-                L.marker([latCenter, lonCenter], {
+                drawnLayers.push(L.marker([latCenter, lonCenter], {
                     icon: L.divIcon({
                         className: 'text-labels',
                         html: '<div>' + fieldName + '</div>',
-                        iconSize: [100, 40], // adjust size to keep the text centered
-                        iconAnchor: [50, 20] // adjust anchor to center the text
+                        iconSize: [100, 40], 
+                        iconAnchor: [50, 20]
                     })
-                }).addTo(locatorLayers);
+                }).addTo(locatorLayers));
             }
         }
     }
@@ -236,37 +288,27 @@ function drawLocatorGrid() {
 }
 
 window.onload = function () {
-    if (!map) {
-        map = L.map('map', {
-            minZoom: 3
-        }).setView([40, 0], 3);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-    }
+    map = L.map('map', {
+        minZoom: 3,
+        maxZoom: 14,
+    }).setView([40, 0], 3);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
 
     addLocationButton();
     drawLocatorGrid();
 
-    map.on('moveend', function () {
-        drawLocatorGrid();
-    });
-
-    map.on('zoomend', function () {
-        drawLocatorGrid();
-    });
+    map.on('moveend', drawLocatorGrid);
+    map.on('zoomend', drawLocatorGrid);
 
     map.on('mousemove', function (e) {
         let lat = e.latlng.lat;
         let lon = e.latlng.lng;
         let locator = latLonToLocator(lat, lon);
         let mouseLocatorElement = document.getElementById('mouse-locator');
-        if (locator) {
-            mouseLocatorElement.innerText = locator;
-            mouseLocatorElement.style.display = 'flex';
-        } else {
-            mouseLocatorElement.style.display = 'none';
-        }
+        mouseLocatorElement.innerText = locator;
+        mouseLocatorElement.style.display = 'flex';
     });
 
     map.on('mouseout', function () {
