@@ -5,317 +5,337 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AmaRadio.eu</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<style>
-    html, body {
-        height: 100%;
-        margin: 0;
-    }
-    body {
-        display: flex;
-        flex-direction: column;
-        background-color: #bfbfbf;
-        font-family: Arial, sans-serif;
-    }
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex: 1;
-        width: 100%;
-    }
-    #map {
-        flex: 1; 
-        width: 100%;
-        position: relative;
-    }
-    .mouse-locator-info {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: white;
-        padding: 5px;
-        border-radius: 5px;
-        font-size: 14px;
-        z-index: 1000;
-        width: 70px; 
-        height: 20px; 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
-    }
-    #mouse-locator {
-        display: none; 
-    }
-    .show-location-button img {
-        width: 25px;
-        height: 25px; 
-    }
-    .show-location-button {
-        background: white;
-        border: 2px solid rgba(0, 0, 0, 0.2); 
-        border-radius: 3px; 
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
-        width: 30px; 
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        z-index: 1000;
-    }
-    .text-labels {
-        font-size: 20px; /* Zvětšená velikost textu */
-        font-weight: bold;
-        color: red;
-        text-align: center;
-    }
-</style>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: #bfbfbf;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            width: 100%;
+        }
+        #map {
+            flex: 1; 
+            width: 100%;
+            position: relative;
+        }
+
+        .show-location-button img {
+            width: 25px;
+            height: 25px; 
+        }
+        .show-location-button {
+            background: white;
+            border: 2px solid rgba(0, 0, 0, 0.2); 
+            border-radius: 3px; 
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
+            width: 30px; 
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            z-index: 1000;
+        }
+        .text-labels {
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 5px;
+            width: 90%;
+        }
+
+        th, td {
+            border: 1px solid blue;
+            background: white;
+            height: 20px;
+            padding: 2px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
+        <table>
+            <tr>
+                <td width="20%">
+                    <select name="layer">
+                        <option value="none" selected="selected" disabled="disabled">Map layer:</option>
+                        <option value="locator">Grid square</option>
+                        <option value="itu">ITU zone</option>
+                        <option value="cq">CQ zone</option>
+                    </select>
+                </td>
+                <td width="10%">Latitude:</td>
+                <th width="15%" id="lati"></th>
+                <td width="10%">Longitude:</td>
+                <th width="15%" id="long"></th>
+                <td width="10%">Grid square:</td>
+                <th width="10%" id="mouse-locator"></th>
+            </tr>
+        </table>
         <div id="map"></div>
-        <div id="mouse-locator" class="mouse-locator-info"></div>
     </div>
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script>
-let map;
-let currentMarker;
-let locatorLayers = L.layerGroup();
-let drawnLayers = []; // Hold drawn layers for removal
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+    let map;
+    let currentMarker;
+    let locatorLayers = L.layerGroup();
+    let drawnLayers = []; // Hold drawn layers for removal
 
-function latLonToLocator(lat, lon) {
-    let fieldLon = Math.floor((lon + 180) / 20);
-    let fieldLat = Math.floor((lat + 90) / 10);
-    let squareLon = Math.floor(((lon + 180) % 20) / 2);
-    let squareLat = Math.floor(((lat + 90) % 10));
-    let subSquareLon = Math.floor(((lon + 180) % 2) * 12);
-    let subSquareLat = Math.floor(((lat + 90) % 1) * 24);
+    function latLonToLocator(lat, lon) {
+        let fieldLon = Math.floor((lon + 180) / 20);
+        let fieldLat = Math.floor((lat + 90) / 10);
+        let squareLon = Math.floor(((lon + 180) % 20) / 2);
+        let squareLat = Math.floor(((lat + 90) % 10));
+        let subSquareLon = Math.floor(((lon + 180) % 2) * 12);
+        let subSquareLat = Math.floor(((lat + 90) % 1) * 24);
 
-    let locator = String.fromCharCode(fieldLon + 65) +
-                  String.fromCharCode(fieldLat + 65) +
-                  squareLon +
-                  squareLat +
-                  String.fromCharCode(subSquareLon + 65) +
-                  String.fromCharCode(subSquareLat + 65);
+        let locator = String.fromCharCode(fieldLon + 65) +
+                      String.fromCharCode(fieldLat + 65) +
+                      squareLon +
+                      squareLat +
+                      String.fromCharCode(subSquareLon + 65) +
+                      String.fromCharCode(subSquareLat + 65);
 
-    return locator;
-}
-
-function showMyLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            function (position) {
-                let latitude = position.coords.latitude;
-                let longitude = position.coords.longitude;
-                let locator = latLonToLocator(latitude, longitude);
-
-                if (!map) {
-                    map = L.map('map').setView([latitude, longitude], 13);
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                    }).addTo(map);
-                } else {
-                    map.setView([latitude, longitude], 13);
-                }
-
-                if (currentMarker) {
-                    map.removeLayer(currentMarker);
-                }
-
-                currentMarker = L.marker([latitude, longitude])
-                    .addTo(map)
-                    .bindPopup('<b>You are here!</b><br>Lat: ' + latitude + '<br>Lon: ' + longitude + '<br>Loc: ' + locator)
-                    .openPopup();
-            },
-            function (error) {
-                alert('Error: ' + error.message);
-            }
-        );
-    } else {
-        alert('Geolocation is not supported by this browser.');
+        return locator;
     }
-}
 
-function addLocationButton() {
-    let locationButton = L.control({ position: 'topleft' });
+    function convertToDMS(degrees) {
+        let d = Math.floor(degrees);
+        let minFloat = (degrees - d) * 60;
+        let m = Math.floor(minFloat);
+        let s = Math.round((minFloat - m) * 60);
+        return `${d}° ${m}' ${s}"`;
+    }
 
-    locationButton.onAdd = function () {
-        let div = L.DomUtil.create('div', 'show-location-button');
-        div.innerHTML = '<img src="https://img.icons8.com/material-outlined/24/000000/marker.png" alt="My Location" />';
-        div.onclick = function () {
-            showMyLocation();
+    function showMyLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    let latitude = position.coords.latitude;
+                    let longitude = position.coords.longitude;
+                    let locator = latLonToLocator(latitude, longitude);
+
+                    if (!map) {
+                        map = L.map('map').setView([latitude, longitude], 13);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                        }).addTo(map);
+                    } else {
+                        map.setView([latitude, longitude], 13);
+                    }
+
+                    if (currentMarker) {
+                        map.removeLayer(currentMarker);
+                    }
+
+                    currentMarker = L.marker([latitude, longitude])
+                        .addTo(map)
+                        .bindPopup('<b>You are here!</b><br>Lat: ' + latitude + '<br>Lon: ' + longitude + '<br>Loc: ' + locator)
+                        .openPopup();
+                },
+                function (error) {
+                    alert('Error: ' + error.message);
+                }
+            );
+        } else {
+            alert('Geolocation is not supported by this browser.');
+        }
+    }
+
+    function addLocationButton() {
+        let locationButton = L.control({ position: 'topleft' });
+
+        locationButton.onAdd = function () {
+            let div = L.DomUtil.create('div', 'show-location-button');
+            div.innerHTML = '<img src="https://img.icons8.com/material-outlined/24/000000/marker.png" alt="My Location" />';
+            div.onclick = function () {
+                showMyLocation();
+            };
+            return div;
         };
-        return div;
-    };
 
-    locationButton.addTo(map);
-}
-
-function drawLocatorGrid() {
-    locatorLayers.clearLayers();
-    drawnLayers.forEach(layer => layer.remove()); // Remove previous drawn layers
-    drawnLayers = []; // Reset drawn layers
-
-    let zoomLevel = map.getZoom();
-    let bounds = map.getBounds();
-    let southWest = bounds.getSouthWest();
-    let northEast = bounds.getNorthEast();
-
-    if (zoomLevel >= 11) {
-        // Draw smallest squares (locators)
-        let startLon = Math.floor(southWest.lng / 0.083333) * 0.083333;
-        let endLon = Math.ceil(northEast.lng / 0.083333) * 0.083333;
-        let startLat = Math.floor(southWest.lat / 0.041666) * 0.041666;
-        let endLat = Math.ceil(northEast.lat / 0.041666) * 0.041666;
-
-        for (let fieldLon = startLon; fieldLon < endLon; fieldLon += 0.083333) {
-            for (let fieldLat = startLat; fieldLat < endLat; fieldLat += 0.041666) {
-                let lonCenter = fieldLon + 0.041666;
-                let latCenter = fieldLat + 0.020833;
-                let fieldName = latLonToLocator(latCenter, lonCenter).substring(0, 6);
-                drawnLayers.push(L.marker([latCenter, lonCenter], {
-                    icon: L.divIcon({
-                        className: 'text-labels',
-                        html: '<div>' + fieldName + '</div>',
-                        iconSize: [100, 40], 
-                        iconAnchor: [50, 20]
-                    })
-                }).addTo(locatorLayers));
-
-                drawnLayers.push(L.polyline([
-                    [fieldLat, fieldLon],
-                    [fieldLat, fieldLon + 0.083333]
-                ], {color: 'red'}).addTo(locatorLayers));
-
-                drawnLayers.push(L.polyline([
-                    [fieldLat, fieldLon + 0.083333],
-                    [fieldLat + 0.041666, fieldLon + 0.083333]
-                ], {color: 'red'}).addTo(locatorLayers));
-
-                drawnLayers.push(L.polyline([
-                    [fieldLat + 0.041666, fieldLon + 0.083333],
-                    [fieldLat + 0.041666, fieldLon]
-                ], {color: 'red'}).addTo(locatorLayers));
-
-                drawnLayers.push(L.polyline([
-                    [fieldLat + 0.041666, fieldLon],
-                    [fieldLat, fieldLon]
-                ], {color: 'red'}).addTo(locatorLayers));
-            }
-        }
-    } else if (zoomLevel >= 6) {
-        // Draw sub squares
-        let startLon = Math.floor(southWest.lng / 2) * 2;
-        let endLon = Math.ceil(northEast.lng / 2) * 2;
-        let startLat = Math.floor(southWest.lat);
-        let endLat = Math.ceil(northEast.lat);
-
-        for (let fieldLon = startLon; fieldLon < endLon; fieldLon += 2) {
-            for (let fieldLat = startLat; fieldLat < endLat; fieldLat += 1) {
-                let lonCenter = fieldLon + 1;
-                let latCenter = fieldLat + 0.5;
-                let fieldName = latLonToLocator(latCenter, lonCenter).substring(0, 4);
-                drawnLayers.push(L.marker([latCenter, lonCenter], {
-                    icon: L.divIcon({
-                        className: 'text-labels',
-                        html: '<div>' + fieldName + '</div>',
-                        iconSize: [100, 40], 
-                        iconAnchor: [50, 20]
-                    })
-                }).addTo(locatorLayers));
-
-                drawnLayers.push(L.polyline([
-                    [fieldLat, fieldLon],
-                    [fieldLat, fieldLon + 2]
-                ], {color: 'red'}).addTo(locatorLayers));
-
-                drawnLayers.push(L.polyline([
-                    [fieldLat, fieldLon + 2],
-                    [fieldLat + 1, fieldLon + 2]
-                ], {color: 'red'}).addTo(locatorLayers));
-
-                drawnLayers.push(L.polyline([
-                    [fieldLat + 1, fieldLon + 2],
-                    [fieldLat + 1, fieldLon]
-                ], {color: 'red'}).addTo(locatorLayers));
-
-                drawnLayers.push(L.polyline([
-                    [fieldLat + 1, fieldLon],
-                    [fieldLat, fieldLon]
-                ], {color: 'red'}).addTo(locatorLayers));
-            }
-        }
-    } else {
-        // Draw main squares
-        for (let lon = -180; lon <= 180; lon += 20) {
-            drawnLayers.push(L.polyline([
-                [90, lon],
-                [-90, lon]
-            ], {color: 'red'}).addTo(locatorLayers));
-        }
-
-        for (let lat = -90; lat <= 90; lat += 10) {
-            drawnLayers.push(L.polyline([
-                [lat, -180],
-                [lat, 180]
-            ], {color: 'red'}).addTo(locatorLayers));
-        }
-
-        for (let fieldLon = -180; fieldLon < 180; fieldLon += 20) {
-            for (let fieldLat = -90; fieldLat < 90; fieldLat += 10) {
-                let lonCenter = fieldLon + 10;
-                let latCenter = fieldLat + 5;
-                let fieldName = String.fromCharCode((fieldLon + 180) / 20 + 65) +
-                                String.fromCharCode((fieldLat + 90) / 10 + 65);
-                drawnLayers.push(L.marker([latCenter, lonCenter], {
-                    icon: L.divIcon({
-                        className: 'text-labels',
-                        html: '<div>' + fieldName + '</div>',
-                        iconSize: [100, 40], 
-                        iconAnchor: [50, 20]
-                    })
-                }).addTo(locatorLayers));
-            }
-        }
+        locationButton.addTo(map);
     }
 
-    locatorLayers.addTo(map);
-}
+    function drawLocatorGrid() {
+        locatorLayers.clearLayers();
+        drawnLayers.forEach(layer => layer.remove()); // Remove previous drawn layers
+        drawnLayers = []; // Reset drawn layers
 
-window.onload = function () {
-    map = L.map('map', {
-        minZoom: 3,
-        maxZoom: 14,
-    }).setView([40, 0], 3);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
+        let zoomLevel = map.getZoom();
+        let bounds = map.getBounds();
+        let southWest = bounds.getSouthWest();
+        let northEast = bounds.getNorthEast();
 
-    addLocationButton();
-    drawLocatorGrid();
+        if (zoomLevel >= 11) {
+            // Draw smallest squares (locators)
+            let startLon = Math.floor(southWest.lng / 0.083333) * 0.083333;
+            let endLon = Math.ceil(northEast.lng / 0.083333) * 0.083333;
+            let startLat = Math.floor(southWest.lat / 0.041666) * 0.041666;
+            let endLat = Math.ceil(northEast.lat / 0.041666) * 0.041666;
 
-    map.on('moveend', drawLocatorGrid);
-    map.on('zoomend', drawLocatorGrid);
+            for (let fieldLon = startLon; fieldLon < endLon; fieldLon += 0.083333) {
+                for (let fieldLat = startLat; fieldLat < endLat; fieldLat += 0.041666) {
+                    let lonCenter = fieldLon + 0.041666;
+                    let latCenter = fieldLat + 0.020833;
+                    let fieldName = latLonToLocator(latCenter, lonCenter).substring(0, 6);
+                    drawnLayers.push(L.marker([latCenter, lonCenter], {
+                        icon: L.divIcon({
+                            className: 'text-labels',
+                            html: '<div>' + fieldName + '</div>',
+                            iconSize: [100, 40], 
+                            iconAnchor: [50, 20]
+                        })
+                    }).addTo(locatorLayers));
 
-    map.on('mousemove', function (e) {
-        let lat = e.latlng.lat;
-        let lon = e.latlng.lng;
-        let locator = latLonToLocator(lat, lon);
-        let mouseLocatorElement = document.getElementById('mouse-locator');
-        mouseLocatorElement.innerText = locator;
-        mouseLocatorElement.style.display = 'flex';
-    });
+                    drawnLayers.push(L.polyline([
+                        [fieldLat, fieldLon],
+                        [fieldLat, fieldLon + 0.083333]
+                    ], {color: 'red'}).addTo(locatorLayers));
 
-    map.on('mouseout', function () {
-        let mouseLocatorElement = document.getElementById('mouse-locator');
-        mouseLocatorElement.style.display = 'none';
-    });
-};
-</script>
+                    drawnLayers.push(L.polyline([
+                        [fieldLat, fieldLon + 0.083333],
+                        [fieldLat + 0.041666, fieldLon + 0.083333]
+                    ], {color: 'red'}).addTo(locatorLayers));
+
+                    drawnLayers.push(L.polyline([
+                        [fieldLat + 0.041666, fieldLon + 0.083333],
+                        [fieldLat + 0.041666, fieldLon]
+                    ], {color: 'red'}).addTo(locatorLayers));
+
+                    drawnLayers.push(L.polyline([
+                        [fieldLat + 0.041666, fieldLon],
+                        [fieldLat, fieldLon]
+                    ], {color: 'red'}).addTo(locatorLayers));
+                }
+            }
+        } else if (zoomLevel >= 6) {
+            // Draw sub squares
+            let startLon = Math.floor(southWest.lng / 2) * 2;
+            let endLon = Math.ceil(northEast.lng / 2) * 2;
+            let startLat = Math.floor(southWest.lat);
+            let endLat = Math.ceil(northEast.lat);
+
+            for (let fieldLon = startLon; fieldLon < endLon; fieldLon += 2) {
+                for (let fieldLat = startLat; fieldLat < endLat; fieldLat += 1) {
+                    let lonCenter = fieldLon + 1;
+                    let latCenter = fieldLat + 0.5;
+                    let fieldName = latLonToLocator(latCenter, lonCenter).substring(0, 4);
+                    drawnLayers.push(L.marker([latCenter, lonCenter], {
+                        icon: L.divIcon({
+                            className: 'text-labels',
+                            html: '<div>' + fieldName + '</div>',
+                            iconSize: [100, 40], 
+                            iconAnchor: [50, 20]
+                        })
+                    }).addTo(locatorLayers));
+
+                    drawnLayers.push(L.polyline([
+                        [fieldLat, fieldLon],
+                        [fieldLat, fieldLon + 2]
+                    ], {color: 'red'}).addTo(locatorLayers));
+
+                    drawnLayers.push(L.polyline([
+                        [fieldLat, fieldLon + 2],
+                        [fieldLat + 1, fieldLon + 2]
+                    ], {color: 'red'}).addTo(locatorLayers));
+
+                    drawnLayers.push(L.polyline([
+                        [fieldLat + 1, fieldLon + 2],
+                        [fieldLat + 1, fieldLon]
+                    ], {color: 'red'}).addTo(locatorLayers));
+
+                    drawnLayers.push(L.polyline([
+                        [fieldLat + 1, fieldLon],
+                        [fieldLat, fieldLon]
+                    ], {color: 'red'}).addTo(locatorLayers));
+                }
+            }
+        } else {
+            // Draw main squares
+            for (let lon = -180; lon <= 180; lon += 20) {
+                drawnLayers.push(L.polyline([
+                    [90, lon],
+                    [-90, lon]
+                ], {color: 'red'}).addTo(locatorLayers));
+            }
+
+            for (let lat = -90; lat <= 90; lat += 10) {
+                drawnLayers.push(L.polyline([
+                    [lat, -180],
+                    [lat, 180]
+                ], {color: 'red'}).addTo(locatorLayers));
+            }
+
+            for (let fieldLon = -180; fieldLon < 180; fieldLon += 20) {
+                for (let fieldLat = -90; fieldLat < 90; fieldLat += 10) {
+                    let lonCenter = fieldLon + 10;
+                    let latCenter = fieldLat + 5;
+                    let fieldName = String.fromCharCode((fieldLon + 180) / 20 + 65) +
+                                    String.fromCharCode((fieldLat + 90) / 10 + 65);
+                    drawnLayers.push(L.marker([latCenter, lonCenter], {
+                        icon: L.divIcon({
+                            className: 'text-labels',
+                            html: '<div>' + fieldName + '</div>',
+                            iconSize: [100, 40], 
+                            iconAnchor: [50, 20]
+                        })
+                    }).addTo(locatorLayers));
+                }
+            }
+        }
+
+        locatorLayers.addTo(map);
+    }
+
+    window.onload = function () {
+        map = L.map('map', {
+            minZoom: 3,
+            maxZoom: 14,
+        }).setView([40, 0], 3);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        addLocationButton();
+        drawLocatorGrid();
+
+        map.on('moveend', drawLocatorGrid);
+        map.on('zoomend', drawLocatorGrid);
+
+        map.on('mousemove', function (e) {
+            let lat = e.latlng.lat;
+            let lon = e.latlng.lng;
+            let locator = latLonToLocator(lat, lon);
+            let latiElement = document.getElementById('lati');
+            let longElement = document.getElementById('long');
+            let mouseLocatorElement = document.getElementById('mouse-locator');
+
+            // Update latitude and longitude in DMS format
+            latiElement.innerHTML = `${convertToDMS(lat)}`;
+            longElement.innerHTML = `${convertToDMS(lon)}`;
+            mouseLocatorElement.innerHTML = `${locator}`;
+        });
+    };
+    </script>
 </body>
 </html>
