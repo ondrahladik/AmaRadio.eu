@@ -99,17 +99,39 @@
             justify-content: center;
         }
 
+        .custom-div-icon {
+            font-size: 20px;
+            color: blue;
+            font-weight: bolder;
+        }
+
+        .tooltip-container {
+            position: absolute;
+            top: 60px; 
+            left: 50%;
+            transform: translateX(-50%); 
+            z-index: 1000;
+            pointer-events: none; 
+        }
+
+        .zone-tooltip {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 16px; 
+            font-weight: bold; 
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+            transform: translateY(-50%); 
+        }
+
         @media (max-width: 768px) {
             .mobile {
                 display: none;
             }
         }
 
-        .custom-div-icon {
-            font-size: 20px;
-            color: blue;
-            font-weight: bolder;
-        }
     </style>
 </head>
 <body>
@@ -135,6 +157,7 @@
             </tr>
         </table>
         <div id="map"></div>
+        <div id="tooltip-container" class="tooltip-container"></div>
     </div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
@@ -144,6 +167,7 @@
         let drawnLayers = []; // Hold drawn layers for removal
         let currentDrawnLayers = null; // Track currently drawn layers
         let cqZoneLayer = L.layerGroup(); // Layer group for CQ zone
+        let timeZoneLayer = L.layerGroup(); // Layer group for Time zones
         let currentLayer = 'none'; // Track current layer selection
 
         function latLonToLocator(lat, lon) {
@@ -383,7 +407,7 @@
                         }
                     }).addTo(cqZoneLayer);
                 })
-                .catch(error => console.error('Chyba při načítání GeoJSON:', error));
+                .catch(error => console.error('Error loading GeoJSON:', error));
 
             // Load and display GeoJSON points with names
             fetch('json/cq-marker.json')
@@ -400,9 +424,71 @@
                         }
                     }).addTo(cqZoneLayer);
                 })
-                .catch(error => console.error('Chyba při načítání GeoJSON:', error));
+                .catch(error => console.error('Error loading GeoJSON:', error));
 
             cqZoneLayer.addTo(map);
+        }
+
+        function loadTimeZone() {
+            if (currentLayer !== 'time') return; // Skip if not the time zone
+
+            // Remove any existing time zone layers
+            timeZoneLayer.clearLayers();
+
+            // Load and display GeoJSON boundaries
+            fetch('json/time.geojson')
+                .then(response => response.json())
+                .then(data => {
+                    L.geoJSON(data, {
+                        style: function (feature) {
+                            return {
+                                color: 'grey',
+                                weight: 4,
+                                opacity: 1,
+                                fillOpacity: 0
+                            };
+                        },
+                        onEachFeature: function (feature, layer) {
+                            if (feature.properties) {
+                                layer.on({
+                                    mouseover: function (e) {
+                                        var layer = e.target;
+                                        layer.setStyle({
+                                            color: 'grey',
+                                            weight: 4,
+                                            opacity: 1,
+                                            fillColor: 'grey',
+                                            fillOpacity: 0.5
+                                        });
+                                        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                                            layer.bringToFront();
+                                        }
+                                        
+                                        // Zobrazení názvu zóny mimo zónu
+                                        var tooltipContainer = document.getElementById('tooltip-container');
+                                        tooltipContainer.innerHTML = `<div class="zone-tooltip">${feature.properties.name}</div>`;
+                                    },
+                                    mouseout: function (e) {
+                                        var layer = e.target;
+                                        layer.setStyle({
+                                            color: 'grey',
+                                            weight: 4,
+                                            opacity: 1,
+                                            fillOpacity: 0
+                                        });
+                                        
+                                        // Skrytí názvu zóny
+                                        var tooltipContainer = document.getElementById('tooltip-container');
+                                        tooltipContainer.innerHTML = '';
+                                    }
+                                });
+                            }
+                        }
+                    }).addTo(timeZoneLayer);
+                })
+                .catch(error => console.error('Error loading GeoJSON:', error));
+
+            timeZoneLayer.addTo(map);
         }
 
         window.onload = function () {
@@ -433,12 +519,17 @@
                 if (cqZoneLayer) {
                     cqZoneLayer.clearLayers(); // Remove CQ zone layers
                 }
+                if (timeZoneLayer) {
+                    timeZoneLayer.clearLayers(); // Remove Time zone layers
+                }
 
                 // Show the selected layer
                 if (currentLayer === 'locator') {
                     drawLocatorGrid();
                 } else if (currentLayer === 'cq') {
                     loadCQZone();
+                } else if (currentLayer === 'time') {
+                    loadTimeZone();
                 }
             });
 
@@ -468,6 +559,7 @@
                 mouseLocatorElement.innerHTML = `${locator}`;
             });
         };
+
     </script>
 </body>
 </html>
