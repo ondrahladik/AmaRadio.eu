@@ -343,7 +343,7 @@
             cqZoneLayer.clearLayers();
 
             // Load and display GeoJSON boundaries
-            fetch('cq-border.json')
+            fetch('json/cq-border.json')
                 .then(response => response.json())
                 .then(data => {
                     L.geoJSON(data, {
@@ -363,7 +363,7 @@
                 .catch(error => console.error('Chyba při načítání GeoJSON:', error));
 
             // Load and display GeoJSON points with names
-            fetch('cq-marker.json')
+            fetch('json/cq-marker.json')
                 .then(response => response.json())
                 .then(data => {
                     L.geoJSON(data, {
