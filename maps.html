@@ -82,7 +82,7 @@
         table {
             border-collapse: collapse;
             margin: 5px;
-            width: 90%;
+            width: %;
         }
 
         th, td {
@@ -126,6 +126,19 @@
             transform: translateY(-50%); 
         }
 
+        th:nth-child(7), th:nth-child(5), th:nth-child(3) {
+            border-left: 0px;
+        }
+
+        td:nth-child(6), td:nth-child(4), td:nth-child(2) {
+            border-right: 0px;
+        }
+
+        td:nth-child(1) {
+            border: 0px;
+            background-color: transparent;
+        }
+
         @media (max-width: 768px) {
             .mobile {
                 display: none;
@@ -138,7 +151,7 @@
     <div class="container">
         <table>
             <tr>
-                <td width="10%">
+                <td width="100px">
                     <select name="layer" id="layer-select">
                         <option value="" selected disabled hidden>Map layer:</option>
                         <option value="none">none layer</option>
@@ -148,12 +161,12 @@
                         <option value="time">Time zone</option>
                     </select>
                 </td>
-                <td width="15%" class="mobile">Latitude:</td>
-                <th width="15%" class="mobile" id="lati"></th>
-                <td width="15%" class="mobile">Longitude:</td>
-                <th width="15%" class="mobile" id="long"></th>
-                <td width="15%" class="mobile">Grid square:</td>
-                <th width="15%" class="mobile" id="mouse-locator"></th>
+                <td width="50px" class="mobile">Latitude:</td>
+                <th width="100px" class="mobile" id="lati"></th>
+                <td width="50px" class="mobile">Longitude:</td>
+                <th width="100px" class="mobile" id="long"></th>
+                <td width="90px" class="mobile">Grid square:</td>
+                <th width="70px" class="mobile" id="mouse-locator"></th>
             </tr>
         </table>
         <div id="map"></div>
