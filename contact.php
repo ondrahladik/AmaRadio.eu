@@ -1,5 +1,5 @@
 <?php
-$status = ''; // Inicializace proměnné pro stav zprávy
+$status = ''; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Zpracování dat formuláře
@@ -7,13 +7,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars($_POST['email']);
     $message = htmlspecialchars($_POST['message']);
 
-    $to = "ondra@ok1kky.cz"; // Změňte na svou emailovou adresu
+    $to = "ondra@ok1kky.cz"; 
     $subject = "AmaRadio.eu (new message)";
     $body = "Name: $name\nEmail: $email\nMessage:\n$message";
 
     $headers = "From: $email";
 
-    // Pokus o odeslání emailu
     if (mail($to, $subject, $body, $headers)) {
         $status = 'success';
     } else {
@@ -57,31 +56,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <nav class="sidebar" id="sidebar">
-            <a href="index.html">
+            <a href="/">
                 <img class="logo" src="image/logo-web.png" alt="Logo">
             </a>
             <div class="menu">
                 <h2>PREFIX</h2>
                 <ul>
-                    <li><a href="prefix.html">SEARCH</a></li>
-                    <li><a href="table.html">TABLE</a></li>
-                    <li><a href="prefix-help.html">HELP</a></li>
+                    <li><a href="prefix">SEARCH</a></li>
+                    <li><a href="table">TABLE</a></li>
+                    <li><a href="prefix-help">HELP</a></li>
                 </ul>
             </div>
             <div class="menu">
                 <h2>LOCATOR</h2>
                 <ul>
-                    <li><a href="locator.html">SEARCH</a></li>
-                    <li><a href="qso-map.html">QSO MAP</a></li>
-                    <li><a href="#">MAPS</a></li>
-                    <li><a href="locator-help.html">HELP</a></li>
+                    <li><a href="locator">SEARCH</a></li>
+                    <li><a href="qso-map">QSO MAP</a></li>
+                    <li><a href="maps">MAPS</a></li>
+                    <li><a href="locator-help">HELP</a></li>
                 </ul>
             </div>
             <div class="menu">
                 <h2>WEB</h2>
                 <ul>
-                    <li><a class="active" href="contact.php">CONTACT</a></li>
-                    <li><a href="#">ABOUT</a></li>
+                    <li><a class="active" href="contact">CONTACT</a></li>
+                    <li><a href="about">ABOUT</a></li>
                 </ul>
             </div>
             <footer>
