@@ -11,7 +11,7 @@ function search() {
     var eqsl = document.getElementById('eqsl');
 
     // Fetch JSON data from data.json file
-    fetch('data.json')
+    fetch('json/data.json')
         .then(response => response.json())
         .then(jsonData => {
             var found = false;
