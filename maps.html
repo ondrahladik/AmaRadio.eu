@@ -99,9 +99,15 @@
             justify-content: center;
         }
 
-        .custom-div-icon {
+        .cq-div-icon {
             font-size: 20px;
             color: blue;
+            font-weight: bolder;
+        }
+
+        .itu-div-icon {
+            font-size: 20px;
+            color: green;
             font-weight: bolder;
         }
 
@@ -179,6 +185,7 @@
         let locatorLayers = L.layerGroup();
         let drawnLayers = []; // Hold drawn layers for removal
         let currentDrawnLayers = null; // Track currently drawn layers
+        let ituZoneLayer = L.layerGroup(); // Přidáme novou vrstvu pro ITU zóny
         let cqZoneLayer = L.layerGroup(); // Layer group for CQ zone
         let timeZoneLayer = L.layerGroup(); // Layer group for Time zones
         let currentLayer = 'none'; // Track current layer selection
@@ -396,6 +403,54 @@
             currentDrawnLayers.addTo(map);
         }
 
+        function loadITUZone() {
+            if (currentLayer !== 'itu') return; // Skip if not ITU zone
+
+            // Remove any existing ITU zone layers
+            ituZoneLayer.clearLayers();
+
+            // Load and display GeoJSON boundaries
+            fetch('json/itu-border.json')
+                .then(response => response.json())
+                .then(data => {
+                    L.geoJSON(data, {
+                        style: function (feature) {
+                            return {
+                                color: 'green',
+                                weight: 4,
+                                opacity: 0.7,
+                                fillOpacity: 0
+                            };
+                        },
+                        onEachFeature: function (feature, layer) {
+                            if (feature.properties && feature.properties.popupContent) {
+                                layer.bindPopup(feature.properties.popupContent);
+                            }
+                        }
+                    }).addTo(ituZoneLayer);
+                })
+                .catch(error => console.error('Error loading GeoJSON:', error));
+
+            // Load and display GeoJSON points with names
+            fetch('json/itu-marker.json')
+                .then(response => response.json())
+                .then(data => {
+                    L.geoJSON(data, {
+                        pointToLayer: function (feature, latlng) {
+                            return L.marker(latlng, {
+                                icon: L.divIcon({
+                                    className: 'itu-div-icon',
+                                    html: feature.properties.name
+                                })
+                            });
+                        }
+                    }).addTo(ituZoneLayer);
+                })
+                .catch(error => console.error('Error loading GeoJSON:', error));
+
+            ituZoneLayer.addTo(map);
+        }
+
         function loadCQZone() {
             if (currentLayer !== 'cq') return; // Skip if not CQ zone
 
@@ -430,7 +485,7 @@
                         pointToLayer: function (feature, latlng) {
                             return L.marker(latlng, {
                                 icon: L.divIcon({
-                                    className: 'custom-div-icon',
+                                    className: 'cq-div-icon',
                                     html: feature.properties.name
                                 })
                             });
@@ -523,26 +578,31 @@
             // Attach event listener to the select element
             let layerSelect = document.getElementById('layer-select');
             layerSelect.addEventListener('change', function () {
-                currentLayer = this.value; // Update the current layer selection
-                
-                // Clear all layers
+                currentLayer = this.value; // Aktualizujeme aktuální výběr vrstvy
+
+                // Odstraníme všechny vrstvy
                 if (currentDrawnLayers) {
-                    currentDrawnLayers.clearLayers(); // Remove drawn layers for non-locator choices
+                    currentDrawnLayers.clearLayers(); // Odstraníme nakreslené vrstvy pro jiné volby než locator
                 }
                 if (cqZoneLayer) {
-                    cqZoneLayer.clearLayers(); // Remove CQ zone layers
+                    cqZoneLayer.clearLayers(); // Odstraníme CQ zóny
                 }
                 if (timeZoneLayer) {
-                    timeZoneLayer.clearLayers(); // Remove Time zone layers
+                    timeZoneLayer.clearLayers(); // Odstraníme zóny času
+                }
+                if (ituZoneLayer) {
+                    ituZoneLayer.clearLayers(); // Odstraníme ITU zóny
                 }
 
-                // Show the selected layer
+                // Zobrazíme vybranou vrstvu
                 if (currentLayer === 'locator') {
                     drawLocatorGrid();
                 } else if (currentLayer === 'cq') {
                     loadCQZone();
                 } else if (currentLayer === 'time') {
                     loadTimeZone();
+                } else if (currentLayer === 'itu') {
+                    loadITUZone();
                 }
             });
 
