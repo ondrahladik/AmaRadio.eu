@@ -1,12 +1,12 @@
         let map;
         let currentMarker;
         let locatorLayers = L.layerGroup();
-        let drawnLayers = []; // Hold drawn layers for removal
-        let currentDrawnLayers = null; // Track currently drawn layers
-        let ituZoneLayer = L.layerGroup(); // Přidáme novou vrstvu pro ITU zóny
-        let cqZoneLayer = L.layerGroup(); // Layer group for CQ zone
-        let timeZoneLayer = L.layerGroup(); // Layer group for Time zones
-        let currentLayer = 'none'; // Track current layer selection
+        let drawnLayers = []; 
+        let currentDrawnLayers = null; 
+        let ituZoneLayer = L.layerGroup(); 
+        let cqZoneLayer = L.layerGroup(); 
+        let timeZoneLayer = L.layerGroup(); 
+        let currentLayer = 'none';
 
         function latLonToLocator(lat, lon) {
             let fieldLon = Math.floor((lon + 180) / 20);
@@ -281,7 +281,7 @@
         }
 
         function loadCQZone() {
-            if (currentLayer !== 'cq') return; // Skip if not CQ zone
+            if (currentLayer !== 'cq') return; 
 
             // Remove any existing CQ zone layers
             cqZoneLayer.clearLayers();
@@ -327,7 +327,7 @@
         }
 
         function loadTimeZone() {
-            if (currentLayer !== 'time') return; // Skip if not the time zone
+            if (currentLayer !== 'time') return; 
 
             // Remove any existing time zone layers
             timeZoneLayer.clearLayers();
@@ -409,21 +409,19 @@
             layerSelect.addEventListener('change', function () {
                 currentLayer = this.value; // Aktualizujeme aktuální výběr vrstvy
 
-                // Odstraníme všechny vrstvy
                 if (currentDrawnLayers) {
-                    currentDrawnLayers.clearLayers(); // Odstraníme nakreslené vrstvy pro jiné volby než locator
+                    currentDrawnLayers.clearLayers(); 
                 }
                 if (cqZoneLayer) {
-                    cqZoneLayer.clearLayers(); // Odstraníme CQ zóny
+                    cqZoneLayer.clearLayers(); 
                 }
                 if (timeZoneLayer) {
-                    timeZoneLayer.clearLayers(); // Odstraníme zóny času
+                    timeZoneLayer.clearLayers(); 
                 }
                 if (ituZoneLayer) {
-                    ituZoneLayer.clearLayers(); // Odstraníme ITU zóny
+                    ituZoneLayer.clearLayers();
                 }
 
-                // Zobrazíme vybranou vrstvu
                 if (currentLayer === 'locator') {
                     drawLocatorGrid();
                 } else if (currentLayer === 'cq') {
