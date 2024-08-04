@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/maps.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YV2XHJKTNW"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -29,197 +30,77 @@
 
       gtag('config', 'G-YV2XHJKTNW');
     </script>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            width: 100%;
-        }
-
-        #map {
-            flex: 1; 
-            width: 100%;
-            position: relative;
-        }
-
-        .show-location-button img {
-            width: 25px;
-            height: 25px; 
-        }
-        .show-location-button {
-            background: white;
-            border: 2px solid rgba(0, 0, 0, 0.2); 
-            border-radius: 3px; 
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
-            width: 30px; 
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            position: absolute;
-            top: 70px;
-            left: 0;
-            z-index: 1000;
-        }
-        .text-labels {
-            font-size: 20px;
-            font-weight: bold;
-            color: red;
-            text-align: center;
-        }
-
-        table {
-            display: flex;
-            justify-content: center;
-            border-collapse: collapse;
-            margin: 5px;
-        }
-
-        th, td {
-            border: 2px solid black;
-            background: white;
-            height: 20px;
-            padding: 2px;
-            text-align: center;
-        }
-
-        .text-labels {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cq-div-icon {
-            font-size: 20px;
-            color: blue;
-            font-weight: bolder;
-        }
-
-        .itu-div-icon {
-            font-size: 20px;
-            color: green;
-            font-weight: bolder;
-        }
-
-        .tooltip-container {
-            position: absolute;
-            top: 60px; 
-            left: 50%;
-            transform: translateX(-50%); 
-            z-index: 1000;
-            pointer-events: none; 
-        }
-
-        .zone-tooltip {
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 16px; 
-            font-weight: bold; 
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
-            transform: translateY(-50%); 
-        }
-
-        th:nth-child(7), th:nth-child(5), th:nth-child(3) {
-            border-left: 0px;
-        }
-
-        td:nth-child(6), td:nth-child(4), td:nth-child(2) {
-            border-right: 0px;
-        }
-
-        td:nth-child(1) {
-            border: 0px;
-            background-color: transparent;
-        }
-
-        @media (max-width: 768px) {
-            .mobile {
-                display: none;
-            }
-        }
-
-    </style>
-</head>
-<body>
-    <div class="container">
-        <nav class="sidebar" id="sidebar">
-            <a href="/">
-                <img class="logo" src="image/logo-web.png" alt="Logo">
-            </a>
-            <div class="menu">
-                <h2>PREFIX</h2>
-                <ul>
-                    <li><a href="prefix">SEARCH</a></li>
-                    <li><a href="table">TABLE</a></li>
-                    <li><a href="prefix-help">HELP</a></li>
-                </ul>
-            </div>
-            <div class="menu">
-                <h2>LOCATOR</h2>
-                <ul>
-                    <li><a href="locator">SEARCH</a></li>
-                    <li><a href="qso-map">QSO MAP</a></li>
-                    <li><a href="maps">MAPS</a></li>
-                    <li><a href="locator-help">HELP</a></li>
-                </ul>
-            </div>
-            <div class="menu">
-                <h2>WEB</h2>
-                <ul>
-                    <li><a href="contact">CONTACT</a></li>
-                    <li><a href="about">ABOUT</a></li>
-                </ul>
-            </div>
-            <footer>
-                <div class="social-icons">
-                    <a href="https://fb.me/ok1kky" target="_blank" class="fab fa-facebook-f"></a>
-                    <a href="https://x.com/ok1kky" target="_blank" class="fab fa-twitter"></a>
-                    <a href="https://www.youtube.com/@ok1kky" target="_blank" class="fab fa-youtube"></a>
-                    <a href="https://github.com/ondrahladik/AmaRadio.eu" target="_blank" class="fab fa-github"></a>
+    <body>
+        <div class="container">
+            <nav class="sidebar" id="sidebar">
+                <a href="/">
+                    <img class="logo" src="image/logo-web.png" alt="Logo">
+                </a>
+                <div class="menu">
+                    <h2>PREFIX</h2>
+                    <ul>
+                        <li><a href="prefix">SEARCH</a></li>
+                        <li><a href="table">TABLE</a></li>
+                        <li><a href="prefix-help">HELP</a></li>
+                    </ul>
                 </div>
-                <br>
-                <div>&copy; 2024 OK1KKY</div>
-            </footer>
-        </nav>
-        <main class="content-maps">
-            <button class="burger" id="burger">&#9776;</button>
-            <div class="container">
-            <table>
-                <tr>
-                    <td width="100px">
-                        <select name="layer" id="layer-select">
-                            <option value="" selected disabled hidden>Map layer:</option>
-                            <option value="none">none layer</option>
-                            <option value="locator">Grid square</option>
-                            <option value="itu">ITU zone</option>
-                            <option value="cq">CQ zone</option>
-                            <option value="time">Time zone</option>
-                        </select>
-                    </td>
-                    <td width="50px" class="mobile">Latitude:</td>
-                    <th width="100px" class="mobile" id="lati"></th>
-                    <td width="50px" class="mobile">Longitude:</td>
-                    <th width="100px" class="mobile" id="long"></th>
-                    <td width="90px" class="mobile">Grid square:</td>
-                    <th width="70px" class="mobile" id="mouse-locator"></th>
-                </tr>
-            </table>
-            <div id="map"></div>
-            <div id="tooltip-container" class="tooltip-container"></div>
+                <div class="menu">
+                    <h2>LOCATOR</h2>
+                    <ul>
+                        <li><a href="locator">SEARCH</a></li>
+                        <li><a href="qso-map">QSO MAP</a></li>
+                        <li><a href="maps">MAPS</a></li>
+                        <li><a href="locator-help">HELP</a></li>
+                    </ul>
+                </div>
+                <div class="menu">
+                    <h2>WEB</h2>
+                    <ul>
+                        <li><a href="contact">CONTACT</a></li>
+                        <li><a href="about">ABOUT</a></li>
+                    </ul>
+                </div>
+                <footer>
+                    <div class="social-icons">
+                        <a href="https://fb.me/ok1kky" target="_blank" class="fab fa-facebook-f"></a>
+                        <a href="https://x.com/ok1kky" target="_blank" class="fab fa-twitter"></a>
+                        <a href="https://www.youtube.com/@ok1kky" target="_blank" class="fab fa-youtube"></a>
+                        <a href="https://github.com/ondrahladik/AmaRadio.eu" target="_blank" class="fab fa-github"></a>
+                    </div>
+                    <br>
+                    <div>&copy; 2024 OK1KKY</div>
+                </footer>
+            </nav>
+            <main class="content-maps">
+                <button class="burger" id="burger">&#9776;</button>
+                <div class="container">
+                <table>
+                    <tr>
+                        <td width="100px">
+                            <select name="layer" id="layer-select">
+                                <option value="" selected disabled hidden>Map layer:</option>
+                                <option value="none">none layer</option>
+                                <option value="locator">Grid square</option>
+                                <option value="itu">ITU zone</option>
+                                <option value="cq">CQ zone</option>
+                                <option value="time">Time zone</option>
+                            </select>
+                        </td>
+                        <td width="50px" class="mobile">Latitude:</td>
+                        <th width="100px" class="mobile" id="lati"></th>
+                        <td width="50px" class="mobile">Longitude:</td>
+                        <th width="100px" class="mobile" id="long"></th>
+                        <td width="90px" class="mobile">Grid square:</td>
+                        <th width="70px" class="mobile" id="mouse-locator"></th>
+                    </tr>
+                </table>
+                <div id="map"></div>
+                <div id="tooltip-container" class="tooltip-container"></div>
+            </div>
+            </main>
         </div>
-        </main>
-    </div>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script type="text/javascript" src="js/maps.js"></script>
-    <script type="text/javascript" src="js/menu.js" ></script>
-</body>
-</html>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script type="text/javascript" src="js/maps.js"></script>
+        <script type="text/javascript" src="js/menu.js" ></script>
+    </body>
+    </html>
