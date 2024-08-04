@@ -42,6 +42,12 @@
                         let longitude = position.coords.longitude;
                         let locator = latLonToLocator(latitude, longitude);
 
+                        // Zaokrouhlení pro zobrazení
+                        let latitudeRounded = latitude.toFixed(6);
+                        let longitudeRounded = longitude.toFixed(6);
+                        let altitude = position.coords.altitude;
+                        let altitudeRounded = altitude !== null ? altitude.toFixed(0) : null;
+
                         if (!map) {
                             map = L.map('map').setView([latitude, longitude], 13);
                             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -55,9 +61,14 @@
                             map.removeLayer(currentMarker);
                         }
 
+                        let popupContent = '<b>You are here!</b><br>Lat: ' + latitudeRounded + '<br>Lon: ' + longitudeRounded + '<br>Loc: ' + locator;
+                        if (altitudeRounded !== null) {
+                            popupContent += '<br>Alt: ' + altitudeRounded + ' m';
+                        }
+
                         currentMarker = L.marker([latitude, longitude])
                             .addTo(map)
-                            .bindPopup('<b>You are here!</b><br>Lat: ' + latitude + '<br>Lon: ' + longitude + '<br>Loc: ' + locator)
+                            .bindPopup(popupContent)
                             .openPopup();
                     },
                     function (error) {
