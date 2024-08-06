@@ -61,7 +61,7 @@ body {
     background-color: #575757;
 }
 
-.content-table, .content-index, .content-prefix, .content-form, .content-prefixhelpx {
+.content-table, .content-index, .content-prefix, .content-form, .content-prefixhelpx, .content-about {
     flex-grow: 1;
     padding: 20px;
     padding-bottom: 20px;
@@ -190,7 +190,7 @@ button:hover {
         display: block;
     }
 
-    .content-table, .content-index, .content-prefix, .content-form, .content-prefixhelpx {
+    .content-table, .content-index, .content-prefix, .content-form, .content-prefixhelpx, .content-about {
         margin-left: 0;
         padding-left: 20px; 
     }
