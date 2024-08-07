@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <a href="https://github.com/ondrahladik/AmaRadio.eu" target="_blank" class="fab fa-github"></a>
                 </div>
                 <br>
-                <div>&copy; 2024 OK1KKY</div>
+                <div>&copy; 2024 <a href="https://www.ok1kky.cz" target="_blank">OK1KKY</a></div>
             </footer>
         </nav>
         <main class="content-form">
