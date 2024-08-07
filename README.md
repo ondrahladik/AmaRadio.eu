@@ -1,6 +1,5 @@
-<div style="text-align: center;">
-  <img src="image/logo-web-hq.png" alt="Logo web" width="1000">
-</div>
+
+<img src="image/logo-web-hq.png" alt="Logo web" width="1000">
 
 ## About
 
@@ -11,7 +10,6 @@ I returned to the whole project in mid-July 2024. I rebuilt the entire search en
 ## Function
 
 ## Supports
-Do you like this site and want to support the site?
-You can support us through our profile on Ko-fi.
+Do you like this site and want to support the site? You can support us through our profile on Ko-fi.
 
 <a href='https://ko-fi.com/E1E3SVQKA' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
