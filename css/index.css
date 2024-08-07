@@ -26,9 +26,9 @@
               align-items: center;
           }
 
-          img {
-              border: 5px solid #333;
-              border-radius: 20px;
+          img.desktop, img.mobile {
+            border: 5px solid #333;
+            border-radius: 20px;
           }
 
           .mySlides {
