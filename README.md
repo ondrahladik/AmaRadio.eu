@@ -11,7 +11,7 @@ I returned to the whole project in mid-July 2024. I rebuilt the entire search en
 
 The website is divided into two parts:
 
-PREFIX
+<b>PREFIX<b>
 This function focuses on finding prefixes with subsequent display in a table
 
 LOCATOR
