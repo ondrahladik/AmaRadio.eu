@@ -10,24 +10,20 @@ function search() {
     var info = document.getElementById('info');
     var eqsl = document.getElementById('eqsl');
 
-    // Fetch JSON data from data.json file
     fetch('json/data.json')
         .then(response => response.json())
         .then(jsonData => {
             var found = false;
 
-            // Find the matching result
             jsonData.forEach(function(item) {
                 var regex = new RegExp(item.prefix, 'i');
                 if (regex.test(searchInput)) {
                     found = true;
 
-                    // Update state name if changed
                     if (stateName.textContent !== item.name) {
                         stateName.textContent = item.name;
                     }
 
-                    // Update state flag if changed
                     var flagUrl = `https://flagsapi.com/${item.flag.toUpperCase()}/flat/64.png`; /* doubled from 32.png */
                     if (!stateFlag.firstChild || stateFlag.firstChild.src !== flagUrl) {
                         stateFlag.innerHTML = ''; // Clear previous content
@@ -37,7 +33,6 @@ function search() {
                         stateFlag.appendChild(img);
                     }
 
-                    // Update ITU, CQ, and DXCC values if changed
                     if (ituValue.textContent !== item.itu) {
                         ituValue.textContent = item.itu;
                     }
@@ -48,28 +43,24 @@ function search() {
                         dxccValue.textContent = item.dxcc;
                     }
 
-                    // Update QRZCQ link
                     if (found && searchInput !== '') {
                         qrzcq.innerHTML = `<a href="https://www.qrzcq.com/call/${searchInput}" target="_blank">OPEN</a>`;
                     } else {
                         qrzcq.textContent = '-'; // Set to '-' if no results or input is empty
                     }
 
-                    // Update QRZ.COM link
                     if (found && searchInput !== '') {
                         qrz.innerHTML = `<a href="https://www.qrz.com/db/${searchInput}" target="_blank">OPEN</a>`;
                     } else {
                         qrz.innerHTML = '-'; // Set to '-' if no results or input is empty
                     }
 
-                    // Update EQSL link
                     if (found && searchInput !== '') {
                         eqsl.innerHTML = `<a href="https://www.eqsl.cc/Member.cfm?${searchInput}" target="_blank">OPEN</a>`;
                     } else {
                         eqsl.innerHTML = '-'; // Set to '-' if no results or input is empty
                     }
 
-                    // Update MORE INFO link
                     if (found && searchInput !== '') {
                         info.innerHTML = `<a href="more.html?country=${encodeURIComponent(item.name)}" target="_blank">OPEN</a>`;
                     } else {
@@ -78,7 +69,6 @@ function search() {
                 }
             });
 
-            // If no results found
             if (!found) {
                 if (stateName.textContent !== 'No results') {
                     stateName.textContent = 'No results';
@@ -96,16 +86,16 @@ function search() {
                     dxccValue.textContent = '-';
                 }
                 if (qrzcq.textContent !== '-') {
-                    qrzcq.textContent = '-'; // Set to '-' if no results
+                    qrzcq.textContent = '-';
                 }
                 if (qrz.innerHTML !== '-') {
-                    qrz.innerHTML = '-'; // Set to '-' if no results
+                    qrz.innerHTML = '-'; 
                 }
                 if (eqsl.innerHTML !== '-') {
-                    eqsl.innerHTML = '-'; // Set to '-' if no results
+                    eqsl.innerHTML = '-'; 
                 }
                 if (info.innerHTML !== '-') {
-                    info.innerHTML = '-'; // Set to '-' if no results
+                    info.innerHTML = '-'; 
                 }
             }
         })
@@ -127,27 +117,24 @@ function search() {
                 dxccValue.textContent = '-';
             }
             if (qrzcq.textContent !== '-') {
-                qrzcq.textContent = '-'; // Set to '-' in case of error
+                qrzcq.textContent = '-'; 
             }
             if (qrz.innerHTML !== '-') {
-                qrz.innerHTML = '-'; // Set to '-' in case of error
+                qrz.innerHTML = '-';
             }
             if (eqsl.innerHTML !== '-') {
-                eqsl.innerHTML = '-'; // Set to '-' in case of error
+                eqsl.innerHTML = '-'; 
             }
             if (info.innerHTML !== '-') {
-                info.innerHTML = '-'; // Set to '-' in case of error
+                info.innerHTML = '-'; 
             }
         });
 }
 
-// Event listener for input change
 document.getElementById('searchInput').addEventListener('input', search);
 
-// Initial load
 search();
 
-// Set focus to search input after page load
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('searchInput').focus();
 });

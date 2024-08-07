@@ -4,17 +4,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     burger.addEventListener("click", function() {
         if (sidebar.classList.contains("open")) {
-            // Close sidebar first, then show leaflet elements
+
             sidebar.classList.remove("open");
             setTimeout(function() {
                 toggleLeafletClasses(false);
-            }, 300); // Adjust the timeout duration to match CSS transition duration
+            }, 300); 
         } else {
-            // Hide leaflet elements first, then open sidebar
+           
             toggleLeafletClasses(true);
             setTimeout(function() {
                 sidebar.classList.add("open");
-            }, 0); // No delay needed here, or adjust if required
+            }, 0); 
         }
     });
 
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
             sidebar.classList.remove("open");
             setTimeout(function() {
                 toggleLeafletClasses(false);
-            }, 300); // Adjust the timeout duration to match CSS transition duration
+            }, 300); 
         }
     });
 

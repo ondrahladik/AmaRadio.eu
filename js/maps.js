@@ -96,15 +96,15 @@
         }
 
         function drawLocatorGrid() {
-            if (currentLayer !== 'locator') return; // Skip if not the locator layer
+            if (currentLayer !== 'locator') return; 
 
             if (currentDrawnLayers) {
-                currentDrawnLayers.clearLayers(); // Remove the previously drawn layers
+                currentDrawnLayers.clearLayers(); 
             }
-            drawnLayers.forEach(layer => layer.remove()); // Remove previous drawn layers
-            drawnLayers = []; // Reset drawn layers
+            drawnLayers.forEach(layer => layer.remove()); 
+            drawnLayers = [];
 
-            currentDrawnLayers = L.layerGroup(); // Create new layer group for current draw
+            currentDrawnLayers = L.layerGroup(); 
 
             let zoomLevel = map.getZoom();
             let bounds = map.getBounds();
@@ -112,7 +112,7 @@
             let northEast = bounds.getNorthEast();
 
             if (zoomLevel >= 11) {
-                // Draw smallest squares (locators)
+
                 let startLon = Math.floor(southWest.lng / 0.083333) * 0.083333;
                 let endLon = Math.ceil(northEast.lng / 0.083333) * 0.083333;
                 let startLat = Math.floor(southWest.lat / 0.041666) * 0.041666;
@@ -235,10 +235,8 @@
         function loadITUZone() {
             if (currentLayer !== 'itu') return; // Skip if not ITU zone
 
-            // Remove any existing ITU zone layers
             ituZoneLayer.clearLayers();
 
-            // Load and display GeoJSON boundaries
             fetch('json/itu-border.json')
                 .then(response => response.json())
                 .then(data => {
@@ -260,7 +258,6 @@
                 })
                 .catch(error => console.error('Error loading GeoJSON:', error));
 
-            // Load and display GeoJSON points with names
             fetch('json/itu-marker.json')
                 .then(response => response.json())
                 .then(data => {
@@ -283,10 +280,8 @@
         function loadCQZone() {
             if (currentLayer !== 'cq') return; 
 
-            // Remove any existing CQ zone layers
             cqZoneLayer.clearLayers();
 
-            // Load and display GeoJSON boundaries
             fetch('json/cq-border.json')
                 .then(response => response.json())
                 .then(data => {
@@ -306,7 +301,6 @@
                 })
                 .catch(error => console.error('Error loading GeoJSON:', error));
 
-            // Load and display GeoJSON points with names
             fetch('json/cq-marker.json')
                 .then(response => response.json())
                 .then(data => {
@@ -329,10 +323,8 @@
         function loadTimeZone() {
             if (currentLayer !== 'time') return; 
 
-            // Remove any existing time zone layers
             timeZoneLayer.clearLayers();
 
-            // Load and display GeoJSON boundaries
             fetch('json/time.geojson')
                 .then(response => response.json())
                 .then(data => {
@@ -361,7 +353,6 @@
                                             layer.bringToFront();
                                         }
                                         
-                                        // Zobrazení názvu zóny mimo zónu
                                         var tooltipContainer = document.getElementById('tooltip-container');
                                         tooltipContainer.innerHTML = `<div class="zone-tooltip">${feature.properties.name}</div>`;
                                     },
@@ -407,7 +398,7 @@
             // Attach event listener to the select element
             let layerSelect = document.getElementById('layer-select');
             layerSelect.addEventListener('change', function () {
-                currentLayer = this.value; // Aktualizujeme aktuální výběr vrstvy
+                currentLayer = this.value; 
 
                 if (currentDrawnLayers) {
                     currentDrawnLayers.clearLayers(); 

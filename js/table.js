@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(jsonData => {
             const results = document.getElementById('results');
-            const seenStates = new Set(); // Use a Set to track seen states
+            const seenStates = new Set();
 
             jsonData.forEach(item => {
-                // Check if this state has already been processed
+
                 if (!seenStates.has(item.name)) {
                     seenStates.add(item.name);
 
@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     const tdPrefix = document.createElement('td');
                     let prefix;
 
-                    // Apply special case for Switzerland
                     if (item.name === 'Switzerland') {
                         prefix = 'HB';
                     } else if (item.name === 'Taiwan' && item.prefix === '^B(([M-Q])|([U-X])).*') {
@@ -26,17 +25,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else if (item.name === 'Liechtenstein' && item.prefix === '^HB((0)|(3Y)|(L)).*') {
                         prefix = 'HB0';
                     } else {
-                        prefix = item.prefix.slice(1, -2); // Remove ^ at start and .* at end
+                        prefix = item.prefix.slice(1, -2); 
                     }
                     tdPrefix.textContent = prefix;
                     tr.appendChild(tdPrefix);
 
-                    // State name cell
                     const tdName = document.createElement('td');
                     tdName.textContent = item.name;
                     tr.appendChild(tdName);
 
-                    // Flag cell
                     const tdFlag = document.createElement('td');
                     const img = document.createElement('img');
                     img.src = `https://flagsapi.com/${item.flag.toUpperCase()}/flat/32.png`;
@@ -44,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     tdFlag.appendChild(img);
                     tr.appendChild(tdFlag);
 
-                    // ITU, CQ, and DXCC cells
                     const tdITU = document.createElement('td');
                     tdITU.textContent = item.itu;
                     tr.appendChild(tdITU);
@@ -73,13 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.getElementById('downloadBtn').addEventListener('click', function() {
-    // Dočasné odstranění sloupce FLAG
+
     const table = document.getElementById('resultsTable');
     const cells = table.querySelectorAll('td:nth-child(3), th:nth-child(3)');
     
     cells.forEach(cell => cell.style.display = 'none');
 
-    // Generování PDF
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
@@ -112,7 +107,6 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
         theme: 'striped'
     });
 
-    // Obnovení viditelnosti sloupce FLAG
     cells.forEach(cell => cell.style.display = '');
 
     doc.save('prefix.pdf');

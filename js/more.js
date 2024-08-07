@@ -1,13 +1,11 @@
-        // Initialize the map
+
         var map = L.map('map').setView([20, 0], 2); // Global view
 
-        // Add OpenStreetMap tile layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        // Function to get URL parameter
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -15,12 +13,11 @@
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
-        // Get the country name from URL parameter
         var countryName = getUrlParameter('country');
         if (!countryName) {
             alert('Please provide a country name in the URL parameter, e.g., ?country=Czech Republic');
         } else {
-            // Fetch and display GeoJSON data for the specified country
+
             fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
                 .then(response => response.json())
                 .then(data => {
@@ -30,22 +27,20 @@
                         },
                         style: function(feature) {
                             return {
-                                color: "#ff0000", // Border color
-                                weight: 4, // Border thickness
-                                opacity: 0.8, // Border opacity
-                                fillOpacity: 0.1 // Fill opacity
+                                color: "#ff0000", 
+                                weight: 4, 
+                                opacity: 0.8, 
+                                fillOpacity: 0.1 
                             };
                         }
                     }).addTo(map);
 
-                    // Zoom to the bounds of the country
                     if (countryLayer.getLayers().length > 0) {
                         map.fitBounds(countryLayer.getBounds());
                     } else {
                         alert('Country not found in GeoJSON data.');
                     }
 
-                    // Fetch country information from RestCountries API
                     fetch(`https://restcountries.com/v3.1/name/${countryName}`)
                         .then(response => response.json())
                         .then(countryData => {
@@ -54,10 +49,8 @@
                                 var infoDiv = document.getElementById('info');
                                 var pageTitle = document.getElementById('page-title');
                                 
-                                // Update the page title with the country name
                                 pageTitle.innerHTML = `Country: ${country.name.common}`;
                                 
-                                // Update the info section with a table
                                 infoDiv.innerHTML = `
                                     <table>
                                         <tbody>
