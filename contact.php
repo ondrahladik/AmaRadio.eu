@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="author" content="OK1KKY">
     <meta property="og:title" content="Contact">
     <meta property="og:description" content="Tools for radio amateurs">
-    <meta property="og:image" content="https://prefix.ok1kky.cz/image/logo-title.png">
+    <meta property="og:image" content="https://amaradio.eu/image/logo-title.png">
     <title>Contact</title>
     <link rel="apple-touch-icon" sizes="180x180" href="image/fav/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="image/fav/favicon-32x32.png">
