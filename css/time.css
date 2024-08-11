@@ -1,0 +1,178 @@
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #282c34;
+            color: #61dafb;
+            font-family: Arial, sans-serif;
+        }
+
+        #time {
+            font-size: 20vw; 
+            text-align: center;
+            transition: font-size 0.2s;
+            width: 90%; 
+        }
+
+        #timezone-container {
+            position: fixed;
+            top: 5px;  
+            right: 50px; 
+            display: none;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 300px;
+            background-color: #282c34;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #timezone-search,
+        #timezone-selector,
+        #color-selector {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        #timezone-search {
+            margin-bottom: 10px;
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #61dafb;
+            border-radius: 5px;
+        }
+
+        #timezone-selector {
+            background-color: #61dafb;
+            color: #282c34;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #color-selector {
+            background-color: #61dafb;
+            color: #282c34;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #toggle-button,
+        #full-button,
+        #local-timezone-button {
+            position: fixed;
+            background-color: transparent;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1000; 
+        }
+
+        #toggle-button {
+            top: 5px;
+            right: 5px;
+        }
+
+        #full-button {
+            top: 55px;
+            right: 5px;
+        }
+
+        #local-timezone-button {
+            top: 105px;
+            right: 5px;
+        }
+
+        #toggle-button img,
+        #full-button img,
+        #local-timezone-button img {
+            width: 40px;
+            height: auto;
+        }
+
+        #timezone-container input,
+        #timezone-container select {
+            background-color: #61dafb;
+            border-color: black;
+        }
+
+        input[type="text"]:active,
+        input[type="text"]:focus-visible {
+            outline: none; 
+            box-shadow: none;
+        }
+
+        input::placeholder {
+            color: black; 
+            font-style: italic; 
+            opacity: 50%;
+        }
+
+        select:active,
+        select:focus-visible {
+            outline: none; 
+            box-shadow: none;
+        }
+
+        footer {
+            position: fixed;
+            bottom:10px;
+            opacity: 40%;
+            font-size: 14px;
+        } 
+
+        footer a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        @media (max-width: 768px) {
+            #time {
+                font-size: 15vw; 
+            }
+
+            #timezone-container {
+                width: 80%;
+                right: 30px; 
+                left: 0;
+                margin: 0 auto;
+                top: 10px; 
+                padding: 5px;
+            }
+
+            #timezone-search,
+            #timezone-selector,
+            #color-selector {
+                font-size: 0.9rem;
+            }
+
+            #toggle-button {
+                right: 0;
+                padding-right: 5px;
+            }
+
+            #toggle-button img,
+            #local-timezone-button img {
+                width: 30px; 
+            }
+
+            #full-button {
+                display: none;
+            }
+
+            #local-timezone-button {
+                top: 45px;
+                right: -5px;
+            }
+
+            footer {
+                font-size: 10px;
+            } 
+
+        }
