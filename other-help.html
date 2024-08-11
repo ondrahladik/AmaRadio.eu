@@ -7,10 +7,10 @@
     <meta name="description" content="Tools for radio amateurs">
     <meta name="keywords" content="ham radio, ama radio, prefix, locator, map, OK1KKY">
     <meta name="author" content="OK1KKY">
-    <meta property="og:title" content="Prefix search">
+    <meta property="og:title" content="Other help">
     <meta property="og:description" content="Tools for radio amateurs">
     <meta property="og:image" content="https://amaradio.eu/image/logo-title.png">
-    <title>Prefix search</title>
+    <title>Other help</title>
     <link rel="apple-touch-icon" sizes="180x180" href="image/fav/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="image/fav/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="image/fav/favicon-16x16.png">
@@ -20,7 +20,7 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="css/menu.css">
-    <link rel="stylesheet" type="text/css" href="css/prefix.css">
+    <link rel="stylesheet" type="text/css" href="css/other-help.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YV2XHJKTNW"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -30,6 +30,7 @@
       gtag('config', 'G-YV2XHJKTNW');
     </script>
 </head>
+
 <body>
     <div class="container">
         <nav class="sidebar" id="sidebar">
@@ -39,7 +40,7 @@
             <div class="menu">
                 <h2>PREFIX</h2>
                 <ul>
-                    <li><a class="active" href="prefix">SEARCH</a></li>
+                    <li><a href="prefix">SEARCH</a></li>
                     <li><a href="table">TABLE</a></li>
                     <li><a href="prefix-help">HELP</a></li>
                 </ul>
@@ -54,12 +55,12 @@
                 </ul>
             </div>
             <div class="menu">
-                    <h2>OTHER</h2>
-                    <ul>
-                        <li><a href="time" target="_blank">TIME</a></li>
-                        <li><a href="other-help">HELP</a></li>
-                    </ul>
-                </div>
+                <h2>OTHER</h2>
+                <ul>
+                    <li><a href="time" target="_blank">TIME</a></li>
+                    <li><a class="active" href="other-help">HELP</a></li>
+                </ul>
+            </div>
             <div class="menu">
                 <h2>WEB</h2>
                 <ul>
@@ -78,55 +79,34 @@
                 <div>&copy; 2024 <a href="https://www.ok1kky.cz" target="_blank">OK1KKY</a></div>
             </footer>
         </nav>
-        <main class="content-prefix">
-            <h3 class="title">Prefix search</h3>
+        <main class="content-otherhelp">
+            <h3 class="title">Other help</h3>
             <button class="burger" id="burger">&#9776;</button>
-            <input type="text" id="searchInput" placeholder="Enter the prefix...">
-                <div id="resultsContainer">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th colspan="2" class="state-column">STATE</th>
-                                <th class="flag-column">FLAG</th>
-                            </tr>
-                        </thead>
-                        <tbody id="results">
-                            <tr id="stateRow">
-                                <td id="stateName" colspan="2" class="state-column"></td>
-                                <td id="stateFlag" class="flag-column"></td>
-                            </tr>
-                            <tr id="labelsRow">
-                                <th class="itu-label">ITU</th>
-                                <th class="cq-label">CQ</th>
-                                <th class="dxcc-label">DXCC</th>
-                            </tr>
-                            <tr id="valuesRow">
-                                <td id="ituValue" class="itu-value"></td>
-                                <td id="cqValue" class="cq-value"></td>
-                                <td id="dxccValue" class="dxcc-value"></td>
-                            </tr>
-                            <tr id="labelsRow">
-                                <th class="itu-label">QRZ.COM</th>
-                                <th class=" cq-label">QRZCQ.COM</th>
-                                <th class="dxcc-label">EQSL.CC</th>
-                            </tr>
-                            <tr>
-                                <td id="qrz" class="qrz-value"></td>
-                                <td id="qrzcq" class="qrzcq-value"></td>
-                                <td id="eqsl" class="eqsl-value"></td>
-                            </tr>
-                            <tr id="labelsRow">
-                                <th colspan="3" class="itu-label">MORE INFO</th>
-                            </tr>
-                            <tr>
-                                <td id="info" colspan="3" class="info-value"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <script type="text/javascript" src="js/menu.js" ></script>
-                <script type="text/javascript" src="js/prefix.js"></script>
+            <div class="container-otherhelp">
+                <h2>1. Time</h2>
+                <p>This function displays the time which can be displayed in any time zone</p>
+                <p>To display the time as best as possible, the time is obtained from your device. Sometimes it can happen that the time on your device is not syncronized. For checking, you can check the time according to this time.<br>UTC = <iframe src="https://free.timeanddate.com/clock/i9hzh8jm/fs16/tcbfbfbf/pl0/pr0/pt4/pb0/th1" frameborder="0" width="65" height="18"></iframe>
+                </p> 
+                <table>
+                    <tr>
+                        <th><img width="44px" height="44px" src="https://img.icons8.com/?size=100&id=2969&format=png&color=000000"></th>
+
+                        <td>Time zone and page theme settings will be displayed</td>
+
+                    </td>
+                    </tr>
+                    <tr>
+                        <th><img width="40px" height="40px" src="https://img.icons8.com/?size=100&id=38797&format=png&color=000000"></th>
+                        <td>Switches the page to full screen mode</td>
+                    </tr>
+                    <tr>
+                        <th><img width="40px" height="40px" src="https://img.icons8.com/?size=100&id=7880&format=png&color=000000"></th>
+                        <td>Switches the time to your time zone</td>
+                    </tr>
+                </table>
+            </div>
         </main>
     </div>
+<script type="text/javascript" src="js/menu.js" ></script>
 </body>
 </html>

@@ -80,6 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h2>OTHER</h2>
                     <ul>
                         <li><a href="time" target="_blank">TIME</a></li>
+                        <li><a href="other-help">HELP</a></li>
                     </ul>
                 </div>
             <div class="menu">
