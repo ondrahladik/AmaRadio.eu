@@ -203,10 +203,15 @@ button:hover {
         height: 100%;
         transform: translateX(-100%);
         z-index: 999; 
+        font-size: 90%;
     }
 
     .sidebar.open {
         transform: translateX(0);
+    }
+
+    .sidebar ul li a {
+        padding: 0;
     }
 
     .burger {

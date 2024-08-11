@@ -77,6 +77,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </ul>
             </div>
             <div class="menu">
+                <h2>OTHER</h2>
+                    <ul>
+                        <li><a href="time" target="_blank">TIME</a></li>
+                    </ul>
+                </div>
+            <div class="menu">
                 <h2>WEB</h2>
                 <ul>
                     <li><a class="active" href="contact">CONTACT</a></li>
