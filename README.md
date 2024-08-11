@@ -9,13 +9,16 @@ I returned to the whole project in mid-July 2024. I rebuilt the entire search en
 
 ## Function
 
-The website is divided into two parts:
+The website is divided into three parts:
 
 #### PREFIX
 This function focuses on finding prefixes with subsequent display in a table
 
 #### LOCATOR
 This function focuses on searching for a locator on the map followed by measuring the distance between two locators. There are also maps, the first is a QSO map where you can display multiple locators, the second map in which you can display different layers (GRIDSQUARE / ITU / CQ / TIME)
+
+#### OTHER
+This section contains only one function so far, the display of time from all time zones
 
 ## Supports
 
