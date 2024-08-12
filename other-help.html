@@ -85,8 +85,59 @@
             <div class="container-otherhelp">
                 <h2>1. Time</h2>
                 <p>This function displays the time which can be displayed in any time zone</p>
-                <p>To display the time as best as possible, the time is obtained from your device. Sometimes it can happen that the time on your device is not syncronized. For checking, you can check the time according to this time.<br>UTC = <iframe src="https://free.timeanddate.com/clock/i9hzh8jm/fs16/tcbfbfbf/pl0/pr0/pt4/pb0/th1" frameborder="0" width="65" height="18"></iframe>
-                </p> 
+                <p>To display the time as best as possible, the time is obtained from your device. Sometimes it can happen that the time on your device is not syncronized. For checking, you can check the time according to this time.<br><br>UTC = <iframe src="https://free.timeanddate.com/clock/i9hzh8jm/fs16/tcbfbfbf/pl0/pr0/pt5/pb0/th1" frameborder="0" width="65" height="20"></iframe>
+                </p>
+
+                <p>Below the time, the current time synchronization status is displayed. That is, if your time is synchronized with the server correctly or if the synchronization difference is shown in seconds.</p>
+
+                <p>Click the button below to view instructions on how to synchronize the clock on your computer.</p>
+
+                <p>
+                    <dialog>
+                    <h3>Computer time synchronization</h3>
+
+                    <p><b>Windows</b></p>
+                    <table>
+                        <tr>
+                            <td width="5%">1</td>
+                            <td width="95%">Open Settings.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Select Time and Language.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Click Date and Time.</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Under the “Synchronize your clock” option,<br> select the button that says “Sync Now”.</td>
+                        </tr>
+                    </table>
+
+                    <p><b>Mac</b></p>
+                    <table>
+                        <tr>
+                            <td width="5%">1</td>
+                            <td width="95%">Choose the Apple menu icon > System Settings.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Select General on the sidebar > Date & Time</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Turn on "Set time zone automatically using your current location".</td>
+                        </tr>
+                    </table>
+                
+                    <button autofocus>Hide</button>
+                    </dialog>
+                    
+                    <button>View instructions</button>
+                </p>
+
                 <table>
                     <tr>
                         <th><img width="44px" height="44px" src="https://img.icons8.com/?size=100&id=2969&format=png&color=000000"></th>
@@ -108,5 +159,24 @@
         </main>
     </div>
 <script type="text/javascript" src="js/menu.js" ></script>
+
+<script>
+
+    const dialog = document.querySelector("dialog");
+    const showButton = document.querySelector("dialog + button");
+    const closeButton = document.querySelector("dialog button");
+
+    // "Show the dialog" button opens the dialog modally
+    showButton.addEventListener("click", () => {
+    dialog.showModal();
+    });
+
+    // "Close" button closes the dialog
+    closeButton.addEventListener("click", () => {
+    dialog.close();
+    });
+
+</script>
+
 </body>
 </html>
