@@ -395,7 +395,7 @@
     if (!map) {
         map = L.map('map', {
             minZoom: 3,
-            maxZoom: 13
+            maxZoom: 15
         }).setView([40, 0], 3);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

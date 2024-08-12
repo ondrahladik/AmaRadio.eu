@@ -382,7 +382,7 @@
         window.onload = function () {
             map = L.map('map', {
                 minZoom: 3,
-                maxZoom: 14,
+                maxZoom: 15,
                 maxBounds: [
                     [-85, -180],
                     [85, 180]
