@@ -1,17 +1,21 @@
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #282c34;
-            color: #61dafb;
+            background-color: #bfbfbf;
+            color: #333333;
             font-family: Arial, sans-serif;
         }
 
         #time {
+            font-family: 'Droid Sans', monospace;
+            font-weight: bolder;
             font-size: 20vw; 
             text-align: center;
+            white-space: nowrap;
             transition: font-size 0.2s;
             width: 90%; 
         }
@@ -24,7 +28,7 @@
             flex-direction: column;
             align-items: flex-end;
             width: 300px;
-            background-color: #282c34;
+            background-color: #bfbfbf;
             padding: 10px;
             border-radius: 5px;
         }
@@ -42,21 +46,21 @@
             margin-bottom: 10px;
             background-color: #fff;
             color: #000;
-            border: 1px solid #61dafb;
+            border: 1px solid #333333;
             border-radius: 5px;
         }
 
         #timezone-selector {
-            background-color: #61dafb;
-            color: #282c34;
+            background-color: #333333;
+            color: #bfbfbf;
             border: none;
             border-radius: 5px;
             margin-bottom: 10px;
         }
 
         #color-selector {
-            background-color: #61dafb;
-            color: #282c34;
+            background-color: #333333;
+            color: #bfbfbf;
             border: none;
             border-radius: 5px;
             margin-bottom: 10px;
@@ -98,8 +102,20 @@
 
         #timezone-container input,
         #timezone-container select {
-            background-color: #61dafb;
-            border-color: black;
+            background-color: #333333;
+            border-color: black;   
+        }
+
+        select.light-text {
+            color: #bfbfbf !important;
+        }
+
+        input.light-text::placeholder {
+            color: #bfbfbf !important;
+        }
+
+        input.light-text {
+            color: #bfbfbf !important;
         }
 
         input[type="text"]:active,
@@ -130,6 +146,11 @@
         footer a {
             text-decoration: none;
             color: inherit;
+        }
+
+        #time-control {
+            opacity: 40%;
+            font-size: max(1vw, 13px);
         }
 
         @media (max-width: 768px) {
