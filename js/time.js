@@ -177,7 +177,7 @@ function toggleFullScreen() {
     } else {
         document.documentElement.requestFullscreen();
     }
-    updateIconColor(fullIcon, document.fullscreenElement ? `https://img.icons8.com/?size=100&id=71200&format=png&color=${currentColorHex}` : `https://img.icons8.com/?size=100&id=38797&format=png&color=${currentColorHex}`);
+    updateIconColor(fullIcon, document.fullscreenElement ? `https://img.icons8.com/?size=100&id=38797&format=png&color=${currentColorHex}` : `https://img.icons8.com/?size=100&id=71200&format=png&color=${currentColorHex}`);
 }
 
 fullButton.addEventListener('click', toggleFullScreen);
