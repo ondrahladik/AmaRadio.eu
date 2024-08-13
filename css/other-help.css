@@ -63,6 +63,10 @@
             margin-bottom: -15px;
         }
 
+        button {
+            cursor: pointer;
+        }
+
     @media (max-width: 768px) {
         .input input[type="text"] {
             width: 80%;
