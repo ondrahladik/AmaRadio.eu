@@ -97,6 +97,48 @@
             margin-left: 5px;
         }
 
+        ::backdrop {
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+        }
+
+        dialog {
+            background-color: #bfbfbf;
+            border: 5px solid #333;
+            border-radius: 20px;
+            text-align: center;
+        }  
+
+        dialog table {
+            border: 2px solid black;
+        }
+
+
+        dialog img {
+            width: 80%;
+            height: auto;
+        }
+
+        button#show-dialog {
+            color: white;
+            width: 184px;
+            height: 40px;
+            border: 0;
+            border-radius: 7px;
+            background-color: #29abe0;
+            font-family: Quicksand;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);;
+        } 
+
+        button {
+            cursor: pointer;
+        }
+        button#show-dialog:hover {
+            opacity: 80%;
+        }
+
     @media (max-width: 768px) {
         .input input[type="text"] {
             width: 80%;
