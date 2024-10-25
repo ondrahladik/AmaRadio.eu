@@ -212,7 +212,11 @@ td.note {
         height: 100%;
         transform: translateX(-100%);
         z-index: 999; 
-        font-size: 90%;
+        font-size: 80%;
+    }
+
+    .sidebar h2 {
+        font-size: 16px;
     }
 
     .sidebar.open {
