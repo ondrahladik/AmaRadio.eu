@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://amaradio.eu/sitemap.xml

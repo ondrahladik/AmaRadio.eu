@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #1a1a1a;
+    color: #00ffe0;
+    user-select: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#time {
+    font-family: 'Droid Sans', arial, monospace;
+    font-weight: bolder;
+    font-size: 20vw;
+    text-align: center;
+    white-space: nowrap;
+    transition: font-size 0.2s;
+    width: 90%;
+}
+
+#timezone-container {
+    position: fixed;
+    top: 5px;
+    right: 60px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 300px;
+    background-color: #1a1a1a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#timezone-search,
+#timezone-selector {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+#timezone-search {
+    margin-bottom: 10px;
+    border: 1px solid #333333;
+    border-radius: 5px;
+}
+
+#timezone-selector {
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#toggle-button,
+#full-button,
+#local-timezone-button {
+    position: fixed;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#toggle-button {
+    top: 5px;
+    right: 5px;
+}
+
+#full-button {
+    top: 55px;
+    right: 5px;
+}
+
+#local-timezone-button {
+    top: 105px;
+    right: 9px;
+}
+
+#timezone-container input,
+#timezone-container select {
+    background-color: #00ffe0;
+    border-color: black;
+}
+
+input[type="text"]:active,
+input[type="text"]:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+input::placeholder {
+    color: black;
+    font-style: italic;
+    opacity: 50%;
+}
+
+select:active,
+select:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+#time-control {
+    opacity: 40%;
+    font-size: max(1vw, 13px);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+details {
+    padding: 5px;
+    cursor: pointer;
+}
+
+summary {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.time-menu i {
+    font-size: 40px;
+    color: #00ffe0;
+    z-index: 900 !important;
+}
+
+.time-menu:hover i {
+    color: #00e0c0;
+}
+
+button {
+    z-index: 900 !important;
+}
+
+.utc {
+    font-family: Arial, sans-serif !important;
+}
+
+@media (max-width: 768px) {
+    #time {
+        font-size: 15vw;
+    }
+
+    #timezone-container {
+        width: 80%;
+        right: 30px;
+        left: 0;
+        margin: 0 auto;
+        top: 10px;
+        padding: 5px;
+    }
+
+    #timezone-search,
+    #timezone-selector {
+        font-size: 0.9rem;
+    }
+
+    #toggle-button {
+        right: 0;
+        padding-right: 15px;
+    }
+
+    #full-button {
+        display: none;
+    }
+
+    #local-timezone-button {
+        top: 45px;
+        right: 8px;
+    }
+
+    .time-menu i {
+        font-size: 30px;
+    }
+
+}

@@ -1,0 +1,201 @@
+@font-face {
+    font-family: 'Orbitron';
+    src: url('/assets/font/Orbitron/static/Orbitron-Regular.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+    font-family: 'Orbitron', Arial;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0a0a0a;
+    color: white;
+    display: flex;
+    border-bottom: 2px solid #00ffe0;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    z-index: 999;
+    padding: 0 15px;
+    height: 60px;
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00ffe0;
+    letter-spacing: 3px;
+    cursor: default;
+}
+
+.navbar .logo a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-item a {
+    display: flex;
+    align-items: center;
+    background: #222;
+    color: white;
+    text-decoration: none;
+    padding: 0 10px;
+    height: 50px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item .icon-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-item i {
+    font-size: 24px;
+    color: white;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.menu-item a:hover i {
+    color: #00ffe0;
+    text-shadow: 0 0 8px #00ffe080;
+}
+
+.menu-item.active i {
+    color: #00ffe0;
+}
+
+.menu-item span {
+    white-space: nowrap;
+    font-weight: 600;
+    padding-left: 10px;
+    display: none;
+}
+
+.menu-item.active span {
+    display: inline;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #00ffe0;
+}
+
+#lang-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.lang-btn {
+    width: 130px !important;
+    padding: 10px 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.lang-btn:hover,
+.lang-btn:focus {
+    background-color: #e0e0e0;
+    border-color: #888;
+    outline: none;
+}
+
+.flag {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .blur-overlay {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 60px);
+        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 995 !important;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    body.menu-open .blur-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #0a0a0a;
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .menu.open {
+        display: flex;
+    }
+
+    .menu-item {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .menu-item span {
+        display: inline;
+    }
+
+    .menu-toggle {
+        display: block;
+    }    
+}
+
+

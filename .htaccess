@@ -1,0 +1,21 @@
+RewriteEngine On
+
+# Start page settings
+DirectoryIndex index.php
+
+# Setting up a custom 404 page
+ErrorDocument 404 /notfound.php
+
+# Setting up pretty URLs
+RewriteRule ^index$ index.php [L]
+RewriteRule ^prefix$ prefix.php [L]
+RewriteRule ^locator-map$ locator-map.php [L]
+RewriteRule ^qso-map$ qso-map.php [L]
+RewriteRule ^zone-map$ zone-map.php [L]
+RewriteRule ^about$ about.php [L]
+RewriteRule ^time$ time.php [L]
+
+# Ensure proper 404 handling for non-existing files or directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . - [L,R=404]

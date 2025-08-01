@@ -1,0 +1,225 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: auto;
+}
+
+.content-locator {
+    flex-grow: 1;
+    padding: 0;
+    position: relative;
+    transition: margin-left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+button {
+    background-color: #00ffe0;
+    color: black;
+    border: none;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+    background-color: #00e0c4;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+}
+
+.form-table {
+    min-width: 400px !important;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 900 !important;
+    padding: 0 10px;
+    font-size: 14px;
+    background-color: #fff;
+    border: 2px solid #00ffe0;
+    border-radius: 10px;
+}
+
+.form-table td,
+.form-table th {
+    text-align: center;
+    width: 100px;
+}
+
+th {
+    height: 10px;
+}
+
+.input input[type="text"] {
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.input input[type="text"]::placeholder {
+    text-transform: none;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+#map {
+    flex: 1;
+    width: 100%;
+    position: relative;
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    border-radius: 5px;
+}
+
+.locator-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.mouse-locator-info {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #00e0c4;
+    width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 900 !important;
+    font-weight: bold;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+#mouse-locator {
+    display: none;
+}
+
+.leaflet-control-layers {
+    margin-top: 10px;
+}
+
+.show-location-button {
+    background: white;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-size: 22px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer !important;
+    position: absolute;
+    top: -5px;
+    left: 0;
+    z-index: 900 !important;
+}
+
+.show-location-button.add-locator {
+    top: -14px;
+    left: 0;
+}
+
+.show-location-button.add-locator-b {
+    top: -23px;
+    left: 0;
+}
+
+.show-location-button.add-locator img {
+    width: 20px;
+    height: 20px;
+}
+
+.show-location-button.add-locator-b img {
+    width: 20px;
+    height: 20px;
+}
+
+div.leaflet-bottom.leaflet-right {
+    display: none;
+}
+
+div.leaflet-top.leaflet-left, 
+div.leaflet-top.leaflet-right {
+    z-index: 900 !important;
+}
+
+@media (max-width: 768px) {
+    .input input[type="text"] {
+        font-size: 9px;
+    }
+
+    .input input[type="text"]::placeholder {
+        font-size: 8px;
+    }
+
+    .form-table td,
+    .form-table th {
+        width: 90px;
+    }
+
+    #map {
+        height: 100vh;
+    }
+
+    table.form-table {
+        left: auto;
+        right: 10px;
+        top: 10px;
+        transform: none;
+        min-width: 80px !important;
+    }
+
+    div.leaflet-top.leaflet-right {
+        top: 180px;
+        left: 10px;
+        right: auto;
+    }
+
+    .mouse-locator-info {
+        display: none !important;
+    }
+
+    button {
+        font-size: 9px;
+    }
+
+    label {
+        font-size: 12px;
+    }
+}
