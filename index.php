@@ -54,7 +54,7 @@ include 'assets/lang/lang.php';
         <h1><i class="fas fa-database"></i> <?= $text['qrg-database'] ?></h1>
         <p><?= $text['qrg-title'] ?></p>
       </a>
-      <a href="https://ctu.amaradio.eu" class="tool-block">
+      <a href="https://ctu.amaradio.eu" class="tool-block" target="_blank">
         <h1><i class="fas fa-database"></i> <?= $text['ctu-database'] ?></h1>
         <p><?= $text['ctu-title'] ?></p>
       </a>
@@ -62,7 +62,7 @@ include 'assets/lang/lang.php';
   </div>
 
   <footer>
-    &copy; 2024-<?php echo date("Y") ?> AMARADIO.eu | <?= $text['copyright'] ?><a href="https://www.ok1kky.cz">OK1KKY</a>
+    &copy; 2024-<?php echo date("Y") ?> AMARADIO.eu | <?= $text['copyright'] ?><a href="https://www.ok1kky.cz" target="_blank">OK1KKY</a>
   </footer>
 
 </body>
