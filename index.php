@@ -46,6 +46,10 @@ include 'assets/lang/lang.php';
         <h1><i class="fa-solid fa-map"></i> <?= $text['zone-map'] ?></h1>
         <p><?= $text['zone-title'] ?></p>
       </a>
+      <a href="/rotator" class="tool-block">
+        <h1><i class="fas fa-compass"></i> <?= $text['rotator'] ?></h1>
+        <p><?= $text['rotator-title'] ?></p>
+      </a>
       <a href="/time" class="tool-block" target="_blank">
         <h1><i class="fa-solid fa-clock"></i> <?= $text['time'] ?></h1>
         <p><?= $text['time-title'] ?></p>

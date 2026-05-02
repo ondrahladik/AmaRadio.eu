@@ -29,6 +29,12 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
           <span><?= $text['zone-map'] ?></span>
         </a>
       </div>
+      <div class="menu-item<?= $currentPath === '/rotator' ? ' active' : '' ?>">
+        <a href="/rotator" title="<?= $text['rotator'] ?>">
+          <div class="icon-box"><i class="fas fa-compass"></i></div>
+          <span><?= $text['rotator'] ?></span>
+        </a>
+      </div>
       <div class="menu-item<?= $currentPath === '/time' ? ' active' : '' ?>">
         <a href="/time" title="<?= $text['time'] ?>" target="_blank">
           <div class="icon-box"><i class="fas fa-clock"></i></div>

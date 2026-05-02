@@ -28,6 +28,8 @@ $text = [
     'time-title' => 'Zobraz si aktuální čas třeba pro logování QSO.',
     'ctu-database' => 'ČTÚ databáze',
     'ctu-title' => 'Vyhledávání radioamatérů v české databázi ČTÚ.',
+    'rotator' => 'Rotátor',
+    'rotator-title' => 'Zadej lokátor DX stanice a zjisti azimut pro natočení antény.',
     'about' => 'O webu',
 
     // Prefix search
@@ -135,6 +137,26 @@ $text = [
     'help-time-description-5' => '<details><summary>Windows</summary>Otevřete Nastavení > Vyberte Čas a jazyk > Klikněte na Datum a čas<br>V části „Synchronizovat hodiny“ vyberte tlačítko „Synchronizovat“</details>',
     'help-time-description-6' => '<details><summary>Mac</summary>Vyberte ikonu nabídky Apple > Nastavení systému > Na bočním panelu vyberte Obecné > Datum a čas<br>Zapněte možnost „Automaticky nastavit časové pásmo podle vaší aktuální polohy“</details>',
     'help-time-description-7' => 'Kliknutím na <i class="fa-solid fa-gear"></i> se zobrazí nastavení časového pásma. Kliknutím na <i class="fa-solid fa-maximize"></i> se přepne stránka do režimu celé obrazovky. Kliknutím na <i class="fa-solid fa-location-dot"></i> se nastaví automaticky čas do vašeho časového pásma.',
+
+    // Rotator
+    'rotator-my-locator' => 'Můj lokátor',
+    'rotator-my-locator-placeholder' => 'Nastav lokátor',
+    'rotator-dx-locator' => 'DX lokátor',
+    'rotator-dx-locator-placeholder' => 'Zadej DX lokátor',
+    'rotator-set' => 'Nastav',
+    'rotator-edit' => 'Změnit',
+    'rotator-show' => 'Zobraz',
+    'rotator-distance' => 'Vzdálenost',
+    'rotator-azimuth' => 'Azimut',
+    'rotator-zoom' => 'Zoom',
+    'rotator-invalid-locator' => 'Lokátor musí být ve formátu např. JO70QD.',
+    'rotator-no-my-locator' => 'Nejprve nastav svůj vlastní lokátor.',
+
+    // Rotator help
+    'help-rotator' => 'Nápověda k rotátoru',
+    'help-rotator-description-1' => 'Tento nástroj slouží k určení azimutu pro natočení směrové antény pomocí rotátoru. Stačí zadat lokátor DX stanice a nástroj zobrazí přesný azimut a vzdálenost.',
+    'help-rotator-description-2' => 'Nejprve nastav svůj domovský lokátor tlačítkem <b>Nastav</b>. Lokátor se uloží do paměti prohlížeče a při příští návštěvě bude automaticky předvyplněn. Následně zadej lokátor DX stanice do druhého pole a klikni na <b>Zobraz</b> nebo stiskni Enter.',
+    'help-rotator-description-3' => 'Na mapě se zobrazí tvoje poloha (ikona domu), poloha DX stanice (ikona antény) a přerušovaná oranžová čára znázorňující trasu po velkém kruhu. Kompas v levém panelu zobrazuje ručičkou azimut k DX stanici. Pod kompasem jsou uvedeny vzdálenost a azimut ve stupních.',
 
     // About page
     'about-title' => 'O webu AMARADIO.eu',

@@ -26,6 +26,10 @@ switch ($page) {
     echo "<h2>" . $text['help-time'] . "</h2>" . $text['help-time-description-1'] . "<br><br>" . $text['help-time-description-2'] . "<br>" . $text['help-time-description-3'] . "<br><br>" . $text['help-time-description-4'] . "<br><br>" . $text['help-time-description-5'] . $text['help-time-description-6'] . "<br>" . $text['help-time-description-7'];
     break;
 
+  case 'rotator':
+    echo "<h2>" . $text['help-rotator'] . "</h2>" . $text['help-rotator-description-1'] . "<br><br>" . $text['help-rotator-description-2'] . "<br><br>" . $text['help-rotator-description-3'];
+    break;
+
   default:
     echo "";
     break;
