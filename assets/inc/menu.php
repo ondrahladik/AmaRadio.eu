@@ -47,35 +47,27 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
           <span><?= $text['ctu-database'] ?></span>
         </a>
       </div>
-      <div class="menu-item">
-        <a style="cursor: pointer" onclick="openLangModal()" title="<?= $text['change-lang'] ?>">
-          <div class="icon-box"><i class="fa-solid fa-language"></i></div>
-          <span><?= $text['change-lang'] ?></span>
+      <div class="menu-item lang-switcher" id="langSwitcher">
+        <a style="cursor: pointer" onclick="toggleLangDropdown(event)" title="<?= $text['change-lang'] ?>">
+          <div class="icon-box">
+            <img src="https://flagsapi.com/<?= $text['lang'] === 'cs' ? 'CZ' : 'GB' ?>/flat/32.png"
+                 class="lang-flag" alt="<?= strtoupper($text['lang']) ?>">
+          </div>
+          <span><?= $text['lang'] === 'cs' ? 'CZ' : 'EN' ?></span>
         </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Rozmazané pozadí -->
-  <div class="blur-overlay"></div>
-
-  <!-- MODAL pro výběr jazyka -->
-  <div id="langModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeLangModal()" title="<?= $text['close'] ?>">&times;</span>
-      <div id="langContent">
-        <div id="lang-buttons">
-          <p><strong><?= $text['change-lang'] ?></strong></p><br>
-          <button class="lang-btn" data-lang="cs">
-            <img src="https://flagsapi.com/CZ/flat/32.png" alt="Čeština" class="flag"> Čeština
+        <div class="lang-dropdown" id="langDropdown">
+          <button class="lang-option <?= $text['lang'] === 'cs' ? 'lang-active' : '' ?>" data-lang="cs">
+            <img src="https://flagsapi.com/CZ/flat/32.png" alt="CZ"> Čeština
           </button>
-          <button class="lang-btn" data-lang="en">
-            <img src="https://flagsapi.com/GB/flat/32.png" alt="English" class="flag"> English
+          <button class="lang-option <?= $text['lang'] === 'en' ? 'lang-active' : '' ?>" data-lang="en">
+            <img src="https://flagsapi.com/GB/flat/32.png" alt="EN"> English
           </button>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="blur-overlay"></div>
 
   <script>
     var currentPath = "<?= ltrim($currentPath, '/') ?>";
@@ -86,23 +78,19 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
       document.body.classList.toggle('menu-open');
     }
 
-    function openLangModal() {
-      document.getElementById('langModal').style.display = 'block';
+    function toggleLangDropdown(event) {
+      event.stopPropagation();
+      document.getElementById('langDropdown').classList.toggle('open');
     }
 
-    function closeLangModal() {
-      document.getElementById('langModal').style.display = 'none';
-    }
-
-    window.addEventListener('click', function(event) {
-      const langModal = document.getElementById('langModal');
-      if (event.target === langModal) {
-        closeLangModal();
+    document.addEventListener('click', function(e) {
+      const switcher = document.getElementById('langSwitcher');
+      if (switcher && !switcher.contains(e.target)) {
+        document.getElementById('langDropdown').classList.remove('open');
       }
     });
 
-    // Zavření menu kliknutím na blur pozadí
-    document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('DOMContentLoaded', () => {
       const blurOverlay = document.querySelector('.blur-overlay');
       blurOverlay.addEventListener('click', () => {
         document.getElementById('mobileMenu').classList.remove('open');
@@ -117,8 +105,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         localStorage.setItem('lang', cookieLang);
       }
 
-      const buttons = document.querySelectorAll('.lang-btn');
-      buttons.forEach(btn => {
+      document.querySelectorAll('.lang-option').forEach(btn => {
         btn.addEventListener('click', () => {
           const selectedLang = btn.getAttribute('data-lang');
           localStorage.setItem('lang', selectedLang);
