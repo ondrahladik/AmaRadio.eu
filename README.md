@@ -14,7 +14,7 @@ For easier reference to the original version of AMARADIO.eu, see [Tag v1](https:
 ## Function
 
 <b>Prefix search</b> - Find country, region, and information by callsign.  
-<b>Locator map</b> - Search or compare the distance between two locators.
+<b>Locator map</b> - Search or compare the distance between two locators.   
 <b>Zone maps</b> - View locators or ITU, CQ, and time zones on the map.  
 <b>Rotator</b> - Get the azimuth and distance to point your rotator.  
 <b>Time</b> - View the current time, for example, for logging QSO.
