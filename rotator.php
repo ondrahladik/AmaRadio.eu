@@ -85,6 +85,13 @@ include 'assets/lang/lang.php';
             noMyLocator:    <?= json_encode($text['rotator-no-my-locator']) ?>,
             editButton:     <?= json_encode($text['rotator-edit']) ?>,
             setButton:      <?= json_encode($text['rotator-set']) ?>,
+            position:       <?= json_encode($text['locator-map-position']) ?>,
+            lat:            <?= json_encode($text['locator-map-lat']) ?>,
+            lon:            <?= json_encode($text['locator-map-lon']) ?>,
+            loc:            <?= json_encode($text['locator-map-loc']) ?>,
+            alt:            <?= json_encode($text['locator-map-alt']) ?>,
+            error:          <?= json_encode($text['locator-map-error']) ?>,
+            errorGeoBrowser:<?= json_encode($text['locator-map-error-geo-broswer']) ?>,
         };
     </script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>

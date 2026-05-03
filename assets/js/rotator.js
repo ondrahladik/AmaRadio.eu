@@ -29,10 +29,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const div = L.DomUtil.create('div', 'show-location-button');
         div.innerHTML = '<i class="fa-solid fa-location-dot"></i>';
         div.onclick = function () {
-            if (!navigator.geolocation) return;
-            navigator.geolocation.getCurrentPosition(function (pos) {
-                map.setView([pos.coords.latitude, pos.coords.longitude], zoomLevel);
-            });
+            showMyLocation();
         };
         L.DomEvent.disableClickPropagation(div);
         return div;
@@ -217,4 +214,57 @@ function calculateGreatCircle(from, to, steps) {
         ]);
     }
     return pts;
+}
+
+let currentLocationMarker = null;
+
+function latLonToLocator(lat, lon) {
+    let fieldLon = Math.floor((lon + 180) / 20);
+    let fieldLat = Math.floor((lat + 90) / 10);
+    let squareLon = Math.floor(((lon + 180) % 20) / 2);
+    let squareLat = Math.floor(((lat + 90) % 10));
+    let subSquareLon = Math.floor(((lon + 180) % 2) * 12);
+    let subSquareLat = Math.floor(((lat + 90) % 1) * 24);
+    return String.fromCharCode(fieldLon + 65) +
+        String.fromCharCode(fieldLat + 65) +
+        squareLon + squareLat +
+        String.fromCharCode(subSquareLon + 65) +
+        String.fromCharCode(subSquareLat + 65);
+}
+
+function showMyLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                let latitude = position.coords.latitude;
+                let longitude = position.coords.longitude;
+                let locator = latLonToLocator(latitude, longitude);
+                let altitude = position.coords.altitude;
+
+                map.setView([latitude, longitude], 14);
+
+                if (currentLocationMarker) {
+                    map.removeLayer(currentLocationMarker);
+                }
+
+                let popupContent = '<div style="text-align: center;"><b>' + translations.position + '</b></div>' +
+                    translations.lat + latitude.toFixed(6) + '<br>' +
+                    translations.lon + longitude.toFixed(6) + '<br>' +
+                    translations.loc + locator;
+                if (altitude !== null && !isNaN(altitude)) {
+                    popupContent += '<br>' + translations.alt + altitude.toFixed(0) + ' m';
+                }
+
+                currentLocationMarker = L.marker([latitude, longitude])
+                    .addTo(map)
+                    .bindPopup(popupContent)
+                    .openPopup();
+            },
+            function (error) {
+                alert(translations.error + error.message);
+            }
+        );
+    } else {
+        alert(translations.errorGeoBrowser);
+    }
 }
