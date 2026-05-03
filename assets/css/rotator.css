@@ -177,7 +177,7 @@ body {
 .needle {
     position: relative;
     width: 6px;
-    height: 100px;
+    height: 75px;
     border-radius: 3px;
     background: linear-gradient(to bottom, #ff3333 50%, #333 50%);
 }
