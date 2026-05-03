@@ -323,7 +323,7 @@ function updateLocatorToBFromGPS() {
 }
 
 function addLocationButton() {
-    let locationButton = L.control({ position: 'topleft' });
+    let locationButton = L.control({ position: 'topright' });
 
     locationButton.onAdd = function () {
         let div = L.DomUtil.create('div', 'show-location-button');
@@ -408,12 +408,15 @@ window.onload = function () {
         map = L.map('map', {
             minZoom: 3,
             maxZoom: 18,
-            doubleClickZoom: false
+            doubleClickZoom: false,
+            zoomControl: false
         }).setView([40, 10], 3);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
+
+        L.control.zoom({ position: 'topright' }).addTo(map);
 
         L.Control.geocoder({
             defaultMarkGeocode: true

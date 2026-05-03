@@ -72,16 +72,6 @@ include 'assets/lang/lang.php';
                     <span><?= $text['rotator-azimuth'] ?></span>
                     <strong id="azimuthValue">---</strong>
                 </div>
-                <div class="zoom-row">
-                    <label for="zoomSelect"><?= $text['rotator-zoom'] ?></label>
-                    <select id="zoomSelect">
-                        <option value="3">1</option>
-                        <option value="5">2</option>
-                        <option value="7" selected>3</option>
-                        <option value="9">4</option>
-                        <option value="12">5</option>
-                    </select>
-                </div>
             </div>
 
         </div>

@@ -15,9 +15,9 @@ include 'assets/lang/lang.php';
     <meta property="og:description" content="<?= $text['locator-title'] ?>">
     <?php include 'assets/inc/head.php' ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/locator-map.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 <body>
     <?php include 'assets/inc/menu.php'; ?>
     <?php include 'assets/inc/help-modal.php'; ?>

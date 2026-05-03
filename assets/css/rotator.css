@@ -313,6 +313,25 @@ div.leaflet-top.leaflet-right {
     z-index: 900 !important;
 }
 
+.leaflet-top .leaflet-control {
+    margin-top: 5px;
+}
+
+.show-location-button {
+    background: white;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-size: 22px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: black;
+}
+
 @media (max-width: 768px) {
     .rot-wrap {
         flex-direction: column;
@@ -407,7 +426,7 @@ div.leaflet-top.leaflet-right {
     }
 
     .info-row i {
-        color: #ff8800;
+        color: #00ffe0;
         font-size: 11px;
         width: auto;
     }
@@ -417,7 +436,7 @@ div.leaflet-top.leaflet-right {
     }
 
     .info-row strong {
-        color: #ff8800;
+        color: #00ffe0;
         font-size: 12px;
         white-space: nowrap;
     }

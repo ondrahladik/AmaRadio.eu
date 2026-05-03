@@ -46,10 +46,7 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    z-index: 900 !important;
+    color: black;
 }
 
 .text-labels {
@@ -136,6 +133,10 @@ div.leaflet-bottom.leaflet-right {
 div.leaflet-top.leaflet-left, 
 div.leaflet-top.leaflet-right {
     z-index: 900 !important;
+}
+
+.leaflet-top .leaflet-control {
+    margin-top: 5px;
 }
 
 @media (max-width: 768px) {

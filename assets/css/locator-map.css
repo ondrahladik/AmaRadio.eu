@@ -128,10 +128,6 @@ input[type="text"]:focus {
     display: none;
 }
 
-.leaflet-control-layers {
-    margin-top: 10px;
-}
-
 .show-location-button {
     background: white;
     border: 2px solid rgba(0, 0, 0, 0.2);
@@ -143,31 +139,8 @@ input[type="text"]:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer !important;
-    position: absolute;
-    top: -5px;
-    left: 0;
-    z-index: 900 !important;
-}
-
-.show-location-button.add-locator {
-    top: -14px;
-    left: 0;
-}
-
-.show-location-button.add-locator-b {
-    top: -23px;
-    left: 0;
-}
-
-.show-location-button.add-locator img {
-    width: 20px;
-    height: 20px;
-}
-
-.show-location-button.add-locator-b img {
-    width: 20px;
-    height: 20px;
+    cursor: pointer;
+    color: black;
 }
 
 div.leaflet-bottom.leaflet-right {
@@ -177,6 +150,10 @@ div.leaflet-bottom.leaflet-right {
 div.leaflet-top.leaflet-left, 
 div.leaflet-top.leaflet-right {
     z-index: 900 !important;
+}
+
+.leaflet-top .leaflet-control {
+    margin-top: 5px;
 }
 
 @media (max-width: 768px) {

@@ -1,16 +1,13 @@
 let map;
 let storedLocator = localStorage.getItem('mylocator');
-let storedZoomLevel = localStorage.getItem('rotator-zoomLevel');
 let myLocatorMarker = null;
 let dxLocatorMarker = null;
 let directionLayers = [];
-let zoomLevel;
+let zoomLevel = 7;
+
+localStorage.removeItem('rotator-zoomLevel');
 
 window.addEventListener('DOMContentLoaded', function () {
-    zoomLevel = storedZoomLevel
-        ? parseInt(storedZoomLevel)
-        : parseInt(document.getElementById('zoomSelect').value);
-
     map = L.map('map', { 
         minZoom: 2, 
         maxZoom: 15,
@@ -21,9 +18,26 @@ window.addEventListener('DOMContentLoaded', function () {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
+    L.control.zoom({ position: 'topright' }).addTo(map);
+
     L.Control.geocoder({
         defaultMarkGeocode: false
     }).addTo(map);
+
+    const locationBtn = L.control({ position: 'topright' });
+    locationBtn.onAdd = function () {
+        const div = L.DomUtil.create('div', 'show-location-button');
+        div.innerHTML = '<i class="fa-solid fa-location-dot"></i>';
+        div.onclick = function () {
+            if (!navigator.geolocation) return;
+            navigator.geolocation.getCurrentPosition(function (pos) {
+                map.setView([pos.coords.latitude, pos.coords.longitude], zoomLevel);
+            });
+        };
+        L.DomEvent.disableClickPropagation(div);
+        return div;
+    };
+    locationBtn.addTo(map);
 
     const bounds = L.latLngBounds(L.latLng(-85, -180), L.latLng(85, 180));
     map.setMaxBounds(bounds);
@@ -31,17 +45,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
     if (storedLocator) {
         const [lat, lon] = getCoordinatesFromLocator(storedLocator);
-        map.setView([lat, lon], zoomLevel);
+        map.setView([lat, lon], 3);
         addMyLocatorMarker(lat, lon);
     } else {
-        map.setView([50, 15], 4);
+        map.setView([40, 10], 3);
     }
 
     updateLocatorButton();
-
-    if (storedZoomLevel) {
-        document.getElementById('zoomSelect').value = storedZoomLevel;
-    }
 
     document.getElementById('locatorButton').addEventListener('click', setMyLocator);
     document.getElementById('directionButton').addEventListener('click', triggerDirection);
@@ -53,17 +63,6 @@ window.addEventListener('DOMContentLoaded', function () {
     document.getElementById('dxlocator').addEventListener('keydown', function (e) {
         if (e.key === 'Enter') { e.preventDefault(); triggerDirection(); }
     });
-
-    document.getElementById('zoomSelect').addEventListener('change', function () {
-        zoomLevel = parseInt(this.value);
-        localStorage.setItem('rotator-zoomLevel', zoomLevel);
-        if (storedLocator) {
-            const [lat, lon] = getCoordinatesFromLocator(storedLocator);
-            map.setView([lat, lon], zoomLevel);
-        } else {
-            map.setZoom(zoomLevel);
-        }
-    });
 });
 
 function setMyLocator() {
@@ -73,7 +72,6 @@ function setMyLocator() {
     storedLocator = locator;
     updateLocatorButton();
     const [lat, lon] = getCoordinatesFromLocator(locator);
-    map.setView([lat, lon], zoomLevel);
     if (myLocatorMarker) { map.removeLayer(myLocatorMarker); myLocatorMarker = null; }
     addMyLocatorMarker(lat, lon);
 }
@@ -121,7 +119,7 @@ function showDirection(dxLocator) {
     });
     dxLocatorMarker = L.marker(dxCoords, { icon: dxIcon }).addTo(map);
 
-    map.setView(myCoords, zoomLevel);
+    map.panTo(myCoords);
 }
 
 function clearDirectionLayers() {
