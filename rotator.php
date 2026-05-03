@@ -9,7 +9,7 @@ include 'assets/lang/lang.php';
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?= $text['rotator'] ?> – AMARADIO.eu</title>
+    <title><?= $text['rotator'] ?></title>
     <meta name="description" content="<?= $text['rotator-title'] ?>">
     <meta property="og:title" content="<?= $text['rotator'] ?>">
     <meta property="og:description" content="<?= $text['rotator-title'] ?>">

@@ -115,6 +115,26 @@ $text = [
     'help-zone-map-description-2' => 'After clicking on <i class="fa-solid fa-location-dot"></i>, a marker with your location will appear, and it will list the coordinates and locator. This feature requires access to your location. The feature works best on mobile, but location display should also work on a computer.',
     'help-zone-map-description-3' => 'At the top of the map, you can view the coordinates and locator by moving the mouse cursor over the map.<br><br>In the upper right part of the map, you can click <i class="fa-solid fa-magnifying-glass"></i> to search by address.',
 
+    // Rotator
+    'rotator-my-locator' => 'My locator',
+    'rotator-my-locator-placeholder' => 'Set locator',
+    'rotator-dx-locator' => 'DX locator',
+    'rotator-dx-locator-placeholder' => 'Enter DX locator',
+    'rotator-set' => 'Set',
+    'rotator-edit' => 'Edit',
+    'rotator-show' => 'Show',
+    'rotator-distance' => 'Distance',
+    'rotator-azimuth' => 'Azimuth',
+    'rotator-zoom' => 'Zoom',
+    'rotator-invalid-locator' => 'The locator must be in the format e.g. JO70QD.',
+    'rotator-no-my-locator' => 'Please set your own locator first.',
+
+    // Rotator help
+    'help-rotator' => 'Help for Rotator',
+    'help-rotator-description-1' => 'This tool is used to determine the azimuth for rotating a directional antenna using a rotator. Simply enter the DX station locator and the tool will display the exact azimuth and distance.',
+    'help-rotator-description-2' => 'First, set your home locator using the <b>Set</b> button. The locator is saved in the browser memory and will be pre-filled automatically on your next visit. Then enter the DX station locator in the second field and click <b>Show</b> or press Enter.',
+    'help-rotator-description-3' => 'The map will show your position (home icon), the DX station position (antenna icon) and a dashed orange line representing the great-circle path. The compass in the left panel shows the azimuth to the DX station with an arrow. Distance and azimuth in degrees are shown below the compass.',
+
     // Time
     'time-title-2' => 'Time is 00:00:00',
     'time-settings' => 'Settings',
@@ -137,26 +157,6 @@ $text = [
     'help-time-description-5' => '<details><summary>Windows</summary>Open Settings > Select Time and Language > Click Date and Time<br>Under the "Synchronize your clock" option, select the "Sync Now" button</details>',
     'help-time-description-6' => '<details><summary>Mac</summary>Choose the Apple menu icon > System Settings > Select General on the sidebar > Date and Time<br>Turn on "Set time zone automatically using your current location"</details>',
     'help-time-description-7' => 'Clicking <i class="fa-solid fa-gear"></i> will display the time zone settings. Clicking <i class="fa-solid fa-maximize"></i> will switch the page to full screen mode. Clicking <i class="fa-solid fa-location-dot"></i> will automatically set the time to your time zone.',
-
-    // Rotator
-    'rotator-my-locator' => 'My locator',
-    'rotator-my-locator-placeholder' => 'Set locator',
-    'rotator-dx-locator' => 'DX locator',
-    'rotator-dx-locator-placeholder' => 'Enter DX locator',
-    'rotator-set' => 'Set',
-    'rotator-edit' => 'Edit',
-    'rotator-show' => 'Show',
-    'rotator-distance' => 'Distance',
-    'rotator-azimuth' => 'Azimuth',
-    'rotator-zoom' => 'Zoom',
-    'rotator-invalid-locator' => 'The locator must be in the format e.g. JO70QD.',
-    'rotator-no-my-locator' => 'Please set your own locator first.',
-
-    // Rotator help
-    'help-rotator' => 'Help for Rotator',
-    'help-rotator-description-1' => 'This tool is used to determine the azimuth for rotating a directional antenna using a rotator. Simply enter the DX station locator and the tool will display the exact azimuth and distance.',
-    'help-rotator-description-2' => 'First, set your home locator using the <b>Set</b> button. The locator is saved in the browser memory and will be pre-filled automatically on your next visit. Then enter the DX station locator in the second field and click <b>Show</b> or press Enter.',
-    'help-rotator-description-3' => 'The map will show your position (home icon), the DX station position (antenna icon) and a dashed orange line representing the great-circle path. The compass in the left panel shows the azimuth to the DX station with an arrow. Distance and azimuth in degrees are shown below the compass.',
 
     // About page
     'about-title' => 'About AMARADIO.eu',
