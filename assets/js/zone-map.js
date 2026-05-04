@@ -462,4 +462,10 @@ window.onload = function () {
         longElement.innerHTML = `${convertToDMS(lon)}`;
         mouseLocatorElement.innerHTML = `${locator}`;
     });
+
+    map.on('mouseout', function () {
+        document.getElementById('lati').innerText = '---';
+        document.getElementById('long').innerText = '---';
+        document.getElementById('mouse-locator').innerText = '---';
+    });
 };

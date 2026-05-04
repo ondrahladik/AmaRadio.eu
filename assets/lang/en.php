@@ -71,6 +71,7 @@ $text = [
     'locator-map-locator-placeholder-b' => 'Enter locator B',
     'locator-map-get-locator' => 'Get locator',
     'locator-map-get-distance' => 'Get distance',
+    'locator-map-distance' => 'Distance',
     'locator-map-position' => 'Your position',
     'locator-map-lat' => 'Latitude: ',
     'locator-map-lon' => 'Longitude: ',
@@ -84,12 +85,12 @@ $text = [
 
     // Locator map help
     'help-locator-map' => 'Help for locator map',
-    'help-locator-map-title-1' => '1. Search field',
-    'help-locator-map-description-1' => 'There are three input fields in total on the page. The first field <b>Search</b> is used for normal locator searches. The second and the third field <b>Locator A</b> and <b>Locator B</b> are used to measure two locators.',
+    'help-locator-map-title-1' => '1. Input fields',
+    'help-locator-map-description-1' => 'There are two input fields on the page. Enter a locator in field <b>A</b> to search, or fill in both fields to measure distance. Enter the second locator in field <b>B</b>. The <b>A</b> and <b>B</b> buttons next to the fields automatically fill in your current GPS position.',
     'help-locator-map-title-2' => '2. Search results',
-    'help-locator-map-description-2' => 'In the case of a regular locator search, the locator will be displayed on the map outlined in red.<br><br>The locator measurements are displayed on the map as symbols A (red) and B (blue), with a green line between them, showing the direct route between the two points. The distance between points A and B is displayed below the A input field.',
-    'help-locator-map-title-3' => '3. Other functions',
-    'help-locator-map-description-3' => 'To search and measure locators, it is possible to use various functions that will make the search more pleasant.<br><br>After clicking on <i class="fa-solid fa-location-dot"></i>, a marker with your location will appear, and it will list the coordinates and locator. Clicking on <i class="fa-solid fa-a"></i> will fill the current locator into the Locator A field. Clicking on <i class="fa-solid fa-b"></i> will fill the current locator into the Locator A field. These features require access to your location. The features work best on mobile, but location display should work fine on a computer.<br><br>On a computer, you can also follow the locator on the map by moving the mouse cursor. Right-click to fill in the locator in the Locator A field and double-click to fill in the Locator B field. Left-click the left mouse button to select and display the given locator.<br><br>In the upper right part of the map, you can click <i class="fa-solid fa-magnifying-glass"></i> to search by address.',
+    'help-locator-map-description-2' => 'If only field <b>A</b> is filled, the locator is displayed on the map outlined in red.<br><br>If both fields <b>A</b> and <b>B</b> are filled, both locators appear on the map as symbols A (red) and B (blue) with a green straight line between them. The distance between points A and B is shown in the panel.',
+    'help-locator-map-title-3' => '3. Other features',
+    'help-locator-map-description-3' => 'After clicking <i class="fa-solid fa-location-dot"></i>, a marker with your position appears along with coordinates and locator. Location access is required to use GPS features.<br><br>On a desktop, the left panel shows the current locator, latitude, and longitude as you move the mouse cursor over the map.<br><br>Right-clicking on the map fills field <b>A</b> with the locator at that position, and double right-clicking fills field <b>B</b>. Left-clicking displays the locator on the map.<br><br>In the upper right part of the map, click <i class="fa-solid fa-magnifying-glass"></i> to search by address.',
 
     // Zone map
     'zone-map-select-layer' => 'Map layer:',
@@ -111,8 +112,11 @@ $text = [
 
     // Zone map help
     'help-zone-map' => 'Help for zone maps',
+    'help-zone-map-title-1' => '1. Layer selection',
     'help-zone-map-description-1' => 'In the map, you can display layers of different zones. You select the layer by clicking in the <b>Map layer</b> field in the left panel. On mobile devices, the layer selection is displayed in the top bar.',
+    'help-zone-map-title-2' => '2. GPS position',
     'help-zone-map-description-2' => 'After clicking on <i class="fa-solid fa-location-dot"></i>, a marker with your location will appear, and it will list the coordinates and locator. This feature requires access to your location. The feature works best on mobile, but location display should also work on a computer.',
+    'help-zone-map-title-3' => '3. Coordinates and locator',
     'help-zone-map-description-3' => 'In the left panel (on desktop devices) or by moving the mouse cursor over the map, you can view the current coordinates in <b>DMM format</b> (degrees and decimal minutes) and the locator. On mobile devices, the coordinates are hidden and only the layer selection is displayed.<br><br>In the upper right part of the map, you can click <i class="fa-solid fa-magnifying-glass"></i> to search by address.',
 
     // Rotator
@@ -131,8 +135,11 @@ $text = [
 
     // Rotator help
     'help-rotator' => 'Help for Rotator',
+    'help-rotator-title-1' => '1. Purpose',
     'help-rotator-description-1' => 'This tool is used to determine the azimuth for rotating a directional antenna using a rotator. Simply enter the DX station locator and the tool will display the exact azimuth and distance.',
+    'help-rotator-title-2' => '2. How to use',
     'help-rotator-description-2' => 'First, set your home locator using the <b>Set</b> button. The locator is saved in the browser memory and will be pre-filled automatically on your next visit. Then enter the DX station locator in the second field and click <b>Show</b> or press Enter.',
+    'help-rotator-title-3' => '3. Map display',
     'help-rotator-description-3' => 'The map will show your position (home icon), the DX station position (antenna icon) and a dashed orange line representing the great-circle path. The compass in the left panel shows the azimuth to the DX station with an arrow. Distance and azimuth in degrees are shown below the compass.',
 
     // Time

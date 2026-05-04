@@ -10,10 +10,45 @@ let distanceControl;
 let isLocatorASet = false;
 let isLocatorBSet = false;
 
+function handleCalculate() {
+    clearMap();
+    
+    let locator1 = document.getElementById("locator1").value.toUpperCase().trim();
+    let locator2 = document.getElementById("locator2").value.toUpperCase().trim();
+    let regex = /^[A-Z]{2}[0-9]{2}[A-Z]{2}$/;
+    
+    if (!locator1) {
+        alert(translations.invalidLocator);
+        return;
+    }
+    
+    if (!regex.test(locator1)) {
+        alert(translations.invalidLocator);
+        return;
+    }
+    
+    if (locator2) {
+        if (!regex.test(locator2)) {
+            alert(translations.invalidLocators);
+            return;
+        }
+        
+        if (locator1 === locator2) {
+            alert(translations.sameLocator);
+            return;
+        }
+        
+        calculateTwoLocatorsCoordinates();
+    } else {
+        let [latitude, longitude, bounds] = getCoordinatesFromLocator(locator1);
+        showSingleLocatorMap(latitude, longitude, locator1, bounds);
+    }
+}
+
 function calculateSingleLocatorCoordinates() {
     clearMap();
 
-    let locator = document.getElementById("locator").value.toUpperCase();
+    let locator = document.getElementById("locator1").value.toUpperCase();
     let regex = /^[A-Z]{2}[0-9]{2}[A-Z]{2}$/;
 
     if (!regex.test(locator)) {
@@ -335,32 +370,6 @@ function addLocationButton() {
         return div;
     };
     locationButton.addTo(map);
-
-    let addLocatorAButton = L.control({ position: 'topleft' });
-
-    addLocatorAButton.onAdd = function () {
-        let div = L.DomUtil.create('div', 'show-location-button add-locator');
-        div.innerHTML = '<i style="color: red" class="fa-solid fa-a"></i>';
-        div.onclick = function () {
-            updateLocatorFromGPS();
-        };
-        L.DomEvent.disableClickPropagation(div);
-        return div;
-    };
-    addLocatorAButton.addTo(map);
-
-    let addLocatorBButton = L.control({ position: 'topleft' });
-
-    addLocatorBButton.onAdd = function () {
-        let div = L.DomUtil.create('div', 'show-location-button add-locator-b');
-        div.innerHTML = '<i style="color: blue" class="fa-solid fa-b"></i>';
-        div.onclick = function () {
-            updateLocatorToBFromGPS();
-        };
-        L.DomEvent.disableClickPropagation(div);
-        return div;
-    };
-    addLocatorBButton.addTo(map);
 }
 
 let clickCount = 0;
@@ -433,23 +442,25 @@ window.onload = function () {
 
     addLocationButton();
 
-    map.on('mousemove', function (e) {
-        let lat = e.latlng.lat;
-        let lon = e.latlng.lng;
-        let locator = latLonToLocator(lat, lon);
-        let mouseLocatorElement = document.getElementById('mouse-locator');
-        if (locator) {
-            mouseLocatorElement.innerText = locator;
-            mouseLocatorElement.style.display = 'flex';
-        } else {
-            mouseLocatorElement.style.display = 'none';
-        }
-    });
+    // Detekce mobilního zařízení
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
-    map.on('mouseout', function () {
-        let mouseLocatorElement = document.getElementById('mouse-locator');
-        mouseLocatorElement.style.display = 'none';
-    });
+    if (!isMobile) {
+        map.on('mousemove', function (e) {
+            let lat = e.latlng.lat;
+            let lon = e.latlng.lng;
+            let locator = latLonToLocator(lat, lon);
+            document.getElementById('lati').innerText = lat.toFixed(4);
+            document.getElementById('long').innerText = lon.toFixed(4);
+            document.getElementById('mouse-locator').innerText = locator || '---';
+        });
+
+        map.on('mouseout', function () {
+            document.getElementById('lati').innerText = '---';
+            document.getElementById('long').innerText = '---';
+            document.getElementById('mouse-locator').innerText = '---';
+        });
+    }
 
     map.on('click', function (e) {
         let lat = e.latlng.lat;

@@ -71,6 +71,7 @@ $text = [
     'locator-map-locator-placeholder-b' => 'Zadejte lokátor A',
     'locator-map-get-locator' => 'Získat lokátor',
     'locator-map-get-distance' => 'Získat vzdálenost',
+    'locator-map-distance' => 'Vzdálenost',
     'locator-map-position' => 'Vaše poloha',
     'locator-map-lat' => 'Z. šířka: ',
     'locator-map-lon' => 'Z. délka: ',
@@ -84,12 +85,12 @@ $text = [
 
     // Locator map help
     'help-locator-map' => 'Nápověda k lokátorové mapě',
-    'help-locator-map-title-1' => '1. Vyhledávací pole',
-    'help-locator-map-description-1' => 'Na stránce jsou celkem tři vstupní pole. První pole <b>Hledat</b> se používá pro běžné vyhledávání lokátorů. Druhé a třetí pole <b>Lokátor A</b> a <b>Lokátor B</b> se používají k měření dvou lokátorů.',
+    'help-locator-map-title-1' => '1. Vstupní pole',
+    'help-locator-map-description-1' => 'Na stránce jsou dvě vstupní pole. Do pole <b>A</b> zadejte lokátor pro vyhledání nebo vyplňte obě pole pro měření vzdálenosti. Do pole <b>B</b> zadejte druhý lokátor. Tlačítka <b>A</b> a <b>B</b> vedle vstupních polí automaticky vyplní vaši aktuální polohu.',
     'help-locator-map-title-2' => '2. Výsledky vyhledávání',
-    'help-locator-map-description-2' => 'V případě běžného vyhledávání lokátoru se daný lokátor zobrazí na mapě ohraničen červeně.<br><br>Měření lokátoru se na mapě zobrazují jako symboly A (červená) a B (modrá) a mezi nimi je zelená čára, která ukazuje přímou trasu mezi těmito dvěma body. Vzdálenost mezi body A a B se zobrazí pod vstupním polem A.',
+    'help-locator-map-description-2' => 'Pokud je vyplněno pouze pole <b>A</b>, zobrazí se daný lokátor na mapě ohraničen červeně.<br><br>Pokud jsou vyplněna obě pole <b>A</b> i <b>B</b>, zobrazí se oba lokátory na mapě se symboly A (červená) a B (modrá) a mezi nimi zelená přímá čára. Vzdálenost mezi body A a B se zobrazí v panelu.',
     'help-locator-map-title-3' => '3. Další funkce',
-    'help-locator-map-description-3' => 'Pro vyhledávání a měření lokátorů je možné využít různé funkce, které vyhledávání zpříjemní.<br><br>Po kliknutí na <i class="fa-solid fa-location-dot"></i> se zobrazí značka s vaší polohou, a vypíše souřadnice a lokátor. Kliknutí na <i class="fa-solid fa-a"></i> se vyplní aktuální lokátor do pole Lokátoru A. Kliknutí na <i class="fa-solid fa-b"></i> se vyplní aktuální lokátor do pole Lokátoru A. Pro použití těchto funkcí je vyžadován přístup k vaší poloze. Funkce fungují nejlépe na mobilním zařízení, ale zobrazení polohy by mělo být v pořádku i na počítači.<br><br>Na počítači můžete navíc sledovat lokátor v mapě pohybem kurzoru myši. Kliknutím pravým tlačítkem myši vyplníte lokátor do pole Lokátor A a dvojklikem pravého tlačítka myši do pole Lokátor B. Kliknutím levým tlačítkem myši označíte a zobrazíte zadaný lokátor.<br><br>V pravé horní části mapy si můžete kliknutím na <i class="fa-solid fa-magnifying-glass"></i> vyhledávat podle adresy.',
+    'help-locator-map-description-3' => 'Po kliknutí na <i class="fa-solid fa-location-dot"></i> se zobrazí značka s vaší polohou včetně souřadnic a lokátoru. Pro použití GPS funkcí je vyžadován přístup k vaší poloze.<br><br>Na počítači se v levém panelu zobrazuje aktuální lokátor, zeměpisná šířka a délka podle pohybu kurzoru myši.<br><br>Kliknutím pravým tlačítkem myši na mapu se vyplní lokátor do pole <b>A</b>, dvojklikem pravého tlačítka do pole <b>B</b>. Kliknutím levého tlačítka myši se daný lokátor zobrazí na mapě.<br><br>V pravé horní části mapy si můžete kliknout na <i class="fa-solid fa-magnifying-glass"></i> pro vyhledávání podle adresy.',
 
     // Zone map
     'zone-map-select-layer' => 'Mapová vrstva:',
@@ -111,8 +112,11 @@ $text = [
 
     // Zone map help
     'help-zone-map' => 'Nápověda k mapám zón',
+    'help-zone-map-title-1' => '1. Výběr vrstvy',
     'help-zone-map-description-1' => 'V mapě si lze zobrazit vrstvy různých zón. Vrstvu vyberete kliknutím do pole <b>Mapová vrstva</b> v levém panelu. Na mobilních zařízeních se výběr vrstvy zobrazuje v horní lišti.',
+    'help-zone-map-title-2' => '2. GPS poloha',
     'help-zone-map-description-2' => 'Po kliknutí na <i class="fa-solid fa-location-dot"></i> se zobrazí značka s vaší polohou, a vypíše souřadnice a lokátor. Pro použití této funkce je vyžadován přístup k vaší poloze. Funkce funguje nejlépe na mobilním zařízení, ale zobrazení polohy by mělo být v pořádku i na počítači.',
+    'help-zone-map-title-3' => '3. Souřadnice a lokátor',
     'help-zone-map-description-3' => 'V levém panelu (na desktopových zařízeních) nebo pohybem kurzorem myši po mapě si můžete zobrazit aktuální souřadnice v <b>DMM formátu</b> (stupně a desítinné minuty) a lokátor. Na mobilních zařízeních jsou souřadnice skryté a zobrazuje se pouze výběr vrstvy.<br><br>V pravé horní části mapy si můžete kliknutím na <i class="fa-solid fa-magnifying-glass"></i> vyhledávat podle adresy.',
 
     // Rotator
@@ -131,8 +135,11 @@ $text = [
 
     // Rotator help
     'help-rotator' => 'Nápověda k rotátoru',
+    'help-rotator-title-1' => '1. K čemu slouží',
     'help-rotator-description-1' => 'Tento nástroj slouží k určení azimutu pro natočení směrové antény pomocí rotátoru. Stačí zadat lokátor DX stanice a nástroj zobrazí přesný azimut a vzdálenost.',
+    'help-rotator-title-2' => '2. Jak používat',
     'help-rotator-description-2' => 'Nejprve nastav svůj domovský lokátor tlačítkem <b>Nastav</b>. Lokátor se uloží do paměti prohlížeče a při příští návštěvě bude automaticky předvyplněn. Následně zadej lokátor DX stanice do druhého pole a klikni na <b>Zobraz</b> nebo stiskni Enter.',
+    'help-rotator-title-3' => '3. Zobrazení na mapě',
     'help-rotator-description-3' => 'Na mapě se zobrazí tvoje poloha (ikona domu), poloha DX stanice (ikona antény) a přerušovaná oranžová čára znázorňující trasu po velkém kruhu. Kompas v levém panelu zobrazuje ručičkou azimut k DX stanici. Pod kompasem jsou uvedeny vzdálenost a azimut ve stupních.',
 
     // Time

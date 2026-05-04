@@ -18,51 +18,54 @@ include 'assets/lang/lang.php';
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/locator-map.css">
+</head>
 <body>
     <?php include 'assets/inc/menu.php'; ?>
     <?php include 'assets/inc/help-modal.php'; ?>
-    <div class="container">
-        <main class="content-locator">
-            <div class="container">
-                <form>
-                    <table class="form-table">
-                        <tr>
-                            <th><label for="locator"><?= $text['locator-map-search-label'] ?></label></th>
-                            <th><label for="locator1" class="locator-label">
-                                    <?= $text['locator-map-locator-label'] ?>&nbsp;<div class="icon A">A</div>
-                                </label></th>
-                            <th><label for="locator2" class="locator-label">
-                                    <?= $text['locator-map-locator-label'] ?>&nbsp;<div class="icon B">B</div>
-                                </label></th>
-                        </tr>
-                        <tr class="input">
-                            <td>
-                                <input type="text" id="locator" name="locator" maxlength="6" placeholder="<?= $text['locator-map-search-placeholder'] ?>" required>
-                            </td>
-                            <td>
-                                <input type="text" id="locator1" name="locator1" maxlength="6" placeholder="<?= $text['locator-map-locator-placeholder-a'] ?>" required>
-                            </td>
-                            <td>
-                                <input type="text" id="locator2" name="locator2" maxlength="6" placeholder="<?= $text['locator-map-locator-placeholder-b'] ?>" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button class="btn1" type="button" onclick="calculateSingleLocatorCoordinates()"><?= $text['locator-map-get-locator'] ?></button>
-                            </td>
-                            <td id="distance" class="distance">
-                            </td>
-                            <td>
-                                <button type="button" onclick="calculateTwoLocatorsCoordinates()"><?= $text['locator-map-get-distance'] ?></button>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-                <div id="map">
-                    <div id="mouse-locator" class="mouse-locator-info"></div>
+    <div class="locator-map-wrap">
+        <div class="locator-panel" id="locatorPanel">
+            <div class="panel-group">
+                <label><?= $text['locator-map-locator-label'] ?></label>
+                <div class="input-row">
+                    <input type="text" id="locator1" name="locator1" maxlength="6" placeholder="A" required>
+                    <button type="button" class="btn-icon" onclick="updateLocatorFromGPS()"><span class="icon">A</span></button>
                 </div>
             </div>
-        </main>
+
+            <div class="panel-group">
+                <label><?= $text['locator-map-locator-label'] ?></label>
+                <div class="input-row">
+                    <input type="text" id="locator2" name="locator2" maxlength="6" placeholder="B" required>
+                    <button type="button" class="btn-icon" onclick="updateLocatorToBFromGPS()"><span class="icon">B</span></button>
+                </div>
+            </div>
+
+            <button type="button" class="btn-search" onclick="handleCalculate()"><?= $text['locator-map-get-locator'] ?></button>
+
+            <div class="distance-info" id="distanceInfo">
+                <div class="distance-row">
+                    <span class="distance-label"><?= $text['locator-map-distance'] ?>:</span>
+                    <strong id="distance">---</strong>
+                </div>
+            </div>
+
+            <div class="coordinates-info">
+                <div class="coord-row">
+                    <span class="coord-label"><?= $text['locator-map-lat'] ?></span>
+                    <strong id="lati">---</strong>
+                </div>
+                <div class="coord-row">
+                    <span class="coord-label"><?= $text['locator-map-lon'] ?></span>
+                    <strong id="long">---</strong>
+                </div>
+                <div class="coord-row">
+                    <span class="coord-label"><?= $text['locator-map-loc'] ?></span>
+                    <strong id="mouse-locator">---</strong>
+                </div>
+            </div>
+        </div>
+
+        <div id="map"></div>
     </div>
     <script>
         const translations = {
