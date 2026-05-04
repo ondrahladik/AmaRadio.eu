@@ -158,7 +158,7 @@ function calculateVincentyDistance(lat1, lon1, lat2, lon2) {
 function showSingleLocatorMap(latitude, longitude, locator, bounds) {
     if (!map) {
         map = L.map('map');
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
         map.fitWorld();
@@ -178,7 +178,7 @@ function showSingleLocatorMap(latitude, longitude, locator, bounds) {
 function showTwoLocatorsMap(lat1, lon1, lat2, lon2, locator1, locator2, bounds1, bounds2, distance) {
     if (!map) {
         map = L.map('map');
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
         map.fitWorld();
@@ -421,7 +421,7 @@ window.onload = function () {
             zoomControl: false
         }).setView([40, 10], 3);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
@@ -442,7 +442,6 @@ window.onload = function () {
 
     addLocationButton();
 
-    // Detekce mobilního zařízení
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
     if (!isMobile) {

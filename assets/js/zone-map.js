@@ -47,7 +47,7 @@ function showMyLocation() {
 
                 if (!map) {
                     map = L.map('map').setView([latitude, longitude], 14);
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
                         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                     }).addTo(map);
                 } else {
@@ -389,7 +389,7 @@ window.onload = function () {
             zoomControl: false
         }).setView([40, 10], 3);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
