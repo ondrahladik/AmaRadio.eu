@@ -133,7 +133,7 @@ button:hover {
     border: none;
     border-radius: 6px;
     padding: 5px 9px;
-    font-size: 11px;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
     white-space: nowrap;
@@ -374,7 +374,6 @@ div.leaflet-top.leaflet-right {
     }
 
     .input-row button {
-        font-size: 11px;
         padding: 7px 10px;
         white-space: nowrap;
         flex-shrink: 0;
@@ -389,7 +388,7 @@ div.leaflet-top.leaflet-right {
     }
 
     .btn-icon i {
-        font-size: 24px;
+        font-size: 18px;
     }
 
     .btn-search {

@@ -25,7 +25,7 @@ include 'assets/lang/lang.php';
     <div class="locator-map-wrap">
         <div class="locator-panel" id="locatorPanel">
             <div class="panel-group">
-                <label><?= $text['locator-map-locator-label-a'] ?></label>
+                <label for="locator1"><?= $text['locator-map-locator-label-a'] ?></label>
                 <div class="input-row">
                     <input type="text" id="locator1" name="locator1" maxlength="6" placeholder="<?= $text['locator-map-locator-placeholder'] ?>" required>
                     <button type="button" class="btn-icon" onclick="updateLocatorFromGPS()"><i class="fa-solid fa-location-dot"></i></button>
@@ -33,7 +33,7 @@ include 'assets/lang/lang.php';
             </div>
 
             <div class="panel-group">
-                <label><?= $text['locator-map-locator-label-b'] ?></label>
+                <label for="locator2"><?= $text['locator-map-locator-label-b'] ?></label>
                 <div class="input-row">
                     <input type="text" id="locator2" name="locator2" maxlength="6" placeholder="<?= $text['locator-map-locator-placeholder'] ?>" required>
                     <button type="button" class="btn-icon" onclick="updateLocatorToBFromGPS()"><i class="fa-solid fa-location-dot"></i></button>
