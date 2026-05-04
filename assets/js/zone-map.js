@@ -468,4 +468,8 @@ window.onload = function () {
         document.getElementById('long').innerText = '---';
         document.getElementById('mouse-locator').innerText = '---';
     });
+
+    map.on('contextmenu', function (e) {
+        e.originalEvent.preventDefault();
+    });
 };

@@ -60,6 +60,10 @@ window.addEventListener('DOMContentLoaded', function () {
     document.getElementById('dxlocator').addEventListener('keydown', function (e) {
         if (e.key === 'Enter') { e.preventDefault(); triggerDirection(); }
     });
+
+    map.on('contextmenu', function (e) {
+        e.originalEvent.preventDefault();
+    });
 });
 
 function setMyLocator() {
