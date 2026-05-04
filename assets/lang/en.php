@@ -111,9 +111,9 @@ $text = [
 
     // Zone map help
     'help-zone-map' => 'Help for zone maps',
-    'help-zone-map-description-1' => 'In the map, you can display layers of different zones. You select the layer by clicking in the <b>Map layer</b> field.',
+    'help-zone-map-description-1' => 'In the map, you can display layers of different zones. You select the layer by clicking in the <b>Map layer</b> field in the left panel. On mobile devices, the layer selection is displayed in the top bar.',
     'help-zone-map-description-2' => 'After clicking on <i class="fa-solid fa-location-dot"></i>, a marker with your location will appear, and it will list the coordinates and locator. This feature requires access to your location. The feature works best on mobile, but location display should also work on a computer.',
-    'help-zone-map-description-3' => 'At the top of the map, you can view the coordinates and locator by moving the mouse cursor over the map.<br><br>In the upper right part of the map, you can click <i class="fa-solid fa-magnifying-glass"></i> to search by address.',
+    'help-zone-map-description-3' => 'In the left panel (on desktop devices) or by moving the mouse cursor over the map, you can view the current coordinates in <b>DMM format</b> (degrees and decimal minutes) and the locator. On mobile devices, the coordinates are hidden and only the layer selection is displayed.<br><br>In the upper right part of the map, you can click <i class="fa-solid fa-magnifying-glass"></i> to search by address.',
 
     // Rotator
     'rotator-my-locator' => 'My locator',

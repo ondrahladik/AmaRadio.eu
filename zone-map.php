@@ -21,31 +21,38 @@ include 'assets/lang/lang.php';
 <body>
     <?php include 'assets/inc/menu.php'; ?>
     <?php include 'assets/inc/help-modal.php'; ?>
-    <div class="container">
-        <main class="content-maps">
-            <table>
-                <tr>
-                    <td width="100px">
-                        <select name="layer" id="layer-select">
-                            <option value="" selected disabled hidden><?= $text['zone-map-select-layer'] ?></option>
-                            <option value="none"><?= $text['zone-map-select-nolayer'] ?></option>
-                            <option value="locator"><?= $text['zone-map-select-grid'] ?></option>
-                            <option value="itu"><?= $text['zone-map-select-itu'] ?></option>
-                            <option value="cq"><?= $text['zone-map-select-cq'] ?></option>
-                            <option value="time"><?= $text['zone-map-select-time'] ?></option>
-                        </select>
-                    </td>
-                    <td width="50px" class="mobile"><?= $text['zone-map-latitude'] ?></td>
-                    <th width="100px" class="mobile" id="lati"></th>
-                    <td width="50px" class="mobile"><?= $text['zone-map-longitude'] ?></td>
-                    <th width="100px" class="mobile" id="long"></th>
-                    <td width="90px" class="mobile"><?= $text['zone-map-grid'] ?></td>
-                    <th width="70px" class="mobile" id="mouse-locator"></th>
-                </tr>
-            </table>
-            <div id="map"></div>
-            <div id="tooltip-container" class="tooltip-container"></div>
-        </main>
+    <div class="zone-map-wrap">
+        <div class="zone-panel" id="zonePanel">
+            <div class="panel-group">
+                <label for="layer-select"><?= $text['zone-map-select-layer'] ?></label>
+                <select name="layer" id="layer-select">
+                    <option value="" selected disabled hidden><?= $text['zone-map-select-layer'] ?></option>
+                    <option value="none"><?= $text['zone-map-select-nolayer'] ?></option>
+                    <option value="locator"><?= $text['zone-map-select-grid'] ?></option>
+                    <option value="itu"><?= $text['zone-map-select-itu'] ?></option>
+                    <option value="cq"><?= $text['zone-map-select-cq'] ?></option>
+                    <option value="time"><?= $text['zone-map-select-time'] ?></option>
+                </select>
+            </div>
+
+            <div class="coordinates-info">
+                <div class="coord-row">
+                    <span class="coord-label"><?= $text['zone-map-latitude'] ?></span>
+                    <strong id="lati">---</strong>
+                </div>
+                <div class="coord-row">
+                    <span class="coord-label"><?= $text['zone-map-longitude'] ?></span>
+                    <strong id="long">---</strong>
+                </div>
+                <div class="coord-row">
+                    <span class="coord-label"><?= $text['zone-map-grid'] ?></span>
+                    <strong id="mouse-locator">---</strong>
+                </div>
+            </div>
+        </div>
+
+        <div id="map"></div>
+        <div id="tooltip-container" class="tooltip-container"></div>
     </div>
     <script>
         const translations = {

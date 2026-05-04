@@ -111,9 +111,9 @@ $text = [
 
     // Zone map help
     'help-zone-map' => 'Nápověda k mapám zón',
-    'help-zone-map-description-1' => 'V mapě si lze zobrazit vrstvy různých zón. Vrstvu vyberete kliknutím do pole <b>Mapová vrstva</b>.',
+    'help-zone-map-description-1' => 'V mapě si lze zobrazit vrstvy různých zón. Vrstvu vyberete kliknutím do pole <b>Mapová vrstva</b> v levém panelu. Na mobilních zařízeních se výběr vrstvy zobrazuje v horní lišti.',
     'help-zone-map-description-2' => 'Po kliknutí na <i class="fa-solid fa-location-dot"></i> se zobrazí značka s vaší polohou, a vypíše souřadnice a lokátor. Pro použití této funkce je vyžadován přístup k vaší poloze. Funkce funguje nejlépe na mobilním zařízení, ale zobrazení polohy by mělo být v pořádku i na počítači.',
-    'help-zone-map-description-3' => 'V horní části mapy si můžete zobrazit souřadnice a lokátor pomocí pohybu kurzorem myši po mapě.<br><br>V pravé horní části mapy si můžete kliknutím na <i class="fa-solid fa-magnifying-glass"></i> vyhledávat podle adresy.',
+    'help-zone-map-description-3' => 'V levém panelu (na desktopových zařízeních) nebo pohybem kurzorem myši po mapě si můžete zobrazit aktuální souřadnice v <b>DMM formátu</b> (stupně a desítinné minuty) a lokátor. Na mobilních zařízeních jsou souřadnice skryté a zobrazuje se pouze výběr vrstvy.<br><br>V pravé horní části mapy si můžete kliknutím na <i class="fa-solid fa-magnifying-glass"></i> vyhledávat podle adresy.',
 
     // Rotator
     'rotator-my-locator' => 'Můj lokátor',

@@ -29,9 +29,7 @@ function latLonToLocator(lat, lon) {
 function convertToDMS(degrees) {
     let d = Math.floor(degrees);
     let minFloat = (degrees - d) * 60;
-    let m = Math.floor(minFloat);
-    let s = Math.round((minFloat - m) * 60);
-    return `${d}° ${m}' ${s}"`;
+    return `${d}° ${minFloat.toFixed(3)}'`;
 }
 
 function showMyLocation() {
