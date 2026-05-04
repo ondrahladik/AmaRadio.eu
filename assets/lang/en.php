@@ -66,7 +66,10 @@ $text = [
     // Locator map
     'locator-map-search-label' => 'Search',
     'locator-map-search-placeholder' => 'Enter locator',
+    'locator-map-locator-placeholder' => 'Enter locator',
     'locator-map-locator-label' => 'Locator',
+    'locator-map-locator-label-a' => 'Locator A',
+    'locator-map-locator-label-b' => 'Locator B',
     'locator-map-locator-placeholder-a' => 'Enter locator A',
     'locator-map-locator-placeholder-b' => 'Enter locator B',
     'locator-map-get-locator' => 'Get locator',

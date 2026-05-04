@@ -66,7 +66,10 @@ $text = [
     // Locator map
     'locator-map-search-label' => 'Hledat',
     'locator-map-search-placeholder' => 'Zadejte lokátor',
+    'locator-map-locator-placeholder' => 'Zadej lokátor',
     'locator-map-locator-label' => 'Lokátor',
+    'locator-map-locator-label-a' => 'Lokátor A',
+    'locator-map-locator-label-b' => 'Lokátor B',
     'locator-map-locator-placeholder-a' => 'Zadejte lokátor A',
     'locator-map-locator-placeholder-b' => 'Zadejte lokátor A',
     'locator-map-get-locator' => 'Získat lokátor',
