@@ -51,6 +51,10 @@ include 'assets/lang/lang.php';
         <p><?= $text['rotator-title'] ?></p>
       </a>
       <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
+        <h1><i class="fas fa-circle-nodes"></i> <?= $text['cluster'] ?></h1>
+        <p><?= $text['cluster-title'] ?></p>
+      </a>
+      <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
         <h1><i class="fas fa-sun"></i> <?= $text['solar'] ?></h1>
         <p><?= $text['solar-title'] ?></p>
       </a>
