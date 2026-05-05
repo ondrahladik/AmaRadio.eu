@@ -50,6 +50,10 @@ include 'assets/lang/lang.php';
         <h1><i class="fas fa-compass"></i> <?= $text['rotator'] ?></h1>
         <p><?= $text['rotator-title'] ?></p>
       </a>
+      <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
+        <h1><i class="fas fa-sun"></i> <?= $text['solar'] ?></h1>
+        <p><?= $text['solar-title'] ?></p>
+      </a>
       <a href="/time" class="tool-block" target="_blank">
         <h1><i class="fa-solid fa-clock"></i> <?= $text['time'] ?></h1>
         <p><?= $text['time-title'] ?></p>
@@ -61,6 +65,10 @@ include 'assets/lang/lang.php';
       <a href="https://ctu.amaradio.eu" class="tool-block" target="_blank">
         <h1><i class="fas fa-database"></i> <?= $text['ctu-database'] ?></h1>
         <p><?= $text['ctu-title'] ?></p>
+      </a>
+      <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
+        <h1><i class="fas fa-cog"></i> <?= $text['settings'] ?></h1>
+        <p><?= $text['settings-title'] ?></p>
       </a>
     </div>
   </div>

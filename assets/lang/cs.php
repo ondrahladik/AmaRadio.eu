@@ -22,14 +22,18 @@ $text = [
     'qso-title' => 'Nahraj svůj ADIF deník a zobraz si spojení v mapě.',
     'zone-map' => 'Mapy zón',
     'zone-title' => 'Zobraz si v mapě lokátory nebo ITU, CQ a časové zóny.',
+    'rotator' => 'Rotátor',
+    'rotator-title' => 'Zadej lokátor DX stanice a zjisti azimut pro natočení antény.',
+    'solar' => 'Solární aktivita',
+    'solar-title' => 'Zobraz si aktuální solární aktivitu a předpověď pro následující dny.',
     'qrg-database' => 'QRG databáze',
     'qrg-title' => 'Databáze všech známých frekvencí v Česku.',
     'time' => 'Hodiny',
     'time-title' => 'Zobraz si aktuální čas třeba pro logování QSO.',
     'ctu-database' => 'ČTÚ databáze',
     'ctu-title' => 'Vyhledávání radioamatérů v české databázi ČTÚ.',
-    'rotator' => 'Rotátor',
-    'rotator-title' => 'Zadej lokátor DX stanice a zjisti azimut pro natočení antény.',
+    'settings' => 'Nastavení',
+    'settings-title' => 'Nastav si své preference pro celou webovou aplikaci.',
     'about' => 'O webu',
 
     // Prefix search
@@ -176,7 +180,6 @@ $text = [
     'about-description-3' => 'Po roce provozu, v červenci 2025, prošel web rozsáhlou úpravou. Nejzásadnějšími změnami jsou nový jednotný design a kompletní přeorganizování kódu s využitím moderních možností PHP. Kromě toho byly opraveny drobné chyby a z webu byla odstraněna QSO mapa, kterou plánuji v nejbližší době kompletně předělat. Zároveň připravuji nové funkce, které web rozšíří a vylepší.',
     'about-description-4' => 'Pokud najdete nějakou chybu, kontaktujte mě prosím na <a href="mailto:ondra@ok1kky.cz">ondra@ok1kky.cz</a>.',
     'about-description-5' => 'Líbí se vám tento web a chcete ho podpořit? Můžete nás podpořit prostřednictvím našeho profilu na <a href="https://ko-fi.com/E1E3SVQKA" target="_blank">Ko-fi</a>.',
-
 
     // Not found page
     '404-message' => 'Stránka nebyla nalezena',
