@@ -30,6 +30,10 @@ include 'assets/lang/lang.php';
 
   <div class="section" id="tools">
     <div class="tools-grid">
+      <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
+        <h1><i class="fas fa-tachometer-alt"></i> <?= $text['dashboard'] ?></h1>
+        <p><?= $text['dashboard-title'] ?></p>
+      </a>
       <a href="/prefix" class="tool-block">
         <h1><i class="fas fa-search"></i> <?= $text['prefix-search'] ?></h1>
         <p><?= $text['prefix-title'] ?></p>

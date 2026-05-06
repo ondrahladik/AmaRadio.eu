@@ -14,6 +14,8 @@ $text = [
     // Index
     'description' => 'Modern tools for radio amateurs.',
     'show-tools' => 'Show tools',
+    'dashboard' => 'Dashboard',
+    'dashboard-title' => ' All important tools clearly in one place.',
     'prefix-search' => 'Prefix search',
     'prefix-title' => 'Find country, region, and information by callsign.',
     'locator-map' => 'Locator map',

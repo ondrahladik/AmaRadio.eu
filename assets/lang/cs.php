@@ -14,6 +14,8 @@ $text = [
     // Index
     'description' => 'Moderní nástroje pro radioamatéry.',
     'show-tools' => 'Zobrazit nástroje',
+    'dashboard' => 'Dashboard',
+    'dashboard-title' => 'Všechny důležité nástroje přehledně na jednom místě.',
     'prefix-search' => 'Prefix vyhledávač',
     'prefix-title' => 'Zjisti stát, region a informace podle volacího znaku.',
     'locator-map' => 'Lokátorová mapa',
