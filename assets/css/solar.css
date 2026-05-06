@@ -1,0 +1,557 @@
+.solar-wrap {
+  padding: 20px 20px 10px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.solar-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 60px 20px;
+  color: #ff3d00;
+  font-size: 16px;
+  text-align: center;
+}
+.solar-error i { font-size: 48px; }
+
+.solar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.solar-header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.solar-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.solar-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.solar-split-btn {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid #00ffe044;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.split-btn-time {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  font-size: 12px;
+  color: #00ffe099;
+  background: #00ffe00a;
+  font-variant-numeric: tabular-nums;
+  border-right: 1px solid #00ffe033;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.split-btn-action {
+  background: transparent;
+  border: none;
+  color: #00ffe0;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  min-width: auto;
+  width: auto;
+}
+
+.split-btn-action:hover {
+  background: #00ffe015;
+}
+
+.solar-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.metric-card {
+  background: #111;
+  border: 1px solid #1e1e1e;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  min-height: 120px;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 12px 12px 0 0;
+}
+
+.sfi-low::before      { background: #5c6bc0; }
+.sfi-ok::before       { background: #ffb300; }
+.sfi-good::before     { background: #00c853; }
+.sfi-high::before     { background: #00ffe0; }
+.sunspot-card::before { background: #ff9800; }
+.k-quiet::before      { background: #00c853; }
+.k-unsettled::before  { background: #8bc34a; }
+.k-active::before     { background: #ffb300; }
+.k-storm1::before     { background: #ff9800; }
+.k-storm2::before     { background: #ff5722; }
+.k-storm3::before     { background: #f44336; }
+.xray-a::before       { background: #555; }
+.xray-b::before       { background: #00bcd4; }
+.xray-c::before       { background: #ffb300; }
+.xray-m::before       { background: #ff5722; }
+.xray-x::before       { background: #f44336; }
+.wind-card::before    { background: #00ffe0; }
+.magfield-card::before{ background: #9c27b0; }
+.noise-card::before   { background: #607d8b; }
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-icon {
+  font-size: 17px;
+  color: #282828;
+}
+
+.metric-label {
+  font-size: 10px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: bold;
+}
+
+.metric-value {
+  font-size: 34px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -1px;
+  padding: 4px 0;
+}
+
+.xray-val, .noise-val {
+  font-size: 26px;
+  letter-spacing: 0;
+}
+
+.metric-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.metric-unit {
+  font-size: 10px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.metric-badge {
+  display: inline-block;
+  font-size: 10px;
+  color: #00ffe0;
+  background: #00ffe012;
+  border: 1px solid #00ffe025;
+  border-radius: 4px;
+  padding: 2px 7px;
+  letter-spacing: 0.5px;
+}
+
+.k-quiet     .metric-badge { color: #00c853; background: #00c85312; border-color: #00c85330; }
+.k-unsettled .metric-badge { color: #8bc34a; background: #8bc34a12; border-color: #8bc34a30; }
+.k-active    .metric-badge { color: #ffb300; background: #ffb30012; border-color: #ffb30030; }
+.k-storm1    .metric-badge { color: #ff9800; background: #ff980012; border-color: #ff980030; }
+.k-storm2    .metric-badge { color: #ff5722; background: #ff572212; border-color: #ff572230; }
+.k-storm3    .metric-badge { color: #f44336; background: #f4433612; border-color: #f4433630; }
+
+.sfi-low  .metric-badge { color: #5c6bc0; background: #5c6bc012; border-color: #5c6bc030; }
+.sfi-ok   .metric-badge { color: #ffb300; background: #ffb30012; border-color: #ffb30030; }
+.sfi-good .metric-badge { color: #00c853; background: #00c85312; border-color: #00c85330; }
+.sfi-high .metric-badge { color: #00ffe0; background: #00ffe012; border-color: #00ffe025; }
+
+.xray-x .metric-badge { color: #f44336; background: #f4433612; border-color: #f4433630; }
+.xray-m .metric-badge { color: #ff5722; background: #ff572212; border-color: #ff572230; }
+.xray-c .metric-badge { color: #ffb300; background: #ffb30012; border-color: #ffb30030; }
+.xray-b .metric-badge { color: #00bcd4; background: #00bcd412; border-color: #00bcd430; }
+.xray-a .metric-badge { color: #555;    background: #55555512; border-color: #55555530; }
+
+.solar-secondary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sec-item {
+  background: #111;
+  border: 1px solid #1a1a1a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1 1 160px;
+  min-width: 0;
+  justify-content: space-between;
+}
+
+.sec-label {
+  font-size: 10px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.sec-label i { color: #00ffe044; }
+
+.sec-value {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ccc;
+  line-height: 1.1;
+  text-align: right;
+}
+
+.sec-sub {
+  font-size: 10px;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.solar-conditions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.solar-section {
+  background: #111;
+  border: 1px solid #1a1a1a;
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.section-title {
+  font-size: 13px;
+  color: #00ffe0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.conditions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.conditions-table thead th {
+  text-align: center;
+  color: #555;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 10px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.conditions-table tbody tr {
+  border-bottom: 1px solid #141414;
+}
+
+.conditions-table tbody tr:last-child { border-bottom: none; }
+
+.band-name {
+  padding: 10px 10px;
+  color: #888;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.cond-cell {
+  padding: 10px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  display: table-cell;
+  align-items: center;
+  gap: 7px;
+  text-align: center;
+}
+
+.cond-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 7px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.cond-good   { color: #00c853; }
+.cond-good   .cond-dot  { background: #00c853; box-shadow: 0 0 6px #00c85360; }
+.cond-fair   { color: #ffb300; }
+.cond-fair   .cond-dot  { background: #ffb300; box-shadow: 0 0 6px #ffb30060; }
+.cond-poor   { color: #ff5722; }
+.cond-poor   .cond-dot  { background: #ff5722; box-shadow: 0 0 6px #ff572260; }
+.cond-closed { color: #444; }
+.cond-closed .cond-dot  { background: #444; }
+.cond-aurora { color: #ab47bc; }
+.cond-aurora .cond-dot  { background: #ab47bc; box-shadow: 0 0 6px #ab47bc60; }
+.cond-unknown{ color: #666; }
+.cond-unknown .cond-dot { background: #666; }
+
+.cond-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+  justify-content: center;
+}
+
+.legend-item {
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.vhf-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vhf-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #141414;
+  border: 1px solid #1a1a1a;
+  flex-wrap: wrap;
+}
+
+.vhf-name {
+  font-size: 12px;
+  font-weight: bold;
+  flex: 0 0 120px;
+  display: flex;
+  align-items: center;
+}
+
+.vhf-loc {
+  font-size: 11px;
+  color: #666;
+  flex: 1;
+}
+
+.vhf-cond {
+  font-size: 11px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.solar-charts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.chart-container {
+  position: relative;
+  height: 260px;
+}
+
+.chart-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 22px;
+}
+
+.solar-images-section { gap: 16px; }
+
+.solar-images-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.solar-img-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #0d0d0d;
+  border: 1px solid #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.solar-img-label {
+  padding: 8px 10px 0;
+  font-size: 10px;
+  color: #00ffe0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.solar-img-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+}
+
+.solar-img-sub {
+  padding: 4px 10px 8px;
+  font-size: 10px;
+  color: #444;
+}
+
+.solar-attribution {
+  font-size: 11px;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 20px;
+  margin-top: 4px;
+}
+
+.solar-attribution a {
+  color: #00ffe055;
+  text-decoration: none;
+}
+
+.solar-attribution a:hover { color: #00ffe0; }
+
+@media (max-width: 1200px) {
+  .solar-metrics {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .solar-images-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .solar-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .solar-conditions-grid {
+    grid-template-columns: 1fr;
+  }
+  .solar-images-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .solar-wrap {
+    padding: 12px 10px 8px;
+    gap: 14px;
+  }
+  .solar-metrics {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .metric-value {
+    font-size: 26px;
+  }
+  .solar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .solar-header-left {
+    flex: 1;
+  }
+  .solar-title {
+    font-size: 18px;
+  }
+  .solar-secondary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  .sec-item {
+    flex: none;
+    padding: 8px 10px;
+  }
+  .solar-images-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .chart-container {
+    height: 200px;
+  }
+}

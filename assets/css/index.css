@@ -73,8 +73,6 @@ html {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 0 15px #00ffe0aa;
-    animation: pulse 2s infinite ease-in-out;
     transition: transform 0.3s ease;
 }
 
