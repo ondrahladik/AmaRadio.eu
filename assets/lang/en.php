@@ -29,7 +29,7 @@ $text = [
     'solar' => 'Solar activity',
     'solar-title' => 'View current solar activity and propagation conditions on the bands.',
     'cluster' => 'DX Cluster',
-    'cluster-title' => 'View current DX Cluster spots (VE7CC server).',
+    'cluster-title' => 'View current DX Cluster spots (9M2PJU server).',
     'qrg-database' => 'QRG database',
     'qrg-title' => 'Database of all known frequencies in the Czechia.',
     'time' => 'Time',
@@ -189,8 +189,36 @@ $text = [
     '404-message' => 'Page not found',
     '404-back' => 'Back to home',
 
+    // DX Cluster
+    'cluster-page-title'  => 'DX Cluster',
+    'cluster-subtitle'    => 'Real-time spots from DX Cluster (VE7CC server)',
+    'cluster-live'        => 'Live',
+    'cluster-spots'       => 'spots',
+    'cluster-band-all'    => 'All',
+    'cluster-col-country' => 'Country',
+    'cluster-col-time'    => 'Time (UTC)',
+    'cluster-col-spotter' => 'Spotter',
+    'cluster-col-freq'    => 'MHz',
+    'cluster-col-dx'      => 'DX',
+    'cluster-col-message' => 'Message',
+    'cluster-loading'     => 'Loading spots...',
+    'cluster-error'       => 'Failed to load data. Check your connection.',
+    'cluster-no-spots'    => 'No spots on this band.',
+    'cluster-source'      => 'Data: DX Cluster',
+    'cluster-refresh-info'=> 'Auto-refresh every second',
+    'cluster-qrz-lookup'  => 'Look up on QRZ.com',
+
+    // DX Cluster help
+    'help-cluster'              => 'Help for DX Cluster',
+    'help-cluster-title-1'      => '1. What is DX Cluster',
+    'help-cluster-description-1'=> 'A DX Cluster is a network of nodes sharing radio contact information (spots) in real time. Each spot contains information about who heard (Spotter) which station (DX), on which frequency and with what message.',
+    'help-cluster-title-2'      => '2. Band filtering',
+    'help-cluster-description-2'=> 'Use the buttons at the top of the page to filter spots by band. The <b>All</b> button shows spots from all bands. Clicking a specific band shows only spots from that band.',
+    'help-cluster-title-3'      => '3. Table contents',
+    'help-cluster-description-3'=> '<b>Time (UTC)</b> - time the spot was received in UTC.<br><b>Spotter</b> - callsign of the station that submitted the spot (links to QRZ.com).<br><b>MHz</b> - frequency in MHz, colour-coded: orange = HF, blue = VHF, cyan = UHF, purple = SHF.<br><b>Flag</b> - country of the DX station based on callsign prefix.<br><b>DX</b> - callsign of the spotted station (links to QRZ.com).<br><b>Message</b> - accompanying message and detected mode (FT8, CW, SSB…).',
+
     // Solar activity
-    'solar-page-title'       => 'Solar activity',
+    'solar-page-title'=> 'Solar activity',
     'solar-refresh'          => 'Refresh',
     'solar-loading'          => 'Loading...',
     'solar-sfi'              => 'Solar Flux',
@@ -271,7 +299,7 @@ $text = [
     'solar-units-pfu'        => 'pfu',
 
     'solar-data-error'       => 'Could not load solar data. Please try again.',
-    'solar-data-source'      => 'Data',
+    'solar-data-source'      => 'Data:',
 
     // Solar activity help
     'help-solar'             => 'Help for Solar Activity',

@@ -16,6 +16,7 @@ RewriteRule ^about$ about.php [L]
 RewriteRule ^time$ time.php [L]
 RewriteRule ^rotator$ rotator.php [L]
 RewriteRule ^solar$ solar.php [L]
+RewriteRule ^cluster$ cluster.php [L]
 
 # Ensure proper 404 handling for non-existing files or directories
 RewriteCond %{REQUEST_FILENAME} !-f

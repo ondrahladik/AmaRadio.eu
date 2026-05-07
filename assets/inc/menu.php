@@ -35,6 +35,12 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
           <span><?= $text['rotator'] ?></span>
         </a>
       </div>
+      <div class="menu-item<?= $currentPath === '/cluster' ? ' active' : '' ?>">
+        <a href="/cluster" title="<?= $text['cluster'] ?>">
+          <div class="icon-box"><i class="fas fa-circle-nodes"></i></div>
+          <span><?= $text['cluster'] ?></span>
+        </a>
+      </div>
       <div class="menu-item<?= $currentPath === '/solar' ? ' active' : '' ?>">
         <a href="/solar" title="<?= $text['solar-page-title'] ?>">
           <div class="icon-box"><i class="fa-solid fa-sun"></i></div>

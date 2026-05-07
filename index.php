@@ -54,7 +54,7 @@ include 'assets/lang/lang.php';
         <h1><i class="fas fa-compass"></i> <?= $text['rotator'] ?></h1>
         <p><?= $text['rotator-title'] ?></p>
       </a>
-      <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
+      <a href="/cluster" class="tool-block">
         <h1><i class="fas fa-circle-nodes"></i> <?= $text['cluster'] ?></h1>
         <p><?= $text['cluster-title'] ?></p>
       </a>

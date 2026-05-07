@@ -29,7 +29,7 @@ $text = [
     'solar' => 'Solární aktivita',
     'solar-title' => 'Zobraz si aktuální solární aktivitu a podmínky šíření na pásmech.',
     'cluster' => 'DX Cluster',
-    'cluster-title' => 'Zobraz aktuální spoty z DX Clusteru (server VE7CC)',
+    'cluster-title' => 'Zobraz aktuální spoty z DX Clusteru (server 9M2PJU)',
     'qrg-database' => 'QRG databáze',
     'qrg-title' => 'Databáze všech známých frekvencí v Česku.',
     'time' => 'Hodiny',
@@ -189,6 +189,34 @@ $text = [
     '404-message' => 'Stránka nebyla nalezena',
     '404-back' => 'Zpět na hlavní stránku',
 
+    // DX Cluster
+    'cluster-page-title'  => 'DX Cluster',
+    'cluster-subtitle'    => 'Realtime spoty z DX Clusteru (server VE7CC)',
+    'cluster-live'        => 'Živě',
+    'cluster-spots'       => 'spotů',
+    'cluster-band-all'    => 'Vše',
+    'cluster-col-country' => 'Země',
+    'cluster-col-time'    => 'Čas (UTC)',
+    'cluster-col-spotter' => 'Spotter',
+    'cluster-col-freq'    => 'MHz',
+    'cluster-col-dx'      => 'DX',
+    'cluster-col-message' => 'Zpráva',
+    'cluster-loading'     => 'Načítání spotů...',
+    'cluster-error'       => 'Nepodařilo se načíst data. Zkontrolujte připojení.',
+    'cluster-no-spots'    => 'Žádné spoty na tomto pásmu.',
+    'cluster-source'      => 'Data: DX Cluster',
+    'cluster-refresh-info'=> 'Automatická aktualizace každou sekundu',
+    'cluster-qrz-lookup'  => 'Vyhledat na QRZ.com',
+
+    // DX Cluster help
+    'help-cluster'              => 'Nápověda k DX Clusteru',
+    'help-cluster-title-1'      => '1. Co je DX Cluster',
+    'help-cluster-description-1'=> 'DX Cluster je síť uzlů sdílejících informace o rádiových spojeních (spoty) v reálném čase. Každý spot obsahuje informaci o tom, kdo zachytil (Spotter) jakou stanici (DX), na jaké frekvenci a s jakým sdělením.',
+    'help-cluster-title-2'      => '2. Filtrování pásem',
+    'help-cluster-description-2'=> 'Pomocí tlačítek v horní části stránky lze filtrovat spoty podle pásma. Tlačítko <b>Vše</b> zobrazí spoty ze všech pásem. Po kliknutí na konkrétní pásmo se zobrazí pouze spoty z daného pásma.',
+    'help-cluster-title-3'      => '3. Obsah tabulky',
+    'help-cluster-description-3'=> '<b>Čas (UTC)</b> - čas zachycení spotu v UTC.<br><b>Spotter</b> - volací znak stanice, která spot odeslala (odkaz na QRZ.com).<br><b>MHz</b> - frekvence v MHz, barevně odlišená: oranžová = HF, modrá = VHF, tyrkysová = UHF, fialová = SHF.<br><b>Vlajka</b> - země DX stanice podle prefixu volacího znaku.<br><b>DX</b> - volací znak zachycené stanice (odkaz na QRZ.com).<br><b>Zpráva</b> - doprovodná zpráva a detekovaný mód (FT8, CW, SSB…).',
+
     // Solar Activity
     'solar-page-title'       => 'Solární aktivita',
     'solar-refresh'          => 'Obnovit',
@@ -271,7 +299,7 @@ $text = [
     'solar-units-pfu'        => 'pfu',
 
     'solar-data-error'       => 'Nepodařilo se načíst solární data. Zkuste to prosím znovu.',
-    'solar-data-source'      => 'Data',
+    'solar-data-source'      => 'Data:',
 
     // Solar activity help
     'help-solar'             => 'Nápověda k solární aktivitě',
