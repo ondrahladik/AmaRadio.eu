@@ -213,9 +213,9 @@ $text = [
     'help-cluster-title-1'      => '1. What is DX Cluster',
     'help-cluster-description-1'=> 'A DX Cluster is a network of nodes sharing radio contact information (spots) in real time. Each spot contains information about who heard (Spotter) which station (DX), on which frequency and with what message.',
     'help-cluster-title-2'      => '2. Band filtering',
-    'help-cluster-description-2'=> 'Use the buttons at the top of the page to filter spots by band. The <b>All</b> button shows spots from all bands. Clicking a specific band shows only spots from that band.',
+    'help-cluster-description-2'=> 'Use the band selector button in the top-right corner of the page. Clicking it opens a picker with bands grouped into <b>HF</b>, <b>VHF/UHF</b> and <b>SHF</b>. The default <b>All</b> option shows spots from all bands.',
     'help-cluster-title-3'      => '3. Table contents',
-    'help-cluster-description-3'=> '<b>Time (UTC)</b> - time the spot was received in UTC.<br><b>Spotter</b> - callsign of the station that submitted the spot (links to QRZ.com).<br><b>MHz</b> - frequency in MHz, colour-coded: orange = HF, blue = VHF, cyan = UHF, purple = SHF.<br><b>Flag</b> - country of the DX station based on callsign prefix.<br><b>DX</b> - callsign of the spotted station (links to QRZ.com).<br><b>Message</b> - accompanying message and detected mode (FT8, CW, SSB…).',
+    'help-cluster-description-3'=> '<b>Time (UTC)</b> – time the spot was received in UTC.<br><b>Spotter</b> – callsign of the station that submitted the spot (links to QRZ.com).<br><b>MHz</b> – frequency in MHz, colour-coded: <span style="color:#ff9800">orange = HF</span>, <span style="color:#00ffe0">cyan = VHF/UHF</span>, <span style="color:#ce93d8">purple = SHF</span>.<br><b>Flag</b> – country of the DX station based on callsign prefix.<br><b>DX</b> – callsign of the spotted station (links to QRZ.com).<br><b>Message</b> – accompanying message and detected mode (FT8, CW, SSB…).',
 
     // Solar activity
     'solar-page-title'=> 'Solar activity',

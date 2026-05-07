@@ -213,9 +213,9 @@ $text = [
     'help-cluster-title-1'      => '1. Co je DX Cluster',
     'help-cluster-description-1'=> 'DX Cluster je síť uzlů sdílejících informace o rádiových spojeních (spoty) v reálném čase. Každý spot obsahuje informaci o tom, kdo zachytil (Spotter) jakou stanici (DX), na jaké frekvenci a s jakým sdělením.',
     'help-cluster-title-2'      => '2. Filtrování pásem',
-    'help-cluster-description-2'=> 'Pomocí tlačítek v horní části stránky lze filtrovat spoty podle pásma. Tlačítko <b>Vše</b> zobrazí spoty ze všech pásem. Po kliknutí na konkrétní pásmo se zobrazí pouze spoty z daného pásma.',
+    'help-cluster-description-2'=> 'Pásmo lze vybrat pomocí tlačítka v pravém horním rohu stránky. Po kliknutí se otevře výběr pásem rozdělených do skupin: <b>HF</b>, <b>VHF/UHF</b> a <b>SHF</b>. Výchozí volba <b>Vše</b> zobrazí spoty ze všech pásem.',
     'help-cluster-title-3'      => '3. Obsah tabulky',
-    'help-cluster-description-3'=> '<b>Čas (UTC)</b> - čas zachycení spotu v UTC.<br><b>Spotter</b> - volací znak stanice, která spot odeslala (odkaz na QRZ.com).<br><b>MHz</b> - frekvence v MHz, barevně odlišená: oranžová = HF, modrá = VHF, tyrkysová = UHF, fialová = SHF.<br><b>Vlajka</b> - země DX stanice podle prefixu volacího znaku.<br><b>DX</b> - volací znak zachycené stanice (odkaz na QRZ.com).<br><b>Zpráva</b> - doprovodná zpráva a detekovaný mód (FT8, CW, SSB…).',
+    'help-cluster-description-3'=> '<b>Čas (UTC)</b> – čas zachycení spotu v UTC.<br><b>Spotter</b> – volací znak stanice, která spot odeslala (odkaz na QRZ.com).<br><b>MHz</b> – frekvence v MHz, barevně odlišená: <span style="color:#ff9800">oranžová = HF</span>, <span style="color:#00ffe0">tyrkysová = VHF/UHF</span>, <span style="color:#ce93d8">fialová = SHF</span>.<br><b>Vlajka</b> – země DX stanice dle prefixu volacího znaku.<br><b>DX</b> – volací znak zachycené stanice (odkaz na QRZ.com).<br><b>Zpráva</b> – doprovodná zpráva a detekovaný mód (FT8, CW, SSB…).',
 
     // Solar Activity
     'solar-page-title'       => 'Solární aktivita',

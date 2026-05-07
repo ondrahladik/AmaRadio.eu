@@ -36,6 +36,7 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  position: relative;
 }
 
 .solar-split-btn {
@@ -59,80 +60,122 @@
   white-space: nowrap;
 }
 
-.split-btn-time--last {
-  border-right: none;
-}
-
-.cluster-bands-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: #00ffe030 transparent;
-  padding-bottom: 2px;
-}
-
-.cluster-bands-wrap::-webkit-scrollbar { height: 3px; }
-.cluster-bands-wrap::-webkit-scrollbar-track { background: transparent; }
-.cluster-bands-wrap::-webkit-scrollbar-thumb { background: #00ffe030; border-radius: 2px; }
-
-.cluster-bands {
-  display: flex;
-  align-items: stretch;
-  gap: 6px;
-  width: fit-content;
-  flex-wrap: nowrap;
-  margin: 0 auto;
-}
-
-.band-group {
-  display: flex;
-  gap: 4px;
-  align-items: stretch;
-}
-
-.band-sep {
-  width: 1px;
-  background: #252525;
-  flex-shrink: 0;
-  align-self: stretch;
-  margin: 0 2px;
-}
-
-.band-btn {
-  flex: 0 0 60px;
-  background: #141414;
-  border: 1px solid #242424;
-  color: #555;
-  padding: 0;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 0.8px;
-  cursor: pointer;
-  transition: all 0.15s;
-  text-transform: uppercase;
-  font-family: inherit;
-  height: 25px;
-  line-height: 25px;
-  touch-action: manipulation;
-  white-space: nowrap;
-  text-align: center;
+.split-btn-band-btn {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 7px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+  color: #00ffe0cc;
+  background: #00ffe00a;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s;
 }
 
-.band-btn:hover {
-  border-color: #00ffe044;
+.split-btn-band-btn:hover,
+.split-btn-band-btn.open {
   color: #00ffe0;
-  background: #00ffe00d;
-}
-
-.band-btn.active {
   background: #00ffe015;
-  border-color: #00ffe055;
-  color: #00ffe0;
 }
+
+.band-btn-chevron {
+  font-size: 8px;
+  color: #00ffe044;
+  transition: transform 0.2s, color 0.15s;
+}
+
+.split-btn-band-btn.open .band-btn-chevron {
+  transform: rotate(180deg);
+  color: #00ffe099;
+}
+
+/* Band picker */
+.band-picker {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #141414;
+  border: 1px solid #00ffe033;
+  border-radius: 12px;
+  padding: 14px;
+  z-index: 200;
+  min-width: 300px;
+  box-shadow: 0 12px 40px #00000088;
+  animation: pickerIn 0.15s ease;
+}
+
+@keyframes pickerIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.band-picker-sep {
+  height: 1px;
+  background: #222;
+  margin: 10px 0;
+}
+
+.band-picker-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.band-picker-label {
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.band-picker-label--hf  { color: #ff9800; }
+.band-picker-label--vhf { color: #00ffe0; }
+.band-picker-label--shf { color: #ce93d8; }
+
+.band-picker-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.band-chip {
+  background: #1c1c1c;
+  border: 1px solid #2a2a2a;
+  color: #666;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: inherit;
+  padding: 5px 11px;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.12s;
+}
+
+.band-chip--all {
+  width: 100%;
+  text-align: center;
+  padding: 6px;
+}
+
+.band-chip--all:hover       { background: #00ffe010; border-color: #00ffe044; color: #00ffe0cc; }
+.band-chip--all.active      { background: #00ffe018; border-color: #00ffe066; color: #00ffe0; }
+
+.band-chip--hf:hover        { background: #ff980012; border-color: #ff980066; color: #ff9800; }
+.band-chip--hf.active       { background: #ff980020; border-color: #ff9800aa; color: #ff9800; }
+
+.band-chip--vhf:hover       { background: #00ffe012; border-color: #00ffe066; color: #00ffe0; }
+.band-chip--vhf.active      { background: #00ffe020; border-color: #00ffe0aa; color: #00ffe0; }
+
+.band-chip--shf:hover       { background: #ce93d812; border-color: #ce93d866; color: #ce93d8; }
+.band-chip--shf.active      { background: #ce93d820; border-color: #ce93d8aa; color: #ce93d8; }
 
 .cluster-loading,
 .cluster-error,
@@ -251,9 +294,9 @@
 }
 
 .freq-hf  { color: #ff9800; }
-.freq-vhf { color: #4fc3f7; }   
-.freq-uhf { color: #00ffe0; }   
-.freq-shf { color: #ce93d8; }  
+.freq-vhf { color: #00ffe0; }
+.freq-uhf { color: #00ffe0; }
+.freq-shf { color: #ce93d8; }
 
 .col-country { width: 36px; text-align: center; }
 
@@ -319,8 +362,6 @@
   .cluster-title { font-size: 17px; }
 
   .split-btn-time { padding: 7px 10px; font-size: 11px; gap: 5px; }
-
-  .band-btn { padding: 0 10px; font-size: 11px; }
 
   .cluster-table thead th,
   .cluster-table td { padding: 8px 10px; }

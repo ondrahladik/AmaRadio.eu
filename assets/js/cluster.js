@@ -19,21 +19,37 @@ function lookupCallsign(call) {
 
 let currentBand = 'all';
 let knownIds = new Set();
-let fetchTimer = null;
 let isFirstLoad = true;
 let consecutiveErrors = 0;
 let fetchGeneration = 0;
 
-// Band filter
-document.getElementById('bandFilter').addEventListener('click', function(e) {
-  const btn = e.target.closest('.band-btn');
-  if (!btn) return;
-  document.querySelectorAll('.band-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  currentBand = btn.dataset.band;
+// Band picker
+const bandBtn    = document.getElementById('bandBtn');
+const bandPicker = document.getElementById('bandPicker');
+
+function openPicker()  { bandPicker.hidden = false; bandBtn.classList.add('open'); bandBtn.setAttribute('aria-expanded', 'true'); }
+function closePicker() { bandPicker.hidden = true;  bandBtn.classList.remove('open'); bandBtn.setAttribute('aria-expanded', 'false'); }
+
+bandBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  bandPicker.hidden ? openPicker() : closePicker();
+});
+
+document.addEventListener('click', function(e) {
+  if (!bandPicker.hidden && !bandPicker.contains(e.target)) closePicker();
+});
+
+bandPicker.addEventListener('click', function(e) {
+  const chip = e.target.closest('.band-chip');
+  if (!chip) return;
+  bandPicker.querySelectorAll('.band-chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  currentBand = chip.dataset.band;
+  document.getElementById('bandLabel').textContent = chip.textContent.trim();
+  closePicker();
   knownIds.clear();
   isFirstLoad = true;
-  fetchGeneration++; 
+  fetchGeneration++;
   fetchSpots();
 });
 
@@ -110,11 +126,7 @@ function fetchSpots() {
 
       const spots = data.data;
 
-      // Update meta
       document.getElementById('spotCount').textContent = data.count ?? spots.length;
-      if (data.timestamp) {
-        document.getElementById('lastUpdate').textContent = data.timestamp.split(' ')[1].substring(0, 5) + ' UTC';
-      }
 
       if (spots.length === 0) {
         showState('empty');
@@ -169,4 +181,4 @@ function showState(state) {
 showState('loading');
 fetchSpots();
 
-fetchTimer = setInterval(fetchSpots, 1000);
+setInterval(fetchSpots, 1000);

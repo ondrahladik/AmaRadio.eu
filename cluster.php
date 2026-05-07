@@ -36,38 +36,44 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
             <i class="fas fa-layer-group"></i>
             <span id="spotCount">–</span>&nbsp;<?= $text['cluster-spots'] ?>
           </span>
-          <span class="split-btn-time split-btn-time--last">
-            <i class="fa-regular fa-clock"></i>
-            <span id="lastUpdate">–</span>
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Band filter -->
-    <div class="cluster-bands-wrap">
-      <div class="cluster-bands" id="bandFilter">
-        <?php
-        $band_groups = [
-          ['all'],
-          ['160m','80m','60m','40m','30m','20m','17m','15m','12m','10m'],
-          ['6m','4m','2m','70cm'],
-          ['23cm','13cm','9cm','6cm','3cm'],
-        ];
-        $allBands = array_merge(...$band_groups);
-        $first = true;
-        foreach ($band_groups as $group):
-          if (!$first): ?><span class="band-sep"></span><?php endif; $first = false;
-        ?>
-        <div class="band-group">
-          <?php foreach ($group as $b):
-            $label = $b === 'all' ? $text['cluster-band-all'] : $b; ?>
-          <button class="band-btn<?= $b === 'all' ? ' active' : '' ?>" data-band="<?= $b ?>">
-            <?= htmlspecialchars($label) ?>
+          <button class="split-btn-band-btn" id="bandBtn" type="button" aria-expanded="false">
+            <i class="fa-solid fa-tower-broadcast"></i>
+            <span id="bandLabel"><?= $text['cluster-band-all'] ?></span>
+            <i class="fa-solid fa-chevron-down band-btn-chevron"></i>
           </button>
-          <?php endforeach; ?>
         </div>
-        <?php endforeach; ?>
+        <div class="band-picker" id="bandPicker" hidden>
+          <div class="band-picker-group">
+            <button class="band-chip band-chip--all active" data-band="all"><?= $text['cluster-band-all'] ?></button>
+          </div>
+          <div class="band-picker-sep"></div>
+          <div class="band-picker-group">
+            <div class="band-picker-label band-picker-label--hf">HF</div>
+            <div class="band-picker-chips">
+              <?php foreach (['160m','80m','60m','40m','30m','20m','17m','15m','12m','10m'] as $b): ?>
+              <button class="band-chip band-chip--hf" data-band="<?= $b ?>"><?= $b ?></button>
+              <?php endforeach; ?>
+            </div>
+          </div>
+          <div class="band-picker-sep"></div>
+          <div class="band-picker-group">
+            <div class="band-picker-label band-picker-label--vhf">VHF / UHF</div>
+            <div class="band-picker-chips">
+              <?php foreach (['6m','4m','2m','70cm'] as $b): ?>
+              <button class="band-chip band-chip--vhf" data-band="<?= $b ?>"><?= $b ?></button>
+              <?php endforeach; ?>
+            </div>
+          </div>
+          <div class="band-picker-sep"></div>
+          <div class="band-picker-group">
+            <div class="band-picker-label band-picker-label--shf">SHF</div>
+            <div class="band-picker-chips">
+              <?php foreach (['23cm','13cm','9cm','6cm','3cm'] as $b): ?>
+              <button class="band-chip band-chip--shf" data-band="<?= $b ?>"><?= $b ?></button>
+              <?php endforeach; ?>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
