@@ -79,13 +79,15 @@
   display: flex;
   align-items: stretch;
   gap: 6px;
-  width: 100%;
+  width: fit-content;
+  flex-wrap: nowrap;
+  margin: 0 auto;
 }
 
 .band-group {
   display: flex;
-  flex: 1;
   gap: 4px;
+  align-items: stretch;
 }
 
 .band-sep {
@@ -97,11 +99,11 @@
 }
 
 .band-btn {
-  flex: 1;
+  flex: 0 0 60px;
   background: #141414;
   border: 1px solid #242424;
   color: #555;
-  padding: 0 8px;
+  padding: 0;
   border-radius: 6px;
   font-size: 12px;
   font-weight: bold;
@@ -110,30 +112,14 @@
   transition: all 0.15s;
   text-transform: uppercase;
   font-family: inherit;
-  height: 34px;
-  line-height: 34px;
+  height: 25px;
+  line-height: 25px;
   touch-action: manipulation;
   white-space: nowrap;
   text-align: center;
-}
-
-.band-btn {
-  background: #141414;
-  border: 1px solid #242424;
-  color: #555;
-  padding: 0 14px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 0.8px;
-  cursor: pointer;
-  transition: all 0.15s;
-  text-transform: uppercase;
-  font-family: inherit;
-  height: 34px;
-  line-height: 34px;
-  touch-action: manipulation;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .band-btn:hover {
@@ -243,21 +229,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-.age-tag {
-  font-size: 11px;
-  font-variant-numeric: tabular-nums;
-  padding: 2px 7px;
-  border-radius: 4px;
-  font-weight: bold;
-  letter-spacing: 0.3px;
-  display: inline-block;
-}
-
-.age-fresh  { color: #00ffe0; background: #00ffe012; }
-.age-recent { color: #8bc34a; background: #8bc34a12; }
-.age-old    { color: #ffb300; background: #ffb30012; }
-.age-stale  { color: #555;    background: #55555512; }
-
 .callsign {
   text-decoration: none;
   font-weight: bold;
@@ -349,7 +320,7 @@
 
   .split-btn-time { padding: 7px 10px; font-size: 11px; gap: 5px; }
 
-  .band-btn { padding: 0 10px; font-size: 11px; height: 36px; line-height: 36px; }
+  .band-btn { padding: 0 10px; font-size: 11px; }
 
   .cluster-table thead th,
   .cluster-table td { padding: 8px 10px; }
