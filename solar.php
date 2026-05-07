@@ -499,7 +499,6 @@ $bandOrder = ['80m-40m', '30m-20m', '17m-15m', '12m-10m'];
     <div class="solar-attribution">
       <i class="fa-solid fa-database"></i>
       <?= $text['solar-data-source'] ?>
-      &nbsp;|&nbsp;
       <a href="https://www.hamqsl.com/solar.html" target="_blank" rel="noopener">hamqsl.com</a>
       &nbsp;|&nbsp;
       <a href="https://www.swpc.noaa.gov/" target="_blank" rel="noopener">NOAA SWPC</a>
