@@ -259,14 +259,14 @@
   100% { background: transparent; }
 }
 
-.col-date    { width: 8%;   white-space: nowrap; }
-.col-time    { width: 7%;   white-space: nowrap; }
-.col-spotter { width: 13%;  white-space: nowrap; }
-.col-freq    { width: 10%;  white-space: nowrap; }
+.col-date    { width: 8%;   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-time    { width: 7%;   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-spotter { width: 13%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-freq    { width: 10%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .col-country { width: 4%;   text-align: center; }
-.col-dx      { width: 12%;  white-space: nowrap; }
-.col-message { width: 40%;  word-break: break-word; }
-.col-mode    { width: 6%;   text-align: left; }
+.col-dx      { width: 12%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-message { width: 40%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-mode    { width: 6%;   text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .spot-date {
   color: #555;
@@ -372,19 +372,21 @@
 
   .split-btn-time { padding: 7px 10px; font-size: 11px; gap: 5px; }
 
+  .cluster-table { table-layout: auto; }
+  
   .cluster-table thead th,
-  .cluster-table td { padding: 8px 16px; }
+  .cluster-table td { padding: 8px 10px; }
 
   .callsign { font-size: 11px; }
 
-  .col-date    { min-width: 70px; }
-  .col-time    { min-width: 70px; }
-  .col-spotter { min-width: 120px; }
-  .col-freq    { min-width: 120px; }
-  .col-country { min-width: 40px; }
-  .col-dx      { min-width: 120px; }
-  .col-message { min-width: 120px; }
-  .col-mode    { min-width: 120px; }
+  .col-date    { width: auto; min-width: 65px; }
+  .col-time    { width: auto; min-width: 60px; }
+  .col-spotter { width: auto; min-width: 90px; }
+  .col-freq    { width: auto; min-width: 85px; }
+  .col-country { width: auto; min-width: 36px; }
+  .col-dx      { width: auto; min-width: 85px; }
+  .col-message { width: auto; min-width: 100px; }
+  .col-mode    { width: auto; min-width: 60px; }
 }
 
 @media (max-width: 480px) {
