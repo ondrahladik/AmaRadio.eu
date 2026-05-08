@@ -265,7 +265,8 @@
 .col-freq    { width: 10%;  white-space: nowrap; }
 .col-country { width: 4%;   text-align: center; }
 .col-dx      { width: 12%;  white-space: nowrap; }
-.col-message { width: 46%;  word-break: break-word; }
+.col-message { width: 40%;  word-break: break-word; }
+.col-mode    { width: 6%;   text-align: center; }
 
 .spot-date {
   color: #555;

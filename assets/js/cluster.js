@@ -113,7 +113,8 @@ function buildRow(spot, isNew) {
     <td class="col-dx">
       <a href="https://www.qrz.com/db/${encodeCallsign(spot.dx)}" target="_blank" rel="noopener" class="callsign dx-call" title="${window.T.qrz} ${escHtml(spot.dx)}">${escHtml(spot.dx)}</a>
     </td>
-    <td class="col-message"><span class="msg-text">${escHtml(spot.message)}</span>${modeHtml}</td>
+    <td class="col-message"><span class="msg-text">${escHtml(spot.message)}</span></td>
+    <td class="col-mode">${modeHtml}</td>
   </tr>`;
 }
 

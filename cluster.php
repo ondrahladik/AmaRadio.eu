@@ -100,6 +100,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
           <col class="col-country">
           <col class="col-dx">
           <col class="col-message">
+          <col class="col-mode">
         </colgroup>
         <thead>
           <tr>
@@ -110,6 +111,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
             <th class="col-country"></th>
             <th class="col-dx"><?= $text['cluster-col-dx'] ?></th>
             <th class="col-message"><?= $text['cluster-col-message'] ?></th>
+            <th class="col-mode"><?= $text['cluster-col-mode'] ?></th>
           </tr>
         </thead>
         <tbody id="clusterBody"></tbody>

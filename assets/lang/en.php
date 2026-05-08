@@ -202,6 +202,7 @@ $text = [
     'cluster-col-freq'    => 'MHz',
     'cluster-col-dx'      => 'DX',
     'cluster-col-message' => 'Message',
+    'cluster-col-mode'    => 'Mode',
     'cluster-loading'     => 'Loading spots...',
     'cluster-error'       => 'Failed to load data. Check your connection.',
     'cluster-no-spots'    => 'No spots on this band.',
@@ -216,7 +217,7 @@ $text = [
     'help-cluster-title-2'      => '2. Band filtering',
     'help-cluster-description-2'=> 'Use the band selector button in the top-right corner of the page. Clicking it opens a picker with bands grouped into <b>HF</b>, <b>VHF/UHF</b> and <b>SHF</b>. The default <b>All</b> option shows spots from all bands.',
     'help-cluster-title-3'      => '3. Table contents',
-    'help-cluster-description-3'=> '<b>Date</b> - date the spot was received.<br><b>Time</b> - time the spot was received in UTC.<br><b>Spotter</b> - callsign of the station that submitted the spot (links to QRZ.com).<br><b>MHz</b> - frequency in MHz, colour-coded: <span style="color:#ff9800">HF</span>, <span style="color:#00ffe0">VHF/UHF</span>, <span style="color:#ce93d8">SHF</span>.<br><b>Flag</b> - country of the DX station based on callsign prefix.<br><b>DX</b> - callsign of the spotted station (links to QRZ.com).<br><b>Message</b> - accompanying message and detected mode (FT8, CW, SSB…).',
+    'help-cluster-description-3'=> '<b>Date</b> - date the spot was received in dd. mm. format.<br><b>Time</b> - time the spot was received in UTC.<br><b>Spotter</b> - callsign of the station that submitted the spot (links to QRZ.com).<br><b>MHz</b> - frequency in MHz, colour-coded: <span style="color:#ff9800">HF</span>, <span style="color:#00ffe0">VHF/UHF</span>, <span style="color:#ce93d8">SHF</span>.<br><b>Flag</b> - country of the DX station based on callsign prefix.<br><b>DX</b> - callsign of the spotted station (links to QRZ.com).<br><b>Message</b> - accompanying message.<br><b>Mode</b> - detected mode (FT8, CW, SSB…).',
 
     // Solar activity
     'solar-page-title'=> 'Solar activity',
