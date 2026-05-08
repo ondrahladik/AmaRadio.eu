@@ -266,7 +266,7 @@
 .col-country { width: 4%;   text-align: center; }
 .col-dx      { width: 12%;  white-space: nowrap; }
 .col-message { width: 40%;  word-break: break-word; }
-.col-mode    { width: 6%;   text-align: center; }
+.col-mode    { width: 6%;   text-align: left; }
 
 .spot-date {
   color: #555;
@@ -329,7 +329,6 @@
   font-weight: bold;
   padding: 1px 6px;
   border-radius: 3px;
-  margin-left: 6px;
   letter-spacing: 0.5px;
   vertical-align: middle;
 }
@@ -374,9 +373,18 @@
   .split-btn-time { padding: 7px 10px; font-size: 11px; gap: 5px; }
 
   .cluster-table thead th,
-  .cluster-table td { padding: 8px 10px; }
+  .cluster-table td { padding: 8px 16px; }
 
   .callsign { font-size: 11px; }
+
+  .col-date    { min-width: 70px; }
+  .col-time    { min-width: 70px; }
+  .col-spotter { min-width: 120px; }
+  .col-freq    { min-width: 120px; }
+  .col-country { min-width: 40px; }
+  .col-dx      { min-width: 120px; }
+  .col-message { min-width: 120px; }
+  .col-mode    { min-width: 120px; }
 }
 
 @media (max-width: 480px) {

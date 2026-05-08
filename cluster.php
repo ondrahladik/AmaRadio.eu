@@ -34,7 +34,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         <div class="solar-split-btn">
           <span class="split-btn-time">
             <i class="fas fa-layer-group"></i>
-            <span id="spotCount">–</span>&nbsp;<?= $text['cluster-spots'] ?>
+            <span id="spotCount"></span>&nbsp;<?= $text['cluster-spots'] ?>
           </span>
           <button class="split-btn-band-btn" id="bandBtn" type="button" aria-expanded="false">
             <i class="fa-solid fa-tower-broadcast"></i>
