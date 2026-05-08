@@ -55,14 +55,14 @@ bandPicker.addEventListener('click', function(e) {
 
 function formatFreq(khz) {
   const mhz = khz / 1000;
-  return mhz.toFixed(3);
+  return mhz.toFixed(3).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
 }
 
 function freqBandClass(khz) {
-  if (khz < 30000)   return 'freq-hf';   // HF < 30 MHz
-  if (khz < 300000)  return 'freq-vhf';  // VHF 30–300 MHz
-  if (khz < 3000000) return 'freq-uhf';  // UHF 300 MHz–3 GHz
-  return 'freq-shf';                     // SHF > 3 GHz
+  if (khz < 30000)    return 'freq-hf';   // HF < 30 MHz
+  if (khz < 300000)   return 'freq-vhf';  // VHF 30–300 MHz
+  if (khz < 1200000)  return 'freq-uhf';  // UHF 300 MHz–1.2 GHz
+  return 'freq-shf';                      // SHF >= 1.2 GHz
 }
 
 function extractMode(msg) {
