@@ -154,13 +154,13 @@ $text = [
     'help-rotator-description-3' => 'Na mapě se zobrazí tvoje poloha (ikona domu), poloha DX stanice (ikona antény) a přerušovaná oranžová čára znázorňující trasu po velkém kruhu. Kompas v levém panelu zobrazuje ručičkou azimut k DX stanici. Pod kompasem jsou uvedeny vzdálenost a azimut ve stupních.',
 
     // Time
-    'time-title-2' => 'Čas je 00:00:00',
+    'time-title-2' => 'Čas: 00:00:00',
     'time-settings' => 'Nastavení',
     'time-search' => 'Hledat stát nebo časové pásmo...',
     'time-select-timezone' => 'Vyberte časové pásmo',
     'time-fullscreen' => 'Celá obrazovka',
     'time-local-timezone' => 'Nastavit místní časové pásmo',
-    'time-is-title' => 'Čas je ',
+    'time-is-title' => 'Čas: ',
     'time-waiting' => '..načítám..',
     'time-sync-ok' => 'Čas je synchronizován',
     'time-sync-error' => 'časový rozdíl je ',

@@ -154,13 +154,13 @@ $text = [
     'help-rotator-description-3' => 'The map will show your position (home icon), the DX station position (antenna icon) and a dashed orange line representing the great-circle path. The compass in the left panel shows the azimuth to the DX station with an arrow. Distance and azimuth in degrees are shown below the compass.',
 
     // Time
-    'time-title-2' => 'Time is 00:00:00',
+    'time-title-2' => 'Time: 00:00:00',
     'time-settings' => 'Settings',
     'time-search' => 'Search for a state or time zone...',
     'time-select-timezone' => 'Select a time zone',
     'time-fullscreen' => 'Fullscreen mode',
     'time-local-timezone' => 'Set Local Timezone',
-    'time-is-title' => 'Time is ',
+    'time-is-title' => 'Time: ',
     'time-waiting' => '...waiting...',
     'time-sync-ok' => 'the clocks are synchronized',
     'time-sync-error' => 'the time difference is ',
