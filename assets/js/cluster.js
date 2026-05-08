@@ -66,7 +66,7 @@ function freqBandClass(khz) {
 }
 
 function extractMode(msg) {
-  const modes = ['FT8','FT4','JT65','JT9','CW','SSB','AM','FM','RTTY','PSK31','PSK','WSPR','JS8'];
+  const modes = ['FT8','FT4','JT65','JT9','CW','SSB','AM','FM','RTTY','PSK31','PSK','WSPR','JS8','QO-100'];
   for (const m of modes) {
     if (new RegExp('\\b' + m + '\\b', 'i').test(msg)) return m;
   }

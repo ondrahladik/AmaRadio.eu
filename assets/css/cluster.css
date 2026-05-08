@@ -346,6 +346,7 @@
 .mode-js8   { color: #f48fb1; background: #f48fb115; border: 1px solid #f48fb130; }
 .mode-psk31,
 .mode-psk   { color: #ce93d8; background: #ce93d815; border: 1px solid #ce93d830; }
+.mode-qo100 { color: #ff6b9d; background: #ff6b9d15; border: 1px solid #ff6b9d30; }
 
 .solar-attribution {
   font-size: 11px;
