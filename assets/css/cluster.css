@@ -265,8 +265,8 @@
 .col-freq    { width: 10%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .col-country { width: 4%;   text-align: center; }
 .col-dx      { width: 12%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.col-message { width: 40%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.col-mode    { width: 6%;   text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-message { width: 38%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-mode    { width: 8%;   text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .spot-date {
   color: #555;
@@ -347,6 +347,7 @@
 .mode-psk31,
 .mode-psk   { color: #ce93d8; background: #ce93d815; border: 1px solid #ce93d830; }
 .mode-qo100 { color: #ff6b9d; background: #ff6b9d15; border: 1px solid #ff6b9d30; }
+.mode-msk144 { color: #e91e63; background: #e91e6315; border: 1px solid #e91e6330; }
 .mode-wwff  { color: #66bb6a; background: #66bb6a15; border: 1px solid #66bb6a30; }
 
 .solar-attribution {
