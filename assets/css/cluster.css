@@ -348,6 +348,7 @@
 .mode-psk31,
 .mode-psk   { color: #ce93d8; background: #ce93d815; border: 1px solid #ce93d830; }
 .mode-qo100 { color: #ff6b9d; background: #ff6b9d15; border: 1px solid #ff6b9d30; }
+.mode-wwff  { color: #66bb6a; background: #66bb6a15; border: 1px solid #66bb6a30; }
 
 .solar-attribution {
   font-size: 11px;
