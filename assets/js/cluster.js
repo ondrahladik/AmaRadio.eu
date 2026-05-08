@@ -82,6 +82,10 @@ function escHtml(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
+function encodeCallsign(call) {
+  return encodeURIComponent(call).replace(/%2F/g, '/');
+}
+
 function buildRow(spot, isNew) {
   const mode = extractMode(spot.message);
   const freqCls = freqBandClass(spot.freq);
@@ -92,17 +96,17 @@ function buildRow(spot, isNew) {
   const country = lookupCallsign(spot.dx);
   const flagHtml = country
     ? `<img src="https://flagsapi.com/${country.flag.toUpperCase()}/flat/32.png" class="spot-flag" alt="${escHtml(country.name)}" title="${escHtml(country.name)}">`
-    : '<span class="flag-unknown">–</span>';
+    : '<span class="flag-unknown"></span>';
 
   return `<tr class="spot-row${isNew ? ' spot-new' : ''}" data-id="${spot.id}">
     <td class="col-time"><span class="spot-time">${formatTime(spot.timestamp)}</span></td>
     <td class="col-spotter">
-      <a href="https://www.qrz.com/db/${encodeURIComponent(spot.spotter)}" target="_blank" rel="noopener" class="callsign spotter-call" title="${window.T.qrz} ${escHtml(spot.spotter)}">${escHtml(spot.spotter)}</a>
+      <a href="https://www.qrz.com/db/${encodeCallsign(spot.spotter)}" target="_blank" rel="noopener" class="callsign spotter-call" title="${window.T.qrz} ${escHtml(spot.spotter)}">${escHtml(spot.spotter)}</a>
     </td>
     <td class="col-freq"><span class="freq-val ${freqCls}">${formatFreq(spot.freq)}</span></td>
     <td class="col-country">${flagHtml}</td>
     <td class="col-dx">
-      <a href="https://www.qrz.com/db/${encodeURIComponent(spot.dx)}" target="_blank" rel="noopener" class="callsign dx-call" title="${window.T.qrz} ${escHtml(spot.dx)}">${escHtml(spot.dx)}</a>
+      <a href="https://www.qrz.com/db/${encodeCallsign(spot.dx)}" target="_blank" rel="noopener" class="callsign dx-call" title="${window.T.qrz} ${escHtml(spot.dx)}">${escHtml(spot.dx)}</a>
     </td>
     <td class="col-message"><span class="msg-text">${escHtml(spot.message)}</span>${modeHtml}</td>
   </tr>`;
