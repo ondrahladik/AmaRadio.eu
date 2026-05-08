@@ -17,8 +17,8 @@ For easier reference to the original version of AMARADIO.eu, see [Tag v1](https:
 <b>Locator map</b> - Search or compare the distance between two locators.   
 <b>Zone maps</b> - View locators or ITU, CQ, and time zones on the map.  
 <b>Rotator</b> - Get the azimuth and distance to point your rotator.  
-<b>DX Cluster</b> - View the latest spots from the DX Cluster from <a href="https://hamradio.my/" target="_blank" rel="noopener">9M2PJU</a>.  
-<b>Solar activity</b> - View the solar activity from <a href="https://www.hamqsl.com/solar.html" target="_blank" rel="noopener">HAMQSL</a>, <a href="https://www.swpc.noaa.gov/" target="_blank" rel="noopener">NOAA SWPC</a>, <a href="https://sdo.gsfc.nasa.gov/" target="_blank" rel="noopener">NASA SDO</a>.  
+<b>DX Cluster</b> - View the latest spots from the DX Cluster from [9M2PJU](https://hamradio.my/).  
+<b>Solar activity</b> - View the solar activity from [HAMQSL](https://www.hamqsl.com/solar.html), [NOAA SWPC](https://www.swpc.noaa.gov/), [NASA SDO](https://sdo.gsfc.nasa.gov/).  
 <b>Time</b> - View the current time, for example, for logging QSO.
 
 The following features are available on AMARADIO.eu but are not part of this repository.   
