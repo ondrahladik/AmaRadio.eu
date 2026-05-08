@@ -105,18 +105,9 @@ function showMenus() {
 function toggleFullScreen() {
     if (document.fullscreenElement) {
         document.exitFullscreen();
-        body.classList.remove('fullscreen-mode');
-        timePanel.classList.remove('fullscreen-hidden');
-        showMenus();
     } else {
-        body.classList.add('fullscreen-mode');
-        timePanel.classList.add('fullscreen-hidden');
-        hideMenus();
         document.documentElement.requestFullscreen().catch(err => {
             console.log('Fullscreen error:', err);
-            body.classList.remove('fullscreen-mode');
-            timePanel.classList.remove('fullscreen-hidden');
-            showMenus();
         });
     }
 }
@@ -124,10 +115,21 @@ function toggleFullScreen() {
 fullButton.addEventListener('click', toggleFullScreen);
 
 document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement) {
+    const helpModal = document.getElementById('helpModal');
+    const helpButton = document.querySelector('.help-button');
+    
+    if (document.fullscreenElement) {
+        body.classList.add('fullscreen-mode');
+        timePanel.classList.add('fullscreen-hidden');
+        hideMenus();
+        if (helpModal) helpModal.style.display = 'none';
+        if (helpButton) helpButton.style.display = 'none';
+    } else {
         body.classList.remove('fullscreen-mode');
         timePanel.classList.remove('fullscreen-hidden');
         showMenus();
+        if (helpModal) helpModal.style.display = '';
+        if (helpButton) helpButton.style.display = '';
     }
 });
 
