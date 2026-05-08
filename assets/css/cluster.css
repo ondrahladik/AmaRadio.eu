@@ -259,14 +259,14 @@
   100% { background: transparent; }
 }
 
-.col-date    { width: 8%;   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.col-time    { width: 7%;   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.col-spotter { width: 13%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.col-freq    { width: 10%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-date    { width: 8%;   min-width: 65px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-time    { width: 7%;   min-width: 55px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-spotter { width: 13%;  min-width: 90px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-freq    { width: 10%;  min-width: 80px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .col-country { width: 4%;   text-align: center; }
-.col-dx      { width: 12%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.col-message { width: 38%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.col-mode    { width: 8%;   text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-dx      { width: 12%;  min-width: 85px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-message { width: 38%;  min-width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.col-mode    { width: 8%;   min-width: 75px;  text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .spot-date {
   color: #555;
