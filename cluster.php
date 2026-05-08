@@ -93,6 +93,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
       </div>
       <table class="cluster-table" id="clusterTable" style="display:none">
         <colgroup>
+          <col class="col-date">
           <col class="col-time">
           <col class="col-spotter">
           <col class="col-freq">
@@ -102,6 +103,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         </colgroup>
         <thead>
           <tr>
+            <th class="col-date"><?= $text['cluster-col-date'] ?></th>
             <th class="col-time"><?= $text['cluster-col-time'] ?></th>
             <th class="col-spotter"><?= $text['cluster-col-spotter'] ?></th>
             <th class="col-freq"><?= $text['cluster-col-freq'] ?></th>

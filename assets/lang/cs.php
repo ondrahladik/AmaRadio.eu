@@ -196,6 +196,7 @@ $text = [
     'cluster-spots'       => 'spotů',
     'cluster-band-all'    => 'Vše',
     'cluster-col-country' => 'Země',
+    'cluster-col-date'    => 'Datum',
     'cluster-col-time'    => 'Čas',
     'cluster-col-spotter' => 'Spotter',
     'cluster-col-freq'    => 'MHz',
@@ -215,7 +216,7 @@ $text = [
     'help-cluster-title-2'      => '2. Filtrování pásem',
     'help-cluster-description-2'=> 'Pásmo lze vybrat pomocí tlačítka v pravém horním rohu stránky. Po kliknutí se otevře výběr pásem rozdělených do skupin: <b>HF</b>, <b>VHF/UHF</b> a <b>SHF</b>. Výchozí volba <b>Vše</b> zobrazí spoty ze všech pásem.',
     'help-cluster-title-3'      => '3. Obsah tabulky',
-    'help-cluster-description-3'=> '<b>Čas</b> - čas zachycení spotu v UTC.<br><b>Spotter</b> - volací znak stanice, která spot odeslala (odkaz na QRZ.com).<br><b>MHz</b> - frekvence v MHz, barevně odlišená: <span style="color:#ff9800">HF</span>, <span style="color:#00ffe0">VHF/UHF</span>, <span style="color:#ce93d8">SHF</span>.<br><b>Vlajka</b> - země DX stanice dle prefixu volacího znaku.<br><b>DX</b> - volací znak zachycené stanice (odkaz na QRZ.com).<br><b>Zpráva</b> - doprovodná zpráva a detekovaný mód (FT8, CW, SSB…).',
+    'help-cluster-description-3'=> '<b>Datum</b> - datum zachycení spotu.<br><b>Čas</b> - čas zachycení spotu v UTC.<br><b>Spotter</b> - volací znak stanice, která spot odeslala (odkaz na QRZ.com).<br><b>MHz</b> - frekvence v MHz, barevně odlišená: <span style="color:#ff9800">HF</span>, <span style="color:#00ffe0">VHF/UHF</span>, <span style="color:#ce93d8">SHF</span>.<br><b>Vlajka</b> - země DX stanice dle prefixu volacího znaku.<br><b>DX</b> - volací znak zachycené stanice (odkaz na QRZ.com).<br><b>Zpráva</b> - doprovodná zpráva a detekovaný mód (FT8, CW, SSB…).',
 
     // Solar Activity
     'solar-page-title'       => 'Solární aktivita',

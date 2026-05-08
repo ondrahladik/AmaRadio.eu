@@ -259,12 +259,19 @@
   100% { background: transparent; }
 }
 
-.col-time    { width: 8%;   white-space: nowrap; }
+.col-date    { width: 8%;   white-space: nowrap; }
+.col-time    { width: 7%;   white-space: nowrap; }
 .col-spotter { width: 13%;  white-space: nowrap; }
 .col-freq    { width: 10%;  white-space: nowrap; }
 .col-country { width: 4%;   text-align: center; }
 .col-dx      { width: 12%;  white-space: nowrap; }
-.col-message { width: 53%;  word-break: break-word; }
+.col-message { width: 46%;  word-break: break-word; }
+
+.spot-date {
+  color: #555;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
 
 .spot-time {
   color: #666;

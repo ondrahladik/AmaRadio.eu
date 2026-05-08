@@ -62,20 +62,24 @@ function freqBandClass(khz) {
   if (khz < 30000)   return 'freq-hf';   // HF < 30 MHz
   if (khz < 300000)  return 'freq-vhf';  // VHF 30–300 MHz
   if (khz < 3000000) return 'freq-uhf';  // UHF 300 MHz–3 GHz
-  return 'freq-shf';                      // SHF > 3 GHz
+  return 'freq-shf';                     // SHF > 3 GHz
 }
 
 function extractMode(msg) {
   const modes = ['FT8','FT4','JT65','JT9','CW','SSB','AM','FM','RTTY','PSK31','PSK','WSPR','JS8'];
-  const upper = msg.toUpperCase();
   for (const m of modes) {
-    if (upper.includes(m)) return m;
+    if (new RegExp('\\b' + m + '\\b', 'i').test(msg)) return m;
   }
   return null;
 }
 
 function formatTime(ts) {
   return ts.split(' ')[1].substring(0, 5);
+}
+
+function formatDate(ts) {
+  const parts = ts.split(' ')[0].split('-'); 
+  return parts[2] + '. ' + parts[1] + '.';
 }
 
 function escHtml(str) {
@@ -99,6 +103,7 @@ function buildRow(spot, isNew) {
     : '<span class="flag-unknown"></span>';
 
   return `<tr class="spot-row${isNew ? ' spot-new' : ''}" data-id="${spot.id}">
+    <td class="col-date"><span class="spot-date">${formatDate(spot.timestamp)}</span></td>
     <td class="col-time"><span class="spot-time">${formatTime(spot.timestamp)}</span></td>
     <td class="col-spotter">
       <a href="https://www.qrz.com/db/${encodeCallsign(spot.spotter)}" target="_blank" rel="noopener" class="callsign spotter-call" title="${window.T.qrz} ${escHtml(spot.spotter)}">${escHtml(spot.spotter)}</a>
@@ -120,7 +125,7 @@ function fetchSpots() {
       return r.json();
     })
     .then(data => {
-      if (gen !== fetchGeneration) return; // Discard stale response
+      if (gen !== fetchGeneration) return; 
       consecutiveErrors = 0;
 
       if (!data.success|| !Array.isArray(data.data)) {
