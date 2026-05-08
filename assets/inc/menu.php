@@ -48,7 +48,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         </a>
       </div>
       <div class="menu-item<?= $currentPath === '/time' ? ' active' : '' ?>">
-        <a href="/time" title="<?= $text['time'] ?>" target="_blank">
+        <a href="/time" title="<?= $text['time'] ?>">
           <div class="icon-box"><i class="fas fa-clock"></i></div>
           <span><?= $text['time'] ?></span>
         </a>

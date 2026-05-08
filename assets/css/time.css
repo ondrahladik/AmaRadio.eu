@@ -1,185 +1,525 @@
-* {
+html, body {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
-    margin: 0;
-    background-color: #1a1a1a;
-    color: #00ffe0;
-    user-select: none;
+    overflow: hidden;
+    background: #0a0a0a;
     font-family: Arial, Helvetica, sans-serif;
+    color: #aaa;
 }
 
-#time {
+body:fullscreen {
+    background: #0a0a0a;
+}
+
+::-webkit-full-screen {
+    background: #0a0a0a;
+}
+
+.time-wrap {
+    flex: 1;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-display-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.time-display {
     font-family: 'Droid Sans', arial, monospace;
     font-weight: bolder;
     font-size: 20vw;
     text-align: center;
     white-space: nowrap;
     transition: font-size 0.2s;
-    width: 90%;
+    color: #00ffe0;
+    line-height: 1;
 }
 
-#timezone-container {
-    position: fixed;
-    top: 5px;
-    right: 60px;
+.time-panel {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 900;
+    background: rgba(10, 10, 10, 0.94);
+    border: 2px solid #00ffe0;
+    border-radius: 12px;
+    padding: 14px 12px;
+    width: 240px;
+    box-shadow: 0 0 24px #00ffe025;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: stretch;
+    transition: all 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
+    max-width: 280px;
+}
+
+.time-panel.collapsed {
+    width: auto;
+    padding: 10px 6px;
+    background: rgba(10, 10, 10, 0.97);
+}
+
+.time-panel.collapsed .panel-content {
     display: none;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 300px;
-    background-color: #1a1a1a;
-    padding: 10px;
-    border-radius: 5px;
 }
 
-#timezone-search,
+.panel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+    transition: opacity 0.3s ease;
+}
+
+.time-panel.collapsed .panel-content {
+    opacity: 0;
+}
+
+.panel-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.panel-toggle {
+    background: #00ffe0;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    min-width: 24px;
+}
+
+.panel-toggle:hover {
+    background: #00e0c4;
+}
+
+.panel-toggle i {
+    transition: transform 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-panel.collapsed .panel-toggle i {
+    transform: scaleX(-1);
+}
+
+.btn-icon-vertical {
+    background: #00ffe0;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 32px;
+}
+
+.btn-icon-vertical:hover {
+    background: #00e0c4;
+}
+
+.btn-icon-vertical i {
+    width: 14px;
+    text-align: center;
+}
+
+.panel-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.panel-group label {
+    font-size: 10px;
+    color: #00ffe0;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: bold;
+}
+
+.input-row {
+    display: flex;
+    gap: 5px;
+}
+
+.input-row input {
+    flex: 1;
+    min-width: 0;
+    background: #151515;
+    border: 1px solid #00ffe044;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 13px;
+    padding: 5px 7px;
+    text-transform: uppercase;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-row input::placeholder {
+    text-transform: none;
+    color: #444;
+    font-size: 11px;
+}
+
+.input-row input:focus {
+    border-color: #00ffe0;
+    box-shadow: 0 0 6px #00ffe030;
+}
+
 #timezone-selector {
     width: 100%;
-    padding: 10px;
-    font-size: 1rem;
+    padding: 8px;
+    font-size: 12px;
     box-sizing: border-box;
-}
-
-#timezone-search {
-    margin-bottom: 10px;
-    border: 1px solid #333333;
-    border-radius: 5px;
-}
-
-#timezone-selector {
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-#toggle-button,
-#full-button,
-#local-timezone-button {
-    position: fixed;
-    background-color: transparent;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
+    background: #151515;
+    border: 1px solid #00ffe044;
+    border-radius: 6px;
+    color: #fff;
+    outline: none;
     cursor: pointer;
-    z-index: 1000;
+    transition: border-color 0.2s;
 }
 
-#toggle-button {
-    top: 5px;
-    right: 5px;
+#timezone-selector:focus {
+    border-color: #00ffe0;
 }
 
-#full-button {
-    top: 55px;
-    right: 5px;
+.sync-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px 10px;
+    background: #111;
+    border-radius: 8px;
+    border: 1px solid #00ffe018;
 }
 
-#local-timezone-button {
-    top: 105px;
-    right: 9px;
+.sync-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: #888;
 }
 
-#timezone-container input,
-#timezone-container select {
-    background-color: #00ffe0;
-    border-color: black;
-}
-
-input[type="text"]:active,
-input[type="text"]:focus-visible {
-    outline: none;
-    box-shadow: none;
-}
-
-input::placeholder {
-    color: black;
-    font-style: italic;
-    opacity: 50%;
-}
-
-select:active,
-select:focus-visible {
-    outline: none;
-    box-shadow: none;
+.sync-row i {
+    color: #00ffe0;
+    width: 14px;
+    text-align: center;
+    flex-shrink: 0;
+    font-size: 11px;
 }
 
 #time-control {
-    opacity: 40%;
-    font-size: max(1vw, 13px);
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-details {
-    padding: 5px;
-    cursor: pointer;
-}
-
-summary {
-    font-weight: bold;
-    font-size: 1.1em;
-}
-
-.time-menu i {
-    font-size: 40px;
     color: #00ffe0;
-    z-index: 900 !important;
+    font-size: 12px;
+    font-weight: 500;
 }
 
-.time-menu:hover i {
-    color: #00e0c0;
+/* Fullscreen mode */
+body.fullscreen-mode {
+    background: #0a0a0a;
 }
 
-button {
-    z-index: 900 !important;
+body.fullscreen-mode::before {
+    content: '';
+    display: none !important;
 }
 
-.utc {
-    font-family: Arial, sans-serif !important;
+body.fullscreen-mode > nav,
+body.fullscreen-mode > .menu,
+body.fullscreen-mode nav {
+    display: none !important;
+}
+
+.time-panel.fullscreen-hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 @media (max-width: 768px) {
-    #time {
+    .time-display {
         font-size: 15vw;
     }
 
-    #timezone-container {
-        width: 80%;
-        right: 30px;
-        left: 0;
-        margin: 0 auto;
-        top: 10px;
-        padding: 5px;
+    .time-panel {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        transform: none;
+        top: auto;
+        width: auto;
+        max-width: calc(100vw - 20px);
+        box-sizing: border-box;
+        border-radius: 12px;
+        border: 2px solid #00ffe0;
+        padding: 0;
+        box-shadow: 0 0 24px #00ffe025;
+        background: transparent;
+        gap: 0;
+        flex-direction: row;
+        z-index: 1001;
+        align-items: stretch;
+        justify-content: flex-start;
     }
 
-    #timezone-search,
+    .time-panel.collapsed {
+        width: auto;
+        bottom: 10px;
+        left: 10px;
+        transform: none;
+        padding: 0;
+        background: rgba(10, 10, 10, 0.96);
+    }
+
+    .time-panel.collapsed .panel-controls {
+        padding: 10px;
+    }
+
+    .panel-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+        justify-content: flex-end;
+        order: 1;
+        padding: 10px;
+        background: rgba(10, 10, 10, 0.96);
+        border-radius: 10px 0 0 10px;
+        flex: 1;
+    }
+
+    .time-panel.collapsed .panel-controls {
+        border-radius: 10px;
+    }
+
+    .panel-content {
+        display: flex !important;
+        opacity: 1 !important;
+        flex-direction: column;
+        gap: 10px;
+        flex: 0 1 auto;
+        min-width: 200px;
+        order: 2;
+        max-width: none;
+        margin-top: 0;
+        padding: 10px;
+        border-top: none;
+        border-left: 1px solid #00ffe033;
+        background: rgba(10, 10, 10, 0.96);
+        border-radius: 0 10px 10px 0;
+    }
+
+    .time-panel.collapsed .panel-content {
+        display: none !important;
+        opacity: 0 !important;
+    }
+
+    .panel-group label {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .input-row {
+        display: flex;
+        gap: 5px;
+    }
+
+    .input-row input {
+        font-size: 16px;
+        padding: 8px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .input-row input::placeholder {
+        font-size: 11px;
+    }
+
     #timezone-selector {
-        font-size: 0.9rem;
+        font-size: 14px;
+        padding: 8px;
+        width: 100%;
     }
 
-    #toggle-button {
-        right: 0;
-        padding-right: 15px;
+    .sync-info {
+        padding: 8px;
+        background: rgba(17, 17, 17, 0.8);
+    }
+
+    .sync-row {
+        font-size: 12px;
+    }
+
+    #time-control {
+        font-size: 12px;
+    }
+
+    .btn-icon-vertical {
+        padding: 8px;
+        font-size: 14px;
+        min-width: 36px;
+        height: 36px;
     }
 
     #full-button {
         display: none;
     }
 
-    #local-timezone-button {
-        top: 45px;
-        right: 8px;
+    .panel-toggle {
+        padding: 8px;
+        font-size: 14px;
+        min-width: 36px;
+        height: 36px;
+        order: 3;
     }
 
-    .time-menu i {
-        font-size: 30px;
+    .time-panel.collapsed .btn-icon-vertical {
+        display: flex;
     }
 
+    .time-panel.collapsed .panel-toggle {
+        display: flex;
+    }
+
+    .time-wrap {
+        flex-direction: column;
+    }
+
+    .time-display-container {
+        flex: 1;
+        order: 2;
+        padding-bottom: 0;
+    }
+
+    .time-panel {
+        order: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .time-display {
+        font-size: 12vw;
+    }
+
+    .time-panel {
+        bottom: 10px;
+        left: 10px;
+        width: auto;
+        max-width: calc(100vw - 20px);
+        gap: 0;
+        padding: 0;
+        z-index: 1001;
+        align-items: stretch;
+    }
+
+    .time-panel.collapsed {
+        width: auto;
+        bottom: 10px;
+        left: 10px;
+        padding: 0;
+        background: rgba(10, 10, 10, 0.96);
+    }
+
+    .time-panel.collapsed .panel-controls {
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    .panel-controls {
+        gap: 6px;
+        flex-direction: column;
+        padding: 8px;
+        background: rgba(10, 10, 10, 0.96);
+        border-radius: 10px 0 0 10px;
+        justify-content: flex-end;
+        flex: 1;
+    }
+
+    .btn-icon-vertical {
+        padding: 8px;
+        font-size: 14px;
+        min-width: 38px;
+        height: 38px;
+    }
+
+    #full-button {
+        display: none;
+    }
+
+    .panel-toggle {
+        padding: 8px;
+        font-size: 14px;
+        min-width: 38px;
+        height: 38px;
+    }
+
+    .panel-content {
+        gap: 8px;
+        margin-top: 0;
+        padding: 8px;
+        border-top: none;
+        border-left: 1px solid #00ffe033;
+        border-radius: 0 10px 10px 0;
+        min-width: 180px;
+    }
+
+    .input-row input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #timezone-selector {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .sync-info {
+        padding: 8px;
+    }
+
+    .panel-group label {
+        font-size: 9px;
+    }
+
+    .time-display-container {
+        padding-bottom: 0;
+    }
 }

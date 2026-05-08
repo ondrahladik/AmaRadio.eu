@@ -168,9 +168,12 @@ $text = [
 
     // Time help
     'help-time' => 'Help for time',
-    'help-time-description-1' => 'This function displays the time, which can be viewed in any time zone.<br><br>To display the time as best as possible, the time is obtained from your device. Sometimes it can happen that the time on your device is not syncronized. To check, you can check the time according to this time.',
+    'help-time-title-1' => '1. About this feature',
+    'help-time-description-1' => 'This function displays the time, which can be viewed in any time zone.<br><br>To display the time as best as possible, the time is obtained from your device. Sometimes it can happen that the time on your device is not synchronized. To check, you can verify the time according to this time.',
     'help-time-description-2' => '<div class="utc">UTC = <iframe src="https://free.timeanddate.com/clock/i9zu5611/tluk/fs16/fcaaa/tc121212/pl0/pr0/pt5/pb0/th1" frameborder="0" width="64" height="20"></iframe></div>',
+    'help-time-title-2' => '2. Time synchronization',
     'help-time-description-3' => 'Below the time, the current time synchronization status is displayed. That is, if your time is synchronized with the server correctly or if the synchronization difference is shown in seconds.',
+    'help-time-title-3' => '3. How to synchronize',
     'help-time-description-4' => 'Below you can see instructions on how to synchronize the clock on your computer.',
     'help-time-description-5' => '<details><summary>Windows</summary>Open Settings > Select Time and Language > Click Date and Time<br>Under the "Synchronize your clock" option, select the "Sync Now" button</details>',
     'help-time-description-6' => '<details><summary>Mac</summary>Choose the Apple menu icon > System Settings > Select General on the sidebar > Date and Time<br>Turn on "Set time zone automatically using your current location"</details>',

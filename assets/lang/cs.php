@@ -168,9 +168,12 @@ $text = [
 
     // Time help
     'help-time' => 'Nápověda k hodinám',
+    'help-time-title-1' => '1. O funkci',
     'help-time-description-1' => 'Tato funkce zobrazuje čas, který si lze zobrazit v libovolném časovém pásmu.<br><br>Pro co nejlepší zobrazení času se čas získává z vašeho zařízení. Někdy se může stát, že čas na vašem zařízení není synchronizovaný. Pro kontrolu si můžete čas zkontrolovat podle tohoto času.',
     'help-time-description-2' => '<div class="utc">UTC = <iframe src="https://free.timeanddate.com/clock/i9zu5611/tluk/fs16/fcaaa/tc121212/pl0/pr0/pt5/pb0/th1" frameborder="0" width="64" height="20"></iframe></div>',
+    'help-time-title-2' => '2. Synchronizace času',
     'help-time-description-3' => 'Pod časem se zobrazuje informace o stavu synchronizace. Ukazuje, jestli je váš čas správně sladěný se serverem, nebo jak velká je případná odchylka v sekundách.',
+    'help-time-title-3' => '3. Jak synchronizovat',
     'help-time-description-4' => 'Níže si můžete zobrazit pokyny, jak synchronizovat hodiny v počítači.',
     'help-time-description-5' => '<details><summary>Windows</summary>Otevřete Nastavení > Vyberte Čas a jazyk > Klikněte na Datum a čas<br>V části „Synchronizovat hodiny“ vyberte tlačítko „Synchronizovat“</details>',
     'help-time-description-6' => '<details><summary>Mac</summary>Vyberte ikonu nabídky Apple > Nastavení systému > Na bočním panelu vyberte Obecné > Datum a čas<br>Zapněte možnost „Automaticky nastavit časové pásmo podle vaší aktuální polohy“</details>',

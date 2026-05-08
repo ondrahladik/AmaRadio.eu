@@ -2,13 +2,25 @@ const timezones = Intl.supportedValuesOf('timeZone');
 const timezoneSelector = document.getElementById('timezone-selector');
 const searchInput = document.getElementById('timezone-search');
 const timeDisplay = document.getElementById('time');
-const timezoneContainer = document.getElementById('timezone-container');
-const toggleButton = document.getElementById('toggle-button');
 const fullButton = document.getElementById('full-button');
 const localTimezoneButton = document.getElementById('local-timezone-button');
 const timeControlDisplay = document.getElementById('time-control');
+const timePanel = document.getElementById('timePanel');
+const panelToggleButton = document.getElementById('panel-toggle-button');
+const body = document.body;
 
-let isTimezoneContainerVisible = false;
+let isPanelExpanded = false;
+
+function togglePanel() {
+    isPanelExpanded = !isPanelExpanded;
+    if (isPanelExpanded) {
+        timePanel.classList.remove('collapsed');
+    } else {
+        timePanel.classList.add('collapsed');
+    }
+}
+
+panelToggleButton.addEventListener('click', togglePanel);
 
 function updateUrl() {
     const timezone = timezoneSelector.value.replace(/\//g, '-'); 
@@ -76,26 +88,48 @@ function initializeFromUrl() {
 initializeFromUrl();
 setInterval(updateTime, 1000);
 
-toggleButton.addEventListener('click', () => {
-    if (timezoneContainer.style.display === 'none' || timezoneContainer.style.display === '') {
-        timezoneContainer.style.display = 'flex';
-        isTimezoneContainerVisible = true;
-    } else {
-        timezoneContainer.style.display = 'none';
-        isTimezoneContainerVisible = false;
-    }
-    updateUrl(); 
-});
+function hideMenus() {
+    const navs = document.querySelectorAll('nav, .navbar, .menu, [role="navigation"]');
+    navs.forEach(nav => {
+        nav.style.display = 'none';
+    });
+}
+
+function showMenus() {
+    const navs = document.querySelectorAll('nav, .navbar, .menu, [role="navigation"]');
+    navs.forEach(nav => {
+        nav.style.display = '';
+    });
+}
 
 function toggleFullScreen() {
     if (document.fullscreenElement) {
         document.exitFullscreen();
+        body.classList.remove('fullscreen-mode');
+        timePanel.classList.remove('fullscreen-hidden');
+        showMenus();
     } else {
-        document.documentElement.requestFullscreen();
+        body.classList.add('fullscreen-mode');
+        timePanel.classList.add('fullscreen-hidden');
+        hideMenus();
+        document.documentElement.requestFullscreen().catch(err => {
+            console.log('Fullscreen error:', err);
+            body.classList.remove('fullscreen-mode');
+            timePanel.classList.remove('fullscreen-hidden');
+            showMenus();
+        });
     }
 }
 
 fullButton.addEventListener('click', toggleFullScreen);
+
+document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+        body.classList.remove('fullscreen-mode');
+        timePanel.classList.remove('fullscreen-hidden');
+        showMenus();
+    }
+});
 
 function setLocalTimezone() {
     const localTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
