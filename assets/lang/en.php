@@ -316,4 +316,16 @@ $text = [
     'help-solar-description-3' => 'Shows special VHF propagation modes: <b>VHF Aurora</b> - ionospheric propagation via the polar aurora, <b>E-Skip</b> - propagation via the sporadic E layer. These conditions enable exceptional long-distance contacts on VHF bands.',
     'help-solar-title-4'     => '4. Charts and visualisations',
     'help-solar-description-4' => 'The solar flux chart shows monthly average SFI (F10.7) and sunspot numbers for the past 2 years from NOAA data.<br><br>The visualisations section shows solar disk images from the SDO satellite (NASA) and additional data from SWPC NOAA.',
+
+    // Settings page
+    'settings-page-title'    => 'Settings',
+    'settings-language'      => 'Language',
+    'settings-callsign'      => 'Callsign',
+    'settings-locator'       => 'Home locator',
+    'settings-save'          => 'Save',
+    'settings-success'       => 'Settings saved successfully',
+    'settings-error'         => 'Error saving settings',
+    'settings-callsign-help' => 'Your callsign',
+    'settings-locator-help'  => 'Your locator',
 ];
+

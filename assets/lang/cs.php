@@ -316,4 +316,16 @@ $text = [
     'help-solar-description-3' => 'Zobrazuje speciální způsoby šíření na VHF: <b>VHF Aurora</b> - ionosférické šíření přes polární záři, <b>E-Skip</b> - šíření přes sporadickou vrstvu E. Tyto podmínky umožňují výjimečné dálkové spojení na VHF pásmech.',
     'help-solar-title-4'     => '4. Grafy a vizualizace',
     'help-solar-description-4' => 'Graf solárního toku zobrazuje měsíční průměry SFI (F10.7) a počtu slunečních skvrn za poslední 2 roky z dat NOAA.<br><br>V sekci vizualizace jsou zobrazeny snímky Slunce z družice SDO (NASA) a další data ze SWPC NOAA.',
-]; 
+
+    // Settings page
+    'settings-page-title'    => 'Nastavení',
+    'settings-language'      => 'Jazyk',
+    'settings-callsign'      => 'Volací značka',
+    'settings-locator'       => 'Domovský lokátor',
+    'settings-save'          => 'Uložit',
+    'settings-success'       => 'Nastavení bylo úspěšně uloženo',
+    'settings-error'         => 'Chyba při ukládání nastavení',
+    'settings-callsign-help' => 'Váš volací znak',
+    'settings-locator-help'  => 'Váš lokátor',
+];
+
