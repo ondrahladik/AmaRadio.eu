@@ -1,0 +1,232 @@
+@font-face {
+    font-family: 'Orbitron';
+    src: url('/assets/font/Orbitron/static/Orbitron-Regular.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    background-color: transparent;
+}
+
+.content-settings {
+    text-align: center;
+    color: #aaa;
+}
+
+.content-settings h1 {
+    font-family: 'Orbitron', Arial;
+    color: #00ffe0;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #aaa;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.form-group {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    color: #00ffe0;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    background: #0a0a0a;
+    border: 1px solid #00ffe0;
+    border-radius: 8px;
+    color: #aaa;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #00ffe0;
+    color: #00ffe0;
+}
+
+.form-group input::placeholder {
+    color: #666;
+}
+
+.language-selector {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.lang-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: #0a0a0a;
+    border: 2px solid #00ffe0;
+    border-radius: 8px;
+    color: #aaa;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    justify-content: center;
+}
+
+.lang-btn img {
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.lang-btn:hover {
+    background: rgba(0, 255, 224, 0.1);
+    transform: scale(1.05);
+}
+
+.lang-btn.active {
+    background: rgba(0, 255, 224, 0.2);
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 140px;
+}
+
+.btn-save {
+    background: #00ffe0;
+    color: #000;
+    border: 2px solid #00ffe0;
+}
+
+.btn-save:hover {
+    transform: scale(1.05);
+}
+
+.btn-save:active {
+    transform: scale(0.98);
+}
+
+.message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    padding: 24px 32px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1rem;
+    display: none;
+    animation: modalZoomIn 0.3s ease, modalZoomOut 0.3s ease 2.7s forwards;
+    z-index: 2000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    border: 2px solid;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+@keyframes modalZoomIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes modalZoomOut {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
+.message.success,
+.message.error {
+    display: block;
+}
+
+.message.success {
+    background: rgba(0, 255, 150, 0.15);
+    color: #00ff96;
+    border-color: #00ff96;
+}
+
+.message.error {
+    background: rgba(255, 100, 100, 0.15);
+    color: #ff6464;
+    border-color: #ff6464;
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 500px;
+    }
+
+    .content-settings h1 {
+        font-size: 1.8rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
