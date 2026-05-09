@@ -62,6 +62,10 @@ include 'assets/lang/lang.php';
         <h1><i class="fas fa-sun"></i> <?= $text['solar'] ?></h1>
         <p><?= $text['solar-title'] ?></p>
       </a>
+      <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
+        <h1><i class="fas fa-file"></i> <?= $text['bandplan'] ?></h1>
+        <p><?= $text['bandplan-title'] ?></p>
+      </a>
       <a href="/time" class="tool-block">
         <h1><i class="fa-solid fa-clock"></i> <?= $text['time'] ?></h1>
         <p><?= $text['time-title'] ?></p>
