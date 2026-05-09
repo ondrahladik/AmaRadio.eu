@@ -74,7 +74,7 @@ include 'assets/lang/lang.php';
         <h1><i class="fas fa-database"></i> <?= $text['ctu-database'] ?></h1>
         <p><?= $text['ctu-title'] ?></p>
       </a>
-      <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
+      <a href="/setting" class="tool-block">
         <h1><i class="fas fa-cog"></i> <?= $text['settings'] ?></h1>
         <p><?= $text['settings-title'] ?></p>
       </a>

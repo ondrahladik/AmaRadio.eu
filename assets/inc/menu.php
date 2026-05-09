@@ -59,6 +59,12 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
           <span><?= $text['ctu-database'] ?></span>
         </a>
       </div>
+      <div class="menu-item<?= $currentPath === '/setting' ? ' active' : '' ?>">
+        <a href="/setting" title="<?= $text['settings-page-title'] ?>">
+          <div class="icon-box"><i class="fas fa-cog"></i></div>
+          <span><?= $text['settings-page-title'] ?></span>
+        </a>
+      </div>
       <div class="menu-item lang-switcher" id="langSwitcher">
         <a style="cursor: pointer" onclick="toggleLangDropdown(event)" title="<?= $text['change-lang'] ?>">
           <div class="icon-box">
@@ -128,3 +134,4 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     });
   </script>
 </body>
+
