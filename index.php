@@ -14,7 +14,7 @@ include 'assets/lang/lang.php';
   <meta property="og:title" content="AMARADIO.eu">
   <meta property="og:description" content="<?= $text['description'] ?>">
   <?php include 'assets/inc/head.php'?>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"/>
   <link rel="stylesheet" href="assets/css/index.css"/>
 </head>
 <body>
@@ -35,15 +35,15 @@ include 'assets/lang/lang.php';
         <p><?= $text['dashboard-title'] ?></p>
       </a>
       <a href="/prefix" class="tool-block">
-        <h1><i class="fas fa-search"></i> <?= $text['prefix-search'] ?></h1>
+        <h1><i class="fa-solid fa-magnifying-glass"></i> <?= $text['prefix-search'] ?></h1>
         <p><?= $text['prefix-title'] ?></p>
       </a>
       <a href="/locator-map" class="tool-block">
-        <h1><i class="fas fa-map-marker-alt"></i> <?= $text['locator-map'] ?></h1>
+        <h1><i class="fa-solid fa-location-dot"></i> <?= $text['locator-map'] ?></h1>
         <p><?= $text['locator-title'] ?></p>
       </a>
       <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
-        <h1><i class="fas fa-globe"></i> <?= $text['qso-map'] ?></h1>
+        <h1><i class="fa-solid fa-globe"></i> <?= $text['qso-map'] ?></h1>
         <p><?= $text['qso-title'] ?></p>
       </a>
       <a href="/zone-map" class="tool-block">
@@ -51,35 +51,43 @@ include 'assets/lang/lang.php';
         <p><?= $text['zone-title'] ?></p>
       </a>
       <a href="/rotator" class="tool-block">
-        <h1><i class="fas fa-compass"></i> <?= $text['rotator'] ?></h1>
+        <h1><i class="fa-solid fa-compass"></i> <?= $text['rotator'] ?></h1>
         <p><?= $text['rotator-title'] ?></p>
       </a>
       <a href="/cluster" class="tool-block">
-        <h1><i class="fas fa-circle-nodes"></i> <?= $text['cluster'] ?></h1>
+        <h1><i class="fa-solid fa-circle-nodes"></i> <?= $text['cluster'] ?></h1>
         <p><?= $text['cluster-title'] ?></p>
       </a>
       <a href="/solar" class="tool-block">
-        <h1><i class="fas fa-sun"></i> <?= $text['solar'] ?></h1>
+        <h1><i class="fa-solid fa-sun"></i> <?= $text['solar'] ?></h1>
         <p><?= $text['solar-title'] ?></p>
       </a>
       <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
-        <h1><i class="fas fa-file"></i> <?= $text['bandplan'] ?></h1>
+        <h1><i class="fa-solid fa-file"></i> <?= $text['bandplan'] ?></h1>
         <p><?= $text['bandplan-title'] ?></p>
+      </a>
+      <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
+        <h1><i class="fa-solid fa-microphone"></i> <?= $text['cw-encoder'] ?></h1>
+        <p><?= $text['cw-encoder-title'] ?></p>
+      </a>
+      <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
+        <h1><i class="fa-solid fa-volume"></i> <?= $text['cw-decoder'] ?></h1>
+        <p><?= $text['cw-decoder-title'] ?></p>
       </a>
       <a href="/time" class="tool-block">
         <h1><i class="fa-solid fa-clock"></i> <?= $text['time'] ?></h1>
         <p><?= $text['time-title'] ?></p>
       </a>
       <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
-        <h1><i class="fas fa-database"></i> <?= $text['qrg-database'] ?></h1>
+        <h1><i class="fa-solid fa-database"></i> <?= $text['qrg-database'] ?></h1>
         <p><?= $text['qrg-title'] ?></p>
       </a>
       <a href="https://ctu.amaradio.eu" class="tool-block" target="_blank">
-        <h1><i class="fas fa-database"></i> <?= $text['ctu-database'] ?></h1>
+        <h1><i class="fa-solid fa-database"></i> <?= $text['ctu-database'] ?></h1>
         <p><?= $text['ctu-title'] ?></p>
       </a>
       <a href="/settings" class="tool-block">
-        <h1><i class="fas fa-cog"></i> <?= $text['settings'] ?></h1>
+        <h1><i class="fa-solid fa-gear"></i> <?= $text['settings'] ?></h1>
         <p><?= $text['settings-title'] ?></p>
       </a>
     </div>

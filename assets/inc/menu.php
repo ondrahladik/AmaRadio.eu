@@ -1,7 +1,7 @@
 <?php
 $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 ?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"/>
 <link rel="stylesheet" href="/assets/css/menu.css">
 <link rel="stylesheet" href="assets/css/help-modal.css">
 </head>
@@ -13,31 +13,31 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     <div class="menu" id="mobileMenu">
       <div class="menu-item<?= $currentPath === '/prefix' ? ' active' : '' ?>">
         <a href="/prefix" title="<?= $text['prefix-search'] ?>">
-          <div class="icon-box"><i class="fas fa-search"></i></div>
+          <div class="icon-box"><i class="fa-solid fa-magnifying-glass"></i></div>
           <span><?= $text['prefix-search'] ?></span>
         </a>
       </div>
       <div class="menu-item<?= $currentPath === '/locator-map' ? ' active' : '' ?>">
         <a href="/locator-map" title="<?= $text['locator-map'] ?>">
-          <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
           <span><?= $text['locator-map'] ?></span>
         </a>
       </div>
       <div class="menu-item<?= $currentPath === '/zone-map' ? ' active' : '' ?>">
         <a href="/zone-map" title="<?= $text['zone-map'] ?>">
-          <div class="icon-box"><i class="fas fa-map"></i></div>
+          <div class="icon-box"><i class="fa-solid fa-map"></i></div>
           <span><?= $text['zone-map'] ?></span>
         </a>
       </div>
       <div class="menu-item<?= $currentPath === '/rotator' ? ' active' : '' ?>">
         <a href="/rotator" title="<?= $text['rotator'] ?>">
-          <div class="icon-box"><i class="fas fa-compass"></i></div>
+          <div class="icon-box"><i class="fa-solid fa-compass"></i></div>
           <span><?= $text['rotator'] ?></span>
         </a>
       </div>
       <div class="menu-item<?= $currentPath === '/cluster' ? ' active' : '' ?>">
         <a href="/cluster" title="<?= $text['cluster'] ?>">
-          <div class="icon-box"><i class="fas fa-circle-nodes"></i></div>
+          <div class="icon-box"><i class="fa-solid fa-circle-nodes"></i></div>
           <span><?= $text['cluster'] ?></span>
         </a>
       </div>
@@ -49,19 +49,19 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
       </div>
       <div class="menu-item<?= $currentPath === '/time' ? ' active' : '' ?>">
         <a href="/time" title="<?= $text['time'] ?>">
-          <div class="icon-box"><i class="fas fa-clock"></i></div>
+          <div class="icon-box"><i class="fa-solid fa-clock"></i></div>
           <span><?= $text['time'] ?></span>
         </a>
       </div>
       <div class="menu-item">
         <a href="https://ctu.amaradio.eu" target="_blank" rel="noopener" title="<?= $text['ctu-database'] ?>">
-          <div class="icon-box"><i class="fas fa-database"></i></div>
+          <div class="icon-box"><i class="fa-solid fa-database"></i></div>
           <span><?= $text['ctu-database'] ?></span>
         </a>
       </div>
       <div class="menu-item<?= $currentPath === '/settings' ? ' active' : '' ?>">
         <a href="/settings" title="<?= $text['settings-page-title'] ?>">
-          <div class="icon-box"><i class="fas fa-cog"></i></div>
+          <div class="icon-box"><i class="fa-solid fa-gear"></i></div>
           <span><?= $text['settings-page-title'] ?></span>
         </a>
       </div>
