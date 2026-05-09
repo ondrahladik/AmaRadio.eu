@@ -58,7 +58,7 @@ body {
     display: flex;
     align-items: center;
     background: #222;
-    color: white;
+    color: rgb(240, 240, 240);
     text-decoration: none;
     padding: 0 10px;
     height: 50px;
@@ -76,13 +76,11 @@ body {
 
 .menu-item i {
     font-size: 24px;
-    color: white;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    color: rgb(240, 240, 240);
 }
 
 .menu-item a:hover i {
     color: #00ffe0;
-    text-shadow: 0 0 8px #00ffe080;
 }
 
 .menu-item.active i {
