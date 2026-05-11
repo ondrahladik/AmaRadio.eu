@@ -1,11 +1,13 @@
-window.addEventListener('DOMContentLoaded', function() {
+function applyStoredSettings() {
   const lang = localStorage.getItem('lang') || 'cs';
   const mycall = localStorage.getItem('mycall') || '';
   const mylocator = localStorage.getItem('mylocator') || '';
+  const maplayer = localStorage.getItem('maplayer') || 'carto';
 
   document.getElementById('language').value = lang;
   document.getElementById('callsign').value = mycall;
   document.getElementById('locator').value = mylocator;
+  document.getElementById('maplayer').value = maplayer;
 
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.remove('active');
@@ -13,6 +15,14 @@ window.addEventListener('DOMContentLoaded', function() {
       btn.classList.add('active');
     }
   });
+}
+
+window.addEventListener('DOMContentLoaded', applyStoredSettings);
+
+window.addEventListener('pageshow', function(event) {
+  if (event.persisted) {
+    applyStoredSettings();
+  }
 });
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -35,6 +45,7 @@ document.getElementById('settingsForm').addEventListener('submit', function(e) {
   const lang = document.getElementById('language').value;
   const mycall = document.getElementById('callsign').value.toUpperCase();
   const mylocator = document.getElementById('locator').value.toUpperCase();
+  const maplayer = document.getElementById('maplayer').value;
 
   if (mylocator && !/^[A-R]{2}[0-9]{2}[A-X]{2}$/.test(mylocator)) {
     messageDiv.textContent = window.settingsMessages.invalidLocator;
@@ -46,6 +57,7 @@ document.getElementById('settingsForm').addEventListener('submit', function(e) {
     localStorage.setItem('lang', lang);
     localStorage.setItem('mycall', mycall);
     localStorage.setItem('mylocator', mylocator);
+    localStorage.setItem('maplayer', maplayer);
 
     fetch('/assets/lang/save.php', {
       method: 'POST',
