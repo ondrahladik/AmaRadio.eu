@@ -339,5 +339,6 @@ $text = [
     'settings-error'         => 'Error saving settings',
     'settings-callsign-help' => 'Your callsign',
     'settings-locator-help'  => 'Your locator',
+    'settings-maplayer'      => 'Map layer',
 ];
 

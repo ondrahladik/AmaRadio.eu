@@ -339,5 +339,6 @@ $text = [
     'settings-error'         => 'Chyba při ukládání nastavení',
     'settings-callsign-help' => 'Váš volací znak',
     'settings-locator-help'  => 'Váš lokátor',
+    'settings-maplayer'      => 'Mapová vrstva',
 ];
 
