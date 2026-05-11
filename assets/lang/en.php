@@ -337,15 +337,7 @@ $text = [
     'settings-save'          => 'Save',
     'settings-success'       => 'Settings saved successfully',
     'settings-error'         => 'Error saving settings',
-    'settings-callsign-help'           => 'Your callsign',
-    'settings-locator-help'            => 'Your locator',
-    'settings-maplayer'                => 'Map layer',
-    'settings-maplayer-carto'          => 'Carto (Dark)',
-    'settings-maplayer-carto-light'    => 'Carto (Light)',
-    'settings-maplayer-cartodb-voyager' => 'Carto Voyager',
-    'settings-maplayer-osm'            => 'OpenStreetMap',
-    'settings-maplayer-esri-satellite' => 'Esri Satellite',
-    'settings-maplayer-esri-topo'      => 'Esri World Topo',
-    'settings-maplayer-stadia-smooth'  => 'Stadia Alidade Smooth',
+    'settings-callsign-help' => 'Your callsign',
+    'settings-locator-help'  => 'Your locator',
 ];
 

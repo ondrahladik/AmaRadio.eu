@@ -337,15 +337,7 @@ $text = [
     'settings-save'          => 'Uložit',
     'settings-success'       => 'Nastavení bylo úspěšně uloženo',
     'settings-error'         => 'Chyba při ukládání nastavení',
-    'settings-callsign-help'           => 'Váš volací znak',
-    'settings-locator-help'            => 'Váš lokátor',
-    'settings-maplayer'                => 'Mapová vrstva',
-    'settings-maplayer-carto'          => 'Carto (Tmavý)',
-    'settings-maplayer-carto-light'    => 'Carto (Světlý)',
-    'settings-maplayer-cartodb-voyager' => 'Carto Voyager',
-    'settings-maplayer-osm'            => 'OpenStreetMap',
-    'settings-maplayer-esri-satellite' => 'Esri Satellite',
-    'settings-maplayer-esri-topo'      => 'Esri World Topo',
-    'settings-maplayer-stadia-smooth'  => 'Stadia Alidade Smooth',
+    'settings-callsign-help' => 'Váš volací znak',
+    'settings-locator-help'  => 'Váš lokátor',
 ];
 
