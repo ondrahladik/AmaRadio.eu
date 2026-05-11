@@ -63,6 +63,15 @@ include 'assets/lang/lang.php';
           >
         </div>
 
+        <div class="form-group">
+          <label for="maplayer"><?= $text['settings-maplayer'] ?></label>
+          <select id="maplayer" name="maplayer">
+            <option value="carto"><?= $text['settings-maplayer-carto'] ?></option>
+            <option value="carto-light"><?= $text['settings-maplayer-carto-light'] ?></option>
+            <option value="osm"><?= $text['settings-maplayer-osm'] ?></option>
+          </select>
+        </div>
+
         <div class="button-group">
           <button type="submit" class="btn btn-save"><?= $text['settings-save'] ?></button>
         </div>
@@ -79,6 +88,7 @@ include 'assets/lang/lang.php';
       error: '<?= $text['settings-error'] ?>'
     };
   </script>
+  <script src="assets/js/map-layers.js"></script>
   <script src="assets/js/settings.js"></script>
 </body>
 </html>

@@ -67,6 +67,7 @@ include 'assets/lang/lang.php';
     </script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script type="text/javascript" src="assets/js/map-layers.js"></script>
     <script type="text/javascript" src="assets/js/zone-map.js"></script>
 </body>
 

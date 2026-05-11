@@ -47,9 +47,7 @@ function showMyLocation() {
 
                 if (!map) {
                     map = L.map('map').setView([latitude, longitude], 14);
-                    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                    }).addTo(map);
+                    createTileLayer().addTo(map);
                 } else {
                     map.setView([latitude, longitude], 14);
                 }
@@ -389,9 +387,7 @@ window.onload = function () {
             zoomControl: false
         }).setView([40, 10], 3);
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+        createTileLayer().addTo(map);
 
         L.control.zoom({ position: 'topright' }).addTo(map);
 
@@ -473,3 +469,14 @@ window.onload = function () {
         e.originalEvent.preventDefault();
     });
 };
+
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted && map) {
+        map.eachLayer(function(layer) {
+            if (layer instanceof L.TileLayer) {
+                map.removeLayer(layer);
+            }
+        });
+        createTileLayer().addTo(map);
+    }
+});
