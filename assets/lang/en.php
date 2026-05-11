@@ -108,6 +108,8 @@ $text = [
     'help-locator-map-description-2' => 'If only field <b>A</b> is filled, the locator is displayed on the map outlined in red.<br><br>If both fields <b>A</b> and <b>B</b> are filled, both locators appear on the map as symbols A (red) and B (blue) with a green straight line between them. The distance between points A and B is shown in the panel.',
     'help-locator-map-title-3' => '3. Other features',
     'help-locator-map-description-3' => 'After clicking <i class="fa-solid fa-location-dot"></i>, a marker with your position appears along with coordinates and locator. Location access is required to use GPS features.<br><br>On a desktop, the left panel shows the current locator, latitude, and longitude as you move the mouse cursor over the map.<br><br>Right-clicking on the map fills field <b>A</b> with the locator at that position, and double right-clicking fills field <b>B</b>. Left-clicking displays the locator on the map.<br><br>In the upper right part of the map, click <i class="fa-solid fa-magnifying-glass"></i> to search by address.',
+    'help-locator-map-title-4' => '4. Map layer',
+    'help-locator-map-description-4' => 'The map layer can be changed on the Settings page.',
 
     // Zone map
     'zone-map-select-layer' => 'Map layer:',
@@ -135,6 +137,8 @@ $text = [
     'help-zone-map-description-2' => 'After clicking on <i class="fa-solid fa-location-dot"></i>, a marker with your location will appear, and it will list the coordinates and locator. This feature requires access to your location. The feature works best on mobile, but location display should also work on a computer.',
     'help-zone-map-title-3' => '3. Coordinates and locator',
     'help-zone-map-description-3' => 'In the left panel (on desktop devices) or by moving the mouse cursor over the map, you can view the current coordinates in <b>DMM format</b> (degrees and decimal minutes) and the locator. On mobile devices, the coordinates are hidden and only the layer selection is displayed.<br><br>In the upper right part of the map, you can click <i class="fa-solid fa-magnifying-glass"></i> to search by address.',
+    'help-zone-map-title-4' => '4. Map layer',
+    'help-zone-map-description-4' => 'The map layer can be changed on the Settings page.',
 
     // Rotator
     'rotator-my-locator' => 'My locator',
@@ -158,6 +162,8 @@ $text = [
     'help-rotator-description-2' => 'First, set your home locator using the <b>Set</b> button. The locator is saved in the browser memory and will be pre-filled automatically on your next visit. Then enter the DX station locator in the second field and click <b>Show</b> or press Enter.',
     'help-rotator-title-3' => '3. Map display',
     'help-rotator-description-3' => 'The map will show your position (home icon), the DX station position (antenna icon) and a dashed orange line representing the great-circle path. The compass in the left panel shows the azimuth to the DX station with an arrow. Distance and azimuth in degrees are shown below the compass.',
+    'help-rotator-title-4' => '4. Map layer',
+    'help-rotator-description-4' => 'The map layer can be changed on the Settings page.',
 
     // Time
     'time-title-2' => 'Time: 00:00:00',
@@ -331,7 +337,15 @@ $text = [
     'settings-save'          => 'Save',
     'settings-success'       => 'Settings saved successfully',
     'settings-error'         => 'Error saving settings',
-    'settings-callsign-help' => 'Your callsign',
-    'settings-locator-help'  => 'Your locator',
+    'settings-callsign-help'           => 'Your callsign',
+    'settings-locator-help'            => 'Your locator',
+    'settings-maplayer'                => 'Map layer',
+    'settings-maplayer-carto'          => 'Carto (Dark)',
+    'settings-maplayer-carto-light'    => 'Carto (Light)',
+    'settings-maplayer-cartodb-voyager' => 'Carto Voyager',
+    'settings-maplayer-osm'            => 'OpenStreetMap',
+    'settings-maplayer-esri-satellite' => 'Esri Satellite',
+    'settings-maplayer-esri-topo'      => 'Esri World Topo',
+    'settings-maplayer-stadia-smooth'  => 'Stadia Alidade Smooth',
 ];
 

@@ -15,13 +15,15 @@ switch ($page) {
   case 'locator-map':
     echo "<h2>" . $text['help-locator-map'] . "</h2><b>" . $text['help-locator-map-title-1'] . "</b><br>". $text['help-locator-map-description-1'] . "<br><br>
           <b>" . $text['help-locator-map-title-2'] . "</b><br>" . $text['help-locator-map-description-2'] . "<br><br>
-          <b>" . $text['help-locator-map-title-3'] . "</b><br>" . $text['help-locator-map-description-3'] . "<br>";
+          <b>" . $text['help-locator-map-title-3'] . "</b><br>" . $text['help-locator-map-description-3'] . "<br><br>
+          <b>" . $text['help-locator-map-title-4'] . "</b><br>" . $text['help-locator-map-description-4'] . "<br>";
     break;
 
   case 'zone-map':
     echo "<h2>" . $text['help-zone-map'] . "</h2><b>" . $text['help-zone-map-title-1'] . "</b><br>" . $text['help-zone-map-description-1'] . "<br><br>
           <b>" . $text['help-zone-map-title-2'] . "</b><br>" . $text['help-zone-map-description-2'] . "<br><br>
-          <b>" . $text['help-zone-map-title-3'] . "</b><br>" . $text['help-zone-map-description-3'] . "<br>";
+          <b>" . $text['help-zone-map-title-3'] . "</b><br>" . $text['help-zone-map-description-3'] . "<br><br>
+          <b>" . $text['help-zone-map-title-4'] . "</b><br>" . $text['help-zone-map-description-4'] . "<br>";
     break;
 
   case 'time':
@@ -35,7 +37,8 @@ switch ($page) {
   case 'rotator':
     echo "<h2>" . $text['help-rotator'] . "</h2><b>" . $text['help-rotator-title-1'] . "</b><br>" . $text['help-rotator-description-1'] . "<br><br>
           <b>" . $text['help-rotator-title-2'] . "</b><br>" . $text['help-rotator-description-2'] . "<br><br>
-          <b>" . $text['help-rotator-title-3'] . "</b><br>" . $text['help-rotator-description-3'] . "<br>";
+          <b>" . $text['help-rotator-title-3'] . "</b><br>" . $text['help-rotator-description-3'] . "<br><br>
+          <b>" . $text['help-rotator-title-4'] . "</b><br>" . $text['help-rotator-description-4'] . "<br>";
     break;
 
   case 'solar':

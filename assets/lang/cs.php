@@ -108,6 +108,8 @@ $text = [
     'help-locator-map-description-2' => 'Pokud je vyplněno pouze pole <b>A</b>, zobrazí se daný lokátor na mapě ohraničen červeně.<br><br>Pokud jsou vyplněna obě pole <b>A</b> i <b>B</b>, zobrazí se oba lokátory na mapě se symboly A (červená) a B (modrá) a mezi nimi zelená přímá čára. Vzdálenost mezi body A a B se zobrazí v panelu.',
     'help-locator-map-title-3' => '3. Další funkce',
     'help-locator-map-description-3' => 'Po kliknutí na <i class="fa-solid fa-location-dot"></i> se zobrazí značka s vaší polohou včetně souřadnic a lokátoru. Pro použití GPS funkcí je vyžadován přístup k vaší poloze.<br><br>Na počítači se v levém panelu zobrazuje aktuální lokátor, zeměpisná šířka a délka podle pohybu kurzoru myši.<br><br>Kliknutím pravým tlačítkem myši na mapu se vyplní lokátor do pole <b>A</b>, dvojklikem pravého tlačítka do pole <b>B</b>. Kliknutím levého tlačítka myši se daný lokátor zobrazí na mapě.<br><br>V pravé horní části mapy si můžete kliknout na <i class="fa-solid fa-magnifying-glass"></i> pro vyhledávání podle adresy.',
+    'help-locator-map-title-4' => '4. Mapová vrstva',
+    'help-locator-map-description-4' => 'Mapovou vrstvu lze změnit na stránce Nastavení.',
 
     // Zone map
     'zone-map-select-layer' => 'Mapová vrstva:',
@@ -135,6 +137,8 @@ $text = [
     'help-zone-map-description-2' => 'Po kliknutí na <i class="fa-solid fa-location-dot"></i> se zobrazí značka s vaší polohou, a vypíše souřadnice a lokátor. Pro použití této funkce je vyžadován přístup k vaší poloze. Funkce funguje nejlépe na mobilním zařízení, ale zobrazení polohy by mělo být v pořádku i na počítači.',
     'help-zone-map-title-3' => '3. Souřadnice a lokátor',
     'help-zone-map-description-3' => 'V levém panelu (na desktopových zařízeních) nebo pohybem kurzorem myši po mapě si můžete zobrazit aktuální souřadnice v <b>DMM formátu</b> (stupně a desítinné minuty) a lokátor. Na mobilních zařízeních jsou souřadnice skryté a zobrazuje se pouze výběr vrstvy.<br><br>V pravé horní části mapy si můžete kliknutím na <i class="fa-solid fa-magnifying-glass"></i> vyhledávat podle adresy.',
+    'help-zone-map-title-4' => '4. Mapová vrstva',
+    'help-zone-map-description-4' => 'Mapovou vrstvu lze změnit na stránce Nastavení.',
 
     // Rotator
     'rotator-my-locator' => 'Můj lokátor',
@@ -158,6 +162,8 @@ $text = [
     'help-rotator-description-2' => 'Nejprve nastav svůj domovský lokátor tlačítkem <b>Nastav</b>. Lokátor se uloží do paměti prohlížeče a při příští návštěvě bude automaticky předvyplněn. Následně zadej lokátor DX stanice do druhého pole a klikni na <b>Zobraz</b> nebo stiskni Enter.',
     'help-rotator-title-3' => '3. Zobrazení na mapě',
     'help-rotator-description-3' => 'Na mapě se zobrazí tvoje poloha (ikona domu), poloha DX stanice (ikona antény) a přerušovaná oranžová čára znázorňující trasu po velkém kruhu. Kompas v levém panelu zobrazuje ručičkou azimut k DX stanici. Pod kompasem jsou uvedeny vzdálenost a azimut ve stupních.',
+    'help-rotator-title-4' => '4. Mapová vrstva',
+    'help-rotator-description-4' => 'Mapovou vrstvu lze změnit na stránce Nastavení.',
 
     // Time
     'time-title-2' => 'Čas: 00:00:00',
@@ -331,7 +337,15 @@ $text = [
     'settings-save'          => 'Uložit',
     'settings-success'       => 'Nastavení bylo úspěšně uloženo',
     'settings-error'         => 'Chyba při ukládání nastavení',
-    'settings-callsign-help' => 'Váš volací znak',
-    'settings-locator-help'  => 'Váš lokátor',
+    'settings-callsign-help'           => 'Váš volací znak',
+    'settings-locator-help'            => 'Váš lokátor',
+    'settings-maplayer'                => 'Mapová vrstva',
+    'settings-maplayer-carto'          => 'Carto (Tmavý)',
+    'settings-maplayer-carto-light'    => 'Carto (Světlý)',
+    'settings-maplayer-cartodb-voyager' => 'Carto Voyager',
+    'settings-maplayer-osm'            => 'OpenStreetMap',
+    'settings-maplayer-esri-satellite' => 'Esri Satellite',
+    'settings-maplayer-esri-topo'      => 'Esri World Topo',
+    'settings-maplayer-stadia-smooth'  => 'Stadia Alidade Smooth',
 ];
 
