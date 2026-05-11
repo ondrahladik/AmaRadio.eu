@@ -68,7 +68,11 @@ include 'assets/lang/lang.php';
           <select id="maplayer" name="maplayer">
             <option value="carto"><?= $text['settings-maplayer-carto'] ?></option>
             <option value="carto-light"><?= $text['settings-maplayer-carto-light'] ?></option>
+            <option value="cartodb-voyager"><?= $text['settings-maplayer-cartodb-voyager'] ?></option>
             <option value="osm"><?= $text['settings-maplayer-osm'] ?></option>
+            <option value="esri-satellite"><?= $text['settings-maplayer-esri-satellite'] ?></option>
+            <option value="esri-topo"><?= $text['settings-maplayer-esri-topo'] ?></option>
+            <option value="stadia-smooth"><?= $text['settings-maplayer-stadia-smooth'] ?></option>
           </select>
         </div>
 

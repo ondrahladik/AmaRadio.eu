@@ -9,10 +9,30 @@ const MAP_LAYERS = {
         url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     },
+    'cartodb-voyager': {
+        name: 'Carto Voyager',
+        url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    },
     'osm': {
         name: 'OpenStreetMap',
         url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    },
+    'esri-satellite': {
+        name: 'Esri Satellite',
+        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        attribution: '&copy; <a href="https://www.esri.com/">Esri</a>'
+    },
+    'esri-topo': {
+        name: 'Esri World Topo',
+        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+        attribution: '&copy; <a href="https://www.esri.com/">Esri</a>'
+    },
+    'stadia-smooth': {
+        name: 'Stadia Alidade Smooth',
+        url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png',
+        attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }
 };
 
