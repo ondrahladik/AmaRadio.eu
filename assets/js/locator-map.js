@@ -155,6 +155,30 @@ function calculateVincentyDistance(lat1, lon1, lat2, lon2) {
     return (s / 1000).toFixed(2);
 }
 
+function calculateGreatCircle(from, to, steps) {
+    const lat1 = from[0] * Math.PI / 180, lon1 = from[1] * Math.PI / 180;
+    const lat2 = to[0]   * Math.PI / 180, lon2 = to[1]   * Math.PI / 180;
+    const d = 2 * Math.asin(Math.sqrt(
+        Math.sin((lat2 - lat1) / 2) ** 2 +
+        Math.cos(lat1) * Math.cos(lat2) * Math.sin((lon2 - lon1) / 2) ** 2
+    ));
+    if (d < 1e-9) return [from, to];
+    const pts = [];
+    for (let i = 0; i <= steps; i++) {
+        const f = i / steps;
+        const A = Math.sin((1 - f) * d) / Math.sin(d);
+        const B = Math.sin(f * d) / Math.sin(d);
+        const x = A * Math.cos(lat1) * Math.cos(lon1) + B * Math.cos(lat2) * Math.cos(lon2);
+        const y = A * Math.cos(lat1) * Math.sin(lon1) + B * Math.cos(lat2) * Math.sin(lon2);
+        const z = A * Math.sin(lat1) + B * Math.sin(lat2);
+        pts.push([
+            Math.atan2(z, Math.sqrt(x * x + y * y)) * 180 / Math.PI,
+            Math.atan2(y, x) * 180 / Math.PI
+        ]);
+    }
+    return pts;
+}
+
 function showSingleLocatorMap(latitude, longitude, locator, bounds) {
     if (!map) {
         map = L.map('map');
@@ -183,21 +207,26 @@ function showTwoLocatorsMap(lat1, lon1, lat2, lon2, locator1, locator2, bounds1,
     clearMap();
 
     let redIcon = L.divIcon({
-        html: '<div style="background-color: red; color: white; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">A</div>',
+        html: '<div class="locator-marker-a"><span>A</span></div>',
         className: '',
-        iconSize: [20, 20]
+        iconSize: [34, 34],
+        iconAnchor: [17, 17]
     });
 
     let blueIcon = L.divIcon({
-        html: '<div style="background-color: blue; color: white; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">B</div>',
+        html: '<div class="locator-marker-b"><span>B</span></div>',
         className: '',
-        iconSize: [20, 20]
+        iconSize: [34, 34],
+        iconAnchor: [17, 17]
     });
 
     currentMarker1 = L.marker([lat1, lon1], { icon: redIcon }).addTo(map);
     currentMarker2 = L.marker([lat2, lon2], { icon: blueIcon }).addTo(map);
 
-    currentLine = L.polyline([[lat1, lon1], [lat2, lon2]], { color: 'green' }).addTo(map);
+    const gcPoints = calculateGreatCircle([lat1, lon1], [lat2, lon2], 80);
+    currentLine = L.polyline(gcPoints, {
+        color: '#ff8800', weight: 4, opacity: 0.9, dashArray: '9,5'
+    }).addTo(map);
 
     function updateDistanceDisplay() {
         let distanceElement = document.getElementById('distance');

@@ -288,6 +288,48 @@ button:hover {
     color: black;
 }
 
+.locator-marker-a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background-color: #ff3333;
+    border: 2px solid #ff0000;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.locator-marker-a span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.locator-marker-b {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background-color: #3366ff;
+    border: 2px solid #0000ff;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 0 8px rgba(0, 51, 255, 0.6);
+}
+
+.locator-marker-b span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 div.leaflet-bottom.leaflet-right {
     display: none;
 }
