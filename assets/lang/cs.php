@@ -329,7 +329,7 @@ $text = [
     'help-solar-title-4'     => '4. Grafy a vizualizace',
     'help-solar-description-4' => 'Graf solárního toku zobrazuje měsíční průměry SFI (F10.7) a počtu slunečních skvrn za poslední 2 roky z dat NOAA.<br><br>V sekci vizualizace jsou zobrazeny snímky Slunce z družice SDO (NASA) a další data ze SWPC NOAA.',
 
-    // CW Encoder page
+    // CW encoder
     'cw-enc-text-label'      => 'Text ke kódování',
     'cw-enc-text-placeholder'=> 'Zadejte text (CW) ...',
     'cw-enc-speed'           => 'Rychlost (WPM)',
@@ -351,6 +351,17 @@ $text = [
     'cw-enc-cleared'         => 'Vymazáno',
     'cw-enc-wav-exported'    => 'WAV exportován',
     'cw-enc-failed'          => 'Chyba při přehrávání',
+
+    // CW encoder help 
+    'help-cw-encoder'               => 'Morse enkodér',
+    'help-cw-encoder-title-1'       => 'Zadání textu',
+    'help-cw-encoder-description-1' => 'Napište libovolný text do vstupního pole. Podporovány jsou písmena A-Z, číslice, mezery a běžné interpunkční znaky. Enkodér automaticky zobrazí morseovský přepis.',
+    'help-cw-encoder-title-2'       => 'Parametry signálu',
+    'help-cw-encoder-description-2' => 'Rychlost je nastavitelná v rozsahu 5-40 WPM. Frekvence tónu se pohybuje mezi 300-1200 Hz. Náběhový čas (rise) zaobluje hrany tónu pro přirozené znění. Hlasitost reguluje výstupní úroveň.',
+    'help-cw-encoder-title-3'       => 'Přehrávání a export',
+    'help-cw-encoder-description-3' => 'Tlačítkem <b>Přehrát</b> spustíte přehrávání CW tónu přímo v prohlížeči. <b>Zastavit</b> přerušuje přehrávání. Tlačítko <b>Stáhnout WAV</b> generuje a uloží WAV soubor s celým voláním.',
+    'help-cw-encoder-title-4'       => 'Průběh a statistiky',
+    'help-cw-encoder-description-4' => 'Osciloskopický panel zobrazuje průběh vygenerovaného signálu. Statistiky ukazují délku výstupu, počet teček a čárek a efektivní rychlost v WPM.',
 
     // Settings page
     'settings-page-title'    => 'Nastavení',

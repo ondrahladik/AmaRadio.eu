@@ -329,7 +329,7 @@ $text = [
     'help-solar-title-4'     => '4. Charts and visualisations',
     'help-solar-description-4' => 'The solar flux chart shows monthly average SFI (F10.7) and sunspot numbers for the past 2 years from NOAA data.<br><br>The visualisations section shows solar disk images from the SDO satellite (NASA) and additional data from SWPC NOAA.',
 
-    // CW Encoder page
+    // CW encoder
     'cw-enc-text-label'      => 'Text to encode',
     'cw-enc-text-placeholder'=> 'Enter text (CW) ...',
     'cw-enc-speed'           => 'Speed (WPM)',
@@ -351,6 +351,17 @@ $text = [
     'cw-enc-cleared'         => 'Cleared',
     'cw-enc-wav-exported'    => 'WAV exported',
     'cw-enc-failed'          => 'Playback error',
+
+    // CW encoder help
+    'help-cw-encoder'               => 'Morse encoder',
+    'help-cw-encoder-title-1'       => 'Text input',
+    'help-cw-encoder-description-1' => 'Type any text into the input field. Letters A-Z, digits, spaces and common punctuation are supported. The encoder automatically shows the Morse representation.',
+    'help-cw-encoder-title-2'       => 'Signal parameters',
+    'help-cw-encoder-description-2' => 'Speed is adjustable from 5-40 WPM. Tone frequency ranges from 300-1200 Hz. Rise time smooths the tone edges for a natural sound. Volume controls the output level.',
+    'help-cw-encoder-title-3'       => 'Playback and export',
+    'help-cw-encoder-description-3' => 'Click <b>Play</b> to start CW tone playback directly in the browser. <b>Stop</b> interrupts playback. The <b>Download WAV</b> button generates and saves a WAV file of the full transmission.',
+    'help-cw-encoder-title-4'       => 'Waveform and statistics',
+    'help-cw-encoder-description-4' => 'The oscilloscope panel displays the waveform of the generated signal. Statistics show output duration, number of dots and dashes, and effective WPM.',
 
     // Settings page
     'settings-page-title'    => 'Settings',
