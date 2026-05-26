@@ -6,34 +6,6 @@
   box-sizing: border-box;
 }
 
-.cw-page-header {
-  margin-bottom: 18px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.cw-page-title {
-  font-size: 22px;
-  font-weight: bold;
-  color: #fff;
-  letter-spacing: 1px;
-  margin: 0 0 4px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.cw-page-title i { color: #00ffe0; }
-
-.cw-page-sub {
-  font-size: 12px;
-  color: #666;
-  margin: 0;
-}
-
 .cw-dec-header {
   margin-bottom: 20px;
 }
@@ -95,7 +67,6 @@
 }
 
 .cw-panel-header .accent { color: #00ffe0; font-size: 11px; }
-.cw-panel-header .muted  { color: #555; font-size: 10px; font-weight: 400; text-transform: none; letter-spacing: 0; }
 
 .cw-panel-body { padding: 14px; }
 
@@ -128,8 +99,6 @@
   font-family: "Cascadia Mono", Consolas, monospace;
 }
 
-.cw-input,
-.cw-input-sm,
 .cw-select {
   background: #0a0a0a;
   border: 1px solid #2a3a4a;
@@ -143,15 +112,11 @@
   transition: border-color 0.15s;
 }
 
-.cw-input:focus,
-.cw-input-sm:focus,
 .cw-select:focus {
   border-color: #00ffe0;
   outline: none;
   box-shadow: 0 0 0 2px rgba(0, 255, 224, 0.12);
 }
-
-.cw-input-sm { font-size: 12px; padding: 5px 8px; }
 
 .cw-select option { background: #111; }
 
@@ -316,19 +281,6 @@
 
 .cw-btn-light:hover { background: rgba(217, 230, 242, 0.07); }
 
-.cw-status {
-  font-size: 11px;
-  color: #666;
-  margin-top: 10px;
-  min-height: 16px;
-  word-break: break-word;
-}
-
-.cw-status.ok     { color: #45f0a1; }
-.cw-status.warn   { color: #f4c95d; }
-.cw-status.error  { color: #ff6b6b; }
-.cw-status.info   { color: #4db8ff; }
-
 .cw-readout {
   background: #060a0e;
   border: 1px solid #243445;
@@ -391,36 +343,6 @@ canvas.cw-waterfall { height: 240px; }
   left: 50%;
 }
 
-.cw-stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.cw-stat {
-  background: #0a0a0a;
-  border: 1px solid #1e1e1e;
-  border-radius: 8px;
-  padding: 8px 10px;
-}
-
-.cw-stat-label {
-  font-size: 9px;
-  color: #555;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-}
-
-.cw-stat-value {
-  font-family: "Cascadia Mono", Consolas, monospace;
-  font-size: 14px;
-  font-weight: 700;
-  color: #f3fbff;
-  margin-top: 3px;
-  white-space: nowrap;
-}
-
 .cw-drop-zone {
   border: 1px dashed #3d5870;
   border-radius: 8px;
@@ -460,5 +382,4 @@ canvas.cw-waterfall { height: 240px; }
 
 @media (max-width: 700px) {
   .cw-dec-wrap { padding: 12px 12px 24px; }
-  .cw-stats-grid { grid-template-columns: 1fr 1fr; }
 }
