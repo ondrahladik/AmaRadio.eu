@@ -6,34 +6,6 @@
   box-sizing: border-box;
 }
 
-.cw-page-header {
-  margin-bottom: 18px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.cw-page-title {
-  font-size: 22px;
-  font-weight: bold;
-  color: #fff;
-  letter-spacing: 1px;
-  margin: 0 0 4px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.cw-page-title i { color: #00ffe0; }
-
-.cw-page-sub {
-  font-size: 12px;
-  color: #666;
-  margin: 0;
-}
-
 .cw-enc-header {
   margin-bottom: 20px;
 }
@@ -119,9 +91,7 @@
   font-family: "Cascadia Mono", Consolas, monospace;
 }
 
-.cw-textarea,
-.cw-input,
-.cw-input-sm {
+.cw-textarea {
   background: #0a0a0a;
   border: 1px solid #2a3a4a;
   border-radius: 6px;
@@ -134,9 +104,7 @@
   transition: border-color 0.15s;
 }
 
-.cw-textarea:focus,
-.cw-input:focus,
-.cw-input-sm:focus {
+.cw-textarea:focus {
   border-color: #00ffe0;
   outline: none;
   box-shadow: 0 0 0 2px rgba(0, 255, 224, 0.12);
@@ -269,13 +237,6 @@
 }
 
 .cw-btn-warn:hover { background: rgba(244, 201, 93, 0.1); }
-
-.cw-status {
-  font-size: 11px;
-  color: #666;
-  margin-top: 10px;
-  min-height: 16px;
-}
 
 .cw-readout {
   background: #060a0e;
