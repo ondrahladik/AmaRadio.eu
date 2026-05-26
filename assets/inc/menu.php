@@ -11,6 +11,8 @@ $pageInfo = [
     '/solar'       => ['icon' => 'fa-sun',              'label' => $text['solar-page-title'], 'key' => 'S', 'href' => '/solar'],
     '/time'        => ['icon' => 'fa-clock',            'label' => $text['time'],             'key' => 'T', 'href' => '/time'],
     '/settings'    => ['icon' => 'fa-gear',             'label' => $text['settings-page-title'], 'key' => 'G', 'href' => '/settings'],
+    '/cw-encoder'  => ['icon' => 'fa-wave-square',      'label' => $text['cw-encoder'],          'key' => 'E', 'href' => '/cw-encoder'],
+    '/cw-decoder'  => ['icon' => 'fa-headphones',       'label' => $text['cw-decoder'],          'key' => 'K', 'href' => '/cw-decoder'],
 ];
 $currentPage = $pageInfo[$currentPath] ?? null;
 ?>
@@ -80,6 +82,16 @@ $currentPage = $pageInfo[$currentPath] ?? null;
           <span class="nav-label"><?= $text['solar-page-title'] ?></span>
           <p class="nav-desc"><?= $text['solar-title'] ?></p>
         </a>
+        <a href="/cw-encoder" class="nav-item<?= $currentPath === '/cw-encoder' ? ' active' : '' ?>">
+          <div class="nav-icon"><i class="fa-solid fa-wave-square"></i></div>
+          <span class="nav-label"><?= $text['cw-encoder'] ?></span>
+          <p class="nav-desc"><?= $text['cw-encoder-title'] ?></p>
+        </a>
+        <a href="/cw-decoder" class="nav-item<?= $currentPath === '/cw-decoder' ? ' active' : '' ?>">
+          <div class="nav-icon"><i class="fa-solid fa-headphones"></i></div>
+          <span class="nav-label"><?= $text['cw-decoder'] ?></span>
+          <p class="nav-desc"><?= $text['cw-decoder-title'] ?></p>
+        </a>
         <a href="/time" class="nav-item<?= $currentPath === '/time' ? ' active' : '' ?>">
           <div class="nav-icon"><i class="fa-solid fa-clock"></i></div>
           <span class="nav-label"><?= $text['time'] ?></span>
@@ -133,6 +145,8 @@ $currentPage = $pageInfo[$currentPath] ?? null;
         <div class="shortcut-row"><kbd>Alt+R</kbd><span><?= $text['rotator'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+D</kbd><span><?= $text['cluster'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+S</kbd><span><?= $text['solar-page-title'] ?></span></div>
+        <div class="shortcut-row"><kbd>Alt+E</kbd><span><?= $text['cw-encoder'] ?></span></div>
+        <div class="shortcut-row"><kbd>Alt+K</kbd><span><?= $text['cw-decoder'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+T</kbd><span><?= $text['time'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+C</kbd><span><?= $text['ctu-database'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+G</kbd><span><?= $text['settings-page-title'] ?></span></div>
@@ -213,6 +227,8 @@ $currentPage = $pageInfo[$currentPath] ?? null;
           't': '/time',
           'c': 'https://ctu.amaradio.eu',
           'g': '/settings',
+          'e': '/cw-encoder',
+          'k': '/cw-decoder',
         };
         const target = shortcuts[e.key.toLowerCase()];
         if (target) {
