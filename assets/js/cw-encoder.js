@@ -25,7 +25,6 @@ const encUi = {
   gapValue:     document.getElementById("gapValue"),
   morseOutput:  document.getElementById("morseOutput"),
   durationValue:document.getElementById("durationValue"),
-  dotValue:     document.getElementById("dotValue"),
   charValue:    document.getElementById("charValue"),
   outputValue:  document.getElementById("outputValue"),
   statusText:   document.getElementById("statusText"),
@@ -330,10 +329,24 @@ function encUpdateView() {
   encUi.gapValue.textContent    = encUi.gap.value;
   encUi.morseOutput.textContent = morse || "";
   encUi.durationValue.textContent = `${rendered.duration.toFixed(2)} s`;
-  encUi.dotValue.textContent    = `${Math.round(encUnitMs())} ms`;
   encUi.charValue.textContent   = String(encUi.text.value.replace(/\s/g, "").length);
+  encSyncEncoderLayout();
   encDrawWaveform();
   encUpdateButtons();
+}
+
+function encSyncEncoderLayout() {
+  const grid = document.querySelector(".cw-enc-grid");
+  const leftCol = document.querySelector(".cw-enc-col-left");
+  if (!grid || !leftCol) return;
+
+  if (window.innerWidth <= 1100) {
+    grid.style.removeProperty("--enc-left-col-height");
+    return;
+  }
+
+  const leftHeight = Math.round(leftCol.getBoundingClientRect().height);
+  grid.style.setProperty("--enc-left-col-height", `${leftHeight}px`);
 }
 
 encUi.playBtn.addEventListener("click", () =>
@@ -367,5 +380,10 @@ encUi.text.addEventListener("input", () => {
   });
 });
 
-window.addEventListener("resize", encDrawWaveform);
+window.addEventListener("resize", () => {
+  encSyncEncoderLayout();
+  encDrawWaveform();
+});
+window.addEventListener("load", encSyncEncoderLayout);
+
 encUpdateView();

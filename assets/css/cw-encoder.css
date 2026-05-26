@@ -22,16 +22,29 @@
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 16px;
-  align-items: stretch;
+  align-items: start;
 }
 
-.cw-enc-col-left {
+.cw-enc-col-right {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 14px;
+  height: var(--enc-left-col-height, auto);
+  min-height: 0;
+}
+
+.cw-enc-col-right > .cw-panel {
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
-.cw-enc-col-left > .cw-panel {
+.cw-enc-col-right > .cw-panel > .cw-panel-body {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .cw-panel {
@@ -89,6 +102,12 @@
   font-weight: 700;
   color: #4db8ff;
   font-family: "Cascadia Mono", Consolas, monospace;
+}
+
+.cw-status {
+  min-height: 18px;
+  line-height: 18px;
+  margin-top: 8px;
 }
 
 .cw-textarea {
@@ -258,17 +277,27 @@
   min-height: 110px;
 }
 
+.cw-enc-col-right > .cw-panel:first-of-type .cw-readout-morse {
+  flex: 1;
+  min-height: 0;
+}
+
 .cw-canvas-wrap {
   background: #03070a;
   border: 1px solid #1e2e3e;
   border-radius: 6px;
   overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 canvas.cw-canvas {
   width: 100%;
-  height: 200px;
+  height: 100%;
   display: block;
+  min-height: 100px;
 }
 
 .cw-stats-grid {
@@ -304,16 +333,45 @@ canvas.cw-canvas {
 @media (max-width: 1100px) {
   .cw-enc-grid {
     grid-template-columns: 1fr;
+    align-items: start;
   }
-  .cw-enc-col-left > .cw-panel {
+  .cw-enc-col-right {
+    display: block;
+    height: auto;
+  }
+  .cw-enc-col-right > .cw-panel {
+    margin-bottom: 14px;
+  }
+  .cw-enc-col-right > .cw-panel:last-child {
+    margin-bottom: 0;
+  }
+  .cw-canvas-wrap {
     flex: none;
+    display: block;
+  }
+  .cw-enc-col-right > .cw-panel > .cw-panel-body {
+    display: block;
+  }
+  .cw-enc-col-right > .cw-panel:first-of-type .cw-readout-morse {
+    flex: none;
+    min-height: 110px;
+  }
+  canvas.cw-canvas {
+    height: 200px;
+    min-height: 200px;
   }
 }
 
 @media (max-width: 700px) {
   .cw-enc-wrap { padding: 12px 12px 24px; }
   .cw-stats-grid { grid-template-columns: 1fr 1fr; }
-  canvas.cw-canvas { height: 140px; }
+  .cw-enc-col-right > .cw-panel:first-of-type .cw-readout-morse {
+    min-height: 140px;
+  }
+  canvas.cw-canvas { 
+    height: 140px;
+    min-height: 140px;
+  }
 
   .cw-enc-title { font-size: 17px; }
 }

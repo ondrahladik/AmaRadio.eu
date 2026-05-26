@@ -102,13 +102,24 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                             </button>
                         </div>
 
+                        <div class="cw-stats-grid" style="grid-template-columns: repeat(2,1fr); margin-top: 14px;">
+                            <div class="cw-stat">
+                                <div class="cw-stat-label"><?= $text['cw-enc-stat-duration'] ?></div>
+                                <div class="cw-stat-value" id="durationValue">0.00 s</div>
+                            </div>
+                            <div class="cw-stat">
+                                <div class="cw-stat-label"><?= $text['cw-enc-stat-chars'] ?></div>
+                                <div class="cw-stat-value" id="charValue">0</div>
+                            </div>
+                        </div>
+
                         <div id="statusText" class="cw-status"></div>
 
                     </div>
                 </div>
             </div>
 
-            <div>
+            <div class="cw-enc-col-right">
 
                 <div class="cw-panel">
                     <div class="cw-panel-header">
@@ -130,20 +141,6 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                     </div>
                 </div>
 
-                <div class="cw-stats-grid" style="grid-template-columns: repeat(3,1fr);">
-                    <div class="cw-stat">
-                        <div class="cw-stat-label"><?= $text['cw-enc-stat-duration'] ?></div>
-                        <div class="cw-stat-value" id="durationValue">0.00 s</div>
-                    </div>
-                    <div class="cw-stat">
-                        <div class="cw-stat-label"><?= $text['cw-enc-stat-chars'] ?></div>
-                        <div class="cw-stat-value" id="charValue">0</div>
-                    </div>
-                    <div class="cw-stat">
-                        <div class="cw-stat-label">Dot</div>
-                        <div class="cw-stat-value" id="dotValue">60 ms</div>
-                    </div>
-                </div>
                 <div id="outputValue" hidden></div>
 
             </div>
