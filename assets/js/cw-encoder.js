@@ -27,7 +27,6 @@ const encUi = {
   durationValue:document.getElementById("durationValue"),
   charValue:    document.getElementById("charValue"),
   outputValue:  document.getElementById("outputValue"),
-  statusText:   document.getElementById("statusText"),
   playBtn:      document.getElementById("playBtn"),
   stopBtn:      document.getElementById("stopBtn"),
   downloadBtn:  document.getElementById("downloadBtn"),
@@ -86,7 +85,7 @@ function encMakeSegments(text) {
 function encRenderBuffer() {
   const sampleRate  = 48000;
   const segs        = encMakeSegments(encUi.text.value);
-  const totalMs     = Math.max(250, segs.reduce((s, g) => s + g.ms, 250));
+  const totalMs     = segs.length === 0 ? 0 : segs.reduce((s, g) => s + g.ms, 250);
   const samples     = Math.ceil(sampleRate * totalMs / 1000);
   const data        = new Float32Array(samples);
   const freq        = Number(encUi.freq.value);
@@ -140,16 +139,12 @@ async function encPlay(startOffsetSec = 0) {
     if (token !== encPlaybackToken) return;
     encActiveSource = null;
     encStopWaveAnimation();
-    encUi.statusText.textContent = cwEncT.finished;
-    encUi.statusText.className = "cw-status";
     encDrawWaveform();
     encUpdateButtons();
   };
   encActiveSource.start(0, safeOffsetSec);
   encPlaybackStartTime = encAudioCtx.currentTime - safeOffsetSec;
   encStartWaveAnimation();
-  encUi.statusText.textContent = cwEncT.playing;
-  encUi.statusText.className = "cw-status ok";
   encUpdateView();
   encUpdateButtons();
 }
@@ -162,8 +157,6 @@ function encStop() {
     encActiveSource = null;
   }
   encStopWaveAnimation();
-  encUi.statusText.textContent = cwEncT.stopped;
-  encUi.statusText.className = "cw-status";
   encDrawWaveform();
   encUpdateButtons();
 }
@@ -214,8 +207,6 @@ function encDownload() {
   a.download = encBuildDownloadName();
   a.click();
   URL.revokeObjectURL(url);
-  encUi.statusText.textContent = cwEncT.wavExported;
-  encUi.statusText.className = "cw-status info";
   encUpdateView();
 }
 
@@ -351,8 +342,7 @@ function encSyncEncoderLayout() {
 
 encUi.playBtn.addEventListener("click", () =>
   encPlay().catch(err => {
-    encUi.statusText.textContent = `${cwEncT.failed} ${err.message}`;
-    encUi.statusText.className = "cw-status error";
+    console.error("CW play failed:", err);
   })
 );
 encUi.stopBtn.addEventListener("click", encStop);
@@ -360,8 +350,6 @@ encUi.downloadBtn.addEventListener("click", encDownload);
 encUi.clearBtn.addEventListener("click", () => {
   encUi.text.value = "";
   encUpdateView();
-  encUi.statusText.textContent = cwEncT.cleared;
-  encUi.statusText.className = "cw-status";
   encUpdateButtons();
 });
 
@@ -374,8 +362,7 @@ encUi.text.addEventListener("input", () => {
   el.addEventListener("input", () => {
     encUpdateView();
     encRestartPlaybackFromCurrentPosition().catch(err => {
-      encUi.statusText.textContent = `${cwEncT.failed} ${err.message}`;
-      encUi.statusText.className = "cw-status error";
+      console.error("CW restart failed:", err);
     });
   });
 });

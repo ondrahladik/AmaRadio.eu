@@ -104,12 +104,6 @@
   font-family: "Cascadia Mono", Consolas, monospace;
 }
 
-.cw-status {
-  min-height: 18px;
-  line-height: 18px;
-  margin-top: 8px;
-}
-
 .cw-textarea {
   background: #0a0a0a;
   border: 1px solid #2a3a4a;

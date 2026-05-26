@@ -113,8 +113,6 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                             </div>
                         </div>
 
-                        <div id="statusText" class="cw-status"></div>
-
                     </div>
                 </div>
             </div>
@@ -147,16 +145,6 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         </div>
     </div>
 
-    <script>
-        const cwEncT = {
-            finished:    <?= json_encode($text['cw-enc-finished']) ?>,
-            playing:     <?= json_encode($text['cw-enc-playing']) ?>,
-            stopped:     <?= json_encode($text['cw-enc-stopped']) ?>,
-            cleared:     <?= json_encode($text['cw-enc-cleared']) ?>,
-            wavExported: <?= json_encode($text['cw-enc-wav-exported']) ?>,
-            failed:      <?= json_encode($text['cw-enc-failed']) ?>,
-        };
-    </script>
     <script src="assets/js/cw-encoder.js"></script>
 </body>
 </html>
