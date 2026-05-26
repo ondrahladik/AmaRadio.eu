@@ -363,7 +363,7 @@ $text = [
     'help-cw-encoder-title-4'       => 'Waveform and statistics',
     'help-cw-encoder-description-4' => 'The oscilloscope panel displays the waveform of the generated signal. Statistics show output duration, number of dots and dashes, and effective WPM.',
 
-    // CW Decoder page
+    // CW decoder
     'cw-dec-control-panel'   => 'Decoder controls',
     'cw-dec-signal-panel'    => 'Signal',
     'cw-dec-spectrum-panel'  => 'Spectrum',
@@ -397,7 +397,7 @@ $text = [
     'cw-dec-input-mic'       => '● MIC',
     'cw-dec-input-file'      => '● WAV',
 
-    // Help – CW Decoder
+    // CW decoder help
     'help-cw-decoder'               => 'Morse decoder',
     'help-cw-decoder-title-1'       => 'Audio source',
     'help-cw-decoder-description-1' => 'The decoder accepts audio from the microphone or from a WAV file. Microphone requires user permission. A WAV file can be dropped into the designated area or selected with the button.',

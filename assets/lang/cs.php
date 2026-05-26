@@ -363,7 +363,7 @@ $text = [
     'help-cw-encoder-title-4'       => 'Průběh a statistiky',
     'help-cw-encoder-description-4' => 'Osciloskopický panel zobrazuje průběh vygenerovaného signálu. Statistiky ukazují délku výstupu, počet teček a čárek a efektivní rychlost v WPM.',
 
-    // CW Decoder page
+    // CW decoder 
     'cw-dec-control-panel'   => 'Ovládání dekodéru',
     'cw-dec-signal-panel'    => 'Signál',
     'cw-dec-spectrum-panel'  => 'Spektrum',
@@ -397,7 +397,7 @@ $text = [
     'cw-dec-input-mic'       => '● MIC',
     'cw-dec-input-file'      => '● WAV',
 
-    // Help – CW Decoder
+    // CW decoder help
     'help-cw-decoder'               => 'Morse dekodér',
     'help-cw-decoder-title-1'       => 'Zdroj zvuku',
     'help-cw-decoder-description-1' => 'Dekodér přijímá zvuk z mikrofonu nebo z WAV souboru. Mikrofon vyžaduje souhlas uživatele. WAV soubor lze přetáhnout do označené oblasti nebo vybrat tlačítkem.',
