@@ -54,6 +54,14 @@ switch ($page) {
           <b>" . $text['help-cluster-title-3'] . "</b><br>" . $text['help-cluster-description-3'] . "<br>";
     break;
 
+  case 'cw-encoder':
+    echo "<h2>" . $text['help-cw-encoder'] . "</h2>"
+       . "<b>" . $text['help-cw-encoder-title-1'] . "</b><br>" . $text['help-cw-encoder-description-1'] . "<br><br>"
+       . "<b>" . $text['help-cw-encoder-title-2'] . "</b><br>" . $text['help-cw-encoder-description-2'] . "<br><br>"
+       . "<b>" . $text['help-cw-encoder-title-3'] . "</b><br>" . $text['help-cw-encoder-description-3'] . "<br><br>"
+       . "<b>" . $text['help-cw-encoder-title-4'] . "</b><br>" . $text['help-cw-encoder-description-4'] . "<br>";
+    break;
+
   default:
     echo "";
     break;
