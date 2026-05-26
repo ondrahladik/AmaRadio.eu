@@ -19,6 +19,8 @@ For easier reference to the original version of AMARADIO.eu, see [Tag v1](https:
 <b>Rotator</b> - Get the azimuth and distance to point your rotator.  
 <b>DX Cluster</b> - View the latest spots from the DX Cluster from [9M2PJU](https://hamradio.my/).  
 <b>Solar activity</b> - View the solar activity from [HAMQSL](https://www.hamqsl.com/solar.html), [NOAA SWPC](https://www.swpc.noaa.gov/), [NASA SDO](https://sdo.gsfc.nasa.gov/).  
+<b>CW encoder</b> - Encode text to Morse code and play it or export it as a WAV file.   
+<b>CW decoder</b> - Decode Morse code from audio input or microphone.   
 <b>Time</b> - View the current time, for example, for logging QSO.
 
 The following features are available on AMARADIO.eu but are not part of this repository.   
