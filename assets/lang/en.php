@@ -359,9 +359,9 @@ $text = [
     'help-cw-encoder-title-2'       => 'Signal parameters',
     'help-cw-encoder-description-2' => 'Speed is adjustable from 5-40 WPM. Tone frequency ranges from 300-1200 Hz. Rise time smooths the tone edges for a natural sound. Volume controls the output level.',
     'help-cw-encoder-title-3'       => 'Playback and export',
-    'help-cw-encoder-description-3' => 'Click <b>Play</b> to start CW tone playback directly in the browser. <b>Stop</b> interrupts playback. The <b>Download WAV</b> button generates and saves a WAV file of the full transmission.',
+    'help-cw-encoder-description-3' => 'Click <b>Play</b> to start CW tone playback directly in the browser. <b>Stop</b> interrupts playback. The <b>Download WAV</b> button generates and saves a WAV file.',
     'help-cw-encoder-title-4'       => 'Waveform and statistics',
-    'help-cw-encoder-description-4' => 'The oscilloscope panel displays the waveform of the generated signal. Statistics show output duration, number of dots and dashes, and effective WPM.',
+    'help-cw-encoder-description-4' => 'The oscilloscope panel displays the waveform of the generated signal. Statistics show output duration and effective WPM.',
 
     // CW decoder
     'cw-dec-control-panel'   => 'Decoder controls',

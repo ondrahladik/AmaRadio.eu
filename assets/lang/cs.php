@@ -359,9 +359,9 @@ $text = [
     'help-cw-encoder-title-2'       => 'Parametry signálu',
     'help-cw-encoder-description-2' => 'Rychlost je nastavitelná v rozsahu 5-40 WPM. Frekvence tónu se pohybuje mezi 300-1200 Hz. Náběhový čas (rise) zaobluje hrany tónu pro přirozené znění. Hlasitost reguluje výstupní úroveň.',
     'help-cw-encoder-title-3'       => 'Přehrávání a export',
-    'help-cw-encoder-description-3' => 'Tlačítkem <b>Přehrát</b> spustíte přehrávání CW tónu přímo v prohlížeči. <b>Zastavit</b> přerušuje přehrávání. Tlačítko <b>Stáhnout WAV</b> generuje a uloží WAV soubor s celým voláním.',
+    'help-cw-encoder-description-3' => 'Tlačítkem <b>Přehrát</b> spustíte přehrávání CW tónu přímo v prohlížeči. <b>Zastavit</b> přerušuje přehrávání. Tlačítko <b>Stáhnout WAV</b> generuje a uloží WAV soubor.',
     'help-cw-encoder-title-4'       => 'Průběh a statistiky',
-    'help-cw-encoder-description-4' => 'Osciloskopický panel zobrazuje průběh vygenerovaného signálu. Statistiky ukazují délku výstupu, počet teček a čárek a efektivní rychlost v WPM.',
+    'help-cw-encoder-description-4' => 'Osciloskopický panel zobrazuje průběh vygenerovaného signálu. Statistiky ukazují délku výstupu a efektivní rychlost v WPM.',
 
     // CW decoder 
     'cw-dec-control-panel'   => 'Ovládání dekodéru',
