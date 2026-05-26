@@ -363,6 +363,17 @@ $text = [
     'help-cw-encoder-title-4'       => 'Waveform and statistics',
     'help-cw-encoder-description-4' => 'The oscilloscope panel displays the waveform of the generated signal. Statistics show output duration, number of dots and dashes, and effective WPM.',
 
+    // Help – CW Decoder
+    'help-cw-decoder'               => 'Morse decoder',
+    'help-cw-decoder-title-1'       => 'Audio source',
+    'help-cw-decoder-description-1' => 'The decoder accepts audio from the microphone or from a WAV file. Microphone requires user permission. A WAV file can be dropped into the designated area or selected with the button.',
+    'help-cw-decoder-title-2'       => 'Settings and tuning',
+    'help-cw-decoder-description-2' => 'Set the tone frequency to decode (typically 600-800 Hz). The signal threshold controls detection sensitivity. Auto-tune finds the strongest tone automatically. AGC compensates for volume changes.',
+    'help-cw-decoder-title-3'       => 'Spectrum and waterfall',
+    'help-cw-decoder-description-3' => 'The spectrum analyser displays frequency content in real time. The yellow vertical line marks the set frequency. The waterfall display shows spectrum history - stronger signals appear brighter.',
+    'help-cw-decoder-title-4'       => 'Output and signal',
+    'help-cw-decoder-description-4' => 'The currently decoded symbol appears in the Symbol field. Finished text grows in the Decoded text field. Signal strength and SNR are displayed in the Signal field.',
+
     // Settings page
     'settings-page-title'    => 'Settings',
     'settings-language'      => 'Language',

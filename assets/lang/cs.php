@@ -363,6 +363,17 @@ $text = [
     'help-cw-encoder-title-4'       => 'Průběh a statistiky',
     'help-cw-encoder-description-4' => 'Osciloskopický panel zobrazuje průběh vygenerovaného signálu. Statistiky ukazují délku výstupu, počet teček a čárek a efektivní rychlost v WPM.',
 
+    // Help – CW Decoder
+    'help-cw-decoder'               => 'Morse dekodér',
+    'help-cw-decoder-title-1'       => 'Zdroj zvuku',
+    'help-cw-decoder-description-1' => 'Dekodér přijímá zvuk z mikrofonu nebo z WAV souboru. Mikrofon vyžaduje souhlas uživatele. WAV soubor lze přetáhnout do označené oblasti nebo vybrat tlačítkem.',
+    'help-cw-decoder-title-2'       => 'Nastavení a ladění',
+    'help-cw-decoder-description-2' => 'Nastavte frekvenci tónu, který chcete dekódovat (typicky 600-800 Hz). Práh signálu určuje citlivost detekce. Auto-ladění hledá nejsilnější tón automaticky. AGC kompenzuje změny hlasitosti.',
+    'help-cw-decoder-title-3'       => 'Spektrum a vodopád',
+    'help-cw-decoder-description-3' => 'Spektrální analyzátor zobrazuje frekvenční obsah v reálném čase. Žlutá svislá čára označuje nastavenou frekvenci. Vodopádový display ukazuje historii spektra - silné signály jsou zobrazeny světleji.',
+    'help-cw-decoder-title-4'       => 'Výstup a signál',
+    'help-cw-decoder-description-4' => 'Aktuálně dekódovaný symbol se zobrazuje v poli Symbol. Hotový text přibývá v poli Dekódovaný text. Síla signálu a SNR se zobrazuje v poli Signál.',
+
     // Settings page
     'settings-page-title'    => 'Nastavení',
     'settings-language'      => 'Jazyk',
