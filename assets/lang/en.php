@@ -345,13 +345,7 @@ $text = [
     'cw-enc-waveform-panel'  => 'Waveform',
     'cw-enc-stat-chars'      => 'Chars',
     'cw-enc-stat-duration'   => 'Duration',
-    'cw-enc-playing'         => 'Playing...',
-    'cw-enc-stopped'         => 'Playback stopped',
-    'cw-enc-finished'        => 'Playback finished',
-    'cw-enc-cleared'         => 'Cleared',
-    'cw-enc-wav-exported'    => 'WAV exported',
-    'cw-enc-failed'          => 'Playback error',
-
+    
     // CW encoder help
     'help-cw-encoder'               => 'Morse encoder',
     'help-cw-encoder-title-1'       => 'Text input',

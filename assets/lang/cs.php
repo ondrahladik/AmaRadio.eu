@@ -345,12 +345,6 @@ $text = [
     'cw-enc-waveform-panel'  => 'Průběh signálu',
     'cw-enc-stat-chars'      => 'Znaků',
     'cw-enc-stat-duration'   => 'Délka',
-    'cw-enc-playing'         => 'Přehrává se...',
-    'cw-enc-stopped'         => 'Přehrávání zastaveno',
-    'cw-enc-finished'        => 'Přehrávání dokončeno',
-    'cw-enc-cleared'         => 'Vymazáno',
-    'cw-enc-wav-exported'    => 'WAV exportován',
-    'cw-enc-failed'          => 'Chyba při přehrávání',
 
     // CW encoder help 
     'help-cw-encoder'               => 'Morse enkodér',
