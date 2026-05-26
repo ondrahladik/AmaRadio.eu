@@ -17,6 +17,8 @@ RewriteRule ^time$ time.php [L]
 RewriteRule ^rotator$ rotator.php [L]
 RewriteRule ^solar$ solar.php [L]
 RewriteRule ^cluster$ cluster.php [L]
+RewriteRule ^cw-encoder$ cw-encoder.php [L]
+RewriteRule ^cw-decoder$ cw-decoder.php [L]
 RewriteRule ^settings$ settings.php [L]
 
 # Ensure proper 404 handling for non-existing files or directories

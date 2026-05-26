@@ -66,12 +66,12 @@ include 'assets/lang/lang.php';
         <h1><i class="fa-solid fa-file"></i> <?= $text['bandplan'] ?></h1>
         <p><?= $text['bandplan-title'] ?></p>
       </a>
-      <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
-        <h1><i class="fa-solid fa-microphone"></i> <?= $text['cw-encoder'] ?></h1>
+      <a href="/cw-encoder" class="tool-block">
+        <h1><i class="fa-solid fa-wave-square"></i> <?= $text['cw-encoder'] ?></h1>
         <p><?= $text['cw-encoder-title'] ?></p>
       </a>
-      <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
-        <h1><i class="fa-solid fa-volume"></i> <?= $text['cw-decoder'] ?></h1>
+      <a href="/cw-decoder" class="tool-block">
+        <h1><i class="fa-solid fa-headphones"></i> <?= $text['cw-decoder'] ?></h1>
         <p><?= $text['cw-decoder-title'] ?></p>
       </a>
       <a href="/time" class="tool-block">
