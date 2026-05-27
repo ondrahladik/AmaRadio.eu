@@ -66,7 +66,7 @@ const dsp = {
   sampleRate:48000, envelope:0, slowEnvelope:0, noiseFloor:0.004,
   peakLevel:0.025, strength:0, snrDb:0, isTone:false,
   toneCandidateFrames:0, silenceCandidateFrames:0, lastTransitionTime:0,
-  toneStartTime:0, silenceStartTime:0, currentSymbol:"", decodedText:"",
+  toneStartTime:0, silenceStartTime:0, currentSymbol:"", currentDurations:[], currentGaps:[], decodedText:"",
   dotMs:60, lastMarkMs:0, lastGapMs:0, pendingCharacter:false,
   pendingWord:false, frameTimeMs:0, samplesSeen:0, lastAutoTuneMs:0
 };
@@ -249,13 +249,13 @@ function decHandleAudio(event) {
   const squelchDb = Number(decUi.squelchInput.value) || 0;
   dsp.snrDb = 10 * Math.log10((cp+1e-10) / (adj+1e-10));
   const norm = decClamp((dsp.envelope - dsp.noiseFloor) / Math.max(0.00001, dsp.peakLevel - dsp.noiseFloor), 0, 1);
+  const instantStrength = decClamp((tone - dsp.noiseFloor) / Math.max(0.00001, dsp.peakLevel - dsp.noiseFloor), 0, 1);
   const noiseOk = dsp.snrDb >= squelchDb || norm > 0.82;
-  dsp.strength  = noiseOk ? norm : norm * 0.36;
+  dsp.strength  = noiseOk ? Math.max(instantStrength, norm * 0.72) : instantStrength * 0.28;
 
   const thr = Number(decUi.thresholdInput.value) / 100;
-  const candidate = dsp.isTone
-    ? dsp.strength > thr * 0.58 && noiseOk
-    : dsp.strength > thr && noiseOk;
+  const releaseThr = decClamp(Math.max(thr * 0.82, thr - 0.08), 0.05, 0.95);
+  const candidate = noiseOk && (dsp.isTone ? dsp.strength > releaseThr : dsp.strength > thr);
 
   decUpdateTone(candidate, nowMs);
   decCheckGaps(nowMs);
@@ -264,26 +264,16 @@ function decHandleAudio(event) {
 function decMaybeAutoTune(samples, nowMs) {
   if (decUi.sourceMode.value === "file") return;
   if (!decUi.autoTuneInput.checked) return;
-  if (dsp.isTone || dsp.strength > Number(decUi.thresholdInput.value)/100) return;
-  if (dsp.currentSymbol || dsp.pendingCharacter || dsp.pendingWord) return;
+  if (dsp.currentSymbol || (!dsp.decodedText && (dsp.isTone || dsp.pendingCharacter))) return;
   dsp.scanCounter++;
-  if (dsp.scanCounter % dsp.scanEvery !== 0 && nowMs - dsp.lastAutoTuneMs < 360) return;
+  if (dsp.scanCounter % dsp.scanEvery !== 0 && nowMs - dsp.lastAutoTuneMs < 220) return;
   dsp.lastAutoTuneMs = nowMs;
-  if (!decAnalyser) return;
+  const peak = decFindPeakFrequency();
+  if (!peak) return;
 
-  const bins = new Uint8Array(decAnalyser.frequencyBinCount);
-  decAnalyser.getByteFrequencyData(bins);
-  const nyq = decAudioCtx.sampleRate / 2;
-  let bestFreq=Number(decUi.freqInput.value), bestVal=0, floorSum=0, floorCnt=0;
-  for (let f=300; f<=1200; f+=5) {
-    const bin = Math.round((f/nyq)*bins.length);
-    const val = bins[decClamp(bin,0,bins.length-1)];
-    floorSum += val; floorCnt++;
-    if (val > bestVal) { bestVal=val; bestFreq=f; }
-  }
-  const floor = floorSum / Math.max(1, floorCnt);
-  if (bestVal > Math.max(34, floor+12)) {
-    dsp.detectedFreq = Math.round(decLerp(dsp.detectedFreq, bestFreq, 0.42));
+  if (peak.bestVal > Math.max(26, peak.floor + 10)) {
+    const blend = dsp.isTone ? 0.3 : 0.48;
+    dsp.detectedFreq = Math.round(decLerp(dsp.detectedFreq, peak.bestFreq, blend));
     if (Math.abs(Number(decUi.freqInput.value) - dsp.detectedFreq) > 2) {
       decUi.freqInput.value = String(decClamp(dsp.detectedFreq, 300, 1200));
       decUpdateLabels();
@@ -295,11 +285,12 @@ function decUpdateTone(candidate, nowMs) {
   if (candidate) { dsp.toneCandidateFrames++; dsp.silenceCandidateFrames=0; }
   else           { dsp.silenceCandidateFrames++; dsp.toneCandidateFrames=0; }
 
-  const req = 2;
+  const req = dsp.isTone ? 3 : 2;
   const next = dsp.isTone
     ? dsp.silenceCandidateFrames < req
     : dsp.toneCandidateFrames >= req;
   if (next === dsp.isTone) return;
+  if (dsp.isTone && !candidate && nowMs - dsp.toneStartTime < Math.max(28, decBaseDot() * 0.45)) return;
 
   const t = nowMs - (req-1) * dsp.frameTimeMs;
   const elapsed = dsp.lastTransitionTime ? t - dsp.lastTransitionTime : 0;
@@ -321,42 +312,66 @@ function decBaseDot() {
 function decHandleMark(ms) {
   const dot = decBaseDot();
   if (ms < Math.max(18, dot*0.38)) return;
-  const mark = ms < dot*2.05 ? "." : "-";
-  dsp.currentSymbol += mark;
+  const isColdStart = !dsp.decodedText;
+  const dashThreshold = dot * (isColdStart ? 1.9 : 2.05);
+  const mark = ms < dashThreshold ? "." : "-";
+  dsp.currentDurations.push(ms);
   dsp.pendingCharacter = true;
   dsp.pendingWord = true;
-  dsp.dotMs = decLerp(dot, mark==="." ? ms : ms/3, mark==="." ? 0.22 : 0.12);
+  const adapt = isColdStart ? (mark==="." ? 0.55 : 0.34) : (mark==="." ? 0.22 : 0.12);
+  dsp.dotMs = decLerp(dot, mark==="." ? ms : ms/3, adapt);
+  dsp.currentSymbol = decBuildCurrentSymbol();
   decUi.symbolOutput.textContent = dsp.currentSymbol;
 }
 
 function decHandleGap(ms) {
-  const dot = decBaseDot();
+  const dot = decEstimateCurrentDot();
+  const charGap = dot * 2.55;
+  const wordGap = dot * 6.2;
   if (!dsp.pendingCharacter) {
-    if (dsp.pendingWord && ms >= dot*6.2) { decAppend(" "); dsp.pendingWord=false; }
+    if (dsp.pendingWord && ms >= wordGap) { decAppend(" "); dsp.pendingWord=false; }
     return;
   }
-  if (ms >= dot*6.2)  { decFlush(); decAppend(" "); dsp.pendingWord=false; }
-  else if (ms >= dot*2.55) { decFlush(); }
+  if (ms < charGap) dsp.currentGaps.push(ms);
+  if (ms >= wordGap)  { decFlush(); decAppend(" "); dsp.pendingWord=false; }
+  else if (ms >= charGap) { decFlush(); }
 }
 
 function decCheckGaps(nowMs) {
   if (dsp.isTone || !dsp.silenceStartTime) return;
   const gap = nowMs - dsp.silenceStartTime;
-  const dot = decBaseDot();
-  if (gap >= dot*6.8 && dsp.pendingWord) {
+  const dot = decEstimateCurrentDot();
+  const charGap = dot * 3.15;
+  const wordGap = dot * 6.8;
+  if (gap >= wordGap && dsp.pendingWord) {
     if (dsp.pendingCharacter) decFlush();
     decAppend(" "); dsp.pendingWord=false;
-  } else if (dsp.pendingCharacter && gap >= dot*3.15) {
+  } else if (dsp.pendingCharacter && gap >= charGap) {
     decFlush();
   }
 }
 
 function decFlush() {
-  if (!dsp.currentSymbol) return;
+  if (!dsp.currentDurations.length) return;
+  dsp.currentSymbol = decBuildCurrentSymbol();
   const ch = MORSE_TABLE[dsp.currentSymbol] || "□";
   decAppend(ch);
-  dsp.currentSymbol=""; dsp.pendingCharacter=false;
+  dsp.currentSymbol=""; dsp.currentDurations=[]; dsp.currentGaps=[]; dsp.pendingCharacter=false;
   decUi.symbolOutput.textContent="";
+}
+
+function decBuildCurrentSymbol() {
+  const dot = decEstimateCurrentDot();
+  return dsp.currentDurations
+    .map(ms => (ms < dot * 2.05 ? "." : "-"))
+    .join("");
+}
+
+function decEstimateCurrentDot() {
+  const baseDot = decBaseDot();
+  if (!dsp.currentGaps.length) return baseDot;
+  const gapDot = dsp.currentGaps.reduce((sum, gap) => sum + gap, 0) / dsp.currentGaps.length;
+  return decClamp(decLerp(baseDot, gapDot, 0.7), baseDot * 0.45, baseDot * 1.4);
 }
 
 function decAppend(ch) {
@@ -372,7 +387,7 @@ function decReset(clearText) {
     targetFreq:Number(decUi.freqInput.value), detectedFreq:Number(decUi.freqInput.value),
     scanCounter:0, envelope:0, slowEnvelope:0, noiseFloor:0.004, peakLevel:0.025,
     strength:0, snrDb:0, isTone:false, toneCandidateFrames:0, silenceCandidateFrames:0,
-    lastTransitionTime:0, toneStartTime:0, silenceStartTime:0, currentSymbol:"",
+    lastTransitionTime:0, toneStartTime:0, silenceStartTime:0, currentSymbol:"", currentDurations:[], currentGaps:[],
     dotMs:dot, lastMarkMs:0, lastGapMs:0, pendingCharacter:false, pendingWord:false, samplesSeen:0
   });
   if (clearText) { dsp.decodedText=""; decUi.decodedOutput.textContent=""; }
@@ -509,19 +524,27 @@ function decClearAll() {
 }
 
 function decFindStrongest() {
-  if (!decAnalyser || !decAudioCtx) return;
+  const peak = decFindPeakFrequency();
+  if (!peak) return;
+  decUi.freqInput.value=String(peak.bestFreq);
+  decUpdateLabels();
+}
+
+function decFindPeakFrequency() {
+  if (!decAnalyser || !decAudioCtx) return null;
   if (!specData || specData.length!==decAnalyser.frequencyBinCount)
     specData=new Uint8Array(decAnalyser.frequencyBinCount);
   decAnalyser.getByteFrequencyData(specData);
   const nyq=decAudioCtx.sampleRate/2;
-  let best=700, bestV=0;
+  let bestFreq=700, bestVal=0, floorSum=0, floorCnt=0;
   for (let f=300; f<=1200; f+=5) {
     const bin=Math.round((f/nyq)*specData.length);
     const v=specData[decClamp(bin,0,specData.length-1)];
-    if (v>bestV) { bestV=v; best=f; }
+    floorSum += v;
+    floorCnt++;
+    if (v>bestVal) { bestVal=v; bestFreq=f; }
   }
-  decUi.freqInput.value=String(best);
-  decUpdateLabels();
+  return { bestFreq, bestVal, floor: floorSum / Math.max(1, floorCnt) };
 }
 
 function decSetFile(file) {
