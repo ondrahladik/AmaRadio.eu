@@ -382,9 +382,12 @@ function decReset(clearText) {
 function decStopDecoder(resetMode=true) {
   decRunning=false;
   decFlush();
+  dsp.strength = 0;
+  dsp.snrDb = 0;
   decDisconnect();
   if (resetMode) decCurrentMode="idle";
   decUpdateControlState();
+  decUpdateReadouts();
 }
 
 // Visualization
