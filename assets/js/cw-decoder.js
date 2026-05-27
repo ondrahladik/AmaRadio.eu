@@ -28,8 +28,10 @@ const decUi = {
   wpmInput:        document.getElementById("wpmInput"),
   bandwidthInput:  document.getElementById("bandwidthInput"),
   squelchInput:    document.getElementById("squelchInput"),
+  autoTuneRow:     document.getElementById("autoTuneRow"),
   autoTuneInput:   document.getElementById("autoTuneInput"),
   agcInput:        document.getElementById("agcInput"),
+  audioMonitorRow: document.getElementById("audioMonitorRow"),
   audioMonitorInput:document.getElementById("audioMonitorInput"),
   freqValue:       document.getElementById("freqValue"),
   thresholdValue:  document.getElementById("thresholdValue"),
@@ -37,12 +39,17 @@ const decUi = {
   meterFill:       document.getElementById("meterFill"),
   meterThreshold:  document.getElementById("meterThreshold"),
   strengthText:    document.getElementById("strengthText"),
+  snrMeterFill:    document.getElementById("snrMeterFill"),
+  snrMeterThreshold:document.getElementById("snrMeterThreshold"),
   snrValue:        document.getElementById("snrValue"),
   symbolOutput:    document.getElementById("symbolOutput"),
   decodedOutput:   document.getElementById("decodedOutput"),
   spectrumCanvas:  document.getElementById("spectrumCanvas"),
   waterfallCanvas: document.getElementById("waterfallCanvas")
 };
+
+const DEC_SNR_MIN_DB = -10;
+const DEC_SNR_MAX_DB = 30;
 
 let decAudioCtx      = null;
 let decAnalyser      = null;
@@ -161,11 +168,12 @@ async function decStartMic() {
   const stream = await decGetMicStream();
   decCurrentMode = "mic";
   decReset(true);
-  decConnect(decAudioCtx.createMediaStreamSource(stream), decUi.audioMonitorInput.checked);
+  decConnect(decAudioCtx.createMediaStreamSource(stream), false);
   const track = stream.getAudioTracks()[0];
   const label = track && track.label ? track.label : "default";
   const state = track ? track.readyState : "unknown";
   decSetStatus(`${cwDecT.micActive} ${label} (${state})`, "ok");
+  decUpdateControlState();
 }
 
 async function decStartFile(file) {
@@ -184,6 +192,7 @@ async function decStartFile(file) {
   decPlaybackSrc = src;
   src.start();
   decSetStatus(cwDecT.wavStart, "info");
+  decUpdateControlState();
 }
 
 function decNormGain(buf) {
@@ -253,6 +262,7 @@ function decHandleAudio(event) {
 }
 
 function decMaybeAutoTune(samples, nowMs) {
+  if (decUi.sourceMode.value === "file") return;
   if (!decUi.autoTuneInput.checked) return;
   if (dsp.isTone || dsp.strength > Number(decUi.thresholdInput.value)/100) return;
   if (dsp.currentSymbol || dsp.pendingCharacter || dsp.pendingWord) return;
@@ -374,6 +384,7 @@ function decStopDecoder(resetMode=true) {
   decFlush();
   decDisconnect();
   if (resetMode) decCurrentMode="idle";
+  decUpdateControlState();
 }
 
 // Visualization
@@ -466,9 +477,15 @@ function decFallColor(v) {
 function decUpdateReadouts() {
   const sp=Math.round(dsp.strength*100);
   const thr=Number(decUi.thresholdInput.value);
+  const squelchDb = Number(decUi.squelchInput.value) || 0;
+  const snrDb = decRunning ? dsp.snrDb : DEC_SNR_MIN_DB;
+  const snrPct = ((decClamp(snrDb, DEC_SNR_MIN_DB, DEC_SNR_MAX_DB) - DEC_SNR_MIN_DB) / (DEC_SNR_MAX_DB - DEC_SNR_MIN_DB)) * 100;
+  const snrThresholdPct = ((decClamp(squelchDb, DEC_SNR_MIN_DB, DEC_SNR_MAX_DB) - DEC_SNR_MIN_DB) / (DEC_SNR_MAX_DB - DEC_SNR_MIN_DB)) * 100;
   decUi.meterFill.style.width=`${decClamp(sp,0,100)}%`;
   decUi.meterThreshold.style.left=`${thr}%`;
   decUi.strengthText.textContent=`${sp}%`;
+  decUi.snrMeterFill.style.width=`${decClamp(snrPct,0,100)}%`;
+  decUi.snrMeterThreshold.style.left=`${decClamp(snrThresholdPct,0,100)}%`;
   decUi.snrValue.textContent=decRunning ? `${dsp.snrDb.toFixed(1)} dB` : "-- dB";
 }
 
@@ -514,20 +531,33 @@ function decSetFile(file) {
 function decUpdateSourceUi() {
   const isFile = decUi.sourceMode.value==="file";
   decUi.dropZone.classList.toggle("d-none", !isFile);
+  decUi.autoTuneRow.classList.toggle("d-none", isFile);
+  decUi.audioMonitorRow.classList.toggle("d-none", !isFile);
   decUi.startBtnIcon.className = isFile ? "fa-solid fa-play" : "fa-solid fa-microphone";
+  if (!isFile) decUi.audioMonitorInput.checked = false;
   if (isFile) {
     decSetStatus(decSelectedFile ? `${cwDecT.wavReady} ${decSelectedFile.name}` : cwDecT.fileHint, decSelectedFile?"info":"warn");
   } else {
     decSetStatus(cwDecT.micModeSelected, "muted");
   }
+  decUpdateControlState();
 }
 
 async function decStartSource() {
+  if (decRunning) return;
   if (decUi.sourceMode.value==="file") {
     if (!decSelectedFile) { decSetStatus(cwDecT.noFileSelected, "warn"); return; }
     await decStartFile(decSelectedFile); return;
   }
   await decStartMic();
+}
+
+function decUpdateControlState() {
+  const isFile = decUi.sourceMode.value === "file";
+  decUi.startBtn.disabled = decRunning || (isFile && !decSelectedFile);
+  decUi.stopBtn.disabled = !decRunning;
+  decUi.findBtn.disabled = !decRunning;
+  decUi.clearBtn.disabled = !decRunning;
 }
 
 // Events
@@ -538,6 +568,7 @@ decUi.startBtn.addEventListener("click", () => {
                : err.message;
     const src = decUi.sourceMode.value==="file" ? "WAV" : "Microphone";
     decSetStatus(`${src}: ${hint}`, "error");
+    if (decUi.sourceMode.value !== "file") window.alert(hint);
   });
 });
 decUi.stopBtn.addEventListener("click", () => {

@@ -87,6 +87,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
   margin-bottom: 5px;
 }
 
@@ -333,6 +334,10 @@ canvas.cw-waterfall { height: 240px; }
   width: 0%;
 }
 
+.cw-meter-fill-snr {
+  background: linear-gradient(90deg, #4b5c70 0%, #1d7eff 25%, #45f0a1 60%, #f4c95d 82%, #ff6b6b 100%);
+}
+
 .cw-meter-threshold {
   position: absolute;
   top: 0;
@@ -374,7 +379,7 @@ canvas.cw-waterfall { height: 240px; }
     flex-direction: column;
   }
   .cw-dec-grid > div > .cw-panel {
-    flex: 1;
+    flex: 0 0 auto;
   }
   canvas.cw-spectrum  { height: 160px; }
   canvas.cw-waterfall { height: 200px; }
@@ -382,4 +387,12 @@ canvas.cw-waterfall { height: 240px; }
 
 @media (max-width: 700px) {
   .cw-dec-wrap { padding: 12px 12px 24px; }
+  .cw-label-row {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .cw-label-val {
+    line-height: 1.25;
+    text-align: right;
+  }
 }

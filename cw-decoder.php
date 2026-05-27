@@ -92,7 +92,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                         </div>
 
                         <div class="cw-field">
-                            <label class="cw-toggle-row">
+                            <label class="cw-toggle-row" id="autoTuneRow">
                                 <input type="checkbox" id="autoTuneInput" class="cw-toggle" checked>
                                 <span class="cw-toggle-label"><?= $text['cw-dec-autotune-label'] ?></span>
                             </label>
@@ -100,7 +100,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                                 <input type="checkbox" id="agcInput" class="cw-toggle" checked>
                                 <span class="cw-toggle-label"><?= $text['cw-dec-agc-label'] ?></span>
                             </label>
-                            <label class="cw-toggle-row">
+                            <label class="cw-toggle-row" id="audioMonitorRow">
                                 <input type="checkbox" id="audioMonitorInput" class="cw-toggle">
                                 <span class="cw-toggle-label"><?= $text['cw-dec-monitor-label'] ?></span>
                             </label>
@@ -192,9 +192,15 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                             </div>
                         </div>
 
-                        <div class="cw-label-row">
-                            <span class="cw-label"><?= $text['cw-dec-snr-label'] ?></span>
-                            <span class="cw-label-val" id="snrValue">-- dB</span>
+                        <div>
+                            <div class="cw-label-row" style="margin-bottom:6px;">
+                                <span class="cw-label"><?= $text['cw-dec-snr-label'] ?></span>
+                                <span class="cw-label-val" id="snrValue">-- dB</span>
+                            </div>
+                            <div class="cw-meter">
+                                <div class="cw-meter-fill cw-meter-fill-snr" id="snrMeterFill" style="width:0%;"></div>
+                                <div class="cw-meter-threshold" id="snrMeterThreshold" style="left:25%;"></div>
+                            </div>
                         </div>
 
                     </div>
