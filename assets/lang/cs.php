@@ -358,7 +358,6 @@ $text = [
     'help-cw-encoder-description-4' => 'Osciloskopický panel zobrazuje průběh vygenerovaného signálu. Statistiky ukazují délku výstupu a efektivní rychlost v WPM.',
 
     // CW decoder 
-    'cw-dec-control-panel'   => 'Ovládání dekodéru',
     'cw-dec-signal-panel'    => 'Signál',
     'cw-dec-spectrum-panel'  => 'Spektrum',
     'cw-dec-waterfall-panel' => 'Vodopád',
@@ -388,8 +387,6 @@ $text = [
     'cw-dec-err-perm'        => 'Přístup odepřen',
     'cw-dec-err-notfound'    => 'Mikrofon nenalezen',
     'cw-dec-warn-fallback'   => 'Použit záložní mikrofon',
-    'cw-dec-input-mic'       => '● MIC',
-    'cw-dec-input-file'      => '● WAV',
 
     // CW decoder help
     'help-cw-decoder'               => 'Morse dekodér',

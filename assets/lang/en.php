@@ -358,7 +358,6 @@ $text = [
     'help-cw-encoder-description-4' => 'The oscilloscope panel displays the waveform of the generated signal. Statistics show output duration and effective WPM.',
 
     // CW decoder
-    'cw-dec-control-panel'   => 'Decoder controls',
     'cw-dec-signal-panel'    => 'Signal',
     'cw-dec-spectrum-panel'  => 'Spectrum',
     'cw-dec-waterfall-panel' => 'Waterfall',
@@ -388,8 +387,6 @@ $text = [
     'cw-dec-err-perm'        => 'Permission denied',
     'cw-dec-err-notfound'    => 'Microphone not found',
     'cw-dec-warn-fallback'   => 'Fallback microphone used',
-    'cw-dec-input-mic'       => '● MIC',
-    'cw-dec-input-file'      => '● WAV',
 
     // CW decoder help
     'help-cw-decoder'               => 'Morse decoder',
