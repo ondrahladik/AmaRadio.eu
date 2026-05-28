@@ -142,6 +142,31 @@ $text = [
     'help-zone-map-title-4' => '4. Map layer',
     'help-zone-map-description-4' => 'The map layer can be changed on the Settings page.',
 
+    // Rotator
+    'rotator-my-locator' => 'My locator',
+    'rotator-my-locator-placeholder' => 'Set locator',
+    'rotator-dx-locator' => 'DX locator',
+    'rotator-dx-locator-placeholder' => 'Enter DX locator',
+    'rotator-set' => 'Set',
+    'rotator-edit' => 'Edit',
+    'rotator-show' => 'Show',
+    'rotator-distance' => 'Distance',
+    'rotator-azimuth' => 'Azimuth',
+    'rotator-zoom' => 'Zoom',
+    'rotator-invalid-locator' => 'The locator must be in the format e.g. JO70QD.',
+    'rotator-no-my-locator' => 'Please set your own locator first.',
+
+    // Rotator help
+    'help-rotator' => 'Help for Rotator',
+    'help-rotator-title-1' => '1. Purpose',
+    'help-rotator-description-1' => 'This tool is used to determine the azimuth for rotating a directional antenna using a rotator. Simply enter the DX station locator and the tool will display the exact azimuth and distance.',
+    'help-rotator-title-2' => '2. How to use',
+    'help-rotator-description-2' => 'First, set your home locator using the <b>Set</b> button. The locator is saved in the browser memory and will be pre-filled automatically on your next visit. Then enter the DX station locator in the second field and click <b>Show</b> or press Enter.',
+    'help-rotator-title-3' => '3. Map display',
+    'help-rotator-description-3' => 'The map will show your position (home icon), the DX station position (antenna icon) and a dashed orange line representing the great-circle path. The compass in the left panel shows the azimuth to the DX station with an arrow. Distance and azimuth in degrees are shown below the compass.',
+    'help-rotator-title-4' => '4. Map layer',
+    'help-rotator-description-4' => 'The map layer can be changed on the Settings page.',
+
     // Terrain profile
     'terrain-add-point'      => 'Add point',
     'terrain-input-placeholder' => 'GPS or locator',
@@ -172,57 +197,6 @@ $text = [
     'help-terrain-description-3'=> 'After adding the second point, elevation data is automatically fetched from the OpenTopoData server (Mapzen DEM) and the profile is displayed with these layers:<br><br><b>Terrain</b> - brown-filled actual terrain with Earth curvature correction (K-factor 4/3).<br><b>LOS</b> - direct line of sight between antennas (always drawn above the Fresnel zone).<br><b>Fresnel zone</b> - green-shaded 1st Fresnel zone for the set frequency.<br><br>Precise values (distance, max/min elevation, LOS, Fresnel zone) are shown in the stats section above the chart. Hovering over the chart shows the current position on the map.',
     'help-terrain-title-4'      => '4. Map layer',
     'help-terrain-description-4'=> 'The map layer can be changed on the Settings page.',
-
-    // Rotator
-    'rotator-my-locator' => 'My locator',
-    'rotator-my-locator-placeholder' => 'Set locator',
-    'rotator-dx-locator' => 'DX locator',
-    'rotator-dx-locator-placeholder' => 'Enter DX locator',
-    'rotator-set' => 'Set',
-    'rotator-edit' => 'Edit',
-    'rotator-show' => 'Show',
-    'rotator-distance' => 'Distance',
-    'rotator-azimuth' => 'Azimuth',
-    'rotator-zoom' => 'Zoom',
-    'rotator-invalid-locator' => 'The locator must be in the format e.g. JO70QD.',
-    'rotator-no-my-locator' => 'Please set your own locator first.',
-
-    // Rotator help
-    'help-rotator' => 'Help for Rotator',
-    'help-rotator-title-1' => '1. Purpose',
-    'help-rotator-description-1' => 'This tool is used to determine the azimuth for rotating a directional antenna using a rotator. Simply enter the DX station locator and the tool will display the exact azimuth and distance.',
-    'help-rotator-title-2' => '2. How to use',
-    'help-rotator-description-2' => 'First, set your home locator using the <b>Set</b> button. The locator is saved in the browser memory and will be pre-filled automatically on your next visit. Then enter the DX station locator in the second field and click <b>Show</b> or press Enter.',
-    'help-rotator-title-3' => '3. Map display',
-    'help-rotator-description-3' => 'The map will show your position (home icon), the DX station position (antenna icon) and a dashed orange line representing the great-circle path. The compass in the left panel shows the azimuth to the DX station with an arrow. Distance and azimuth in degrees are shown below the compass.',
-    'help-rotator-title-4' => '4. Map layer',
-    'help-rotator-description-4' => 'The map layer can be changed on the Settings page.',
-
-    // Time
-    'time-title-2' => 'Time: 00:00:00',
-    'time-settings' => 'Settings',
-    'time-search' => 'Search for a state or time zone...',
-    'time-select-timezone' => 'Select a time zone',
-    'time-fullscreen' => 'Fullscreen mode',
-    'time-local-timezone' => 'Set Local Timezone',
-    'time-is-title' => 'Time: ',
-    'time-waiting' => '...waiting...',
-    'time-sync-ok' => 'the clocks are synchronized',
-    'time-sync-error' => 'the time difference is ',
-    'time-seconds' => ' seconds',
-
-    // Time help
-    'help-time' => 'Help for time',
-    'help-time-title-1' => '1. About this feature',
-    'help-time-description-1' => 'This function displays the time, which can be viewed in any time zone.<br><br>To display the time as best as possible, the time is obtained from your device. Sometimes it can happen that the time on your device is not synchronized. To check, you can verify the time according to this time.',
-    'help-time-description-2' => '<div class="utc">UTC = <iframe src="https://free.timeanddate.com/clock/i9zu5611/tluk/fs16/fcaaa/tc121212/pl0/pr0/pt5/pb0/th1" frameborder="0" width="64" height="20"></iframe></div>',
-    'help-time-title-2' => '2. Time synchronization',
-    'help-time-description-3' => 'Below the time, the current time synchronization status is displayed. That is, if your time is synchronized with the server correctly or if the synchronization difference is shown in seconds.',
-    'help-time-title-3' => '3. How to synchronize',
-    'help-time-description-4' => 'Below you can see instructions on how to synchronize the clock on your computer.',
-    'help-time-description-5' => '<details><summary>Windows</summary>Open Settings > Select Time and Language > Click Date and Time<br>Under the "Synchronize your clock" option, select the "Sync Now" button</details>',
-    'help-time-description-6' => '<details><summary>Mac</summary>Choose the Apple menu icon > System Settings > Select General on the sidebar > Date and Time<br>Turn on "Set time zone automatically using your current location"</details>',
-    'help-time-description-7' => 'Clicking <i class="fa-solid fa-gear"></i> will display the time zone settings. Clicking <i class="fa-solid fa-maximize"></i> will switch the page to full screen mode. Clicking <i class="fa-solid fa-location-dot"></i> will automatically set the time to your time zone.',
 
     // DX Cluster
     'cluster-page-title'  => 'DX Cluster',
@@ -286,55 +260,44 @@ $text = [
     'solar-heliumline'       => 'Helium 304Å',
     'solar-protonflux'       => 'Proton Flux',
     'solar-electronflux'     => 'Electron Flux',
-
     'solar-hf-conditions'    => 'HF Conditions',
     'solar-band-label'       => 'Band',
     'solar-band-day'         => 'Day',
     'solar-band-night'       => 'Night',
     'solar-vhf-conditions'   => 'VHF Conditions',
-
     'solar-flux-chart'       => 'Solar Flux & Sunspots',
     'solar-chart-error'      => 'Error loading chart',
-
     'solar-images'           => 'Visualisations',
     'solar-img-corona'       => 'Coronal loops',
     'solar-img-chromosphere' => 'Chromosphere',
     'solar-img-magnetogram'  => 'Magnetogram',
     'solar-img-aurora'       => 'Aurora forecast',
-
     'solar-cond-good'        => 'Good',
     'solar-cond-fair'        => 'Fair',
     'solar-cond-poor'        => 'Poor',
     'solar-cond-closed'      => 'Closed',
     'solar-cond-aurora'      => 'Aurora',
     'solar-cond-enhanced'    => 'Enhanced',
-
     'solar-loc-northern-hemi'=> 'Northern Hemisphere',
     'solar-loc-europe'       => 'Europe',
     'solar-loc-north-america'=> 'North America',
     'solar-loc-europe-6m'    => 'Europe 6m',
     'solar-loc-europe-4m'    => 'Europe 4m',
-
     'solar-ph-vhf-aurora'    => 'VHF Aurora',
     'solar-ph-eskip'         => 'E-Skip',
-
-
     'solar-sfi-low'          => 'Low',
     'solar-sfi-moderate'     => 'Moderate',
     'solar-sfi-good'         => 'Good',
     'solar-sfi-high'         => 'High',
-
     'solar-xray-desc-a'      => 'Class A - very weak',
     'solar-xray-desc-b'      => 'Class B - weak',
     'solar-xray-desc-c'      => 'Class C - moderate',
     'solar-xray-desc-m'      => 'Class M - strong',
     'solar-xray-desc-x'      => 'Class X - extreme',
-
     'solar-units-kmps'       => 'km/s',
     'solar-units-nt'         => 'nT',
     'solar-units-sfu'        => 'SFU',
     'solar-units-pfu'        => 'pfu',
-
     'solar-data-error'       => 'Could not load solar data. Please try again.',
     'solar-data-source'      => 'Data:',
 
@@ -430,6 +393,32 @@ $text = [
     'settings-callsign-help' => 'Your callsign',
     'settings-locator-help'  => 'Your locator',
     'settings-maplayer'      => 'Map layer',
+
+    // Time
+    'time-title-2' => 'Time: 00:00:00',
+    'time-settings' => 'Settings',
+    'time-search' => 'Search for a state or time zone...',
+    'time-select-timezone' => 'Select a time zone',
+    'time-fullscreen' => 'Fullscreen mode',
+    'time-local-timezone' => 'Set Local Timezone',
+    'time-is-title' => 'Time: ',
+    'time-waiting' => '...waiting...',
+    'time-sync-ok' => 'the clocks are synchronized',
+    'time-sync-error' => 'the time difference is ',
+    'time-seconds' => ' seconds',
+
+    // Time help
+    'help-time' => 'Help for time',
+    'help-time-title-1' => '1. About this feature',
+    'help-time-description-1' => 'This function displays the time, which can be viewed in any time zone.<br><br>To display the time as best as possible, the time is obtained from your device. Sometimes it can happen that the time on your device is not synchronized. To check, you can verify the time according to this time.',
+    'help-time-description-2' => '<div class="utc">UTC = <iframe src="https://free.timeanddate.com/clock/i9zu5611/tluk/fs16/fcaaa/tc121212/pl0/pr0/pt5/pb0/th1" frameborder="0" width="64" height="20"></iframe></div>',
+    'help-time-title-2' => '2. Time synchronization',
+    'help-time-description-3' => 'Below the time, the current time synchronization status is displayed. That is, if your time is synchronized with the server correctly or if the synchronization difference is shown in seconds.',
+    'help-time-title-3' => '3. How to synchronize',
+    'help-time-description-4' => 'Below you can see instructions on how to synchronize the clock on your computer.',
+    'help-time-description-5' => '<details><summary>Windows</summary>Open Settings > Select Time and Language > Click Date and Time<br>Under the "Synchronize your clock" option, select the "Sync Now" button</details>',
+    'help-time-description-6' => '<details><summary>Mac</summary>Choose the Apple menu icon > System Settings > Select General on the sidebar > Date and Time<br>Turn on "Set time zone automatically using your current location"</details>',
+    'help-time-description-7' => 'Clicking <i class="fa-solid fa-gear"></i> will display the time zone settings. Clicking <i class="fa-solid fa-maximize"></i> will switch the page to full screen mode. Clicking <i class="fa-solid fa-location-dot"></i> will automatically set the time to your time zone.',
 
     // About page
     'about-title' => 'About AMARADIO.eu',

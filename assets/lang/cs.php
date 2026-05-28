@@ -142,6 +142,31 @@ $text = [
     'help-zone-map-title-4' => '4. Mapová vrstva',
     'help-zone-map-description-4' => 'Mapovou vrstvu lze změnit na stránce Nastavení.',
 
+    // Rotator
+    'rotator-my-locator' => 'Můj lokátor',
+    'rotator-my-locator-placeholder' => 'Nastav lokátor',
+    'rotator-dx-locator' => 'DX lokátor',
+    'rotator-dx-locator-placeholder' => 'Zadej DX lokátor',
+    'rotator-set' => 'Nastav',
+    'rotator-edit' => 'Změnit',
+    'rotator-show' => 'Zobraz',
+    'rotator-distance' => 'Vzdálenost',
+    'rotator-azimuth' => 'Azimut',
+    'rotator-zoom' => 'Zoom',
+    'rotator-invalid-locator' => 'Lokátor musí být ve formátu např. JO70QD.',
+    'rotator-no-my-locator' => 'Nejprve nastav svůj vlastní lokátor.',
+
+    // Rotator help
+    'help-rotator' => 'Nápověda k rotátoru',
+    'help-rotator-title-1' => '1. K čemu slouží',
+    'help-rotator-description-1' => 'Tento nástroj slouží k určení azimutu pro natočení směrové antény pomocí rotátoru. Stačí zadat lokátor DX stanice a nástroj zobrazí přesný azimut a vzdálenost.',
+    'help-rotator-title-2' => '2. Jak používat',
+    'help-rotator-description-2' => 'Nejprve nastav svůj domovský lokátor tlačítkem <b>Nastav</b>. Lokátor se uloží do paměti prohlížeče a při příští návštěvě bude automaticky předvyplněn. Následně zadej lokátor DX stanice do druhého pole a klikni na <b>Zobraz</b> nebo stiskni Enter.',
+    'help-rotator-title-3' => '3. Zobrazení na mapě',
+    'help-rotator-description-3' => 'Na mapě se zobrazí tvoje poloha (ikona domu), poloha DX stanice (ikona antény) a přerušovaná oranžová čára znázorňující trasu po velkém kruhu. Kompas v levém panelu zobrazuje ručičkou azimut k DX stanici. Pod kompasem jsou uvedeny vzdálenost a azimut ve stupních.',
+    'help-rotator-title-4' => '4. Mapová vrstva',
+    'help-rotator-description-4' => 'Mapovou vrstvu lze změnit na stránce Nastavení.',
+
     // Terrain profile
     'terrain-add-point'      => 'Přidat bod',
     'terrain-input-placeholder' => 'GPS nebo lokátor',
@@ -172,58 +197,7 @@ $text = [
     'help-terrain-description-3'=> 'Po přidání druhého bodu se automaticky načtou výšková data ze serveru OpenTopoData (Mapzen DEM) a zobrazí se profil s těmito vrstvami:<br><br><b>Terén</b> - hnědě vyplněný skutečný terén se korekcí zemské křivosti (K-faktor 4/3).<br><b>LOS</b> - přímá přímka viditelnosti mezi anténami (vždy nad Fresnelovou zónou).<br><b>Fresnelova zóna</b> - zeleně vyznačená 1. Fresnelova zóna pro nastavenou frekvenci.<br><br>Přesné hodnoty (vzdálenost, max/min výška, LOS, Fresnelova zóna) jsou zobrazeny v statistikách nad grafem. Přejetím myší přes graf se zobrazuje aktuální poloha na mapě.',
     'help-terrain-title-4'      => '4. Mapová vrstva',
     'help-terrain-description-4'=> 'Mapovou vrstvu lze změnit na stránce Nastavení.',
-
-    // Rotator
-    'rotator-my-locator' => 'Můj lokátor',
-    'rotator-my-locator-placeholder' => 'Nastav lokátor',
-    'rotator-dx-locator' => 'DX lokátor',
-    'rotator-dx-locator-placeholder' => 'Zadej DX lokátor',
-    'rotator-set' => 'Nastav',
-    'rotator-edit' => 'Změnit',
-    'rotator-show' => 'Zobraz',
-    'rotator-distance' => 'Vzdálenost',
-    'rotator-azimuth' => 'Azimut',
-    'rotator-zoom' => 'Zoom',
-    'rotator-invalid-locator' => 'Lokátor musí být ve formátu např. JO70QD.',
-    'rotator-no-my-locator' => 'Nejprve nastav svůj vlastní lokátor.',
-
-    // Rotator help
-    'help-rotator' => 'Nápověda k rotátoru',
-    'help-rotator-title-1' => '1. K čemu slouží',
-    'help-rotator-description-1' => 'Tento nástroj slouží k určení azimutu pro natočení směrové antény pomocí rotátoru. Stačí zadat lokátor DX stanice a nástroj zobrazí přesný azimut a vzdálenost.',
-    'help-rotator-title-2' => '2. Jak používat',
-    'help-rotator-description-2' => 'Nejprve nastav svůj domovský lokátor tlačítkem <b>Nastav</b>. Lokátor se uloží do paměti prohlížeče a při příští návštěvě bude automaticky předvyplněn. Následně zadej lokátor DX stanice do druhého pole a klikni na <b>Zobraz</b> nebo stiskni Enter.',
-    'help-rotator-title-3' => '3. Zobrazení na mapě',
-    'help-rotator-description-3' => 'Na mapě se zobrazí tvoje poloha (ikona domu), poloha DX stanice (ikona antény) a přerušovaná oranžová čára znázorňující trasu po velkém kruhu. Kompas v levém panelu zobrazuje ručičkou azimut k DX stanici. Pod kompasem jsou uvedeny vzdálenost a azimut ve stupních.',
-    'help-rotator-title-4' => '4. Mapová vrstva',
-    'help-rotator-description-4' => 'Mapovou vrstvu lze změnit na stránce Nastavení.',
-
-    // Time
-    'time-title-2' => 'Čas: 00:00:00',
-    'time-settings' => 'Nastavení',
-    'time-search' => 'Hledat stát nebo časové pásmo...',
-    'time-select-timezone' => 'Vyberte časové pásmo',
-    'time-fullscreen' => 'Celá obrazovka',
-    'time-local-timezone' => 'Nastavit místní časové pásmo',
-    'time-is-title' => 'Čas: ',
-    'time-waiting' => '..načítám..',
-    'time-sync-ok' => 'Čas je synchronizován',
-    'time-sync-error' => 'časový rozdíl je ',
-    'time-seconds' => ' sekund',
-
-    // Time help
-    'help-time' => 'Nápověda k hodinám',
-    'help-time-title-1' => '1. O funkci',
-    'help-time-description-1' => 'Tato funkce zobrazuje čas, který si lze zobrazit v libovolném časovém pásmu.<br><br>Pro co nejlepší zobrazení času se čas získává z vašeho zařízení. Někdy se může stát, že čas na vašem zařízení není synchronizovaný. Pro kontrolu si můžete čas zkontrolovat podle tohoto času.',
-    'help-time-description-2' => '<div class="utc">UTC = <iframe src="https://free.timeanddate.com/clock/i9zu5611/tluk/fs16/fcaaa/tc121212/pl0/pr0/pt5/pb0/th1" frameborder="0" width="64" height="20"></iframe></div>',
-    'help-time-title-2' => '2. Synchronizace času',
-    'help-time-description-3' => 'Pod časem se zobrazuje informace o stavu synchronizace. Ukazuje, jestli je váš čas správně sladěný se serverem, nebo jak velká je případná odchylka v sekundách.',
-    'help-time-title-3' => '3. Jak synchronizovat',
-    'help-time-description-4' => 'Níže si můžete zobrazit pokyny, jak synchronizovat hodiny v počítači.',
-    'help-time-description-5' => '<details><summary>Windows</summary>Otevřete Nastavení > Vyberte Čas a jazyk > Klikněte na Datum a čas<br>V části „Synchronizovat hodiny“ vyberte tlačítko „Synchronizovat“</details>',
-    'help-time-description-6' => '<details><summary>Mac</summary>Vyberte ikonu nabídky Apple > Nastavení systému > Na bočním panelu vyberte Obecné > Datum a čas<br>Zapněte možnost „Automaticky nastavit časové pásmo podle vaší aktuální polohy“</details>',
-    'help-time-description-7' => 'Kliknutím na <i class="fa-solid fa-gear"></i> se zobrazí nastavení časového pásma. Kliknutím na <i class="fa-solid fa-maximize"></i> se přepne stránka do režimu celé obrazovky. Kliknutím na <i class="fa-solid fa-location-dot"></i> se nastaví automaticky čas do vašeho časového pásma.',
-
+    
     // DX Cluster
     'cluster-page-title'  => 'DX Cluster',
     'cluster-subtitle'    => 'Realtime spoty z DX Clusteru (server VE7CC)',
@@ -286,55 +260,44 @@ $text = [
     'solar-heliumline'       => 'Helium 304Å',
     'solar-protonflux'       => 'Tok protonů',
     'solar-electronflux'     => 'Tok elektronů',
-
     'solar-hf-conditions'    => 'HF podmínky',
     'solar-band-label'       => 'Pásmo',
     'solar-band-day'         => 'Den',
     'solar-band-night'       => 'Noc',
     'solar-vhf-conditions'   => 'VHF podmínky',
-
     'solar-flux-chart'       => 'Solární tok & sluneční skvrny',
     'solar-chart-error'      => 'Chyba při načítání grafu',
-
     'solar-images'           => 'Vizualizace',
     'solar-img-corona'       => 'Koronální smyčky',
     'solar-img-chromosphere' => 'Chromosféra',
     'solar-img-magnetogram'  => 'Magnetogram',
     'solar-img-aurora'       => 'Předpověď polární záře',
-
     'solar-cond-good'        => 'Dobré',
     'solar-cond-fair'        => 'Průměrné',
     'solar-cond-poor'        => 'Špatné',
     'solar-cond-closed'      => 'Zavřené',
     'solar-cond-aurora'      => 'Aurora',
     'solar-cond-enhanced'    => 'Zlepšené',
-
     'solar-loc-northern-hemi'=> 'Severní polokoule',
     'solar-loc-europe'       => 'Evropa',
     'solar-loc-north-america'=> 'Severní Amerika',
     'solar-loc-europe-6m'    => 'Evropa 6m',
     'solar-loc-europe-4m'    => 'Evropa 4m',
-
     'solar-ph-vhf-aurora'    => 'VHF Aurora',
     'solar-ph-eskip'         => 'E-Skip',
-
-
     'solar-sfi-low'          => 'Nízký',
     'solar-sfi-moderate'     => 'Střední',
     'solar-sfi-good'         => 'Dobrý',
     'solar-sfi-high'         => 'Vysoký',
-
     'solar-xray-desc-a'      => 'Třída A - velmi slabá',
     'solar-xray-desc-b'      => 'Třída B - slabá',
     'solar-xray-desc-c'      => 'Třída C - střední',
     'solar-xray-desc-m'      => 'Třída M - silná',
     'solar-xray-desc-x'      => 'Třída X - extrémní',
-
     'solar-units-kmps'       => 'km/s',
     'solar-units-nt'         => 'nT',
     'solar-units-sfu'        => 'SFU',
     'solar-units-pfu'        => 'pfu',
-
     'solar-data-error'       => 'Nepodařilo se načíst solární data. Zkuste to prosím znovu.',
     'solar-data-source'      => 'Data:',
 
@@ -418,6 +381,32 @@ $text = [
     'help-cw-decoder-description-3' => 'Spektrální analyzátor zobrazuje frekvenční obsah v reálném čase. Žlutá svislá čára označuje nastavenou frekvenci. Vodopádový display ukazuje historii spektra - silné signály jsou zobrazeny světleji.',
     'help-cw-decoder-title-4'       => 'Výstup a signál',
     'help-cw-decoder-description-4' => 'Aktuálně dekódovaný symbol se zobrazuje v poli Symbol. Hotový text přibývá v poli Dekódovaný text. Síla signálu a SNR se zobrazuje v poli Signál.',
+
+    // Time
+    'time-title-2' => 'Čas: 00:00:00',
+    'time-settings' => 'Nastavení',
+    'time-search' => 'Hledat stát nebo časové pásmo...',
+    'time-select-timezone' => 'Vyberte časové pásmo',
+    'time-fullscreen' => 'Celá obrazovka',
+    'time-local-timezone' => 'Nastavit místní časové pásmo',
+    'time-is-title' => 'Čas: ',
+    'time-waiting' => '..načítám..',
+    'time-sync-ok' => 'Čas je synchronizován',
+    'time-sync-error' => 'časový rozdíl je ',
+    'time-seconds' => ' sekund',
+
+    // Time help
+    'help-time' => 'Nápověda k hodinám',
+    'help-time-title-1' => '1. O funkci',
+    'help-time-description-1' => 'Tato funkce zobrazuje čas, který si lze zobrazit v libovolném časovém pásmu.<br><br>Pro co nejlepší zobrazení času se čas získává z vašeho zařízení. Někdy se může stát, že čas na vašem zařízení není synchronizovaný. Pro kontrolu si můžete čas zkontrolovat podle tohoto času.',
+    'help-time-description-2' => '<div class="utc">UTC = <iframe src="https://free.timeanddate.com/clock/i9zu5611/tluk/fs16/fcaaa/tc121212/pl0/pr0/pt5/pb0/th1" frameborder="0" width="64" height="20"></iframe></div>',
+    'help-time-title-2' => '2. Synchronizace času',
+    'help-time-description-3' => 'Pod časem se zobrazuje informace o stavu synchronizace. Ukazuje, jestli je váš čas správně sladěný se serverem, nebo jak velká je případná odchylka v sekundách.',
+    'help-time-title-3' => '3. Jak synchronizovat',
+    'help-time-description-4' => 'Níže si můžete zobrazit pokyny, jak synchronizovat hodiny v počítači.',
+    'help-time-description-5' => '<details><summary>Windows</summary>Otevřete Nastavení > Vyberte Čas a jazyk > Klikněte na Datum a čas<br>V části „Synchronizovat hodiny“ vyberte tlačítko „Synchronizovat“</details>',
+    'help-time-description-6' => '<details><summary>Mac</summary>Vyberte ikonu nabídky Apple > Nastavení systému > Na bočním panelu vyberte Obecné > Datum a čas<br>Zapněte možnost „Automaticky nastavit časové pásmo podle vaší aktuální polohy“</details>',
+    'help-time-description-7' => 'Kliknutím na <i class="fa-solid fa-gear"></i> se zobrazí nastavení časového pásma. Kliknutím na <i class="fa-solid fa-maximize"></i> se přepne stránka do režimu celé obrazovky. Kliknutím na <i class="fa-solid fa-location-dot"></i> se nastaví automaticky čas do vašeho časového pásma.',
 
     // Settings page
     'settings-page-title'    => 'Nastavení',
