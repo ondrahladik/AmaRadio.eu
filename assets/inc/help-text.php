@@ -41,6 +41,13 @@ switch ($page) {
           <b>" . $text['help-rotator-title-4'] . "</b><br>" . $text['help-rotator-description-4'] . "<br>";
     break;
 
+  case 'terrain':
+    echo "<h2>" . $text['help-terrain'] . "</h2><b>" . $text['help-terrain-title-1'] . "</b><br>" . $text['help-terrain-description-1'] . "<br><br>
+          <b>" . $text['help-terrain-title-2'] . "</b><br>" . $text['help-terrain-description-2'] . "<br><br>
+          <b>" . $text['help-terrain-title-3'] . "</b><br>" . $text['help-terrain-description-3'] . "<br><br>
+          <b>" . $text['help-terrain-title-4'] . "</b><br>" . $text['help-terrain-description-4'] . "<br>";
+    break;
+
   case 'solar':
     echo "<h2>" . $text['help-solar'] . "</h2><b>" . $text['help-solar-title-1'] . "</b><br>" . $text['help-solar-description-1'] . "<br><br>
           <b>" . $text['help-solar-title-2'] . "</b><br>" . $text['help-solar-description-2'] . "<br><br>
