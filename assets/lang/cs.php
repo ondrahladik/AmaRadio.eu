@@ -185,6 +185,9 @@ $text = [
     'terrain-los-blocked'    => 'Blokováno',
     'terrain-los-clear'      => 'Volné',
     'terrain-load-error'     => 'Chyba při načítání dat.',
+    'terrain-export-png'     => 'Exportovat jako PNG',
+    'terrain-chart-expand'   => 'Zvětšit graf',
+    'terrain-generated-on'   => 'Vygenerováno na AMARADIO.eu',
 
     // Terrain profile help
     'help-terrain'              => 'Nápověda k terénnímu profilu',

@@ -193,6 +193,14 @@ include 'assets/lang/lang.php';
 
             <!-- Chart -->
             <div class="terrain-chart-wrap" id="terrainChartWrap" style="display:none;">
+                <div class="chart-toolbar">
+                    <button class="chart-btn" onclick="openChartModal()" title="<?= $text['terrain-chart-expand'] ?>">
+                        <i class="fa-solid fa-expand"></i>
+                    </button>
+                    <button class="chart-btn" onclick="exportChartPNG()" title="<?= $text['terrain-export-png'] ?>">
+                        <i class="fa-solid fa-download"></i>
+                    </button>
+                </div>
                 <canvas id="terrainChart"></canvas>
                 <div class="chart-overlay" id="chartOverlay" style="display:none;">
                     <div class="spinner"></div>
@@ -203,6 +211,19 @@ include 'assets/lang/lang.php';
 
         <div id="map"></div>
 
+    </div>
+
+    <!-- Chart modal -->
+    <div class="chart-modal" id="chartModal" style="display:none;">
+        <div class="chart-modal-backdrop" onclick="closeChartModal()"></div>
+        <div class="chart-modal-box">
+            <button class="chart-modal-close" onclick="closeChartModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="chart-modal-canvas-wrap">
+                <canvas id="terrainChartModal"></canvas>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -218,6 +239,15 @@ include 'assets/lang/lang.php';
             lon:          <?= json_encode($text['zone-map-lon']) ?>,
             loc:          <?= json_encode($text['zone-map-loc']) ?>,
             alt:          <?= json_encode($text['zone-map-alt']) ?>,
+            exportPng:    <?= json_encode($text['terrain-export-png']) ?>,
+            generatedOn:  <?= json_encode($text['terrain-generated-on']) ?>,
+            statLabels: {
+                distance: <?= json_encode($text['terrain-distance']) ?>,
+                maxElev:  <?= json_encode($text['terrain-max-elev']) ?>,
+                minElev:  <?= json_encode($text['terrain-min-elev']) ?>,
+                los:      'LOS',
+                fresnel:  <?= json_encode($text['terrain-fresnel']) ?>,
+            },
         };
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>

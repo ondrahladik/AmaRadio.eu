@@ -185,6 +185,9 @@ $text = [
     'terrain-los-blocked'    => 'Blocked',
     'terrain-los-clear'      => 'Clear',
     'terrain-load-error'     => 'Error loading terrain data.',
+    'terrain-export-png'     => 'Export as PNG',
+    'terrain-chart-expand'   => 'Enlarge chart',
+    'terrain-generated-on'   => 'Generated on AMARADIO.eu',
 
     // Terrain profile help
     'help-terrain'              => 'Help for terrain profile',

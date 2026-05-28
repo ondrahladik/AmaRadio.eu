@@ -4,6 +4,8 @@ let markers = [];
 let pathLine = null;
 let locationMarker = null;
 let chartInstance = null;
+let modalChartInstance = null;
+let lastChartArgs = null;
 let profileData = null;   
 let chartCrosshair = null;
 let analyzeTimer = null;
@@ -359,9 +361,9 @@ function renderResults(data) {
     renderChart(distances, corrected, los, fresnelTop, fresnelBot);
 }
 
-function renderChart(distances, terrain, los, fresnelTop, fresnelBot) {
-    const canvas = document.getElementById('terrainChart');
-    const ctx    = canvas.getContext('2d');
+function buildChartOnCanvas(canvas, distances, terrain, los, fresnelTop, fresnelBot, animate) {
+    if (animate === undefined) animate = true;
+    const ctx = canvas.getContext('2d');
 
     const terrGrad = ctx.createLinearGradient(0, 0, 0, 300);
     terrGrad.addColorStop(0,   'rgba(220,170,90,0.95)');
@@ -375,8 +377,6 @@ function renderChart(distances, terrain, los, fresnelTop, fresnelBot) {
     const allY = terrain.concat(fresnelTop).concat(fresnelBot);
     const maxY = Math.max.apply(null, allY) + 25;
     const minY = Math.max(0, Math.min.apply(null, allY) - 15);
-
-    if (chartInstance) chartInstance.destroy();
 
     const verticalLinePlugin = {
         id: 'verticalLine',
@@ -399,7 +399,7 @@ function renderChart(distances, terrain, los, fresnelTop, fresnelBot) {
         }
     };
 
-    chartInstance = new Chart(ctx, {
+    return new Chart(ctx, {
         type: 'line',
         plugins: [verticalLinePlugin],
         data: {
@@ -451,9 +451,10 @@ function renderChart(distances, terrain, los, fresnelTop, fresnelBot) {
             ]
         },
         options: {
-            responsive: true,
+            responsive: !animate ? false : true,
             maintainAspectRatio: false,
-            animation: {duration: 500},
+            animation: animate ? {duration: 500} : false,
+            layout: animate ? {} : { padding: 0 },
             interaction: {mode: 'index', intersect: false},
             plugins: {
                 legend: {
@@ -511,11 +512,134 @@ function renderChart(distances, terrain, los, fresnelTop, fresnelBot) {
             }
         }
     });
+}
+
+function renderChart(distances, terrain, los, fresnelTop, fresnelBot) {
+    lastChartArgs = { distances: distances, terrain: terrain, los: los, fresnelTop: fresnelTop, fresnelBot: fresnelBot };
+
+    const canvas = document.getElementById('terrainChart');
+    if (chartInstance) chartInstance.destroy();
+    chartInstance = buildChartOnCanvas(canvas, distances, terrain, los, fresnelTop, fresnelBot);
 
     document.getElementById('terrainChartWrap').style.display = 'block';
 
     canvas.addEventListener('mousemove', onChartMouseMove);
     canvas.addEventListener('mouseleave', onChartMouseLeave);
+}
+
+function exportChartPNG() {
+    if (!lastChartArgs) return;
+
+    const W = 2400, HEADER = 44, CH = 900;
+    const exportCanvas = document.createElement('canvas');
+    exportCanvas.width  = W;
+    exportCanvas.height = HEADER + CH;
+    exportCanvas.style.cssText = 'position:absolute;left:-9999px;top:-9999px;';
+    document.body.appendChild(exportCanvas);
+
+    const ctx = exportCanvas.getContext('2d');
+    ctx.fillStyle = '#0a0a0a';
+    ctx.fillRect(0, 0, W, HEADER + CH);
+    ctx.textBaseline = 'middle';
+
+    const ROW_Y = HEADER / 2;  
+
+    ctx.textAlign = 'left';
+    ctx.font = '18px Arial, sans-serif';
+    ctx.fillStyle = '#7e8a97';
+    const prefix = translations.generatedOn.replace('AMARADIO.eu', '');
+    ctx.fillText(prefix, 30, ROW_Y);
+    const prefixW = ctx.measureText(prefix).width;
+    ctx.fillStyle = '#00ffe0';
+    ctx.font = 'bold 18px Arial, sans-serif';
+    ctx.fillText('AMARADIO.eu', 30 + prefixW, ROW_Y);
+
+    const stats = [
+        { label: translations.statLabels.distance, el: 'statDistance' },
+        { label: translations.statLabels.maxElev,  el: 'statMaxElev'  },
+        { label: translations.statLabels.minElev,  el: 'statMinElev'  },
+        { label: translations.statLabels.los,      el: 'statLOS'      },
+        { label: translations.statLabels.fresnel,  el: 'statFresnel'  },
+    ];
+    const SEP = '   |   ';
+
+    ctx.font = '18px Arial, sans-serif';
+    let totalW = 0;
+    stats.forEach(function(s, i) {
+        const val = document.getElementById(s.el) ? document.getElementById(s.el).textContent : '–';
+        totalW += ctx.measureText(s.label + ': ').width;
+        ctx.font = 'bold 18px Arial, sans-serif';
+        totalW += ctx.measureText(val).width;
+        ctx.font = '18px Arial, sans-serif';
+        if (i < stats.length - 1) totalW += ctx.measureText(SEP).width;
+    });
+
+    let x = (W - totalW) / 2;
+    stats.forEach(function(s, i) {
+        const domEl = document.getElementById(s.el);
+        const val = domEl ? domEl.textContent : '–';
+        const valColor = (s.el === 'statLOS' && domEl && domEl.style.color)
+            ? domEl.style.color : '#e8e8e8';
+
+        ctx.font = '18px Arial, sans-serif';
+        ctx.fillStyle = '#7e8a97';
+        const labelPart = s.label + ': ';
+        ctx.fillText(labelPart, x, ROW_Y);
+        x += ctx.measureText(labelPart).width;
+
+        ctx.font = 'bold 18px Arial, sans-serif';
+        ctx.fillStyle = valColor;
+        ctx.fillText(val, x, ROW_Y);
+        x += ctx.measureText(val).width;
+
+        if (i < stats.length - 1) {
+            ctx.font = '18px Arial, sans-serif';
+            ctx.fillStyle = '#3a3a3a';
+            ctx.fillText(SEP, x, ROW_Y);
+            x += ctx.measureText(SEP).width;
+        }
+    });
+
+    const chartCanvas = document.createElement('canvas');
+    chartCanvas.width  = W;
+    chartCanvas.height = CH;
+    chartCanvas.style.cssText = 'position:absolute;left:-9999px;top:-9999px;';
+    document.body.appendChild(chartCanvas);
+
+    const ctx2 = chartCanvas.getContext('2d');
+    ctx2.fillStyle = '#0a0a0a';
+    ctx2.fillRect(0, 0, W, CH);
+
+    const a = lastChartArgs;
+    const tempChart = buildChartOnCanvas(chartCanvas, a.distances, a.terrain, a.los, a.fresnelTop, a.fresnelBot, false);
+
+    ctx.drawImage(chartCanvas, 0, HEADER);
+
+    const link = document.createElement('a');
+    link.download = 'terrain-profile.png';
+    link.href = exportCanvas.toDataURL('image/png');
+    link.click();
+
+    tempChart.destroy();
+    document.body.removeChild(exportCanvas);
+    document.body.removeChild(chartCanvas);
+}
+
+function openChartModal() {
+    if (!lastChartArgs) return;
+    const modal = document.getElementById('chartModal');
+    modal.style.display = 'flex';
+    if (modalChartInstance) { modalChartInstance.destroy(); modalChartInstance = null; }
+    requestAnimationFrame(function() {
+        const canvas = document.getElementById('terrainChartModal');
+        const a = lastChartArgs;
+        modalChartInstance = buildChartOnCanvas(canvas, a.distances, a.terrain, a.los, a.fresnelTop, a.fresnelBot);
+    });
+}
+
+function closeChartModal() {
+    document.getElementById('chartModal').style.display = 'none';
+    if (modalChartInstance) { modalChartInstance.destroy(); modalChartInstance = null; }
 }
 
 function onChartMouseMove(e) {
@@ -587,7 +711,9 @@ function showLoading(show) {
 function hideResults() {
     document.getElementById('terrainStats').classList.remove('stats-visible');
     document.getElementById('terrainChartWrap').style.display = 'none';
+    closeChartModal();
     profileData = null;
+    lastChartArgs = null;
     if (chartCrosshair) { map.removeLayer(chartCrosshair); chartCrosshair = null; }
     if (chartInstance)  { chartInstance.destroy(); chartInstance = null; }
 }
@@ -603,6 +729,9 @@ window.addEventListener('DOMContentLoaded', function() {
         if (e.altKey && e.key.toLowerCase() === 'h') {
             e.preventDefault();
             openHelpModal();
+        }
+        if (e.key === 'Escape') {
+            closeChartModal();
         }
     });
 
