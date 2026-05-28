@@ -229,6 +229,7 @@ $currentPage = $pageInfo[$currentPath] ?? null;
           'l': '/locator-map',
           'z': '/zone-map',
           'r': '/rotator',
+          'h': '/terrain',
           'd': '/cluster',
           's': '/solar',
           't': '/time',
