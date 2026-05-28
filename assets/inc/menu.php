@@ -6,6 +6,7 @@ $pageInfo = [
     '/prefix'      => ['icon' => 'fa-magnifying-glass', 'label' => $text['prefix-search'],   'key' => 'P', 'href' => '/prefix'],
     '/locator-map' => ['icon' => 'fa-location-dot',     'label' => $text['locator-map'],      'key' => 'L', 'href' => '/locator-map'],
     '/zone-map'    => ['icon' => 'fa-map',              'label' => $text['zone-map'],         'key' => 'Z', 'href' => '/zone-map'],
+    '/terrain'     => ['icon' => 'fa-mountain',         'label' => $text['terrain'],          'key' => 'H', 'href' => '/terrain'],
     '/rotator'     => ['icon' => 'fa-compass',          'label' => $text['rotator'],          'key' => 'R', 'href' => '/rotator'],
     '/cluster'     => ['icon' => 'fa-circle-nodes',     'label' => $text['cluster'],          'key' => 'D', 'href' => '/cluster'],
     '/solar'       => ['icon' => 'fa-sun',              'label' => $text['solar-page-title'], 'key' => 'S', 'href' => '/solar'],
@@ -71,6 +72,11 @@ $currentPage = $pageInfo[$currentPath] ?? null;
           <div class="nav-icon"><i class="fa-solid fa-compass"></i></div>
           <span class="nav-label"><?= $text['rotator'] ?></span>
           <p class="nav-desc"><?= $text['rotator-title'] ?></p>
+        </a>
+        <a href="/terrain" class="nav-item<?= $currentPath === '/terrain' ? ' active' : '' ?>">
+          <div class="nav-icon"><i class="fa-solid fa-mountain"></i></div>
+          <span class="nav-label"><?= $text['terrain'] ?></span>
+          <p class="nav-desc"><?= $text['terrain-title'] ?></p>
         </a>
         <a href="/cluster" class="nav-item<?= $currentPath === '/cluster' ? ' active' : '' ?>">
           <div class="nav-icon"><i class="fa-solid fa-circle-nodes"></i></div>
@@ -143,6 +149,7 @@ $currentPage = $pageInfo[$currentPath] ?? null;
         <div class="shortcut-row"><kbd>Alt+L</kbd><span><?= $text['locator-map'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+Z</kbd><span><?= $text['zone-map'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+R</kbd><span><?= $text['rotator'] ?></span></div>
+        <div class="shortcut-row"><kbd>Alt+H</kbd><span><?= $text['terrain'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+D</kbd><span><?= $text['cluster'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+S</kbd><span><?= $text['solar-page-title'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+E</kbd><span><?= $text['cw-encoder'] ?></span></div>
