@@ -175,7 +175,6 @@ $text = [
     'terrain-freq'           => 'Frekvence',
     'terrain-ant-a'          => 'Výška ant. A',
     'terrain-ant-b'          => 'Výška ant. B',
-    'terrain-clear'          => 'Vymazat',
     'terrain-distance'       => 'Vzdálenost',
     'terrain-max-elev'       => 'Max. výška',
     'terrain-min-elev'       => 'Min. výška',
@@ -190,7 +189,7 @@ $text = [
     // Terrain profile help
     'help-terrain'              => 'Nápověda k terénnímu profilu',
     'help-terrain-title-1'      => '1. Přidání bodů',
-    'help-terrain-description-1'=> 'Body A a B se přidávají kliknutím přímo na mapu - stačí kliknout na dvě místa a analýza proběhne automaticky. Alternativně lze zadat lokátor (např. JO70QD) nebo GPS souřadnice (50.08, 14.42) do vstupního pole. Polohu lze zjistit také tlačítkem <i class="fa-solid fa-location-dot"></i>. Bod přesunete přetažením myší, smažete pravým kliknutím na značku.',
+    'help-terrain-description-1'=> 'Body A a B se přidávají kliknutím přímo na mapu - stačí kliknout na dvě místa a analýza proběhne automaticky. Alternativně zadejte lokátor (např. JO70QD) nebo GPS souřadnice (50.08, 14.42) do vstupního pole a stiskněte <i class="fa-solid fa-plus"></i>. Tlačítkem <i class="fa-solid fa-location-dot"></i> vedle vstupního pole přidáte svou aktuální GPS polohu přímo jako bod trasy. Bod přesunete přetažením myší, smažete pravým kliknutím na značku.',
     'help-terrain-title-2'      => '2. RF nastavení',
     'help-terrain-description-2'=> 'V sekci <b>RF nastavení</b> lze nastavit frekvenci pro výpočet Fresnelovy zóny a výšky antén na obou koncích trasy nad terénem. Výchozí hodnoty jsou 144 MHz a výška antény 0 m.',
     'help-terrain-title-3'      => '3. Výsledky analýzy',
