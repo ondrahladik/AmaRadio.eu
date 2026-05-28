@@ -4,8 +4,6 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
   <loc>https://amaradio.eu/</loc>
@@ -34,6 +32,31 @@
 </url>
 <url>
   <loc>https://amaradio.eu/zone-map</loc>
+  <lastmod>2025-07-31T22:40:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://amaradio.eu/terrain</loc>
+  <lastmod>2026-05-28T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://amaradio.eu/solar</loc>
+  <lastmod>2025-07-31T22:40:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://amaradio.eu/cluster</loc>
+  <lastmod>2025-07-31T22:40:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://amaradio.eu/cw-encoder</loc>
+  <lastmod>2025-07-31T22:40:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://amaradio.eu/cw-decoder</loc>
   <lastmod>2025-07-31T22:40:59+00:00</lastmod>
   <priority>0.80</priority>
 </url>
