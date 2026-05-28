@@ -1,0 +1,584 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background: #0a0a0a;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #aaa;
+    user-select: none;
+}
+
+.terrain-wrap {
+    flex: 1;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+}
+
+#map {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.terrain-panel {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 900;
+    background: rgba(10, 10, 10, 0.94);
+    border: 2px solid #00ffe0;
+    border-radius: 12px;
+    padding: 0;
+    width: 310px;
+    max-height: calc(100vh - 70px - 20px);
+    overflow-y: auto;
+    box-shadow: 0 0 28px #00ffe020, 0 4px 20px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: #00ffe033 #0d0d0d;
+}
+
+.terrain-panel::-webkit-scrollbar { width: 4px; }
+.terrain-panel::-webkit-scrollbar-track { background: #0d0d0d; border-radius: 2px; }
+.terrain-panel::-webkit-scrollbar-thumb { background: #00ffe044; border-radius: 2px; }
+
+.panel-header {
+    display: none;
+}
+
+.terrain-tooltip {
+    background: rgba(10, 10, 10, 0.92) !important;
+    border: 1px solid #00ffe044 !important;
+    border-radius: 6px !important;
+    color: #00ffe0 !important;
+    font-size: 11px !important;
+    font-family: monospace !important;
+    padding: 4px 8px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5) !important;
+    white-space: nowrap !important;
+}
+
+.terrain-tooltip::before {
+    border-top-color: #00ffe044 !important;
+}
+
+.panel-section {
+    padding: 9px 12px;
+    border-bottom: 1px solid #00ffe010;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.section-label {
+    font-size: 9px;
+    color: #00ffe088;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    font-weight: bold;
+}
+
+.waypoints-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.waypoints-empty {
+    font-size: 11px;
+    color: #555;
+    font-style: italic;
+    padding: 3px 0;
+}
+
+.waypoint-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0,255,224,0.04);
+    border: 1px solid #00ffe01a;
+    border-radius: 6px;
+    padding: 5px 7px;
+    transition: border-color 0.2s;
+}
+
+.waypoint-item:hover {
+    border-color: #00ffe033;
+}
+
+.wp-label {
+    width: 20px;
+    height: 20px;
+    background: #00ffe0;
+    color: #000;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0;
+}
+
+.wp-coords {
+    flex: 1;
+    font-size: 10px;
+    color: #bbb;
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wp-remove {
+    background: transparent;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-size: 11px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+    line-height: 1;
+}
+
+.wp-remove:hover {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.12);
+}
+
+.input-group {
+    display: flex;
+    align-items: stretch;
+    background: #151515;
+    border: 1px solid #00ffe033;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.input-group:focus-within {
+    border-color: #00ffe0;
+    box-shadow: 0 0 8px #00ffe022;
+}
+
+.input-group input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    padding: 7px 9px;
+    outline: none;
+    min-width: 0;
+    font-family: inherit;
+}
+
+.input-group input::placeholder {
+    color: #444;
+    font-size: 10px;
+}
+
+.btn-add-icon {
+    background: rgba(0, 255, 224, 0.12);
+    border: none;
+    border-left: 1px solid #00ffe033;
+    color: #00ffe0;
+    width: 34px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+
+.btn-add-icon:hover {
+    background: rgba(0, 255, 224, 0.25);
+}
+
+.rf-settings-toggle {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: transparent;
+    border: none;
+    color: #00ffe088;
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    padding: 2px 0;
+    width: 100%;
+    text-align: left;
+}
+
+.rf-settings-toggle:hover {
+    color: #00ffe0;
+}
+
+.rf-chevron {
+    margin-left: auto;
+    font-size: 9px;
+    transition: transform 0.3s ease;
+}
+
+.rf-settings-body {
+    display: none;
+    flex-direction: column;
+    gap: 7px;
+    padding-top: 4px;
+}
+
+.rf-settings-body.open {
+    display: flex;
+}
+
+.rf-row {
+    display: flex;
+    gap: 8px;
+}
+
+.rf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+}
+
+.rf-field label {
+    font-size: 9px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.rf-input-unit {
+    display: flex;
+    align-items: stretch;
+    background: #151515;
+    border: 1px solid #00ffe022;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.rf-input-unit:focus-within {
+    border-color: #00ffe066;
+}
+
+.rf-input-unit input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 7px;
+    outline: none;
+    min-width: 0;
+    font-family: inherit;
+}
+
+.rf-input-unit span {
+    padding: 5px 7px;
+    font-size: 9px;
+    color: #00ffe066;
+    background: rgba(0, 255, 224, 0.04);
+    border-left: 1px solid #00ffe018;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.panel-actions {
+    display: flex;
+    gap: 8px;
+    padding: 9px 12px;
+    border-bottom: 1px solid #00ffe010;
+}
+
+.btn-clear {
+    flex: 1;
+    background: rgba(255, 80, 80, 0.07);
+    border: 1px solid rgba(255, 80, 80, 0.2);
+    color: #ff9090;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.btn-clear:hover {
+    background: rgba(255, 80, 80, 0.14);
+    border-color: rgba(255, 80, 80, 0.4);
+}
+
+.terrain-msg {
+    margin: 6px 12px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.terrain-msg-error {
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    color: #ff9999;
+}
+
+.terrain-msg-warn {
+    background: rgba(255, 170, 0, 0.1);
+    border: 1px solid rgba(255, 170, 0, 0.3);
+    color: #ffcc66;
+}
+
+.terrain-msg-info {
+    background: rgba(0, 180, 255, 0.08);
+    border: 1px solid rgba(0, 180, 255, 0.2);
+    color: #86d7ff;
+}
+
+.chart-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: 0 0 10px 10px;
+    backdrop-filter: blur(1px);
+}
+
+.spinner {
+    width: 22px;
+    height: 22px;
+    border: 2.5px solid rgba(0, 255, 224, 0.15);
+    border-top-color: #00ffe0;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.terrain-stats {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: 4px 10px;
+    border-bottom: 1px solid #00ffe010;
+}
+
+.terrain-stats.stats-visible {
+    display: flex;
+}
+
+.stat-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 2px;
+    border-bottom: 1px solid #00ffe008;
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 9px;
+    white-space: nowrap;
+}
+
+.stat-label i {
+    font-size: 9px;
+    color: #00ffe055;
+    width: 10px;
+    text-align: center;
+}
+
+.stat-row strong {
+    color: #00ffe0;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.stat-divider {
+    height: 1px;
+    background: #00ffe010;
+    margin: 2px 0;
+    border: none;
+}
+
+.data-source {
+    font-size: 9px;
+    color: #444;
+    padding: 4px 12px;
+    border-bottom: 1px solid #00ffe008;
+}
+
+.terrain-chart-wrap {
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0 0 10px 10px;
+    position: relative;
+}
+
+.terrain-chart-wrap canvas {
+    width: 100% !important;
+    height: 210px !important;
+    display: block !important;
+    max-height: 210px !important;
+}
+
+.terrain-marker {
+    width: 26px;
+    height: 26px;
+    background: #00ffe0;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 255, 224, 0.55), 0 2px 6px rgba(0,0,0,0.6);
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    cursor: grab;
+    user-select: none;
+}
+
+.terrain-marker:active {
+    cursor: grabbing;
+}
+
+div.leaflet-bottom.leaflet-right {
+    display: none;
+}
+
+div.leaflet-top.leaflet-left,
+div.leaflet-top.leaflet-right {
+    z-index: 900 !important;
+}
+
+.leaflet-top .leaflet-control {
+    margin-top: 5px;
+}
+
+.show-location-button {
+    background: white;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-size: 22px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    .terrain-wrap {
+        flex-direction: column;
+    }
+
+    .terrain-panel {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        max-height: none;
+        box-sizing: border-box;
+        border-radius: 0;
+        border: none;
+        border-bottom: 2px solid #00ffe033;
+        box-shadow: none;
+        background: rgba(6, 6, 6, 0.98);
+        overflow-y: visible;
+    }
+
+    .terrain-chart-wrap canvas {
+        height: 180px !important;
+        max-height: 180px !important;
+    }
+
+    .waypoints-list {
+        max-height: none;
+    }
+
+    #map {
+        flex: 1;
+        min-height: 220px;
+    }
+
+    .terrain-stats.stats-visible {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 4px;
+        padding: 6px 10px;
+    }
+
+    .terrain-stats > .stat-row:nth-child(1),
+    .terrain-stats > .stat-row:nth-child(2),
+    .terrain-stats > .stat-row:nth-child(3) {
+        grid-column: span 2;
+    }
+
+    .terrain-stats > .stat-row:nth-child(5),
+    .terrain-stats > .stat-row:nth-child(6) {
+        grid-column: span 3;
+    }
+
+    .terrain-stats .stat-row {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 1px;
+        padding: 4px 6px;
+        background: rgba(0, 255, 224, 0.03);
+        border: 1px solid #00ffe011;
+        border-radius: 5px;
+        border-bottom: 1px solid #00ffe011;
+        overflow: hidden;
+    }
+
+    .terrain-stats .stat-divider {
+        grid-column: 1 / -1;
+        height: 0;
+        background: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+}
