@@ -111,10 +111,10 @@ include 'assets/lang/lang.php';
 
     <div class="terrain-wrap">
 
-        // Left panel
+        <!-- Left panel -->
         <div class="terrain-panel" id="terrainPanel">
 
-            // Add point by text
+            <!-- Add point by text -->
             <div class="panel-section">
                 <div class="section-label"><?= $text['terrain-add-point'] ?></div>
                 <div class="input-group">
@@ -127,7 +127,7 @@ include 'assets/lang/lang.php';
                 </div>
             </div>
 
-            // RF settings
+            <!-- RF settings -->
             <div class="panel-section">
                 <button type="button" class="rf-settings-toggle" onclick="toggleRFSettings()">
                     <i class="fa-solid fa-tower-broadcast"></i>
@@ -163,17 +163,17 @@ include 'assets/lang/lang.php';
                 </div>
             </div>
 
-            // Clear button
+            <!-- Clear button -->
             <div class="panel-actions">
                 <button type="button" class="btn-clear" onclick="clearAll()">
                     <i class="fa-solid fa-trash"></i> <?= $text['terrain-clear'] ?>
                 </button>
             </div>
 
-            // Message
+            <!-- Message -->
             <div class="terrain-msg" id="terrainMsg" style="display:none;"></div>
 
-            // Stats
+            <!-- Stats -->
             <div class="terrain-stats" id="terrainStats">
                 <div class="stat-row">
                     <span class="stat-label"><i class="fa-solid fa-ruler-horizontal"></i> <?= $text['terrain-distance'] ?></span>
@@ -198,7 +198,7 @@ include 'assets/lang/lang.php';
                 </div>
             </div>
 
-            // Chart
+            <!-- Chart -->
             <div class="terrain-chart-wrap" id="terrainChartWrap" style="display:none;">
                 <canvas id="terrainChart"></canvas>
                 <div class="chart-overlay" id="chartOverlay" style="display:none;">
