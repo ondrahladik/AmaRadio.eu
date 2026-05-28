@@ -17,6 +17,7 @@ For easier reference to the original version of AMARADIO.eu, see [Tag v1](https:
 <b>Locator map</b> - Search or compare the distance between two locators.   
 <b>Zone maps</b> - View locators or ITU, CQ, and time zones on the map.  
 <b>Rotator</b> - Get the azimuth and distance to point your rotator.  
+<b>Terrain profile</b> - Viewing the terrain profile between two locators using [OpenTopoData](https://www.opentopodata.org/).  
 <b>DX Cluster</b> - View the latest spots from the DX Cluster from [9M2PJU](https://hamradio.my/).  
 <b>Solar activity</b> - View the solar activity from [HAMQSL](https://www.hamqsl.com/solar.html), [NOAA SWPC](https://www.swpc.noaa.gov/), [NASA SDO](https://sdo.gsfc.nasa.gov/).  
 <b>CW encoder</b> - Encode text to Morse code and play it or export it as a WAV file.   
