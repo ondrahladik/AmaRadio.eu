@@ -124,6 +124,9 @@ include 'assets/lang/lang.php';
                     <button type="button" class="btn-add-icon" onclick="addFromInput()">
                         <i class="fa-solid fa-plus"></i>
                     </button>
+                    <button type="button" class="btn-add-icon" onclick="addPointFromGPS()">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </button>
                 </div>
             </div>
 
@@ -162,16 +165,6 @@ include 'assets/lang/lang.php';
                     </div>
                 </div>
             </div>
-
-            <!-- Clear button -->
-            <div class="panel-actions">
-                <button type="button" class="btn-clear" onclick="clearAll()">
-                    <i class="fa-solid fa-trash"></i> <?= $text['terrain-clear'] ?>
-                </button>
-            </div>
-
-            <!-- Message -->
-            <div class="terrain-msg" id="terrainMsg" style="display:none;"></div>
 
             <!-- Stats -->
             <div class="terrain-stats" id="terrainStats">
@@ -220,6 +213,11 @@ include 'assets/lang/lang.php';
             losBlocked:   <?= json_encode($text['terrain-los-blocked']) ?>,
             losClear:     <?= json_encode($text['terrain-los-clear']) ?>,
             loadError:    <?= json_encode($text['terrain-load-error']) ?>,
+            position:     <?= json_encode($text['zone-map-position']) ?>,
+            lat:          <?= json_encode($text['zone-map-lat']) ?>,
+            lon:          <?= json_encode($text['zone-map-lon']) ?>,
+            loc:          <?= json_encode($text['zone-map-loc']) ?>,
+            alt:          <?= json_encode($text['zone-map-alt']) ?>,
         };
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>

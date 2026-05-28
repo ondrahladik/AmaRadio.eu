@@ -2,6 +2,7 @@ let map;
 let terrainPoints = [];   
 let markers = [];
 let pathLine = null;
+let locationMarker = null;
 let chartInstance = null;
 let profileData = null;   
 let chartCrosshair = null;
@@ -64,7 +65,6 @@ function addPoint(lat, lon) {
     });
     rebuildMarkers();
     if (terrainPoints.length >= 2) {
-        hideMsg();
         scheduleAnalyze();
     }
 }
@@ -73,14 +73,12 @@ function removePoint(index) {
     terrainPoints.splice(index, 1);
     rebuildMarkers();
     hideResults();
-    hideMsg();
 }
 
 function clearAll() {
     terrainPoints = [];
     rebuildMarkers();
     hideResults();
-    hideMsg();
 }
 
 function rebuildMarkers() {
@@ -128,7 +126,6 @@ function rebuildMarkers() {
         });
 
         marker.on('dragend', function() {
-            hideMsg();
             if (terrainPoints.length >= 2) scheduleAnalyze();
         });
 
@@ -198,12 +195,27 @@ function addFromInput() {
 
     const result = parseInput(val);
     if (!result) {
-        showMsg(translations.invalidInput, 'error');
+        alert(translations.invalidInput);
         return;
     }
 
     addPoint(result.lat, result.lon);
     input.value = '';
+}
+
+function addPointFromGPS() {
+    if (!navigator.geolocation) {
+        alert(translations.geoBrowser);
+        return;
+    }
+    navigator.geolocation.getCurrentPosition(
+        function(pos) {
+            addPoint(pos.coords.latitude, pos.coords.longitude);
+        },
+        function(err) {
+            alert(translations.geoError + err.message);
+        }
+    );
 }
 
 function addFromGPS() {
@@ -213,7 +225,29 @@ function addFromGPS() {
     }
     navigator.geolocation.getCurrentPosition(
         function(pos) {
-            addPoint(pos.coords.latitude, pos.coords.longitude);
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+            const altitude = pos.coords.altitude;
+            const locator = latLonToLocator(lat, lon);
+
+            map.setView([lat, lon], 14);
+
+            if (locationMarker) {
+                map.removeLayer(locationMarker);
+            }
+
+            let popupContent = '<div style="text-align:center;"><b>' + translations.position + '</b></div>' +
+                translations.lat + lat.toFixed(6) + '<br>' +
+                translations.lon + lon.toFixed(6) + '<br>' +
+                translations.loc + locator;
+            if (altitude !== null) {
+                popupContent += '<br>' + translations.alt + altitude.toFixed(0) + ' m';
+            }
+
+            locationMarker = L.marker([lat, lon])
+                .addTo(map)
+                .bindPopup(popupContent)
+                .openPopup();
         },
         function(err) {
             alert(translations.geoError + err.message);
@@ -237,7 +271,6 @@ async function analyze() {
     if (terrainPoints.length < 2) return;
 
     showLoading(true);
-    hideMsg();
 
     const pts = terrainPoints.map(function(p) { return p.lat + ',' + p.lon; }).join('|');
     const url = 'terrain.php?pts=' + encodeURIComponent(pts);
@@ -248,7 +281,7 @@ async function analyze() {
         const data = await resp.json();
 
         if (!data.success) {
-            showMsg(translations.loadError + (data.error ? ' (' + data.error + ')' : ''), 'error');
+            alert(translations.loadError + (data.error ? ' (' + data.error + ')' : ''));
             showLoading(false);
             return;
         }
@@ -257,7 +290,7 @@ async function analyze() {
         renderResults(data);
 
     } catch(e) {
-        showMsg(translations.loadError + ' (' + e.message + ')', 'error');
+        alert(translations.loadError + ' (' + e.message + ')');
         showLoading(false);
     }
 }
@@ -549,17 +582,6 @@ function showLoading(show) {
     } else {
         overlay.style.display = 'none';
     }
-}
-
-function showMsg(msg, type) {
-    const el = document.getElementById('terrainMsg');
-    el.textContent = msg;
-    el.className = 'terrain-msg terrain-msg-' + type;
-    el.style.display = 'block';
-}
-
-function hideMsg() {
-    document.getElementById('terrainMsg').style.display = 'none';
 }
 
 function hideResults() {
