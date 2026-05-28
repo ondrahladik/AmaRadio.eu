@@ -224,19 +224,6 @@ $text = [
     'help-time-description-6' => '<details><summary>Mac</summary>Vyberte ikonu nabídky Apple > Nastavení systému > Na bočním panelu vyberte Obecné > Datum a čas<br>Zapněte možnost „Automaticky nastavit časové pásmo podle vaší aktuální polohy“</details>',
     'help-time-description-7' => 'Kliknutím na <i class="fa-solid fa-gear"></i> se zobrazí nastavení časového pásma. Kliknutím na <i class="fa-solid fa-maximize"></i> se přepne stránka do režimu celé obrazovky. Kliknutím na <i class="fa-solid fa-location-dot"></i> se nastaví automaticky čas do vašeho časového pásma.',
 
-    // About page
-    'about-title' => 'O webu AMARADIO.eu',
-    'about-close' => 'Zpět na úvod',
-    'about-description-1' => 'První nápad na vytvoření takového webu vznikl během září 2023. V té době jsem se zaměřoval pouze na vyhledávání prefixů. Na projektu jsem pracoval necelý měsíc, vyhledávač fungoval, ale pořád to nebylo ono. Vyhledávač jsem bez dalších změn používal občas během závodu na krátkých vlnách.',
-    'about-description-2' => 'K celému projektu jsem se vrátil v polovině července 2024. Celý kód vyhledávače jsem předělal od základů. Postupně jsem přidával nové funkce a už to nebylo jen o vyhledávání prefixů, po necelém měsíci byl tento web vytvořen.',
-    'about-description-3' => 'Po roce provozu, v červenci 2025, prošel web rozsáhlou úpravou. Nejzásadnějšími změnami jsou nový jednotný design a kompletní přeorganizování kódu s využitím moderních možností PHP. Kromě toho byly opraveny drobné chyby a z webu byla odstraněna QSO mapa, kterou plánuji v nejbližší době kompletně předělat. Zároveň připravuji nové funkce, které web rozšíří a vylepší.',
-    'about-description-4' => 'Pokud najdete nějakou chybu, kontaktujte mě prosím na <a href="mailto:ondra@ok1kky.cz">ondra@ok1kky.cz</a>.',
-    'about-description-5' => 'Líbí se vám tento web a chcete ho podpořit? Můžete nás podpořit prostřednictvím našeho profilu na <a href="https://ko-fi.com/E1E3SVQKA" target="_blank">Ko-fi</a>.',
-
-    // Not found page
-    '404-message' => 'Stránka nebyla nalezena',
-    '404-back' => 'Zpět na hlavní stránku',
-
     // DX Cluster
     'cluster-page-title'  => 'DX Cluster',
     'cluster-subtitle'    => 'Realtime spoty z DX Clusteru (server VE7CC)',
@@ -380,7 +367,7 @@ $text = [
     'cw-enc-stat-duration'   => 'Délka',
 
     // CW encoder help 
-    'help-cw-encoder'               => 'Morse enkodér',
+    'help-cw-encoder'               => 'Nápověda k morse enkodéru',
     'help-cw-encoder-title-1'       => 'Zadání textu',
     'help-cw-encoder-description-1' => 'Napište libovolný text do vstupního pole. Podporovány jsou písmena A-Z, číslice, mezery a běžné interpunkční znaky. Enkodér automaticky zobrazí morseovský přepis.',
     'help-cw-encoder-title-2'       => 'Parametry signálu',
@@ -422,7 +409,7 @@ $text = [
     'cw-dec-warn-fallback'   => 'Použit záložní mikrofon',
 
     // CW decoder help
-    'help-cw-decoder'               => 'Morse dekodér',
+    'help-cw-decoder'               => 'Nápověda k morse dekodéru',
     'help-cw-decoder-title-1'       => 'Zdroj zvuku',
     'help-cw-decoder-description-1' => 'Dekodér přijímá zvuk z mikrofonu nebo z WAV souboru. Mikrofon vyžaduje souhlas uživatele. WAV soubor lze přetáhnout do označené oblasti nebo vybrat tlačítkem.',
     'help-cw-decoder-title-2'       => 'Nastavení a ladění',
@@ -443,5 +430,18 @@ $text = [
     'settings-callsign-help' => 'Váš volací znak',
     'settings-locator-help'  => 'Váš lokátor',
     'settings-maplayer'      => 'Mapová vrstva',
+
+    // About page
+    'about-title' => 'O webu AMARADIO.eu',
+    'about-close' => 'Zpět na úvod',
+    'about-description-1' => 'První nápad na vytvoření takového webu vznikl během září 2023. V té době jsem se zaměřoval pouze na vyhledávání prefixů. Na projektu jsem pracoval necelý měsíc, vyhledávač fungoval, ale pořád to nebylo ono. Vyhledávač jsem bez dalších změn používal občas během závodu na krátkých vlnách.',
+    'about-description-2' => 'K celému projektu jsem se vrátil v polovině července 2024. Celý kód vyhledávače jsem předělal od základů. Postupně jsem přidával nové funkce a už to nebylo jen o vyhledávání prefixů, po necelém měsíci byl tento web vytvořen.',
+    'about-description-3' => 'Po roce provozu, v červenci 2025, prošel web rozsáhlou úpravou. Nejzásadnějšími změnami jsou nový jednotný design a kompletní přeorganizování kódu s využitím moderních možností PHP. Kromě toho byly opraveny drobné chyby a z webu byla odstraněna QSO mapa, kterou plánuji v nejbližší době kompletně předělat. Zároveň připravuji nové funkce, které web rozšíří a vylepší.',
+    'about-description-4' => 'Pokud najdete nějakou chybu, kontaktujte mě prosím na <a href="mailto:ondra@ok1kky.cz">ondra@ok1kky.cz</a>.',
+    'about-description-5' => 'Líbí se vám tento web a chcete ho podpořit? Můžete nás podpořit prostřednictvím našeho profilu na <a href="https://ko-fi.com/E1E3SVQKA" target="_blank">Ko-fi</a>.',
+
+    // Not found page
+    '404-message' => 'Stránka nebyla nalezena',
+    '404-back' => 'Zpět na hlavní stránku',
 ];
 

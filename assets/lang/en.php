@@ -224,19 +224,6 @@ $text = [
     'help-time-description-6' => '<details><summary>Mac</summary>Choose the Apple menu icon > System Settings > Select General on the sidebar > Date and Time<br>Turn on "Set time zone automatically using your current location"</details>',
     'help-time-description-7' => 'Clicking <i class="fa-solid fa-gear"></i> will display the time zone settings. Clicking <i class="fa-solid fa-maximize"></i> will switch the page to full screen mode. Clicking <i class="fa-solid fa-location-dot"></i> will automatically set the time to your time zone.',
 
-    // About page
-    'about-title' => 'About AMARADIO.eu',
-    'about-close' => 'Back to home',
-    'about-description-1' => 'The first idea to create such a website came about in September 2023. At that time, I was only focused on prefix searches. I worked on the project for less than a month, the search engine worked, but it was still not the same. I used the search engine occasionally during the shortwave contest without any further changes.',
-    'about-description-2' => 'I returned to the whole project in mid-July 2024. I rebuilt the entire search engine code from scratch. I gradually added new features and it was no longer just about searching for prefixes, after less than a month this website was created.',
-    'about-description-3' => 'After one year of operation, in July 2025, the website underwent a major update. The most significant changes include a new unified design and a complete reorganization of the code, taking advantage of modern PHP capabilities. In addition, minor bugs were fixed, and the QSO map was removed from the site, which I plan to completely redesign soon. At the same time, I am preparing new features that will expand and enhance the website.',
-    'about-description-4' => 'If you find any errors, please contact me at <a href="mailto:ondra@ok1kky.cz">ondra@ok1kky.cz</a>.',
-    'about-description-5' => 'Do you like this site and want to support the site? You can support us through our profile on <a href="https://ko-fi.com/E1E3SVQKA" target="_blank">Ko-fi</a>.',
-
-    // Not found page
-    '404-message' => 'Page not found',
-    '404-back' => 'Back to home',
-
     // DX Cluster
     'cluster-page-title'  => 'DX Cluster',
     'cluster-subtitle'    => 'Real-time spots from DX Cluster (VE7CC server)',
@@ -380,7 +367,7 @@ $text = [
     'cw-enc-stat-duration'   => 'Duration',
     
     // CW encoder help
-    'help-cw-encoder'               => 'Morse encoder',
+    'help-cw-encoder'               => 'Help for morse encoder',
     'help-cw-encoder-title-1'       => 'Text input',
     'help-cw-encoder-description-1' => 'Type any text into the input field. Letters A-Z, digits, spaces and common punctuation are supported. The encoder automatically shows the Morse representation.',
     'help-cw-encoder-title-2'       => 'Signal parameters',
@@ -422,7 +409,7 @@ $text = [
     'cw-dec-warn-fallback'   => 'Fallback microphone used',
 
     // CW decoder help
-    'help-cw-decoder'               => 'Morse decoder',
+    'help-cw-decoder'               => 'Help for morse decoder',
     'help-cw-decoder-title-1'       => 'Audio source',
     'help-cw-decoder-description-1' => 'The decoder accepts audio from the microphone or from a WAV file. Microphone requires user permission. A WAV file can be dropped into the designated area or selected with the button.',
     'help-cw-decoder-title-2'       => 'Settings and tuning',
@@ -443,5 +430,19 @@ $text = [
     'settings-callsign-help' => 'Your callsign',
     'settings-locator-help'  => 'Your locator',
     'settings-maplayer'      => 'Map layer',
+
+    // About page
+    'about-title' => 'About AMARADIO.eu',
+    'about-close' => 'Back to home',
+    'about-description-1' => 'The first idea to create such a website came about in September 2023. At that time, I was only focused on prefix searches. I worked on the project for less than a month, the search engine worked, but it was still not the same. I used the search engine occasionally during the shortwave contest without any further changes.',
+    'about-description-2' => 'I returned to the whole project in mid-July 2024. I rebuilt the entire search engine code from scratch. I gradually added new features and it was no longer just about searching for prefixes, after less than a month this website was created.',
+    'about-description-3' => 'After one year of operation, in July 2025, the website underwent a major update. The most significant changes include a new unified design and a complete reorganization of the code, taking advantage of modern PHP capabilities. In addition, minor bugs were fixed, and the QSO map was removed from the site, which I plan to completely redesign soon. At the same time, I am preparing new features that will expand and enhance the website.',
+    'about-description-4' => 'If you find any errors, please contact me at <a href="mailto:ondra@ok1kky.cz">ondra@ok1kky.cz</a>.',
+    'about-description-5' => 'Do you like this site and want to support the site? You can support us through our profile on <a href="https://ko-fi.com/E1E3SVQKA" target="_blank">Ko-fi</a>.',
+
+    // Not found page
+    '404-message' => 'Page not found',
+    '404-back' => 'Back to home',
+
 ];
 
