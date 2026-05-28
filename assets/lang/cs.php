@@ -162,6 +162,17 @@ $text = [
     'terrain-los-clear'      => 'Volné',
     'terrain-load-error'     => 'Chyba při načítání dat.',
 
+    // Terrain profile help
+    'help-terrain'              => 'Nápověda k terénnímu profilu',
+    'help-terrain-title-1'      => '1. Přidání bodů',
+    'help-terrain-description-1'=> 'Body A a B se přidávají kliknutím přímo na mapu - stačí kliknout na dvě místa a analýza proběhne automaticky. Alternativně lze zadat lokátor (např. JO70QD) nebo GPS souřadnice (50.08, 14.42) do vstupního pole. Polohu lze zjistit také tlačítkem <i class="fa-solid fa-location-dot"></i>. Bod přesunete přetažením myší, smažete pravým kliknutím na značku.',
+    'help-terrain-title-2'      => '2. RF nastavení',
+    'help-terrain-description-2'=> 'V sekci <b>RF nastavení</b> lze nastavit frekvenci pro výpočet Fresnelovy zóny a výšky antén na obou koncích trasy nad terénem. Výchozí hodnoty jsou 144 MHz a výška antény 0 m.',
+    'help-terrain-title-3'      => '3. Výsledky analýzy',
+    'help-terrain-description-3'=> 'Po přidání druhého bodu se automaticky načtou výšková data ze serveru OpenTopoData (Mapzen DEM) a zobrazí se profil s těmito vrstvami:<br><br><b>Terén</b> - hnědě vyplněný skutečný terén se korekcí zemské křivosti (K-faktor 4/3).<br><b>LOS</b> - přímá přímka viditelnosti mezi anténami (vždy nad Fresnelovou zónou).<br><b>Fresnelova zóna</b> - zeleně vyznačená 1. Fresnelova zóna pro nastavenou frekvenci.<br><br>Přesné hodnoty (vzdálenost, max/min výška, LOS, Fresnelova zóna) jsou zobrazeny v statistikách nad grafem. Přejetím myší přes graf se zobrazuje aktuální poloha na mapě.',
+    'help-terrain-title-4'      => '4. Mapová vrstva',
+    'help-terrain-description-4'=> 'Mapovou vrstvu lze změnit na stránce Nastavení.',
+
     // Rotator
     'rotator-my-locator' => 'Můj lokátor',
     'rotator-my-locator-placeholder' => 'Nastav lokátor',

@@ -162,6 +162,17 @@ $text = [
     'terrain-los-clear'      => 'Clear',
     'terrain-load-error'     => 'Error loading terrain data.',
 
+    // Terrain profile help
+    'help-terrain'              => 'Help for terrain profile',
+    'help-terrain-title-1'      => '1. Adding points',
+    'help-terrain-description-1'=> 'Points A and B are added by clicking directly on the map - click two locations and the analysis runs automatically. Alternatively, enter a locator (e.g. JO70QD) or GPS coordinates (50.08, 14.42) into the input field. You can also use the <i class="fa-solid fa-location-dot"></i> button to get your current position. Drag a marker to move it, right-click to delete it.',
+    'help-terrain-title-2'      => '2. RF settings',
+    'help-terrain-description-2'=> 'In the <b>RF settings</b> section, you can set the frequency for Fresnel zone calculation and the antenna heights at both ends of the path above ground. Default values are 144 MHz and antenna height 0 m.',
+    'help-terrain-title-3'      => '3. Analysis results',
+    'help-terrain-description-3'=> 'After adding the second point, elevation data is automatically fetched from the OpenTopoData server (Mapzen DEM) and the profile is displayed with these layers:<br><br><b>Terrain</b> - brown-filled actual terrain with Earth curvature correction (K-factor 4/3).<br><b>LOS</b> - direct line of sight between antennas (always drawn above the Fresnel zone).<br><b>Fresnel zone</b> - green-shaded 1st Fresnel zone for the set frequency.<br><br>Precise values (distance, max/min elevation, LOS, Fresnel zone) are shown in the stats section above the chart. Hovering over the chart shows the current position on the map.',
+    'help-terrain-title-4'      => '4. Map layer',
+    'help-terrain-description-4'=> 'The map layer can be changed on the Settings page.',
+
     // Rotator
     'rotator-my-locator' => 'My locator',
     'rotator-my-locator-placeholder' => 'Set locator',
