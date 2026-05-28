@@ -453,6 +453,7 @@ body {
 .nav-overlay.open .nav-item:nth-child(9) { animation-delay: 0.68s; }
 .nav-overlay.open .nav-item:nth-child(10) { animation-delay: 0.73s; }
 .nav-overlay.open .nav-item:nth-child(11) { animation-delay: 0.78s; }
+.nav-overlay.open .nav-item:nth-child(12) { animation-delay: 0.83s; }
 
 .nav-overlay-footer {
     width: 100%;
