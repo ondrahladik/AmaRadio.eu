@@ -188,6 +188,7 @@ $text = [
     'terrain-export-png'     => 'Exportovat jako PNG',
     'terrain-chart-expand'   => 'Zvětšit graf',
     'terrain-generated-on'   => 'Vygenerováno na AMARADIO.eu',
+    'terrain-add-gps'        => 'Přidat moji polohu',
 
     // Terrain profile help
     'help-terrain'              => 'Nápověda k terénnímu profilu',

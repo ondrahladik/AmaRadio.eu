@@ -24,8 +24,8 @@ function initMap() {
     const layer = MAP_LAYERS[layerKey] || MAP_LAYERS['carto'];
 
     map = L.map('map', {
-        center: [50.0, 15.5],
-        zoom: 7,
+        center: [40, 10],
+        zoom: 3,
         zoomControl: false
     });
 

@@ -188,6 +188,7 @@ $text = [
     'terrain-export-png'     => 'Export as PNG',
     'terrain-chart-expand'   => 'Enlarge chart',
     'terrain-generated-on'   => 'Generated on AMARADIO.eu',
+    'terrain-add-gps'        => 'Add my location',
 
     // Terrain profile help
     'help-terrain'              => 'Help for terrain profile',

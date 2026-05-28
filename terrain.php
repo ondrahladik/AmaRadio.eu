@@ -121,10 +121,10 @@ include 'assets/lang/lang.php';
                     <input type="text" id="pointInput"
                            placeholder="<?= $text['terrain-input-placeholder'] ?>"
                            autocomplete="off" spellcheck="false" />
-                    <button type="button" class="btn-add-icon" onclick="addFromInput()">
+                    <button type="button" class="btn-add-icon" onclick="addFromInput()" title="<?= $text['terrain-add'] ?>">
                         <i class="fa-solid fa-plus"></i>
                     </button>
-                    <button type="button" class="btn-add-icon" onclick="addPointFromGPS()">
+                    <button type="button" class="btn-add-icon" onclick="addPointFromGPS()" title="<?= $text['terrain-add-gps'] ?>">
                         <i class="fa-solid fa-location-dot"></i>
                     </button>
                 </div>
