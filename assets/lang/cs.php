@@ -142,6 +142,26 @@ $text = [
     'help-zone-map-title-4' => '4. Mapová vrstva',
     'help-zone-map-description-4' => 'Mapovou vrstvu lze změnit na stránce Nastavení.',
 
+    // Terrain profile
+    'terrain-add-point'      => 'Přidat bod',
+    'terrain-input-placeholder' => 'GPS nebo lokátor',
+    'terrain-add'            => 'Přidat',
+    'terrain-rf-settings'    => 'RF nastavení',
+    'terrain-freq'           => 'Frekvence',
+    'terrain-ant-a'          => 'Výška ant. A',
+    'terrain-ant-b'          => 'Výška ant. B',
+    'terrain-clear'          => 'Vymazat',
+    'terrain-distance'       => 'Vzdálenost',
+    'terrain-max-elev'       => 'Max. výška',
+    'terrain-min-elev'       => 'Min. výška',
+    'terrain-fresnel'        => 'Fresnelova zóna',
+    'terrain-invalid-input'  => 'Neplatný vstup. Zadejte lokátor (JO70QD) nebo GPS souřadnice (50.08, 14.42).',
+    'terrain-geo-error'      => 'Nepodařilo se zjistit polohu: ',
+    'terrain-geo-browser'    => 'Prohlížeč nepodporuje geolokaci.',
+    'terrain-los-blocked'    => 'Blokováno',
+    'terrain-los-clear'      => 'Volné',
+    'terrain-load-error'     => 'Chyba při načítání dat.',
+
     // Rotator
     'rotator-my-locator' => 'Můj lokátor',
     'rotator-my-locator-placeholder' => 'Nastav lokátor',

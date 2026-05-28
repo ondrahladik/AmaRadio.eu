@@ -142,6 +142,26 @@ $text = [
     'help-zone-map-title-4' => '4. Map layer',
     'help-zone-map-description-4' => 'The map layer can be changed on the Settings page.',
 
+    // Terrain profile
+    'terrain-add-point'      => 'Add point',
+    'terrain-input-placeholder' => 'GPS or locator',
+    'terrain-add'            => 'Add',
+    'terrain-rf-settings'    => 'RF settings',
+    'terrain-freq'           => 'Frequency',
+    'terrain-ant-a'          => 'Antenna A height',
+    'terrain-ant-b'          => 'Antenna B height',
+    'terrain-clear'          => 'Clear',
+    'terrain-distance'       => 'Distance',
+    'terrain-max-elev'       => 'Max elevation',
+    'terrain-min-elev'       => 'Min elevation',
+    'terrain-fresnel'        => 'Fresnel zone',
+    'terrain-invalid-input'  => 'Invalid input. Enter a locator (JO70QD) or GPS coordinates (50.08, 14.42).',
+    'terrain-geo-error'      => 'Could not get location: ',
+    'terrain-geo-browser'    => 'This browser does not support geolocation.',
+    'terrain-los-blocked'    => 'Blocked',
+    'terrain-los-clear'      => 'Clear',
+    'terrain-load-error'     => 'Error loading terrain data.',
+
     // Rotator
     'rotator-my-locator' => 'My locator',
     'rotator-my-locator-placeholder' => 'Set locator',
