@@ -454,7 +454,8 @@ function buildChartOnCanvas(canvas, distances, terrain, los, fresnelTop, fresnel
             responsive: !animate ? false : true,
             maintainAspectRatio: false,
             animation: animate ? {duration: 500} : false,
-            layout: animate ? {} : { padding: 0 },
+            devicePixelRatio: animate ? (window.devicePixelRatio || 1) : 1,
+            layout: { padding: 0 },
             interaction: {mode: 'index', intersect: false},
             plugins: {
                 legend: {
@@ -490,6 +491,7 @@ function buildChartOnCanvas(canvas, distances, terrain, los, fresnelTop, fresnel
                     type: 'linear',
                     min: 0,
                     max: Math.ceil(distances[distances.length - 1]),
+                    afterFit: !animate ? function(scale) { scale.paddingLeft = 0; scale.paddingRight = 0; } : undefined,
                     ticks: {
                         color: '#7e8a97',
                         maxTicksLimit: 7,
@@ -503,6 +505,7 @@ function buildChartOnCanvas(canvas, distances, terrain, los, fresnelTop, fresnel
                 y: {
                     min: minY,
                     max: maxY,
+                    afterFit: !animate ? function(scale) { scale.width = 0; } : undefined,
                     ticks: {
                         display: false
                     },
@@ -542,7 +545,7 @@ function exportChartPNG() {
     ctx.fillRect(0, 0, W, HEADER + CH);
     ctx.textBaseline = 'middle';
 
-    const ROW_Y = HEADER / 2;  
+    const ROW_Y = HEADER / 2;
 
     ctx.textAlign = 'left';
     ctx.font = '18px Arial, sans-serif';
@@ -614,6 +617,53 @@ function exportChartPNG() {
     const tempChart = buildChartOnCanvas(chartCanvas, a.distances, a.terrain, a.los, a.fresnelTop, a.fresnelBot, false);
 
     ctx.drawImage(chartCanvas, 0, HEADER);
+
+    if (terrainPoints.length >= 2) {
+        const ptA = terrainPoints[0];
+        const ptB = terrainPoints[1];
+        const locA = latLonToLocator(ptA.lat, ptA.lon);
+        const locB = latLonToLocator(ptB.lat, ptB.lon);
+
+        const PAD = 7, FONT_LBL = 'bold 18px Arial, sans-serif', FONT_VAL = '18px Arial, sans-serif';
+        const boxHeight = 19; 
+
+        ctx.fillStyle = '#0a0a0a';
+        ctx.fillRect(0, HEADER + CH - boxHeight, W, boxHeight);
+
+        const lineY = HEADER + CH - PAD;
+
+        ctx.shadowColor = 'rgba(0,0,0,0.95)';
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetX = 1;
+        ctx.shadowOffsetY = 1;
+        ctx.textBaseline = 'alphabetic';
+        ctx.fillStyle = '#ffffff';
+
+        ctx.textAlign = 'left';
+        ctx.font = FONT_LBL;
+        ctx.fillStyle = '#7e8a97';  
+        ctx.fillText('A: ', PAD, lineY);
+        const aLabelW = ctx.measureText('A: ').width;
+        ctx.font = FONT_VAL;
+        ctx.fillStyle = '#ffffff';
+        const aCoords = ptA.lat.toFixed(4) + ', ' + ptA.lon.toFixed(4) + ' (' + locA + ')';
+        ctx.fillText(aCoords, PAD + aLabelW, lineY);
+
+        ctx.font = FONT_VAL;
+        const bCoords = ptB.lat.toFixed(4) + ', ' + ptB.lon.toFixed(4) + ' (' + locB + ')';
+        const bCoordsW = ctx.measureText(bCoords).width;
+        ctx.font = FONT_LBL;
+        const bLabelW = ctx.measureText('B: ').width;
+        const bStartX = W - PAD - bLabelW - bCoordsW;
+        ctx.fillStyle = '#7e8a97'; 
+        ctx.fillText('B: ', bStartX, lineY);
+        ctx.fillStyle = '#ffffff'; 
+        ctx.font = FONT_VAL;
+        ctx.fillText(bCoords, bStartX + bLabelW, lineY);
+
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+    }
 
     const link = document.createElement('a');
     link.download = 'terrain-profile.png';
