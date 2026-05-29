@@ -490,14 +490,14 @@ function buildChartOnCanvas(canvas, distances, terrain, los, fresnelTop, fresnel
                 x: {
                     type: 'linear',
                     min: 0,
-                    max: Math.ceil(distances[distances.length - 1]),
+                    max: Math.ceil(distances[distances.length - 1] * 10) / 10,
                     afterFit: !animate ? function(scale) { scale.paddingLeft = 0; scale.paddingRight = 0; } : undefined,
                     ticks: {
                         color: '#7e8a97',
                         maxTicksLimit: 7,
                         font: {size: 9},
                         stepSize: 1,
-                        callback: function(v) { return Math.round(v); }
+                        callback: function(v) { if (v > Math.floor(distances[distances.length - 1])) return null; return Math.round(v); }
                     },
                     grid: {color: 'rgba(255,255,255,0.04)'},
                     title: {display: false}
