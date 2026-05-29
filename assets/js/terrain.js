@@ -212,7 +212,15 @@ function addPointFromGPS() {
     }
     navigator.geolocation.getCurrentPosition(
         function(pos) {
-            addPoint(pos.coords.latitude, pos.coords.longitude);
+            const lat = parseFloat(parseFloat(pos.coords.latitude).toFixed(6));
+            const lon = parseFloat(parseFloat(pos.coords.longitude).toFixed(6));
+            if (terrainPoints.length >= 2) {
+                terrainPoints[0] = { lat: lat, lon: lon };
+                rebuildMarkers();
+                scheduleAnalyze();
+            } else {
+                addPoint(lat, lon);
+            }
         },
         function(err) {
             alert(translations.geoError + err.message);
