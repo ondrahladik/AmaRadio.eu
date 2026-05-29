@@ -193,7 +193,7 @@ $text = [
     // Terrain profile help
     'help-terrain'              => 'Help for terrain profile',
     'help-terrain-title-1'      => '1. Adding points',
-    'help-terrain-description-1'=> 'Points A and B are added by clicking directly on the map – click two locations and the analysis runs automatically. Alternatively, enter a locator (e.g. JO70QD) or GPS coordinates (50.08, 14.42) into the input field and press <i class="fa-solid fa-plus"></i>. Use the <i class="fa-solid fa-location-dot"></i> button next to the input field to instantly add your current GPS position as a terrain point. Drag a marker to move it, right-click to delete it.',
+    'help-terrain-description-1'=> 'Points A and B are added by clicking directly on the map – click two locations and the analysis runs automatically. Alternatively, enter a locator (e.g. JO70QD) or GPS coordinates (50.08, 14.42) into the input field and press <i class="fa-solid fa-plus"></i>. Use the <i class="fa-solid fa-location-dot"></i> button next to the input field to instantly add your current GPS position as a terrain point. If both points are already set, this button replaces point A with your current location. Drag a marker to move it, right-click to delete it.',
     'help-terrain-title-2'      => '2. RF settings',
     'help-terrain-description-2'=> 'In the <b>RF settings</b> section, you can set the frequency for Fresnel zone calculation and the antenna heights at both ends of the path above ground. Default values are 144 MHz and antenna height 0 m.',
     'help-terrain-title-3'      => '3. Analysis results',
