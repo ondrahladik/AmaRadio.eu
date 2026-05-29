@@ -8,6 +8,7 @@ let modalChartInstance = null;
 let lastChartArgs = null;
 let profileData = null;   
 let chartCrosshair = null;
+let isTouchActive  = false;
 let analyzeTimer = null;
 
 function haversineJS(lat1, lon1, lat2, lon2) {
@@ -422,6 +423,7 @@ function buildChartOnCanvas(canvas, distances, terrain, los, fresnelTop, fresnel
                     fill: true,
                     tension: 0.35,
                     pointRadius: 0,
+                    pointHoverRadius: 0,
                     order: 3
                 },
                 {
@@ -433,6 +435,7 @@ function buildChartOnCanvas(canvas, distances, terrain, los, fresnelTop, fresnel
                     fill: '+1',
                     tension: 0.2,
                     pointRadius: 0,
+                    pointHoverRadius: 0,
                     order: 2
                 },
                 {
@@ -443,6 +446,7 @@ function buildChartOnCanvas(canvas, distances, terrain, los, fresnelTop, fresnel
                     fill: false,
                     tension: 0.2,
                     pointRadius: 0,
+                    pointHoverRadius: 0,
                     order: 2
                 },
                 {
@@ -454,6 +458,7 @@ function buildChartOnCanvas(canvas, distances, terrain, los, fresnelTop, fresnel
                     fill: false,
                     tension: 0,
                     pointRadius: 0,
+                    pointHoverRadius: 0,
                     order: 1
                 }
             ]
@@ -536,6 +541,13 @@ function renderChart(distances, terrain, los, fresnelTop, fresnelBot) {
 
     canvas.addEventListener('mousemove', onChartMouseMove);
     canvas.addEventListener('mouseleave', onChartMouseLeave);
+    canvas.addEventListener('touchstart', function() {
+        isTouchActive = true;
+        onChartMouseLeave();
+    }, {passive: true});
+    canvas.addEventListener('touchend', function() {
+        setTimeout(function() { isTouchActive = false; }, 500);
+    }, {passive: true});
 }
 
 function exportChartPNG() {
@@ -701,7 +713,7 @@ function closeChartModal() {
 }
 
 function onChartMouseMove(e) {
-    if (!chartInstance || !profileData) return;
+    if (isTouchActive || !chartInstance || !profileData) return;
     const elems = chartInstance.getElementsAtEventForMode(e, 'index', {intersect: false}, true);
     if (!elems.length) return;
 
