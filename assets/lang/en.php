@@ -233,7 +233,6 @@ $text = [
 
     // Solar activity
     'solar-page-title'=> 'Solar activity',
-    'solar-refresh'          => 'Refresh',
     'solar-loading'          => 'Loading...',
     'solar-sfi'              => 'Solar Flux',
     'solar-sfi-desc'         => 'F10.7 index (SFU)',

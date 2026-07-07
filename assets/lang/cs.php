@@ -233,7 +233,6 @@ $text = [
 
     // Solar Activity
     'solar-page-title'       => 'Solární aktivita',
-    'solar-refresh'          => 'Obnovit',
     'solar-loading'          => 'Načítání...',
     'solar-sfi'              => 'Solární tok',
     'solar-sfi-desc'         => 'F10.7 index (SFU)',

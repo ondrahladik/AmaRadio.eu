@@ -194,9 +194,6 @@ $bandOrder = ['80m-40m', '30m-20m', '17m-15m', '12m-10m'];
     <div class="solar-error">
       <i class="fa-solid fa-triangle-exclamation"></i>
       <p><?= $text['solar-data-error'] ?></p>
-      <button onclick="location.reload()" class="solar-btn">
-        <i class="fa-solid fa-rotate-right"></i> <?= $text['solar-refresh'] ?>
-      </button>
     </div>
 
     <?php else: ?>
