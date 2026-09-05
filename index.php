@@ -42,6 +42,10 @@ include 'assets/lang/lang.php';
         <h1><i class="fa-solid fa-location-dot"></i> <?= $text['locator-map'] ?></h1>
         <p><?= $text['locator-title'] ?></p>
       </a>
+      <a href="/gps-locator" class="tool-block">
+        <h1><i class="fa-solid fa-location-crosshairs"></i> <?= $text['gps-locator'] ?></h1>
+        <p><?= $text['gps-locator-title'] ?></p>
+      </a>
       <a class="tool-block disabled" data-coming="<?= $text['coming-soon'] ?>">
         <h1><i class="fa-solid fa-globe"></i> <?= $text['qso-map'] ?></h1>
         <p><?= $text['qso-title'] ?></p>
@@ -103,4 +107,3 @@ include 'assets/lang/lang.php';
 
 </body>
 </html>
-

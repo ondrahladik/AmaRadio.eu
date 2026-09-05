@@ -5,6 +5,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $pageInfo = [
     '/prefix'      => ['icon' => 'fa-magnifying-glass', 'label' => $text['prefix-search'],   'key' => 'P', 'href' => '/prefix'],
     '/locator-map' => ['icon' => 'fa-location-dot',     'label' => $text['locator-map'],      'key' => 'L', 'href' => '/locator-map'],
+    '/gps-locator' => ['icon' => 'fa-location-crosshairs', 'label' => $text['gps-locator'],   'key' => 'M', 'href' => '/gps-locator'],
     '/zone-map'    => ['icon' => 'fa-map',              'label' => $text['zone-map'],         'key' => 'Z', 'href' => '/zone-map'],
     '/terrain'     => ['icon' => 'fa-mountain',         'label' => $text['terrain'],          'key' => 'H', 'href' => '/terrain'],
     '/rotator'     => ['icon' => 'fa-compass',          'label' => $text['rotator'],          'key' => 'R', 'href' => '/rotator'],
@@ -62,6 +63,11 @@ $currentPage = $pageInfo[$currentPath] ?? null;
           <div class="nav-icon"><i class="fa-solid fa-location-dot"></i></div>
           <span class="nav-label"><?= $text['locator-map'] ?></span>
           <p class="nav-desc"><?= $text['locator-title'] ?></p>
+        </a>
+        <a href="/gps-locator" class="nav-item<?= $currentPath === '/gps-locator' ? ' active' : '' ?>">
+          <div class="nav-icon"><i class="fa-solid fa-location-crosshairs"></i></div>
+          <span class="nav-label"><?= $text['gps-locator'] ?></span>
+          <p class="nav-desc"><?= $text['gps-locator-title'] ?></p>
         </a>
         <a href="/zone-map" class="nav-item<?= $currentPath === '/zone-map' ? ' active' : '' ?>">
           <div class="nav-icon"><i class="fa-solid fa-map"></i></div>
@@ -147,6 +153,7 @@ $currentPage = $pageInfo[$currentPath] ?? null;
       <div class="shortcuts-list">
         <div class="shortcut-row"><kbd>Alt+P</kbd><span><?= $text['prefix-search'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+L</kbd><span><?= $text['locator-map'] ?></span></div>
+        <div class="shortcut-row"><kbd>Alt+M</kbd><span><?= $text['gps-locator'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+Z</kbd><span><?= $text['zone-map'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+R</kbd><span><?= $text['rotator'] ?></span></div>
         <div class="shortcut-row"><kbd>Alt+H</kbd><span><?= $text['terrain'] ?></span></div>
@@ -227,6 +234,7 @@ $currentPage = $pageInfo[$currentPath] ?? null;
         const shortcuts = {
           'p': '/prefix',
           'l': '/locator-map',
+          'm': '/gps-locator',
           'z': '/zone-map',
           'r': '/rotator',
           'h': '/terrain',
