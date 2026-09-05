@@ -31,6 +31,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://amaradio.eu/gps-locator</loc>
+  <lastmod>2026-09-04T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://amaradio.eu/zone-map</loc>
   <lastmod>2025-07-31T22:40:59+00:00</lastmod>
   <priority>0.80</priority>

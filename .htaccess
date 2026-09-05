@@ -10,6 +10,7 @@ ErrorDocument 404 /notfound.php
 RewriteRule ^index$ index.php [L]
 RewriteRule ^prefix$ prefix.php [L]
 RewriteRule ^locator-map$ locator-map.php [L]
+RewriteRule ^gps-locator$ gps-locator.php [L]
 RewriteRule ^qso-map$ qso-map.php [L]
 RewriteRule ^zone-map$ zone-map.php [L]
 RewriteRule ^about$ about.php [L]
